@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,6 +9,11 @@
 
     <title>Isora Luxe | Premium Automotive</title>
 
+    <meta name="description"
+          content="Discover Isora Luxe's carefully selected collection of premium vehicles, transparent pricing and customer-focused automotive services.">
+
+    <meta name="theme-color" content="#111315">
+
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="css/style.css">
 
@@ -17,7 +23,7 @@
           href="https://fonts.gstatic.com"
           crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap"
           rel="stylesheet">
 
     <!-- FONT AWESOME -->
@@ -25,70 +31,159 @@
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 
-    <!-- HOMEPAGE CSS -->
     <style>
 
-        /* =====================================================
-           Isora Luxe — HOMEPAGE
-        ===================================================== */
+        /* =========================================================
+           ISORA LUXE — PREMIUM HOMEPAGE
+        ========================================================= */
 
         :root {
-            --pw-black: #e8eaed;
-            --pw-dark: #eef0f4;
-            --pw-charcoal: #24272b;
+            --gold: #b89b62;
+            --gold-light: #d8c08e;
+            --gold-dark: #8f743e;
 
-            --pw-cream: #f7f5f0;
-            --pw-warm: #eeece6;
-            --pw-white: #ffffff;
+            --black: #0d0f10;
+            --dark: #151719;
+            --charcoal: #202224;
 
-            --pw-text: #17181a;
-            --pw-muted: #777873;
+            --cream: #f7f5f0;
+            --warm: #eeece6;
+            --white: #ffffff;
 
-            --pw-gold: #b89b62;
-            --pw-gold-light: #d1b982;
+            --text: #17181a;
+            --muted: #777873;
+            --border: #dfddd7;
 
-            --pw-border: #dfddd7;
+            --container: 1180px;
+
+            --ease: cubic-bezier(.22, 1, .36, 1);
         }
 
 
-        /* =====================================================
-           HOMEPAGE
-        ===================================================== */
+        /* =========================================================
+           RESET / BASE
+        ========================================================= */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Inter", sans-serif;
+            background: var(--cream);
+            color: var(--text);
+        }
+
+        img,
+        video {
+            max-width: 100%;
+        }
+
+        a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        button,
+        a {
+            font-family: inherit;
+        }
+
+
+        /* =========================================================
+           ACCESSIBILITY
+        ========================================================= */
+
+        .skip-link {
+            position: fixed;
+            left: 20px;
+            top: -100px;
+            z-index: 99999;
+
+            padding: 12px 18px;
+
+            background: var(--gold);
+            color: white;
+
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 700;
+
+            border-radius: 4px;
+
+            transition: top .25s ease;
+        }
+
+        .skip-link:focus {
+            top: 20px;
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--gold-light);
+            outline-offset: 4px;
+        }
+
+
+        /* =========================================================
+           PAGE
+        ========================================================= */
 
         .pw-home {
             width: 100%;
             min-height: 100vh;
             overflow-x: hidden;
-            background: var(--pw-cream);
-            color: var(--pw-text);
+            background: var(--cream);
         }
 
         .pw-container {
-            width: min(1180px, 92%);
+            width: min(var(--container), 92%);
             margin: 0 auto;
         }
 
 
-        /* =====================================================
+        /* =========================================================
            NAVBAR
-        ===================================================== */
+        ========================================================= */
 
         .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+
             width: 100%;
-            min-height: 90px;
+            min-height: 88px;
 
             display: flex;
             align-items: center;
-            justify-content: space-between;
 
             padding: 0 5%;
 
-            background: #f6f7f8;
+            z-index: 5000;
 
-            position: relative;
-            z-index: 1000;
+            background: rgba(192, 197, 205, 0.72);
 
-            box-sizing: border-box;
+            border-bottom: 1px solid rgba(255,255,255,.08);
+
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+
+            transition:
+                background .35s ease,
+                min-height .35s ease,
+                box-shadow .35s ease;
+        }
+
+        .navbar.scrolled {
+            min-height: 72px;
+
+            background: rgba(14,15,16,.94);
+
+            box-shadow:
+                0 10px 35px rgba(0,0,0,.22);
         }
 
 
@@ -104,53 +199,87 @@
         }
 
         .navbar .logo img {
-            height: 70px;
+            height: 66px;
             width: auto;
 
             display: block;
 
             object-fit: contain;
+
+            transition:
+                height .35s ease,
+                transform .35s var(--ease);
+        }
+
+        .navbar .logo:hover img {
+            transform: scale(1.03);
+        }
+
+        .navbar.scrolled .logo img {
+            height: 57px;
         }
 
 
-        /* NAVIGATION */
+        /* DESKTOP NAV */
 
         .nav-links {
             display: flex;
             align-items: center;
 
-            gap: 36px;
+            gap: 38px;
 
             margin-left: auto;
-            margin-right: 35px;
+            margin-right: 30px;
         }
 
         .nav-links a {
-            color: var(--pw-gold);
+            position: relative;
+
+            color: rgba(255,255,255,.78);
 
             text-decoration: none;
 
-            font-family: "Inter", sans-serif;
-
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 600;
 
-            transition:
-                color 0.25s ease,
-                transform 0.25s ease;
+            letter-spacing: .4px;
 
-            white-space: nowrap;
+            transition:
+                color .25s ease,
+                transform .25s ease;
+        }
+
+        .nav-links a::after {
+            content: "";
+
+            position: absolute;
+
+            left: 50%;
+            bottom: -10px;
+
+            width: 0;
+            height: 1px;
+
+            background: var(--gold-light);
+
+            transform: translateX(-50%);
+
+            transition: width .3s var(--ease);
         }
 
         .nav-links a:hover,
         .nav-links a.active {
-            color: #8f743e;
-
+            color: var(--gold-light);
             transform: translateY(-1px);
         }
 
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 22px;
+        }
 
-        /* GET IN TOUCH BUTTON */
+
+        /* NAV BUTTON */
 
         .nav-btn {
             display: inline-flex;
@@ -160,66 +289,155 @@
 
             min-height: 42px;
 
-            padding: 0 20px;
+            padding: 0 21px;
 
-            background: var(--pw-gold);
-
-            color: #ffffff;
+            background: var(--gold);
+            color: white;
 
             text-decoration: none;
 
-            font-family: "Inter", sans-serif;
-
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 700;
+
+            letter-spacing: .5px;
 
             border-radius: 3px;
 
-            transition: 0.25s ease;
+            box-shadow:
+                0 8px 25px rgba(184,155,98,.18);
 
-            white-space: nowrap;
+            transition:
+                transform .25s ease,
+                background .25s ease,
+                box-shadow .25s ease;
         }
 
         .nav-btn:hover {
-            background: var(--pw-gold-light);
+            transform: translateY(-2px);
 
-            color: #111315;
+            background: var(--gold-light);
+
+            color: #111;
+
+            box-shadow:
+                0 12px 30px rgba(184,155,98,.28);
         }
 
 
-        /* MOBILE MENU */
+        /* MOBILE BUTTON */
 
         .menu-btn {
             display: none;
 
-            border: 0;
+            width: 44px;
+            height: 44px;
 
-            background: transparent;
+            align-items: center;
+            justify-content: center;
 
-            color: var(--pw-gold);
+            border: 1px solid rgba(255,255,255,.14);
 
-            font-size: 22px;
+            border-radius: 4px;
+
+            background: rgba(255,255,255,.05);
+
+            color: var(--gold-light);
+
+            font-size: 19px;
 
             cursor: pointer;
         }
 
 
-        /* =====================================================
+        /* MOBILE NAV */
+
+        .mobile-nav {
+            display: none;
+
+            position: absolute;
+
+            top: 100%;
+            left: 4%;
+            right: 4%;
+
+            padding: 10px;
+
+            background: rgba(18,20,21,.98);
+
+            border: 1px solid rgba(255,255,255,.1);
+
+            border-radius: 5px;
+
+            box-shadow:
+                0 25px 60px rgba(0,0,0,.35);
+
+            backdrop-filter: blur(20px);
+        }
+
+        .mobile-nav.is-open {
+            display: block;
+        }
+
+        .mobile-nav a {
+            display: flex;
+
+            align-items: center;
+
+            min-height: 50px;
+
+            padding: 0 16px;
+
+            color: rgba(255,255,255,.78);
+
+            text-decoration: none;
+
+            font-size: 13px;
+            font-weight: 600;
+
+            border-bottom: 1px solid rgba(255,255,255,.06);
+
+            transition:
+                color .2s ease,
+                background .2s ease;
+        }
+
+        .mobile-nav a:last-child {
+            border-bottom: 0;
+        }
+
+        .mobile-nav a:hover,
+        .mobile-nav a.active {
+            color: var(--gold-light);
+
+            background: rgba(184,155,98,.08);
+        }
+
+
+        /* =========================================================
            HERO
-        ===================================================== */
+        ========================================================= */
 
         .pw-hero {
-            min-height: 680px;
-
             position: relative;
+
+            min-height: 780px;
 
             display: flex;
             align-items: center;
 
             overflow: hidden;
 
-            background: #080909;
+            background:
+                radial-gradient(
+                    circle at 75% 50%,
+                    rgba(184,155,98,.09),
+                    transparent 35%
+                ),
+                #070809;
         }
+
+
+        /* VIDEO */
 
         .pw-hero-video {
             position: absolute;
@@ -232,6 +450,35 @@
             object-fit: cover;
 
             z-index: 0;
+
+            filter:
+                brightness(.72)
+                contrast(1.08)
+                saturate(.9);
+
+            transform: scale(1.02);
+        }
+
+
+        /* CINEMATIC OVERLAY */
+
+        .pw-hero::before {
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            z-index: 1;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(5,6,7,.96) 0%,
+                    rgba(5,6,7,.86) 28%,
+                    rgba(5,6,7,.55) 55%,
+                    rgba(5,6,7,.18) 100%
+                );
         }
 
         .pw-hero::after {
@@ -241,33 +488,41 @@
 
             inset: 0;
 
+            z-index: 1;
+
             background:
                 linear-gradient(
-                    90deg,
-                    rgba(7, 8, 9, 0.94) 0%,
-                    rgba(7, 8, 9, 0.78) 38%,
-                    rgba(7, 8, 9, 0.35) 70%,
-                    rgba(7, 8, 9, 0.12) 100%
+                    0deg,
+                    rgba(5,6,7,.75) 0%,
+                    transparent 28%,
+                    transparent 72%,
+                    rgba(5,6,7,.35) 100%
                 );
-
-            z-index: 1;
         }
+
+
+        /* HERO CONTENT */
 
         .pw-hero-content {
             position: relative;
 
             z-index: 2;
 
-            width: min(1180px, 92%);
+            width: min(var(--container), 92%);
 
             margin: 0 auto;
 
-            color: #ffffff;
+            padding-top: 80px;
+
+            color: white;
         }
 
         .pw-hero-content-inner {
-            max-width: 720px;
+            max-width: 750px;
         }
+
+
+        /* GOLD EYEBROW */
 
         .pw-eyebrow {
             display: inline-flex;
@@ -276,61 +531,91 @@
 
             gap: 12px;
 
-            margin: 0 0 20px;
+            margin: 0 0 22px;
 
-            font-size: 11px;
+            color: var(--gold-light);
 
-            font-weight: 700;
+            font-size: 10px;
+            font-weight: 800;
 
-            letter-spacing: 2.5px;
+            letter-spacing: 3px;
 
             text-transform: uppercase;
-
-            color: var(--pw-gold-light);
         }
 
         .pw-eyebrow::before {
             content: "";
 
-            width: 36px;
+            width: 42px;
             height: 1px;
 
             background: currentColor;
         }
+
+
+        /* HERO TITLE */
 
         .pw-hero h1 {
             margin: 0;
 
             font-family: "Montserrat", sans-serif;
 
-            font-size: clamp(46px, 6vw, 80px);
+            font-size: clamp(50px, 7vw, 92px);
 
-            line-height: 1;
+            line-height: .98;
 
             font-weight: 800;
 
-            letter-spacing: -2.5px;
+            letter-spacing: -4px;
+
+            text-shadow:
+                0 8px 35px rgba(0,0,0,.3);
         }
 
         .pw-hero h1 span {
             display: block;
 
+            margin-top: 8px;
+
             font-weight: 500;
 
-            color: rgba(255,255,255,0.82);
+            color: rgba(255,255,255,.74);
         }
+
+
+        /* HERO GOLD LINE */
+
+        .hero-accent {
+            width: 75px;
+            height: 2px;
+
+            margin: 28px 0;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    var(--gold),
+                    transparent
+                );
+        }
+
+
+        /* HERO TEXT */
 
         .pw-hero-text {
-            max-width: 580px;
+            max-width: 590px;
 
-            margin: 28px 0 34px;
+            margin: 0 0 35px;
 
-            font-size: 16px;
+            color: rgba(255,255,255,.68);
 
-            line-height: 1.85;
+            font-size: 15px;
 
-            color: rgba(255,255,255,0.76);
+            line-height: 1.9;
         }
+
+
+        /* HERO BUTTONS */
 
         .pw-hero-buttons {
             display: flex;
@@ -341,6 +626,8 @@
         }
 
         .pw-btn {
+            position: relative;
+
             display: inline-flex;
 
             align-items: center;
@@ -348,99 +635,228 @@
 
             gap: 10px;
 
-            min-height: 52px;
+            min-height: 53px;
 
-            padding: 0 25px;
+            padding: 0 26px;
 
-            border-radius: 4px;
+            border-radius: 3px;
 
             text-decoration: none;
 
-            font-size: 13px;
-
+            font-size: 12px;
             font-weight: 700;
 
+            letter-spacing: .3px;
+
+            overflow: hidden;
+
             transition:
-                transform 0.25s ease,
-                background 0.25s ease,
-                color 0.25s ease,
-                border-color 0.25s ease;
+                transform .3s var(--ease),
+                background .3s ease,
+                color .3s ease,
+                border-color .3s ease,
+                box-shadow .3s ease;
+        }
+
+        .pw-btn i {
+            transition: transform .3s var(--ease);
+        }
+
+        .pw-btn:hover i {
+            transform: translateX(4px);
         }
 
         .pw-btn-primary {
-            background: var(--pw-gold);
+            background: var(--gold);
 
-            color: #ffffff;
+            color: white;
+
+            box-shadow:
+                0 12px 30px rgba(184,155,98,.2);
         }
 
         .pw-btn-primary:hover {
-            transform: translateY(-3px);
+            transform: translateY(-4px);
 
-            background: var(--pw-gold-light);
+            background: var(--gold-light);
 
-            color: #111111;
+            color: #111;
+
+            box-shadow:
+                0 18px 40px rgba(184,155,98,.3);
         }
 
         .pw-btn-outline {
-            border: 1px solid rgba(255,255,255,0.4);
+            border: 1px solid rgba(255,255,255,.35);
 
-            color: #ffffff;
+            background: rgba(255,255,255,.04);
 
-            background: rgba(255,255,255,0.04);
+            color: white;
 
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(8px);
         }
 
         .pw-btn-outline:hover {
-            transform: translateY(-3px);
+            transform: translateY(-4px);
 
-            background: #ffffff;
+            background: white;
 
-            color: #111111;
+            border-color: white;
 
-            border-color: #ffffff;
+            color: #111;
         }
 
 
-        /* =====================================================
+        /* HERO SCROLL */
+
+        .hero-scroll {
+            position: absolute;
+
+            left: 50%;
+            bottom: 28px;
+
+            z-index: 3;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            gap: 9px;
+
+            transform: translateX(-50%);
+
+            color: rgba(255,255,255,.5);
+
+            font-size: 8px;
+            font-weight: 700;
+
+            letter-spacing: 3px;
+
+            text-transform: uppercase;
+        }
+
+        .hero-scroll-line {
+            position: relative;
+
+            width: 1px;
+            height: 38px;
+
+            overflow: hidden;
+
+            background: rgba(255,255,255,.22);
+        }
+
+        .hero-scroll-line::after {
+            content: "";
+
+            position: absolute;
+
+            top: -100%;
+            left: 0;
+
+            width: 100%;
+            height: 50%;
+
+            background: var(--gold-light);
+
+            animation:
+                scrollLine 1.8s ease-in-out infinite;
+        }
+
+        @keyframes scrollLine {
+
+            0% {
+                top: -100%;
+            }
+
+            50% {
+                top: 100%;
+            }
+
+            100% {
+                top: 100%;
+            }
+
+        }
+
+
+        /* =========================================================
            STATS
-        ===================================================== */
+        ========================================================= */
 
         .pw-stats {
-            padding: 0;
+            position: relative;
 
-            background: var(--pw-cream);
+            background: var(--cream);
         }
 
         .pw-stats-grid {
+            position: relative;
+
+            z-index: 10;
+
             display: grid;
 
             grid-template-columns: repeat(4, 1fr);
 
-            background: #ffffff;
+            transform: translateY(-45px);
 
-            border-left: 1px solid var(--pw-border);
-            border-right: 1px solid var(--pw-border);
+            background: rgba(255,255,255,.97);
 
-            box-shadow: 0 15px 45px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,.06);
 
-            transform: translateY(-35px);
+            box-shadow:
+                0 25px 70px rgba(0,0,0,.10);
 
-            position: relative;
-
-            z-index: 4;
+            overflow: hidden;
         }
 
         .pw-stat {
-            padding: 28px 20px;
+            position: relative;
+
+            padding: 32px 20px;
 
             text-align: center;
 
-            border-right: 1px solid var(--pw-border);
+            border-right: 1px solid var(--border);
+
+            transition:
+                background .3s ease,
+                transform .3s ease;
         }
 
         .pw-stat:last-child {
             border-right: 0;
+        }
+
+        .pw-stat:hover {
+            background: #fbfaf7;
+
+            transform: translateY(-3px);
+        }
+
+        .pw-stat::before {
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: 50%;
+
+            width: 0;
+            height: 2px;
+
+            background: var(--gold);
+
+            transform: translateX(-50%);
+
+            transition: width .3s var(--ease);
+        }
+
+        .pw-stat:hover::before {
+            width: 55px;
         }
 
         .pw-stat strong {
@@ -450,95 +866,103 @@
 
             font-family: "Montserrat", sans-serif;
 
-            font-size: 26px;
-
+            font-size: 28px;
             font-weight: 800;
 
-            color: var(--pw-text);
+            letter-spacing: -1px;
+
+            color: var(--text);
         }
 
         .pw-stat span {
-            font-size: 11px;
+            color: var(--muted);
 
-            color: var(--pw-muted);
+            font-size: 9px;
+            font-weight: 700;
 
-            letter-spacing: 0.7px;
+            letter-spacing: 1.2px;
 
             text-transform: uppercase;
         }
 
 
-        /* =====================================================
-           GENERAL SECTION
-        ===================================================== */
+        /* =========================================================
+           GENERAL SECTIONS
+        ========================================================= */
 
         .pw-section {
-            padding: 105px 0;
+            position: relative;
+
+            padding: 115px 0;
         }
 
         .pw-section-heading {
-            max-width: 700px;
+            max-width: 720px;
 
-            margin: 0 auto 55px;
+            margin: 0 auto 58px;
 
             text-align: center;
         }
 
         .pw-section-label {
-            margin: 0 0 13px;
+            margin: 0 0 14px;
 
-            font-size: 10px;
+            color: var(--gold);
 
+            font-size: 9px;
             font-weight: 800;
 
-            letter-spacing: 2.5px;
-
-            color: var(--pw-gold);
+            letter-spacing: 3px;
 
             text-transform: uppercase;
         }
 
         .pw-section-heading h2 {
-            margin: 0 0 16px;
+            margin: 0 0 17px;
 
             font-family: "Montserrat", sans-serif;
 
-            font-size: clamp(32px, 4vw, 49px);
+            font-size: clamp(33px, 4vw, 51px);
 
-            line-height: 1.12;
+            line-height: 1.08;
 
-            letter-spacing: -1.5px;
+            letter-spacing: -2px;
 
-            color: var(--pw-text);
+            color: var(--text);
         }
 
         .pw-section-heading h2 span {
             font-weight: 400;
 
-            color: #666666;
+            color: #737373;
         }
 
         .pw-section-heading p {
             margin: 0;
 
-            color: var(--pw-muted);
+            color: var(--muted);
 
-            font-size: 14px;
+            font-size: 13px;
 
             line-height: 1.9;
         }
 
 
-        /* =====================================================
-           EXPLORE OUR COLLECTION
-        ===================================================== */
+        /* =========================================================
+           COLLECTION
+        ========================================================= */
 
         .pw-types {
             background:
+                radial-gradient(
+                    circle at 10% 20%,
+                    rgba(184,155,98,.08),
+                    transparent 25%
+                ),
                 linear-gradient(
                     180deg,
-                    var(--pw-cream) 0%,
-                    #e9e6df 100%
+                    var(--cream),
+                    #e9e6df
                 );
         }
 
@@ -547,34 +971,60 @@
 
             grid-template-columns: repeat(4, 1fr);
 
-            gap: 16px;
+            gap: 17px;
         }
 
         .pw-type-card {
-            min-height: 290px;
+            position: relative;
 
-            padding: 30px;
+            min-height: 315px;
 
-            background:
-                linear-gradient(
-                    145deg,
-                    #ffffff 0%,
-                    #f8f7f3 100%
-                );
-
-            border: 1px solid rgba(0,0,0,0.07);
+            padding: 31px;
 
             display: flex;
 
             flex-direction: column;
 
-            position: relative;
-
             overflow: hidden;
 
+            background:
+                linear-gradient(
+                    145deg,
+                    #ffffff 0%,
+                    #f7f5f0 100%
+                );
+
+            border: 1px solid rgba(0,0,0,.065);
+
+            box-shadow:
+                0 10px 30px rgba(0,0,0,.025);
+
             transition:
-                transform 0.3s ease,
-                box-shadow 0.3s ease;
+                transform .45s var(--ease),
+                box-shadow .45s var(--ease),
+                border-color .45s ease;
+        }
+
+        .pw-type-card::before {
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: 0;
+
+            width: 0;
+            height: 3px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    var(--gold),
+                    var(--gold-light)
+                );
+
+            transition:
+                width .45s var(--ease);
         }
 
         .pw-type-card::after {
@@ -582,52 +1032,81 @@
 
             position: absolute;
 
-            width: 130px;
-            height: 130px;
+            width: 190px;
+            height: 190px;
 
-            right: -55px;
-            bottom: -60px;
+            right: -100px;
+            bottom: -100px;
+
+            border: 1px solid rgba(184,155,98,.16);
 
             border-radius: 50%;
 
-            border: 1px solid rgba(184,155,98,0.22);
+            transition:
+                transform .6s var(--ease);
         }
 
         .pw-type-card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-12px);
+
+            border-color: rgba(184,155,98,.3);
 
             box-shadow:
-                0 25px 55px rgba(0,0,0,0.10);
+                0 30px 65px rgba(0,0,0,.12);
+        }
+
+        .pw-type-card:hover::before {
+            width: 100%;
+        }
+
+        .pw-type-card:hover::after {
+            transform: scale(1.25);
         }
 
         .pw-type-number {
             margin-bottom: 28px;
 
-            font-size: 10px;
+            color: #aaa;
 
+            font-size: 9px;
             font-weight: 800;
 
-            letter-spacing: 1px;
-
-            color: #aaaaaa;
+            letter-spacing: 2px;
         }
 
         .pw-type-icon {
-            width: 52px;
-            height: 52px;
+            position: relative;
+
+            width: 55px;
+            height: 55px;
 
             display: flex;
 
             align-items: center;
             justify-content: center;
 
-            margin-bottom: 22px;
+            margin-bottom: 24px;
 
-            background: var(--pw-dark);
+            background: #222528;
 
-            color: var(--pw-gold-light);
+            color: var(--gold-light);
 
             border-radius: 50%;
+
+            box-shadow:
+                0 10px 25px rgba(0,0,0,.08);
+
+            transition:
+                transform .4s var(--ease),
+                background .3s ease;
+        }
+
+        .pw-type-card:hover .pw-type-icon {
+            transform: rotate(-5deg) scale(1.08);
+
+            background: var(--gold);
+
+            color: white;
         }
 
         .pw-type-card h3 {
@@ -635,47 +1114,46 @@
 
             font-family: "Montserrat", sans-serif;
 
-            font-size: 20px;
+            font-size: 19px;
 
-            color: var(--pw-text);
+            color: var(--text);
         }
 
         .pw-type-card p {
             margin: 0;
 
-            font-size: 13px;
+            color: var(--muted);
 
-            line-height: 1.75;
+            font-size: 12px;
 
-            color: var(--pw-muted);
+            line-height: 1.8;
         }
-
-
-        /* =====================================================
-           COLLECTION BUTTON
-        ===================================================== */
 
         .pw-collection-button {
             display: flex;
 
             justify-content: center;
 
-            margin-top: 45px;
+            margin-top: 48px;
         }
 
 
-        /* =====================================================
-           WHY ISORA LUXE
-        ===================================================== */
+        /* =========================================================
+           WHY SECTION
+        ========================================================= */
 
         .pw-why {
-            background: #202224;
-
-            color: #ffffff;
-
-            position: relative;
-
             overflow: hidden;
+
+            background:
+                radial-gradient(
+                    circle at 80% 30%,
+                    rgba(184,155,98,.08),
+                    transparent 30%
+                ),
+                #202224;
+
+            color: white;
         }
 
         .pw-why::before {
@@ -683,33 +1161,49 @@
 
             position: absolute;
 
-            width: 500px;
-            height: 500px;
+            width: 650px;
+            height: 650px;
 
-            right: -220px;
-            top: -250px;
+            right: -330px;
+            top: -300px;
 
-            border: 1px solid rgba(184,155,98,0.15);
+            border: 1px solid rgba(184,155,98,.13);
+
+            border-radius: 50%;
+        }
+
+        .pw-why::after {
+            content: "";
+
+            position: absolute;
+
+            width: 400px;
+            height: 400px;
+
+            left: -260px;
+            bottom: -300px;
+
+            border: 1px solid rgba(255,255,255,.04);
 
             border-radius: 50%;
         }
 
         .pw-why-grid {
+            position: relative;
+
+            z-index: 2;
+
             display: grid;
 
-            grid-template-columns: 0.9fr 1.1fr;
+            grid-template-columns: .9fr 1.1fr;
 
             gap: 85px;
 
             align-items: center;
-
-            position: relative;
-
-            z-index: 2;
         }
 
         .pw-why .pw-section-label {
-            color: var(--pw-gold-light);
+            color: var(--gold-light);
         }
 
         .pw-why h2 {
@@ -717,27 +1211,29 @@
 
             font-family: "Montserrat", sans-serif;
 
-            font-size: clamp(34px, 4vw, 52px);
+            font-size: clamp(35px, 4vw, 54px);
 
-            line-height: 1.1;
+            line-height: 1.08;
 
-            letter-spacing: -1.5px;
+            letter-spacing: -2px;
         }
 
         .pw-why h2 span {
+            display: block;
+
             font-weight: 400;
 
-            color: #aaaaaa;
+            color: #a9a9a9;
         }
 
         .pw-why-main-text {
             max-width: 520px;
 
-            margin-bottom: 30px;
+            margin-bottom: 31px;
 
-            color: #aaaaaa;
+            color: #aaa;
 
-            font-size: 14px;
+            font-size: 13px;
 
             line-height: 1.9;
         }
@@ -751,31 +1247,56 @@
         }
 
         .pw-why-item {
-            padding: 27px;
+            padding: 28px;
 
-            border: 1px solid rgba(255,255,255,0.09);
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,.055),
+                    rgba(255,255,255,.02)
+                );
 
-            background: rgba(255,255,255,0.035);
+            border: 1px solid rgba(255,255,255,.09);
 
             transition:
-                background 0.25s ease,
-                border-color 0.25s ease;
+                transform .35s var(--ease),
+                background .35s ease,
+                border-color .35s ease,
+                box-shadow .35s ease;
         }
 
         .pw-why-item:hover {
-            background: rgba(184,155,98,0.07);
+            transform: translateY(-7px);
 
-            border-color: rgba(184,155,98,0.28);
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(184,155,98,.12),
+                    rgba(255,255,255,.035)
+                );
+
+            border-color: rgba(184,155,98,.32);
+
+            box-shadow:
+                0 20px 45px rgba(0,0,0,.18);
         }
 
         .pw-why-item i {
-            display: block;
+            display: flex;
+
+            width: 40px;
+            height: 40px;
+
+            align-items: center;
+            justify-content: center;
 
             margin-bottom: 17px;
 
-            font-size: 18px;
+            background: rgba(184,155,98,.1);
 
-            color: var(--pw-gold-light);
+            color: var(--gold-light);
+
+            border-radius: 50%;
         }
 
         .pw-why-item h3 {
@@ -783,26 +1304,31 @@
 
             font-family: "Montserrat", sans-serif;
 
-            font-size: 15px;
+            font-size: 14px;
         }
 
         .pw-why-item p {
             margin: 0;
 
-            color: #969696;
+            color: #929292;
 
-            font-size: 12px;
+            font-size: 11px;
 
-            line-height: 1.7;
+            line-height: 1.75;
         }
 
 
-        /* =====================================================
+        /* =========================================================
            SERVICES
-        ===================================================== */
+        ========================================================= */
 
         .pw-services-section {
-            background: #f4f2ed;
+            background:
+                linear-gradient(
+                    180deg,
+                    #f4f2ed,
+                    #ebe8e1
+                );
         }
 
         .pw-services-grid {
@@ -816,19 +1342,23 @@
         .pw-service {
             position: relative;
 
-            padding: 32px;
+            min-height: 230px;
 
-            min-height: 220px;
-
-            background: #ffffff;
-
-            border: 1px solid #e2e0da;
+            padding: 33px;
 
             overflow: hidden;
 
+            background: rgba(255,255,255,.88);
+
+            border: 1px solid #e1dfd9;
+
+            box-shadow:
+                0 8px 25px rgba(0,0,0,.025);
+
             transition:
-                transform 0.3s ease,
-                box-shadow 0.3s ease;
+                transform .4s var(--ease),
+                box-shadow .4s var(--ease),
+                background .4s ease;
         }
 
         .pw-service::before {
@@ -842,21 +1372,44 @@
             width: 100%;
             height: 3px;
 
-            background: var(--pw-gold);
+            background:
+                linear-gradient(
+                    90deg,
+                    var(--gold),
+                    transparent
+                );
+        }
+
+        .pw-service::after {
+            content: "";
+
+            position: absolute;
+
+            width: 100px;
+            height: 100px;
+
+            right: -50px;
+            bottom: -50px;
+
+            border: 1px solid rgba(184,155,98,.12);
+
+            border-radius: 50%;
         }
 
         .pw-service:hover {
-            transform: translateY(-6px);
+            transform: translateY(-9px);
+
+            background: white;
 
             box-shadow:
-                0 20px 45px rgba(0,0,0,0.08);
+                0 25px 55px rgba(0,0,0,.10);
         }
 
         .pw-service i {
             display: inline-flex;
 
-            width: 48px;
-            height: 48px;
+            width: 49px;
+            height: 49px;
 
             align-items: center;
             justify-content: center;
@@ -865,9 +1418,21 @@
 
             background: #202224;
 
-            color: var(--pw-gold-light);
+            color: var(--gold-light);
 
             border-radius: 50%;
+
+            transition:
+                transform .35s var(--ease),
+                background .3s ease;
+        }
+
+        .pw-service:hover i {
+            transform: scale(1.08);
+
+            background: var(--gold);
+
+            color: white;
         }
 
         .pw-service h3 {
@@ -875,44 +1440,51 @@
 
             font-family: "Montserrat", sans-serif;
 
-            font-size: 17px;
+            font-size: 16px;
 
-            color: var(--pw-text);
+            color: var(--text);
         }
 
         .pw-service p {
+            max-width: 300px;
+
             margin: 0;
 
-            color: var(--pw-muted);
+            color: var(--muted);
 
-            font-size: 12px;
+            font-size: 11px;
 
             line-height: 1.8;
         }
 
 
-        /* =====================================================
+        /* =========================================================
            CTA
-        ===================================================== */
+        ========================================================= */
 
         .pw-cta {
-            padding: 115px 0;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #151719 0%,
-                    #252729 50%,
-                    #111315 100%
-                );
-
-            color: #ffffff;
-
-            text-align: center;
-
             position: relative;
 
+            padding: 125px 0;
+
             overflow: hidden;
+
+            background:
+                radial-gradient(
+                    circle at 50% 0%,
+                    rgba(184,155,98,.13),
+                    transparent 35%
+                ),
+                linear-gradient(
+                    135deg,
+                    #111315,
+                    #252729 50%,
+                    #0e1011
+                );
+
+            color: white;
+
+            text-align: center;
         }
 
         .pw-cta::before {
@@ -920,15 +1492,15 @@
 
             position: absolute;
 
-            width: 600px;
-            height: 600px;
+            width: 700px;
+            height: 700px;
 
-            border: 1px solid rgba(184,155,98,0.15);
+            top: -500px;
+            right: -120px;
+
+            border: 1px solid rgba(184,155,98,.13);
 
             border-radius: 50%;
-
-            top: -420px;
-            right: -120px;
         }
 
         .pw-cta::after {
@@ -936,15 +1508,15 @@
 
             position: absolute;
 
-            width: 380px;
-            height: 380px;
+            width: 450px;
+            height: 450px;
 
-            border: 1px solid rgba(255,255,255,0.06);
+            bottom: -350px;
+            left: -170px;
+
+            border: 1px solid rgba(255,255,255,.05);
 
             border-radius: 50%;
-
-            bottom: -280px;
-            left: -130px;
         }
 
         .pw-cta .pw-container {
@@ -954,7 +1526,7 @@
         }
 
         .pw-cta-inner {
-            max-width: 750px;
+            max-width: 760px;
 
             margin: 0 auto;
         }
@@ -964,49 +1536,53 @@
 
             font-family: "Montserrat", sans-serif;
 
-            font-size: clamp(34px, 5vw, 58px);
+            font-size: clamp(37px, 5vw, 62px);
 
-            line-height: 1.1;
+            line-height: 1.05;
 
-            letter-spacing: -1.5px;
+            letter-spacing: -2.5px;
         }
 
         .pw-cta h2 span {
             font-weight: 400;
 
-            color: #aaaaaa;
+            color: #aaa;
         }
 
         .pw-cta p {
-            margin: 0 auto 30px;
-
             max-width: 560px;
 
-            color: rgba(255,255,255,0.68);
+            margin: 0 auto 32px;
 
-            line-height: 1.8;
+            color: rgba(255,255,255,.64);
+
+            font-size: 13px;
+
+            line-height: 1.9;
+        }
+
+        .pw-cta-buttons {
+            justify-content: center;
         }
 
 
-        /* =====================================================
+        /* =========================================================
            FOOTER
-        ===================================================== */
+        ========================================================= */
 
         .footer {
             width: 100%;
 
-            background: #111315;
+            padding: 75px 6% 0;
 
-            color: #ffffff;
+            background: #0e1011;
 
-            padding: 70px 6% 0;
-
-            box-sizing: border-box;
+            color: white;
         }
 
         .footer-grid {
             width: 100%;
-            max-width: 1180px;
+            max-width: var(--container);
 
             margin: 0 auto;
 
@@ -1016,11 +1592,8 @@
 
             gap: 60px;
 
-            padding-bottom: 55px;
+            padding-bottom: 58px;
         }
-
-
-        /* FOOTER LOGO ONLY */
 
         .footer-about .logo {
             display: inline-flex;
@@ -1033,32 +1606,29 @@
         }
 
         .footer-about .logo img {
-            height: 70px;
+            height: 68px;
 
             width: auto;
 
             display: block;
-
-            object-fit: contain;
         }
-
 
         .footer-about > p {
             max-width: 310px;
 
             margin: 0;
 
-            color: #999999;
+            color: #888;
 
-            font-size: 13px;
+            font-size: 12px;
 
-            line-height: 1.8;
+            line-height: 1.9;
         }
 
         .socials {
             display: flex;
 
-            gap: 10px;
+            gap: 9px;
 
             margin-top: 25px;
         }
@@ -1072,23 +1642,29 @@
             align-items: center;
             justify-content: center;
 
-            border: 1px solid rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,.12);
 
             border-radius: 50%;
 
-            color: #ffffff;
+            color: #ddd;
 
             text-decoration: none;
 
-            transition: 0.25s ease;
+            transition:
+                transform .3s ease,
+                background .3s ease,
+                border-color .3s ease,
+                color .3s ease;
         }
 
         .socials a:hover {
-            background: var(--pw-gold);
+            transform: translateY(-3px);
 
-            border-color: var(--pw-gold);
+            background: var(--gold);
 
-            color: #111315;
+            border-color: var(--gold);
+
+            color: #111;
         }
 
         .footer-column {
@@ -1100,33 +1676,31 @@
         }
 
         .footer-column h4 {
-            margin: 0 0 22px;
-
-            color: #ffffff;
+            margin: 0 0 23px;
 
             font-family: "Montserrat", sans-serif;
 
-            font-size: 14px;
-
-            font-weight: 700;
+            font-size: 13px;
         }
 
         .footer-column a {
-            display: block;
-
             margin-bottom: 12px;
 
-            color: #999999;
+            color: #888;
 
             text-decoration: none;
 
-            font-size: 12px;
+            font-size: 11px;
 
-            transition: color 0.25s ease;
+            transition:
+                color .25s ease,
+                transform .25s ease;
         }
 
         .footer-column a:hover {
-            color: var(--pw-gold-light);
+            color: var(--gold-light);
+
+            transform: translateX(3px);
         }
 
         .footer-column p {
@@ -1138,9 +1712,9 @@
 
             margin: 0 0 14px;
 
-            color: #999999;
+            color: #888;
 
-            font-size: 12px;
+            font-size: 11px;
 
             line-height: 1.6;
         }
@@ -1148,42 +1722,80 @@
         .footer-column p i {
             width: 15px;
 
-            color: var(--pw-gold-light);
-
             margin-top: 3px;
+
+            color: var(--gold-light);
         }
 
         .footer-bottom {
             width: 100%;
-            max-width: 1180px;
+            max-width: var(--container);
 
             margin: 0 auto;
 
             padding: 22px 0;
 
-            border-top: 1px solid rgba(255,255,255,0.1);
-
             display: flex;
 
+            align-items: center;
             justify-content: space-between;
 
-            align-items: center;
-
             gap: 20px;
+
+            border-top: 1px solid rgba(255,255,255,.08);
         }
 
         .footer-bottom p {
             margin: 0;
 
-            color: #777777;
+            color: #666;
 
-            font-size: 11px;
+            font-size: 10px;
         }
 
 
-        /* =====================================================
-           RESPONSIVE
-        ===================================================== */
+        /* =========================================================
+           REVEAL ANIMATION
+        ========================================================= */
+
+        .reveal {
+            opacity: 0;
+
+            transform:
+                translateY(35px);
+
+            transition:
+                opacity .8s ease,
+                transform .8s var(--ease);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+
+            transform:
+                translateY(0);
+        }
+
+        .delay-1 {
+            transition-delay: .08s;
+        }
+
+        .delay-2 {
+            transition-delay: .16s;
+        }
+
+        .delay-3 {
+            transition-delay: .24s;
+        }
+
+        .delay-4 {
+            transition-delay: .32s;
+        }
+
+
+        /* =========================================================
+           RESPONSIVE — 1000PX
+        ========================================================= */
 
         @media (max-width: 1000px) {
 
@@ -1204,7 +1816,7 @@
             .pw-why-grid {
                 grid-template-columns: 1fr;
 
-                gap: 50px;
+                gap: 55px;
             }
 
             .pw-services-grid {
@@ -1216,19 +1828,29 @@
 
                 gap: 45px;
             }
+
         }
 
+
+        /* =========================================================
+           RESPONSIVE — 700PX
+        ========================================================= */
 
         @media (max-width: 700px) {
 
             .navbar {
-                min-height: 78px;
+                min-height: 76px;
 
                 padding: 0 5%;
             }
 
-            .navbar .logo img {
-                height: 55px;
+            .navbar.scrolled {
+                min-height: 68px;
+            }
+
+            .navbar .logo img,
+            .navbar.scrolled .logo img {
+                height: 54px;
             }
 
             .nav-links {
@@ -1236,27 +1858,44 @@
             }
 
             .menu-btn {
-                display: block;
+                display: flex;
             }
 
             .pw-hero {
-                min-height: 620px;
+                min-height: 700px;
+            }
+
+            .pw-hero-content {
+                padding-top: 65px;
             }
 
             .pw-hero h1 {
-                letter-spacing: -1.5px;
+                font-size: clamp(46px, 13vw, 70px);
+
+                letter-spacing: -2.5px;
+            }
+
+            .pw-hero-text {
+                font-size: 13px;
             }
 
             .pw-stats-grid {
                 grid-template-columns: repeat(2, 1fr);
+
+                transform: translateY(-30px);
             }
 
-            .pw-stat:nth-child(2) {
+            .pw-stat {
+                border-right: 1px solid var(--border);
+            }
+
+            .pw-stat:nth-child(2),
+            .pw-stat:nth-child(4) {
                 border-right: 0;
             }
 
             .pw-stat:nth-child(-n+2) {
-                border-bottom: 1px solid var(--pw-border);
+                border-bottom: 1px solid var(--border);
             }
 
             .pw-type-grid {
@@ -1272,64 +1911,130 @@
             }
 
             .pw-section {
-                padding: 75px 0;
+                padding: 80px 0;
+            }
+
+            .pw-section-heading {
+                margin-bottom: 40px;
+            }
+
+            .pw-section-heading h2 {
+                letter-spacing: -1.2px;
             }
 
             .footer {
-                padding: 55px 7% 0;
+                padding: 58px 7% 0;
             }
 
             .footer-grid {
                 grid-template-columns: 1fr;
 
-                gap: 38px;
+                gap: 40px;
             }
 
-            .footer-about .logo img {
-                height: 55px;
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-
-                align-items: flex-start;
-
-                gap: 8px;
-            }
         }
 
 
-        /* =====================================================
-           MOBILE FOOTER ONLY
-           max-width: 500px
-           Desktop + tablet remain unchanged
-        ===================================================== */
+        /* =========================================================
+           RESPONSIVE — 500PX
+        ========================================================= */
 
         @media (max-width: 500px) {
 
-            .footer {
-                padding-left: 7%;
-                padding-right: 7%;
+            .pw-hero {
+                min-height: 680px;
+            }
 
+            .pw-hero::before {
+                background:
+                    linear-gradient(
+                        90deg,
+                        rgba(5,6,7,.91),
+                        rgba(5,6,7,.62)
+                    );
+            }
+
+            .pw-eyebrow {
+                font-size: 8px;
+
+                letter-spacing: 2px;
+            }
+
+            .pw-eyebrow::before {
+                width: 28px;
+            }
+
+            .pw-hero h1 {
+                font-size: 48px;
+
+                letter-spacing: -2px;
+            }
+
+            .pw-hero-text {
+                margin-bottom: 28px;
+            }
+
+            .pw-hero-buttons {
+                flex-direction: column;
+
+                width: 100%;
+            }
+
+            .pw-btn {
+                width: 100%;
+            }
+
+            .hero-scroll {
+                display: none;
+            }
+
+            .pw-stats-grid {
+                transform: translateY(-20px);
+            }
+
+            .pw-stat {
+                padding: 24px 10px;
+            }
+
+            .pw-stat strong {
+                font-size: 22px;
+            }
+
+            .pw-stat span {
+                font-size: 8px;
+
+                letter-spacing: .8px;
+            }
+
+            .pw-type-card {
+                min-height: 285px;
+            }
+
+            .pw-why {
+                padding: 80px 0;
+            }
+
+            .pw-why h2 {
+                font-size: 38px;
+            }
+
+            .pw-cta {
+                padding: 90px 0;
+            }
+
+            .pw-cta h2 {
+                font-size: 39px;
+            }
+
+            .footer {
                 text-align: center;
             }
 
             .footer-grid {
-                width: 100%;
-
-                grid-template-columns: 1fr;
-
                 justify-items: center;
 
-                align-items: center;
-
                 text-align: center;
-
-                gap: 38px;
             }
-
-
-            /* ABOUT */
 
             .footer-about {
                 width: 100%;
@@ -1339,59 +2044,26 @@
                 flex-direction: column;
 
                 align-items: center;
-
-                text-align: center;
             }
 
             .footer-about .logo {
-                display: flex;
-
-                align-items: center;
                 justify-content: center;
-
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            .footer-about .logo img {
-                height: 55px;
             }
 
             .footer-about > p {
                 margin-left: auto;
                 margin-right: auto;
-
-                text-align: center;
             }
-
-
-            /* SOCIAL ICONS */
 
             .socials {
                 justify-content: center;
-
-                align-items: center;
-
-                margin-left: auto;
-                margin-right: auto;
             }
-
-
-            /* FOOTER COLUMNS */
 
             .footer-column {
                 width: 100%;
 
-                display: flex;
-
-                flex-direction: column;
-
                 align-items: center;
 
-                text-align: center;
-            }
-
-            .footer-column h4 {
                 text-align: center;
             }
 
@@ -1399,29 +2071,15 @@
                 text-align: center;
             }
 
-
-            /* CONTACT */
-
             .footer-column p {
                 justify-content: center;
-
-                align-items: flex-start;
 
                 width: 100%;
 
                 text-align: center;
             }
 
-            .footer-column p i {
-                flex-shrink: 0;
-            }
-
-
-            /* FOOTER BOTTOM */
-
             .footer-bottom {
-                width: 100%;
-
                 flex-direction: column;
 
                 justify-content: center;
@@ -1433,35 +2091,30 @@
                 gap: 8px;
             }
 
-            .footer-bottom p {
-                width: 100%;
-
-                text-align: center;
-            }
-
         }
 
 
-        @media (max-width: 480px) {
+        /* =========================================================
+           REDUCED MOTION
+        ========================================================= */
 
-            .pw-hero-buttons {
-                flex-direction: column;
+        @media (prefers-reduced-motion: reduce) {
+
+            html {
+                scroll-behavior: auto;
             }
 
-            .pw-btn {
-                width: 100%;
+            *,
+            *::before,
+            *::after {
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important;
             }
 
-            .pw-stats-grid {
-                transform: translateY(-20px);
-            }
-
-            .pw-stat {
-                padding: 23px 12px;
-            }
-
-            .pw-stat strong {
-                font-size: 22px;
+            .reveal {
+                opacity: 1;
+                transform: none;
             }
 
         }
@@ -1473,727 +2126,38 @@
 
 <body class="pw-home">
 
-
-<!-- =====================================================
-     NAVBAR
-====================================================== -->
-
-<header class="navbar">
-
-    <!-- LOGO ONLY -->
-    <a href="index.html" class="logo">
-        <img src="images/logo.png" alt="Isora Luxe Logo">
+    <!-- SKIP LINK -->
+    <a href="#main-content" class="skip-link">
+        Skip to content
     </a>
 
 
-    <!-- NAVIGATION -->
-    <nav class="nav-links">
+    <!-- =========================================================
+         NAVBAR
+    ========================================================== -->
 
-        <a href="index.html" class="active">
-            Home
+    <header class="navbar" id="navbar">
+
+        <!-- LOGO -->
+
+        <a href="index.html"
+           class="logo"
+           aria-label="Isora Luxe Home">
+
+            <img src="images/logo.png"
+                 alt="Isora Luxe Logo">
+
         </a>
 
-        <a href="cars.html">
-            Cars
-        </a>
 
-        <a href="about.html">
-            About
-        </a>
+        <!-- DESKTOP NAVIGATION -->
 
-        <a href="contact.html">
-            Contact
-        </a>
+        <nav class="nav-links"
+             aria-label="Primary navigation">
 
-    </nav>
-
-
-    <!-- GET IN TOUCH -->
-    <a href="contact.html" class="nav-btn">
-        Get in Touch
-    </a>
-
-
-    <!-- MOBILE MENU -->
-    <button class="menu-btn"
-            type="button"
-            aria-label="Open menu">
-
-        <i class="fa-solid fa-bars"></i>
-
-    </button>
-
-</header>
-
-
-<!-- =====================================================
-     HERO
-====================================================== -->
-
-<section class="pw-hero">
-
-    <video
-        class="pw-hero-video"
-        autoplay
-        muted
-        loop
-        playsinline
-        preload="auto">
-
-        <source
-            src="videos/prime-wheels.mp4"
-            type="video/mp4">
-
-        Your browser does not support the video tag.
-
-    </video>
-
-
-    <div class="pw-hero-content">
-
-        <div class="pw-hero-content-inner">
-
-            <p class="pw-eyebrow">
-                Premium Automotive Collection
-            </p>
-
-            <h1>
-                Find the car
-                <span>
-                    that moves you.
-                </span>
-            </h1>
-
-            <p class="pw-hero-text">
-                Discover a carefully selected collection
-                of premium vehicles, backed by transparent
-                pricing and a buying experience built around you.
-            </p>
-
-            <div class="pw-hero-buttons">
-
-                <a href="cars.html"
-                   class="pw-btn pw-btn-primary">
-
-                    Explore Our Cars
-
-                    <i class="fa-solid fa-arrow-right"></i>
-
-                </a>
-
-                <a href="contact.html"
-                   class="pw-btn pw-btn-outline">
-
-                    Book a Test Drive
-
-                </a>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     STATS
-====================================================== -->
-
-<section class="pw-stats">
-
-    <div class="pw-container">
-
-        <div class="pw-stats-grid">
-
-            <div class="pw-stat">
-
-                <strong>
-                    4+
-                </strong>
-
-                <span>
-                    Premium Vehicles
-                </span>
-
-            </div>
-
-
-            <div class="pw-stat">
-
-                <strong>
-                    100%
-                </strong>
-
-                <span>
-                    Vehicle Inspection
-                </span>
-
-            </div>
-
-
-            <div class="pw-stat">
-
-                <strong>
-                    1 Year
-                </strong>
-
-                <span>
-                    Free Basic Service
-                </span>
-
-            </div>
-
-
-            <div class="pw-stat">
-
-                <strong>
-                    24/7
-                </strong>
-
-                <span>
-                    Customer Support
-                </span>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     EXPLORE OUR COLLECTION
-====================================================== -->
-
-<section class="pw-section pw-types">
-
-    <div class="pw-container">
-
-        <div class="pw-section-heading">
-
-            <p class="pw-section-label">
-                Explore Our Collection
-            </p>
-
-            <h2>
-                Cars chosen for
-                <span>
-                    every kind of journey.
-                </span>
-            </h2>
-
-            <p>
-                From refined daily drives to powerful performance
-                machines, explore vehicles selected for comfort,
-                style, performance and confidence.
-            </p>
-
-        </div>
-
-
-        <div class="pw-type-grid">
-
-
-            <!-- EVERYDAY COMFORT -->
-
-            <article class="pw-type-card">
-
-                <div class="pw-type-number">
-                    01
-                </div>
-
-                <div class="pw-type-icon">
-                    <i class="fa-solid fa-car-side"></i>
-                </div>
-
-                <h3>
-                    Everyday Comfort
-                </h3>
-
-                <p>
-                    Comfortable and practical vehicles designed
-                    to make every daily journey smooth and enjoyable.
-                </p>
-
-            </article>
-
-
-            <!-- ADVENTURE READY -->
-
-            <article class="pw-type-card">
-
-                <div class="pw-type-number">
-                    02
-                </div>
-
-                <div class="pw-type-icon">
-                    <i class="fa-solid fa-mountain"></i>
-                </div>
-
-                <h3>
-                    Adventure Ready
-                </h3>
-
-                <p>
-                    Spacious and capable vehicles built for family
-                    trips, long drives and unforgettable adventures.
-                </p>
-
-            </article>
-
-
-            <!-- REFINED LUXURY -->
-
-            <article class="pw-type-card">
-
-                <div class="pw-type-number">
-                    03
-                </div>
-
-                <div class="pw-type-icon">
-                    <i class="fa-solid fa-gem"></i>
-                </div>
-
-                <h3>
-                    Refined Luxury
-                </h3>
-
-                <p>
-                    Premium interiors, advanced technology and
-                    sophisticated design for those who expect
-                    something exceptional.
-                </p>
-
-            </article>
-
-
-            <!-- PURE PERFORMANCE -->
-
-            <article class="pw-type-card">
-
-                <div class="pw-type-number">
-                    04
-                </div>
-
-                <div class="pw-type-icon">
-                    <i class="fa-solid fa-gauge-high"></i>
-                </div>
-
-                <h3>
-                    Pure Performance
-                </h3>
-
-                <p>
-                    Dynamic performance, sharp handling and
-                    unmistakable road presence for those who
-                    love driving.
-                </p>
-
-            </article>
-
-
-        </div>
-
-
-        <!-- COLLECTION BUTTON -->
-
-        <div class="pw-collection-button">
-
-            <a href="cars.html"
-               class="pw-btn pw-btn-primary">
-
-                Explore All Cars
-
-                <i class="fa-solid fa-arrow-right"></i>
-
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     WHY ISORA LUXE
-====================================================== -->
-
-<section class="pw-section pw-why">
-
-    <div class="pw-container">
-
-        <div class="pw-why-grid">
-
-
-            <div>
-
-                <p class="pw-section-label">
-                    Choose With Confidence
-                </p>
-
-                <h2>
-                    Why choose
-                    <span>
-                        Isora Luxe?
-                    </span>
-                </h2>
-
-                <p class="pw-why-main-text">
-                    Finding the right vehicle is about more
-                    than choosing a brand. We make it easier
-                    to compare important details, understand
-                    what you are buying and make a decision
-                    with confidence.
-                </p>
-
-                <a href="cars.html"
-                   class="pw-btn pw-btn-outline">
-
-                    View Our Collection
-
-                    <i class="fa-solid fa-arrow-right"></i>
-
-                </a>
-
-            </div>
-
-
-            <div class="pw-why-list">
-
-
-                <div class="pw-why-item">
-
-                    <i class="fa-solid fa-circle-check"></i>
-
-                    <h3>
-                        Verified Condition
-                    </h3>
-
-                    <p>
-                        Every vehicle is carefully reviewed
-                        before being presented to customers.
-                    </p>
-
-                </div>
-
-
-                <div class="pw-why-item">
-
-                    <i class="fa-solid fa-list-check"></i>
-
-                    <h3>
-                        Complete Details
-                    </h3>
-
-                    <p>
-                        Get essential information about
-                        mileage, engine, fuel and specifications.
-                    </p>
-
-                </div>
-
-
-                <div class="pw-why-item">
-
-                    <i class="fa-solid fa-scale-balanced"></i>
-
-                    <h3>
-                        Fair Information
-                    </h3>
-
-                    <p>
-                        Clear pricing and vehicle details
-                        help you make a more informed choice.
-                    </p>
-
-                </div>
-
-
-                <div class="pw-why-item">
-
-                    <i class="fa-solid fa-user-check"></i>
-
-                    <h3>
-                        Personal Guidance
-                    </h3>
-
-                    <p>
-                        Our team can help you find a vehicle
-                        that fits your needs and preferences.
-                    </p>
-
-                </div>
-
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     SERVICES
-====================================================== -->
-
-<section class="pw-section pw-services-section">
-
-    <div class="pw-container">
-
-        <div class="pw-section-heading">
-
-            <p class="pw-section-label">
-                Our Services
-            </p>
-
-            <h2>
-                Everything you need
-                <span>
-                    after choosing your car.
-                </span>
-            </h2>
-
-            <p>
-                From inspection and test drives to
-                financing and after-sales support,
-                we are here throughout your journey.
-            </p>
-
-        </div>
-
-
-        <div class="pw-services-grid">
-
-
-            <article class="pw-service">
-
-                <i class="fa-solid fa-car"></i>
-
-                <h3>
-                    Vehicle Inspection
-                </h3>
-
-                <p>
-                    Our vehicles are carefully checked
-                    before being offered to customers.
-                </p>
-
-            </article>
-
-
-            <article class="pw-service">
-
-                <i class="fa-solid fa-calendar-check"></i>
-
-                <h3>
-                    Test Drive
-                </h3>
-
-                <p>
-                    Book a convenient test drive and
-                    experience the vehicle yourself.
-                </p>
-
-            </article>
-
-
-            <article class="pw-service">
-
-                <i class="fa-solid fa-credit-card"></i>
-
-                <h3>
-                    Flexible Financing
-                </h3>
-
-                <p>
-                    Explore installment options designed
-                    to make vehicle ownership easier.
-                </p>
-
-            </article>
-
-
-            <article class="pw-service">
-
-                <i class="fa-solid fa-screwdriver-wrench"></i>
-
-                <h3>
-                    After-Sales Service
-                </h3>
-
-                <p>
-                    Continue receiving support even
-                    after you take your vehicle home.
-                </p>
-
-            </article>
-
-
-            <article class="pw-service">
-
-                <i class="fa-solid fa-handshake"></i>
-
-                <h3>
-                    Trade-In Assistance
-                </h3>
-
-                <p>
-                    Talk to our team about trading in
-                    your existing vehicle.
-                </p>
-
-            </article>
-
-
-            <article class="pw-service">
-
-                <i class="fa-solid fa-headset"></i>
-
-                <h3>
-                    Customer Support
-                </h3>
-
-                <p>
-                    Get straightforward assistance whenever
-                    you need help choosing your next vehicle.
-                </p>
-
-            </article>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     CTA
-====================================================== -->
-
-<section class="pw-cta">
-
-    <div class="pw-container">
-
-        <div class="pw-cta-inner">
-
-            <p class="pw-eyebrow">
-                Ready to Drive?
-            </p>
-
-            <h2>
-                Your next journey
-                <span>
-                    starts here.
-                </span>
-            </h2>
-
-            <p>
-                Explore our collection or speak with
-                our team about finding the right vehicle
-                for you.
-            </p>
-
-            <div class="pw-hero-buttons"
-                 style="justify-content: center;">
-
-                <a href="cars.html"
-                   class="pw-btn pw-btn-primary">
-
-                    Browse Collection
-
-                    <i class="fa-solid fa-arrow-right"></i>
-
-                </a>
-
-                <a href="contact.html"
-                   class="pw-btn pw-btn-outline">
-
-                    Contact Us
-
-                </a>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     FOOTER
-====================================================== -->
-
-<footer class="footer">
-
-    <div class="footer-grid">
-
-
-        <!-- ABOUT -->
-
-        <div class="footer-about">
-
-            <!-- LOGO ONLY -->
-            <a href="index.html" class="logo">
-
-                <img src="images/logo.png"
-                     alt="Isora Luxe Logo">
-
-            </a>
-
-            <p>
-                Exceptional cars.
-                Exceptional service.
-                Your journey starts with Isora Luxe.
-            </p>
-
-            <div class="socials">
-
-                <a href="#"
-                   aria-label="Instagram">
-
-                    <i class="fa-brands fa-instagram"></i>
-
-                </a>
-
-                <a href="#"
-                   aria-label="Facebook">
-
-                    <i class="fa-brands fa-facebook"></i>
-
-                </a>
-
-                <a href="#"
-                   aria-label="X">
-
-                    <i class="fa-brands fa-x-twitter"></i>
-
-                </a>
-
-            </div>
-
-        </div>
-
-
-        <!-- EXPLORE -->
-
-        <div class="footer-column">
-
-            <h4>
-                Explore
-            </h4>
-
-            <a href="index.html">
+            <a href="index.html"
+               class="active"
+               aria-current="page">
                 Home
             </a>
 
@@ -2209,105 +2173,1218 @@
                 Contact
             </a>
 
-        </div>
+        </nav>
 
 
-        <!-- SERVICES -->
+        <!-- CONTACT BUTTON -->
 
-        <div class="footer-column">
+        <a href="contact.html"
+           class="nav-btn">
 
-            <h4>
-                Services
-            </h4>
+            Get in Touch
 
-            <a href="contact.html">
-                Test Drive
+        </a>
+
+
+        <!-- MOBILE MENU BUTTON -->
+
+        <button class="menu-btn"
+                type="button"
+                aria-label="Open navigation menu"
+                aria-expanded="false"
+                aria-controls="mobile-navigation">
+
+            <i class="fa-solid fa-bars"
+               aria-hidden="true"></i>
+
+        </button>
+
+
+        <!-- MOBILE NAVIGATION -->
+
+        <nav id="mobile-navigation"
+             class="mobile-nav"
+             aria-label="Mobile navigation"
+             hidden>
+
+            <a href="index.html"
+               class="active"
+               aria-current="page">
+                Home
+            </a>
+
+            <a href="cars.html">
+                Cars
+            </a>
+
+            <a href="about.html">
+                About
             </a>
 
             <a href="contact.html">
-                Financing
-            </a>
-
-            <a href="contact.html">
-                Trade-In
-            </a>
-
-            <a href="contact.html">
-                Car Service
-            </a>
-
-        </div>
-
-
-        <!-- CONTACT -->
-
-        <div class="footer-column">
-
-            <h4>
                 Contact
-            </h4>
+            </a>
 
-            <p>
-                <i class="fa-solid fa-location-dot"></i>
-                <span>Dhaka, Bangladesh</span>
-            </p>
+            <a href="contact.html">
+                Get in Touch
+            </a>
 
-            <p>
-                <i class="fa-solid fa-phone"></i>
-                <span>+880 1XXX-XXXXXX</span>
-            </p>
+        </nav>
 
-            <p>
-                <i class="fa-solid fa-envelope"></i>
-                <span>N/A</span>
-            </p>
+    </header>
+
+
+    <main id="main-content">
+
+
+        <!-- =========================================================
+             HERO
+        ========================================================== -->
+
+        <section class="pw-hero"
+                 aria-labelledby="hero-title">
+
+            <video
+                class="pw-hero-video"
+                autoplay
+                muted
+                loop
+                playsinline
+                preload="metadata"
+                aria-hidden="true">
+
+                <source
+                    src="videos/prime-wheels.mp4"
+                    type="video/mp4">
+
+                Your browser does not support the video tag.
+
+            </video>
+
+
+            <div class="pw-hero-content">
+
+                <div class="pw-hero-content-inner">
+
+                    <p class="pw-eyebrow">
+                        Premium Automotive Collection
+                    </p>
+
+                    <h1 id="hero-title">
+                        Find the car
+                        <span>
+                            that moves you.
+                        </span>
+                    </h1>
+
+                    <div class="hero-accent"></div>
+
+                    <p class="pw-hero-text">
+                        Discover a carefully selected collection
+                        of premium vehicles, backed by transparent
+                        pricing and a buying experience built around you.
+                    </p>
+
+                    <div class="pw-hero-buttons">
+
+                        <a href="cars.html"
+                           class="pw-btn pw-btn-primary">
+
+                            Explore Our Cars
+
+                            <i class="fa-solid fa-arrow-right"
+                               aria-hidden="true"></i>
+
+                        </a>
+
+                        <a href="contact.html"
+                           class="pw-btn pw-btn-outline">
+
+                            Book a Test Drive
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SCROLL INDICATOR -->
+
+            <div class="hero-scroll"
+                 aria-hidden="true">
+
+                <span>
+                    Scroll
+                </span>
+
+                <span class="hero-scroll-line"></span>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================================
+             STATS
+        ========================================================== -->
+
+        <section class="pw-stats"
+                 aria-label="Isora Luxe statistics">
+
+            <div class="pw-container">
+
+                <div class="pw-stats-grid"
+                     role="list">
+
+                    <div class="pw-stat"
+                         role="listitem">
+
+                        <strong>
+                            4+
+                        </strong>
+
+                        <span>
+                            Premium Vehicles
+                        </span>
+
+                    </div>
+
+                    <div class="pw-stat"
+                         role="listitem">
+
+                        <strong>
+                            100%
+                        </strong>
+
+                        <span>
+                            Vehicle Inspection
+                        </span>
+
+                    </div>
+
+                    <div class="pw-stat"
+                         role="listitem">
+
+                        <strong>
+                            1 Year
+                        </strong>
+
+                        <span>
+                            Free Basic Service
+                        </span>
+
+                    </div>
+
+                    <div class="pw-stat"
+                         role="listitem">
+
+                        <strong>
+                            24/7
+                        </strong>
+
+                        <span>
+                            Customer Support
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================================
+             COLLECTION
+        ========================================================== -->
+
+        <section class="pw-section pw-types"
+                 aria-labelledby="collection-title">
+
+            <div class="pw-container">
+
+                <div class="pw-section-heading reveal">
+
+                    <p class="pw-section-label">
+                        Explore Our Collection
+                    </p>
+
+                    <h2 id="collection-title">
+                        Cars chosen for
+                        <span>
+                            every kind of journey.
+                        </span>
+                    </h2>
+
+                    <p>
+                        From refined daily drives to powerful performance
+                        machines, explore vehicles selected for comfort,
+                        style, performance and confidence.
+                    </p>
+
+                </div>
+
+
+                <div class="pw-type-grid">
+
+
+                    <!-- CARD 01 -->
+
+                    <article class="pw-type-card reveal">
+
+                        <div class="pw-type-number">
+                            01
+                        </div>
+
+                        <div class="pw-type-icon"
+                             aria-hidden="true">
+
+                            <i class="fa-solid fa-car-side"></i>
+
+                        </div>
+
+                        <h3>
+                            Everyday Comfort
+                        </h3>
+
+                        <p>
+                            Comfortable and practical vehicles designed
+                            to make every daily journey smooth and enjoyable.
+                        </p>
+
+                    </article>
+
+
+                    <!-- CARD 02 -->
+
+                    <article class="pw-type-card reveal delay-1">
+
+                        <div class="pw-type-number">
+                            02
+                        </div>
+
+                        <div class="pw-type-icon"
+                             aria-hidden="true">
+
+                            <i class="fa-solid fa-mountain"></i>
+
+                        </div>
+
+                        <h3>
+                            Adventure Ready
+                        </h3>
+
+                        <p>
+                            Spacious and capable vehicles built for family
+                            trips, long drives and unforgettable adventures.
+                        </p>
+
+                    </article>
+
+
+                    <!-- CARD 03 -->
+
+                    <article class="pw-type-card reveal delay-2">
+
+                        <div class="pw-type-number">
+                            03
+                        </div>
+
+                        <div class="pw-type-icon"
+                             aria-hidden="true">
+
+                            <i class="fa-solid fa-gem"></i>
+
+                        </div>
+
+                        <h3>
+                            Refined Luxury
+                        </h3>
+
+                        <p>
+                            Premium interiors, advanced technology and
+                            sophisticated design for those who expect
+                            something exceptional.
+                        </p>
+
+                    </article>
+
+
+                    <!-- CARD 04 -->
+
+                    <article class="pw-type-card reveal delay-3">
+
+                        <div class="pw-type-number">
+                            04
+                        </div>
+
+                        <div class="pw-type-icon"
+                             aria-hidden="true">
+
+                            <i class="fa-solid fa-gauge-high"></i>
+
+                        </div>
+
+                        <h3>
+                            Pure Performance
+                        </h3>
+
+                        <p>
+                            Dynamic performance, sharp handling and
+                            unmistakable road presence for those who
+                            love driving.
+                        </p>
+
+                    </article>
+
+
+                </div>
+
+
+                <div class="pw-collection-button reveal">
+
+                    <a href="cars.html"
+                       class="pw-btn pw-btn-primary">
+
+                        Explore All Cars
+
+                        <i class="fa-solid fa-arrow-right"
+                           aria-hidden="true"></i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================================
+             WHY ISORA LUXE
+        ========================================================== -->
+
+        <section class="pw-section pw-why"
+                 aria-labelledby="why-title">
+
+            <div class="pw-container">
+
+                <div class="pw-why-grid">
+
+
+                    <div class="reveal">
+
+                        <p class="pw-section-label">
+                            Choose With Confidence
+                        </p>
+
+                        <h2 id="why-title">
+                            Why choose
+                            <span>
+                                Isora Luxe?
+                            </span>
+                        </h2>
+
+                        <p class="pw-why-main-text">
+                            Finding the right vehicle is about more
+                            than choosing a brand. We make it easier
+                            to compare important details, understand
+                            what you are buying and make a decision
+                            with confidence.
+                        </p>
+
+                        <a href="cars.html"
+                           class="pw-btn pw-btn-outline">
+
+                            View Our Collection
+
+                            <i class="fa-solid fa-arrow-right"
+                               aria-hidden="true"></i>
+
+                        </a>
+
+                    </div>
+
+
+                    <div class="pw-why-list">
+
+
+                        <article class="pw-why-item reveal">
+
+                            <i class="fa-solid fa-circle-check"
+                               aria-hidden="true"></i>
+
+                            <h3>
+                                Verified Condition
+                            </h3>
+
+                            <p>
+                                Every vehicle is carefully reviewed
+                                before being presented to customers.
+                            </p>
+
+                        </article>
+
+
+                        <article class="pw-why-item reveal delay-1">
+
+                            <i class="fa-solid fa-list-check"
+                               aria-hidden="true"></i>
+
+                            <h3>
+                                Complete Details
+                            </h3>
+
+                            <p>
+                                Get essential information about
+                                mileage, engine, fuel and specifications.
+                            </p>
+
+                        </article>
+
+
+                        <article class="pw-why-item reveal delay-2">
+
+                            <i class="fa-solid fa-scale-balanced"
+                               aria-hidden="true"></i>
+
+                            <h3>
+                                Fair Information
+                            </h3>
+
+                            <p>
+                                Clear pricing and vehicle details
+                                help you make a more informed choice.
+                            </p>
+
+                        </article>
+
+
+                        <article class="pw-why-item reveal delay-3">
+
+                            <i class="fa-solid fa-user-check"
+                               aria-hidden="true"></i>
+
+                            <h3>
+                                Personal Guidance
+                            </h3>
+
+                            <p>
+                                Our team can help you find a vehicle
+                                that fits your needs and preferences.
+                            </p>
+
+                        </article>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================================
+             SERVICES
+        ========================================================== -->
+
+        <section class="pw-section pw-services-section"
+                 aria-labelledby="services-title">
+
+            <div class="pw-container">
+
+                <div class="pw-section-heading reveal">
+
+                    <p class="pw-section-label">
+                        Our Services
+                    </p>
+
+                    <h2 id="services-title">
+                        Everything you need
+                        <span>
+                            after choosing your car.
+                        </span>
+                    </h2>
+
+                    <p>
+                        From inspection and test drives to
+                        financing and after-sales support,
+                        we are here throughout your journey.
+                    </p>
+
+                </div>
+
+
+                <div class="pw-services-grid">
+
+
+                    <article class="pw-service reveal">
+
+                        <i class="fa-solid fa-car"
+                           aria-hidden="true"></i>
+
+                        <h3>
+                            Vehicle Inspection
+                        </h3>
+
+                        <p>
+                            Our vehicles are carefully checked
+                            before being offered to customers.
+                        </p>
+
+                    </article>
+
+
+                    <article class="pw-service reveal delay-1">
+
+                        <i class="fa-solid fa-calendar-check"
+                           aria-hidden="true"></i>
+
+                        <h3>
+                            Test Drive
+                        </h3>
+
+                        <p>
+                            Book a convenient test drive and
+                            experience the vehicle yourself.
+                        </p>
+
+                    </article>
+
+
+                    <article class="pw-service reveal delay-2">
+
+                        <i class="fa-solid fa-credit-card"
+                           aria-hidden="true"></i>
+
+                        <h3>
+                            Flexible Financing
+                        </h3>
+
+                        <p>
+                            Explore installment options designed
+                            to make vehicle ownership easier.
+                        </p>
+
+                    </article>
+
+
+                    <article class="pw-service reveal">
+
+                        <i class="fa-solid fa-screwdriver-wrench"
+                           aria-hidden="true"></i>
+
+                        <h3>
+                            After-Sales Service
+                        </h3>
+
+                        <p>
+                            Continue receiving support even
+                            after you take your vehicle home.
+                        </p>
+
+                    </article>
+
+
+                    <article class="pw-service reveal delay-1">
+
+                        <i class="fa-solid fa-handshake"
+                           aria-hidden="true"></i>
+
+                        <h3>
+                            Trade-In Assistance
+                        </h3>
+
+                        <p>
+                            Talk to our team about trading in
+                            your existing vehicle.
+                        </p>
+
+                    </article>
+
+
+                    <article class="pw-service reveal delay-2">
+
+                        <i class="fa-solid fa-headset"
+                           aria-hidden="true"></i>
+
+                        <h3>
+                            Customer Support
+                        </h3>
+
+                        <p>
+                            Get straightforward assistance whenever
+                            you need help choosing your next vehicle.
+                        </p>
+
+                    </article>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================================
+             CTA
+        ========================================================== -->
+
+        <section class="pw-cta"
+                 aria-labelledby="cta-title">
+
+            <div class="pw-container">
+
+                <div class="pw-cta-inner reveal">
+
+                    <p class="pw-eyebrow">
+                        Ready to Drive?
+                    </p>
+
+                    <h2 id="cta-title">
+                        Your next journey
+                        <span>
+                            starts here.
+                        </span>
+                    </h2>
+
+                    <p>
+                        Explore our collection or speak with
+                        our team about finding the right vehicle
+                        for you.
+                    </p>
+
+                    <div class="pw-hero-buttons pw-cta-buttons">
+
+                        <a href="cars.html"
+                           class="pw-btn pw-btn-primary">
+
+                            Browse Collection
+
+                            <i class="fa-solid fa-arrow-right"
+                               aria-hidden="true"></i>
+
+                        </a>
+
+                        <a href="contact.html"
+                           class="pw-btn pw-btn-outline">
+
+                            Contact Us
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================== -->
+
+    <footer class="footer">
+
+        <div class="footer-grid">
+
+
+            <!-- ABOUT -->
+
+            <div class="footer-about">
+
+                <a href="index.html"
+                   class="logo"
+                   aria-label="Isora Luxe Home">
+
+                    <img src="images/logo.png"
+                         alt="Isora Luxe Logo">
+
+                </a>
+
+                <p>
+                    Exceptional cars.
+                    Exceptional service.
+                    Your journey starts with Isora Luxe.
+                </p>
+
+                <div class="socials">
+
+                    <a href="#"
+                       aria-label="Instagram">
+
+                        <i class="fa-brands fa-instagram"
+                           aria-hidden="true"></i>
+
+                    </a>
+
+                    <a href="#"
+                       aria-label="Facebook">
+
+                        <i class="fa-brands fa-facebook"
+                           aria-hidden="true"></i>
+
+                    </a>
+
+                    <a href="#"
+                       aria-label="X">
+
+                        <i class="fa-brands fa-x-twitter"
+                           aria-hidden="true"></i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- EXPLORE -->
+
+            <div class="footer-column">
+
+                <h4>
+                    Explore
+                </h4>
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="cars.html">
+                    Cars
+                </a>
+
+                <a href="about.html">
+                    About
+                </a>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+            </div>
+
+
+            <!-- SERVICES -->
+
+            <div class="footer-column">
+
+                <h4>
+                    Services
+                </h4>
+
+                <a href="contact.html">
+                    Test Drive
+                </a>
+
+                <a href="contact.html">
+                    Financing
+                </a>
+
+                <a href="contact.html">
+                    Trade-In
+                </a>
+
+                <a href="contact.html">
+                    Car Service
+                </a>
+
+            </div>
+
+
+            <!-- CONTACT -->
+
+            <div class="footer-column">
+
+                <h4>
+                    Contact
+                </h4>
+
+                <p>
+                    <i class="fa-solid fa-location-dot"
+                       aria-hidden="true"></i>
+
+                    <span>
+                        Dhaka, Bangladesh
+                    </span>
+                </p>
+
+                <p>
+                    <i class="fa-solid fa-phone"
+                       aria-hidden="true"></i>
+
+                    <span>
+                        +880 1XXX-XXXXXX
+                    </span>
+                </p>
+
+                <p>
+                    <i class="fa-solid fa-envelope"
+                       aria-hidden="true"></i>
+
+                    <span>
+                        N/A
+                    </span>
+                </p>
+
+            </div>
+
 
         </div>
 
 
-    </div>
+        <!-- FOOTER BOTTOM -->
+
+        <div class="footer-bottom">
+
+            <p>
+                ©
+                <span class="current-year"></span>
+                Isora Luxe
+                All rights reserved.
+            </p>
+
+            <p>
+                Premium Automotive Collection.
+            </p>
+
+        </div>
+
+    </footer>
 
 
-    <!-- FOOTER BOTTOM -->
+    <!-- =========================================================
+         JAVASCRIPT
+    ========================================================== -->
 
-    <div class="footer-bottom">
-
-        <p>
-            ©
-            <span class="current-year"></span>
-            Isora Luxe
-            All rights reserved.
-        </p>
-
-        <p>
-            Premium Automotive Collection.
-        </p>
-
-    </div>
-
-</footer>
+    <script src="js/script.js"></script>
 
 
-<!-- =====================================================
-     JAVASCRIPT
-====================================================== -->
+    <script>
 
-<script src="js/script.js"></script>
+        document.addEventListener("DOMContentLoaded", function () {
 
 
-<script>
+            /* =====================================================
+               CURRENT YEAR
+            ===================================================== */
 
-document.addEventListener("DOMContentLoaded", function () {
+            const year =
+                document.querySelector(".current-year");
 
-    const year = document.querySelector(".current-year");
+            if (year) {
+                year.textContent =
+                    new Date().getFullYear();
+            }
 
-    if (year) {
-        year.textContent = new Date().getFullYear();
-    }
 
-});
+            /* =====================================================
+               STICKY NAVBAR
+            ===================================================== */
 
-</script>
+            const navbar =
+                document.getElementById("navbar");
+
+            function updateNavbar() {
+
+                if (!navbar) return;
+
+                if (window.scrollY > 40) {
+                    navbar.classList.add("scrolled");
+                } else {
+                    navbar.classList.remove("scrolled");
+                }
+
+            }
+
+            updateNavbar();
+
+            window.addEventListener(
+                "scroll",
+                updateNavbar,
+                {
+                    passive: true
+                }
+            );
+
+
+            /* =====================================================
+               MOBILE NAVIGATION
+            ===================================================== */
+
+            const menuButton =
+                document.querySelector(".menu-btn");
+
+            const mobileNav =
+                document.getElementById("mobile-navigation");
+
+            if (menuButton && mobileNav) {
+
+                menuButton.addEventListener(
+                    "click",
+                    function () {
+
+                        const isOpen =
+                            menuButton.getAttribute(
+                                "aria-expanded"
+                            ) === "true";
+
+                        menuButton.setAttribute(
+                            "aria-expanded",
+                            String(!isOpen)
+                        );
+
+                        menuButton.setAttribute(
+                            "aria-label",
+                            isOpen
+                                ? "Open navigation menu"
+                                : "Close navigation menu"
+                        );
+
+                        mobileNav.hidden = isOpen;
+
+                        mobileNav.classList.toggle(
+                            "is-open",
+                            !isOpen
+                        );
+
+                        const icon =
+                            menuButton.querySelector("i");
+
+                        if (icon) {
+
+                            icon.classList.toggle(
+                                "fa-bars",
+                                isOpen
+                            );
+
+                            icon.classList.toggle(
+                                "fa-xmark",
+                                !isOpen
+                            );
+
+                        }
+
+                    }
+                );
+
+
+                /* Close menu when a link is clicked */
+
+                mobileNav
+                    .querySelectorAll("a")
+                    .forEach(function (link) {
+
+                        link.addEventListener(
+                            "click",
+                            function () {
+
+                                menuButton.setAttribute(
+                                    "aria-expanded",
+                                    "false"
+                                );
+
+                                menuButton.setAttribute(
+                                    "aria-label",
+                                    "Open navigation menu"
+                                );
+
+                                mobileNav.hidden = true;
+
+                                mobileNav.classList.remove(
+                                    "is-open"
+                                );
+
+                                const icon =
+                                    menuButton.querySelector("i");
+
+                                if (icon) {
+
+                                    icon.classList.remove(
+                                        "fa-xmark"
+                                    );
+
+                                    icon.classList.add(
+                                        "fa-bars"
+                                    );
+
+                                }
+
+                            }
+                        );
+
+                    });
+
+
+                /* Escape closes menu */
+
+                document.addEventListener(
+                    "keydown",
+                    function (event) {
+
+                        if (
+                            event.key === "Escape" &&
+                            menuButton.getAttribute(
+                                "aria-expanded"
+                            ) === "true"
+                        ) {
+
+                            menuButton.setAttribute(
+                                "aria-expanded",
+                                "false"
+                            );
+
+                            menuButton.setAttribute(
+                                "aria-label",
+                                "Open navigation menu"
+                            );
+
+                            mobileNav.hidden = true;
+
+                            mobileNav.classList.remove(
+                                "is-open"
+                            );
+
+                            const icon =
+                                menuButton.querySelector("i");
+
+                            if (icon) {
+
+                                icon.classList.remove(
+                                    "fa-xmark"
+                                );
+
+                                icon.classList.add(
+                                    "fa-bars"
+                                );
+
+                            }
+
+                            menuButton.focus();
+
+                        }
+
+                    }
+                );
+
+            }
+
+
+            /* =====================================================
+               REVEAL ANIMATIONS
+            ===================================================== */
+
+            const revealElements =
+                document.querySelectorAll(".reveal");
+
+            const reduceMotion =
+                window.matchMedia(
+                    "(prefers-reduced-motion: reduce)"
+                ).matches;
+
+            if (
+                reduceMotion ||
+                !("IntersectionObserver" in window)
+            ) {
+
+                revealElements.forEach(
+                    function (element) {
+
+                        element.classList.add(
+                            "visible"
+                        );
+
+                    }
+                );
+
+            } else {
+
+                const revealObserver =
+                    new IntersectionObserver(
+                        function (entries, observer) {
+
+                            entries.forEach(
+                                function (entry) {
+
+                                    if (
+                                        entry.isIntersecting
+                                    ) {
+
+                                        entry.target.classList.add(
+                                            "visible"
+                                        );
+
+                                        observer.unobserve(
+                                            entry.target
+                                        );
+
+                                    }
+
+                                }
+                            );
+
+                        },
+                        {
+                            threshold: .12,
+                            rootMargin: "0px 0px -40px 0px"
+                        }
+                    );
+
+                revealElements.forEach(
+                    function (element) {
+
+                        revealObserver.observe(
+                            element
+                        );
+
+                    }
+                );
+
+            }
+
+
+            /* =====================================================
+               HERO VIDEO FALLBACK
+            ===================================================== */
+
+            const heroVideo =
+                document.querySelector(
+                    ".pw-hero-video"
+                );
+
+            if (heroVideo) {
+
+                heroVideo.addEventListener(
+                    "error",
+                    function () {
+
+                        heroVideo.style.display =
+                            "none";
+
+                    },
+                    {
+                        once: true
+                    }
+                );
+
+            }
+
+        });
+
+    </script>
 
 
 </body>

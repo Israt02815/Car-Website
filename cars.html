@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Cars | Isora Luxe</title>
 
+    <!-- GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -43,6 +45,8 @@
             top: 0;
             z-index: 1000;
         }
+
+        /* LOGO ONLY — NO TEXT BESIDE IT */
 
         .logo {
             display: flex;
@@ -524,8 +528,6 @@
                 height: 300px;
             }
 
-            /* TABLET FOOTER */
-
             .footer-content {
                 grid-template-columns: 1fr 1fr;
                 text-align: center;
@@ -598,10 +600,6 @@
             .spec-value {
                 font-size: 11px;
             }
-
-            /* =========================
-               MOBILE FOOTER FIX
-            ========================= */
 
             footer {
                 margin-top: 50px;
@@ -692,8 +690,12 @@
 
 <header>
 
-    <a href="index.html" class="logo">
-        <img src="images/logo.png" alt="Isora Luxe Logo">
+    <!-- ONLY THE LOGO -->
+    <a href="index.html" class="logo" aria-label="Isora Luxe Home">
+        <img
+            src="images/logo.png"
+            alt="Isora Luxe Logo"
+        >
     </a>
 
     <nav>
@@ -730,9 +732,7 @@
     </section>
 
 
-    <!-- =========================
-         CONTROLS
-    ========================= -->
+    <!-- CONTROLS -->
 
     <section class="controls">
 
@@ -749,66 +749,31 @@
 
         </div>
 
-
         <select id="categoryFilter">
 
-            <option value="all">
-                All Categories
-            </option>
-
-            <option value="Ultra Luxury">
-                Ultra Luxury
-            </option>
-
-            <option value="Luxury">
-                Luxury
-            </option>
-
-            <option value="Luxury SUV">
-                Luxury SUV
-            </option>
-
-            <option value="Sports">
-                Sports
-            </option>
+            <option value="all">All Categories</option>
+            <option value="Ultra Luxury">Ultra Luxury</option>
+            <option value="Luxury">Luxury</option>
+            <option value="Luxury SUV">Luxury SUV</option>
+            <option value="Sports">Sports</option>
 
         </select>
 
-
         <select id="sortSelect">
 
-            <option value="default">
-                Sort By
-            </option>
-
-            <option value="price-low">
-                Price: Low to High
-            </option>
-
-            <option value="price-high">
-                Price: High to Low
-            </option>
-
-            <option value="year-new">
-                Year: Newest
-            </option>
-
-            <option value="year-old">
-                Year: Oldest
-            </option>
-
-            <option value="mileage-low">
-                Mileage: Lowest
-            </option>
+            <option value="default">Sort By</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+            <option value="year-new">Year: Newest</option>
+            <option value="year-old">Year: Oldest</option>
+            <option value="mileage-low">Mileage: Lowest</option>
 
         </select>
 
     </section>
 
 
-    <!-- =========================
-         RESULTS BAR
-    ========================= -->
+    <!-- RESULTS -->
 
     <div class="results-bar">
 
@@ -823,7 +788,7 @@
 
 
     <!-- =========================
-         CARS
+         CAR GRID
     ========================= -->
 
     <section
@@ -864,7 +829,6 @@
 
             </div>
 
-
             <div class="car-info">
 
                 <div class="car-brand">
@@ -879,7 +843,6 @@
                     Elegant design, powerful performance and advanced
                     technology for a refined luxury driving experience.
                 </p>
-
 
                 <div class="specs">
 
@@ -914,7 +877,6 @@
                     </div>
 
                 </div>
-
 
                 <div class="price-label">
                     Starting From
@@ -970,7 +932,6 @@
 
             </div>
 
-
             <div class="car-info">
 
                 <div class="car-brand">
@@ -985,7 +946,6 @@
                     The highest level of automotive luxury, combining
                     handcrafted elegance with effortless performance.
                 </p>
-
 
                 <div class="specs">
 
@@ -1020,7 +980,6 @@
                     </div>
 
                 </div>
-
 
                 <div class="price-label">
                     Starting From
@@ -1076,7 +1035,6 @@
 
             </div>
 
-
             <div class="car-info">
 
                 <div class="car-brand">
@@ -1091,7 +1049,6 @@
                     Outstanding durability, comfort and off-road capability
                     while maintaining a premium driving experience.
                 </p>
-
 
                 <div class="specs">
 
@@ -1126,7 +1083,6 @@
                     </div>
 
                 </div>
-
 
                 <div class="price-label">
                     Starting From
@@ -1182,7 +1138,6 @@
 
             </div>
 
-
             <div class="car-info">
 
                 <div class="car-brand">
@@ -1197,7 +1152,6 @@
                     Thrilling sports-car performance, sharp handling and
                     iconic styling for an exciting driving experience.
                 </p>
-
 
                 <div class="specs">
 
@@ -1232,7 +1186,6 @@
                     </div>
 
                 </div>
-
 
                 <div class="price-label">
                     Starting From
@@ -1288,7 +1241,6 @@
 
             </div>
 
-
             <div class="car-info">
 
                 <div class="car-brand">
@@ -1303,7 +1255,6 @@
                     Iconic design, commanding presence and refined luxury
                     combined with legendary off-road capability.
                 </p>
-
 
                 <div class="specs">
 
@@ -1338,7 +1289,6 @@
                     </div>
 
                 </div>
-
 
                 <div class="price-label">
                     Starting From
@@ -1394,7 +1344,6 @@
 
             </div>
 
-
             <div class="car-info">
 
                 <div class="car-brand">
@@ -1409,7 +1358,6 @@
                     Timeless sports-car design with precise handling,
                     exhilarating performance and everyday refinement.
                 </p>
-
 
                 <div class="specs">
 
@@ -1444,7 +1392,6 @@
                     </div>
 
                 </div>
-
 
                 <div class="price-label">
                     Starting From
@@ -1500,7 +1447,6 @@
 
             </div>
 
-
             <div class="car-info">
 
                 <div class="car-brand">
@@ -1515,7 +1461,6 @@
                     Dramatic Italian styling, breathtaking acceleration
                     and an unmistakable V10 performance experience.
                 </p>
-
 
                 <div class="specs">
 
@@ -1550,7 +1495,6 @@
                     </div>
 
                 </div>
-
 
                 <div class="price-label">
                     Starting From
@@ -1606,7 +1550,6 @@
 
             </div>
 
-
             <div class="car-info">
 
                 <div class="car-brand">
@@ -1621,7 +1564,6 @@
                     Sophisticated grand-touring luxury with elegant British
                     craftsmanship and exhilarating performance.
                 </p>
-
 
                 <div class="specs">
 
@@ -1657,7 +1599,6 @@
 
                 </div>
 
-
                 <div class="price-label">
                     Starting From
                 </div>
@@ -1681,9 +1622,7 @@
     </section>
 
 
-    <!-- =========================
-         NO RESULTS
-    ========================= -->
+    <!-- NO RESULTS -->
 
     <div
         class="no-results"
@@ -1724,31 +1663,18 @@
 
         </div>
 
-
         <div class="footer-column">
 
             <h3>
                 Quick Links
             </h3>
 
-            <a href="index.html">
-                Home
-            </a>
-
-            <a href="cars.html">
-                Cars
-            </a>
-
-            <a href="about.html">
-                About
-            </a>
-
-            <a href="contact.html">
-                Contact
-            </a>
+            <a href="index.html">Home</a>
+            <a href="cars.html">Cars</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
 
         </div>
-
 
         <div class="footer-column">
 
@@ -1761,7 +1687,7 @@
             </a>
 
             <a href="tel:+8801234567890">
-                +880 ----------
+                +880 1XXX-XXXXXX
             </a>
 
             <a href="contact.html">
@@ -1771,7 +1697,6 @@
         </div>
 
     </div>
-
 
     <div class="footer-bottom">
 
@@ -1793,10 +1718,6 @@
 ========================= -->
 
 <script>
-
-    /* =========================
-       ELEMENTS
-    ========================= */
 
     const searchInput =
         document.getElementById("searchInput");
@@ -1822,10 +1743,6 @@
         );
 
 
-    /* =========================
-       FILTER + SEARCH + SORT
-    ========================= */
-
     function updateCars() {
 
         const searchTerm =
@@ -1841,12 +1758,10 @@
             cars.filter(function (car) {
 
                 const brand =
-                    car.dataset.brand
-                        .toLowerCase();
+                    car.dataset.brand.toLowerCase();
 
                 const name =
-                    car.dataset.name
-                        .toLowerCase();
+                    car.dataset.name.toLowerCase();
 
                 const category =
                     car.dataset.category;
@@ -1863,17 +1778,10 @@
                     category === selectedCategory;
 
 
-                return (
-                    searchMatches &&
-                    categoryMatches
-                );
+                return searchMatches && categoryMatches;
 
             });
 
-
-        /* =========================
-           SORT
-        ========================= */
 
         const sortType =
             sortSelect.value;
@@ -1882,68 +1790,37 @@
         visibleCars.sort(function (a, b) {
 
             if (sortType === "price-low") {
-
-                return (
-                    Number(a.dataset.price) -
-                    Number(b.dataset.price)
-                );
-
+                return Number(a.dataset.price) -
+                       Number(b.dataset.price);
             }
-
 
             if (sortType === "price-high") {
-
-                return (
-                    Number(b.dataset.price) -
-                    Number(a.dataset.price)
-                );
-
+                return Number(b.dataset.price) -
+                       Number(a.dataset.price);
             }
-
 
             if (sortType === "year-new") {
-
-                return (
-                    Number(b.dataset.year) -
-                    Number(a.dataset.year)
-                );
-
+                return Number(b.dataset.year) -
+                       Number(a.dataset.year);
             }
-
 
             if (sortType === "year-old") {
-
-                return (
-                    Number(a.dataset.year) -
-                    Number(b.dataset.year)
-                );
-
+                return Number(a.dataset.year) -
+                       Number(b.dataset.year);
             }
-
 
             if (sortType === "mileage-low") {
-
-                return (
-                    Number(a.dataset.mileage) -
-                    Number(b.dataset.mileage)
-                );
-
+                return Number(a.dataset.mileage) -
+                       Number(b.dataset.mileage);
             }
-
 
             return 0;
 
         });
 
 
-        /* =========================
-           REBUILD GRID
-        ========================= */
-
         cars.forEach(function (car) {
-
             car.style.display = "none";
-
         });
 
 
@@ -1956,10 +1833,6 @@
         });
 
 
-        /* =========================
-           RESULT COUNT
-        ========================= */
-
         const count =
             visibleCars.length;
 
@@ -1970,10 +1843,6 @@
                 : `${count} vehicles`;
 
 
-        /* =========================
-           NO RESULTS
-        ========================= */
-
         noResults.style.display =
             count === 0
                 ? "block"
@@ -1981,10 +1850,6 @@
 
     }
 
-
-    /* =========================
-       EVENT LISTENERS
-    ========================= */
 
     searchInput.addEventListener(
         "input",
@@ -2004,10 +1869,6 @@
     );
 
 
-    /* =========================
-       FAVORITE BUTTONS
-    ========================= */
-
     document
         .querySelectorAll(".favorite")
         .forEach(function (button) {
@@ -2017,7 +1878,6 @@
                 function () {
 
                     this.classList.toggle("active");
-
 
                     if (
                         this.classList.contains("active")
@@ -2037,14 +1897,9 @@
         });
 
 
-    /* =========================
-       INITIAL LOAD
-    ========================= */
-
     updateCars();
 
 </script>
-
 
 </body>
 </html>
