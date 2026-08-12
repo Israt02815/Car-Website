@@ -1,11 +1,12 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>About | Isora Luxe</title>
 
@@ -14,12 +15,11 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap"
         rel="stylesheet">
 
-    <!-- Font Awesome -->
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
     <style>
+
+        /* =====================================================
+           VARIABLES
+        ===================================================== */
 
         :root {
             --black: #111315;
@@ -27,7 +27,6 @@
             --charcoal: #24272b;
 
             --cream: #f7f5f0;
-            --warm: #eeece6;
             --white: #ffffff;
 
             --text: #17181a;
@@ -39,6 +38,10 @@
             --border: #dfddd7;
         }
 
+
+        /* =====================================================
+           RESET
+        ===================================================== */
 
         * {
             margin: 0;
@@ -53,6 +56,7 @@
 
 
         body {
+            margin: 0;
             font-family: "Inter", sans-serif;
             background: var(--cream);
             color: var(--text);
@@ -62,6 +66,11 @@
 
         a {
             text-decoration: none;
+        }
+
+
+        button {
+            font-family: inherit;
         }
 
 
@@ -84,16 +93,13 @@
             border-bottom: 1px solid var(--border);
 
             position: relative;
-            z-index: 100;
+            z-index: 1000;
         }
 
-
-        /* LOGO IMAGE */
 
         .logo {
             display: flex;
             align-items: center;
-
             flex-shrink: 0;
         }
 
@@ -101,12 +107,11 @@
         .logo img {
             width: 125px;
             height: auto;
-
             display: block;
-
-            object-fit: contain;
         }
 
+
+        /* DESKTOP MENU */
 
         .nav-links {
             display: flex;
@@ -120,8 +125,6 @@
         }
 
 
-        /* GOLDEN NAVIGATION LINKS */
-
         .nav-links a {
             position: relative;
 
@@ -130,7 +133,7 @@
             font-size: 13px;
             font-weight: 600;
 
-            transition: color 0.25s ease;
+            transition: 0.25s ease;
         }
 
 
@@ -155,8 +158,11 @@
         }
 
 
+        /* GET IN TOUCH */
+
         .nav-btn {
             display: inline-flex;
+
             align-items: center;
             justify-content: center;
 
@@ -165,6 +171,7 @@
             padding: 0 20px;
 
             background: var(--black);
+
             color: white;
 
             font-size: 12px;
@@ -178,19 +185,64 @@
 
         .nav-btn:hover {
             background: var(--gold);
-            color: white;
         }
 
+
+        /* =====================================================
+           MOBILE MENU BUTTON
+        ===================================================== */
 
         .menu-btn {
             display: none;
 
+            width: 44px;
+            height: 44px;
+
+            padding: 0;
+
             border: none;
+
             background: transparent;
 
-            font-size: 22px;
-
             cursor: pointer;
+
+            align-items: center;
+            justify-content: center;
+
+            flex-direction: column;
+
+            gap: 5px;
+        }
+
+
+        .menu-btn span {
+            display: block;
+
+            width: 25px;
+            height: 3px;
+
+            background: var(--gold);
+
+            border-radius: 3px;
+
+            transition: 0.3s ease;
+        }
+
+
+        /* X animation */
+
+        .menu-btn.open span:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+
+        .menu-btn.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+
+        .menu-btn.open span:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
         }
 
 
@@ -271,7 +323,6 @@
             margin: 0 auto;
 
             position: relative;
-
             z-index: 2;
 
             color: white;
@@ -321,6 +372,7 @@
             color: rgba(255,255,255,0.72);
 
             font-size: 16px;
+
             line-height: 1.8;
         }
 
@@ -339,6 +391,7 @@
             padding: 0 23px;
 
             display: inline-flex;
+
             align-items: center;
             justify-content: center;
 
@@ -385,7 +438,7 @@
 
 
         /* =====================================================
-           STORY
+           ABOUT STORY
         ===================================================== */
 
         .about-section {
@@ -421,7 +474,6 @@
             object-fit: cover;
 
             position: relative;
-
             z-index: 2;
         }
 
@@ -451,6 +503,7 @@
             height: 145px;
 
             display: flex;
+
             flex-direction: column;
 
             align-items: center;
@@ -487,8 +540,6 @@
             color: #aaa;
 
             text-transform: uppercase;
-
-            letter-spacing: 0.8px;
         }
 
 
@@ -500,14 +551,11 @@
             font-size: clamp(34px, 4vw, 52px);
 
             line-height: 1.1;
-
-            letter-spacing: -1.5px;
         }
 
 
         .about-content h2 span {
             color: #777;
-
             font-weight: 400;
         }
 
@@ -592,6 +640,8 @@
             background: var(--black);
 
             color: var(--gold-light);
+
+            font-size: 20px;
         }
 
 
@@ -656,14 +706,11 @@
             font-size: clamp(34px, 4vw, 50px);
 
             line-height: 1.1;
-
-            letter-spacing: -1.5px;
         }
 
 
         .section-heading h2 span {
             color: #777;
-
             font-weight: 400;
         }
 
@@ -709,23 +756,6 @@
         }
 
 
-        .value-card::after {
-            content: "";
-
-            position: absolute;
-
-            width: 150px;
-            height: 150px;
-
-            right: -75px;
-            bottom: -75px;
-
-            border: 1px solid rgba(184,155,98,0.2);
-
-            border-radius: 50%;
-        }
-
-
         .value-card:hover {
             transform: translateY(-7px);
 
@@ -749,6 +779,8 @@
             color: var(--gold-light);
 
             border-radius: 50%;
+
+            font-size: 20px;
         }
 
 
@@ -762,8 +794,6 @@
             font-size: 10px;
 
             font-weight: 800;
-
-            letter-spacing: 1px;
         }
 
 
@@ -792,34 +822,13 @@
         .about-cta {
             padding: 110px 5%;
 
-            background: #ffffff;
-
-            color: var(--black);
+            background: white;
 
             text-align: center;
 
             position: relative;
 
             overflow: hidden;
-
-            border-top: 1px solid var(--border);
-        }
-
-
-        .about-cta::before {
-            content: "";
-
-            position: absolute;
-
-            width: 550px;
-            height: 550px;
-
-            top: -400px;
-            right: -100px;
-
-            border: 1px solid rgba(184,155,98,0.15);
-
-            border-radius: 50%;
         }
 
 
@@ -829,7 +838,6 @@
             margin: 0 auto;
 
             position: relative;
-
             z-index: 2;
         }
 
@@ -842,16 +850,11 @@
             font-size: clamp(36px, 5vw, 58px);
 
             line-height: 1.1;
-
-            letter-spacing: -1.5px;
-
-            color: var(--black);
         }
 
 
         .about-cta h2 span {
             color: var(--gold);
-
             font-weight: 400;
         }
 
@@ -880,7 +883,7 @@
 
             color: white;
 
-            padding: 70px 5% 0;
+            padding: 65px 5% 0;
         }
 
 
@@ -891,29 +894,28 @@
 
             display: grid;
 
-            grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+            grid-template-columns:
+                1.5fr
+                1fr
+                1fr
+                1.2fr;
 
-            gap: 60px;
+            gap: 50px;
 
-            padding-bottom: 55px;
+            padding-bottom: 45px;
         }
 
 
         .footer-about .logo {
             display: inline-flex;
 
-            margin-bottom: 18px;
+            margin-bottom: 15px;
         }
 
 
-        /* FOOTER LOGO */
-
         .footer-about .logo img {
             width: 135px;
-
             height: auto;
-
-            display: block;
         }
 
 
@@ -933,7 +935,7 @@
 
             gap: 10px;
 
-            margin-top: 22px;
+            margin-top: 20px;
         }
 
 
@@ -952,16 +954,7 @@
 
             border-radius: 50%;
 
-            transition: 0.25s ease;
-        }
-
-
-        .social-links a:hover {
-            background: var(--gold);
-
-            border-color: var(--gold);
-
-            color: white;
+            font-size: 14px;
         }
 
 
@@ -970,12 +963,12 @@
 
             flex-direction: column;
 
-            gap: 12px;
+            gap: 10px;
         }
 
 
         .footer-column h4 {
-            margin-bottom: 8px;
+            margin-bottom: 6px;
 
             font-family: "Montserrat", sans-serif;
 
@@ -987,8 +980,6 @@
             color: #888;
 
             font-size: 12px;
-
-            transition: color 0.2s ease;
         }
 
 
@@ -1009,15 +1000,13 @@
             font-size: 12px;
 
             line-height: 1.6;
+
+            margin: 0;
         }
 
 
-        .footer-column p i {
+        .footer-column p span:first-child {
             color: var(--gold-light);
-
-            margin-top: 3px;
-
-            min-width: 14px;
         }
 
 
@@ -1026,7 +1015,7 @@
 
             margin: 0 auto;
 
-            padding: 22px 0;
+            padding: 20px 0;
 
             border-top: 1px solid #25272a;
 
@@ -1048,14 +1037,13 @@
 
 
         /* =====================================================
-           RESPONSIVE
+           TABLET
         ===================================================== */
 
         @media (max-width: 950px) {
 
             .nav-links {
                 gap: 22px;
-
                 margin-right: 20px;
             }
 
@@ -1099,13 +1087,20 @@
             .footer-grid {
                 grid-template-columns: 1fr 1fr;
             }
+
         }
 
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
 
         @media (max-width: 700px) {
 
             .navbar {
                 height: 70px;
+
+                padding: 0 20px;
             }
 
 
@@ -1114,29 +1109,153 @@
             }
 
 
-            .nav-links,
+            /* HIDE DESKTOP BUTTON */
+
             .nav-btn {
                 display: none;
             }
 
 
+            /* HAMBURGER SHOWS */
+
             .menu-btn {
-                display: block;
+                display: flex;
             }
 
+
+            /* MOBILE NAVIGATION */
+
+            .nav-links {
+
+                display: flex;
+
+                position: absolute;
+
+                top: 70px;
+
+                left: 0;
+
+                width: 100%;
+
+                margin: 0;
+
+                padding: 8px 20px 15px;
+
+                flex-direction: column;
+
+                align-items: stretch;
+
+                gap: 0;
+
+                background: #ffffff;
+
+                border-bottom: 1px solid var(--border);
+
+                box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+
+                opacity: 0;
+
+                visibility: hidden;
+
+                transform: translateY(-10px);
+
+                pointer-events: none;
+
+                transition:
+                    opacity 0.25s ease,
+                    transform 0.25s ease,
+                    visibility 0.25s ease;
+
+                z-index: 999;
+            }
+
+
+            /* WHEN MENU IS OPEN */
+
+            .nav-links.open {
+
+                opacity: 1;
+
+                visibility: visible;
+
+                transform: translateY(0);
+
+                pointer-events: auto;
+            }
+
+
+            .nav-links a {
+
+                width: 100%;
+
+                padding: 15px 5px;
+
+                font-size: 14px;
+
+                color: var(--gold);
+
+                border-bottom: 1px solid #eeeeee;
+            }
+
+
+            .nav-links a:last-child {
+                border-bottom: none;
+            }
+
+
+            .nav-links a.active::after {
+                display: none;
+            }
+
+
+            .nav-links a.active {
+                color: var(--gold-light);
+            }
+
+
+            /* HERO */
 
             .about-hero {
                 min-height: 560px;
             }
 
 
+            .about-hero-content {
+                width: 88%;
+            }
+
+
             .about-hero h1 {
+                font-size: clamp(44px, 13vw, 62px);
+
                 letter-spacing: -1px;
             }
 
 
+            .hero-description {
+                font-size: 15px;
+            }
+
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+
+            .primary-btn,
+            .secondary-btn {
+                width: 100%;
+            }
+
+
+            /* ABOUT */
+
             .about-section {
+                width: 88%;
+
                 padding: 75px 0;
+
+                gap: 55px;
             }
 
 
@@ -1172,8 +1291,42 @@
             }
 
 
+            /* STATS */
+
+            .stats-section {
+                grid-template-columns: 1fr 1fr;
+
+                width: 88%;
+            }
+
+
+            .stat {
+                border-right: 1px solid var(--border);
+            }
+
+
+            .stat:nth-child(2) {
+                border-right: none;
+            }
+
+
+            .stat:nth-child(3),
+            .stat:nth-child(4) {
+                border-top: 1px solid var(--border);
+            }
+
+
+            /* VALUES */
+
+            .values-section {
+                padding: 75px 6%;
+            }
+
+
             .section-heading {
                 display: block;
+
+                margin-bottom: 35px;
             }
 
 
@@ -1187,51 +1340,180 @@
             }
 
 
-            .values-section {
-                padding: 75px 5%;
-            }
-
+            /* CTA */
 
             .about-cta {
-                padding: 80px 5%;
+                padding: 80px 6%;
             }
 
 
+            /* =================================================
+               MOBILE FOOTER
+            ================================================= */
+
             .footer {
-                padding-top: 55px;
+                padding: 45px 20px 0;
+
+                text-align: center;
             }
 
 
             .footer-grid {
-                grid-template-columns: 1fr;
 
-                gap: 35px;
+                grid-template-columns: 1fr 1fr;
+
+                gap: 30px 20px;
+
+                padding-bottom: 35px;
+
+                justify-items: center;
+            }
+
+
+            /* LOGO SECTION FULL WIDTH + CENTERED */
+
+            .footer-about {
+                grid-column: 1 / -1;
+
+                width: 100%;
+
+                display: flex;
+
+                flex-direction: column;
+
+                align-items: center;
+
+                text-align: center;
+            }
+
+
+            .footer-about .logo {
+                display: inline-flex;
+
+                justify-content: center;
+
+                margin-bottom: 15px;
+            }
+
+
+            .footer-about .logo img {
+                width: 110px;
+            }
+
+
+            .footer-about > p {
+                max-width: 320px;
+
+                font-size: 12px;
+
+                line-height: 1.6;
+
+                margin: 0 auto;
+            }
+
+
+            .social-links {
+                margin-top: 15px;
+
+                justify-content: center;
+            }
+
+
+            .social-links a {
+                width: 34px;
+                height: 34px;
+            }
+
+
+            /* EXPLORE + SERVICES */
+
+            .footer-column {
+                width: 100%;
+
+                align-items: center;
+
+                text-align: center;
+
+                gap: 8px;
+            }
+
+
+            .footer-column h4 {
+                font-size: 13px;
+
+                margin-bottom: 4px;
+            }
+
+
+            .footer-column a {
+                font-size: 11px;
+            }
+
+
+            /* CONTACT FULL WIDTH + CENTERED */
+
+            .footer-column:last-child {
+                grid-column: 1 / -1;
+
+                width: 100%;
+
+                align-items: center;
+
+                text-align: center;
+            }
+
+
+            .footer-column p {
+                justify-content: center;
+
+                align-items: center;
+
+                font-size: 11px;
+
+                gap: 7px;
+
+                text-align: center;
             }
 
 
             .footer-bottom {
+
                 flex-direction: column;
 
-                align-items: flex-start;
+                align-items: center;
+
+                justify-content: center;
+
+                text-align: center;
+
+                gap: 6px;
+
+                padding: 18px 0;
             }
+
+
+            .footer-bottom p {
+                font-size: 10px;
+
+                text-align: center;
+            }
+
         }
 
 
+        /* =====================================================
+           SMALL PHONES
+        ===================================================== */
+
         @media (max-width: 480px) {
+
+            .navbar {
+                padding: 0 16px;
+            }
+
 
             .logo img {
                 width: 100px;
-            }
-
-
-            .hero-buttons {
-                flex-direction: column;
-            }
-
-
-            .primary-btn,
-            .secondary-btn {
-                width: 100%;
             }
 
 
@@ -1242,6 +1524,8 @@
 
             .stat {
                 border-right: none !important;
+
+                border-top: none !important;
 
                 border-bottom: 1px solid var(--border);
             }
@@ -1255,6 +1539,38 @@
             .about-image img,
             .image-frame {
                 width: 92%;
+            }
+
+
+            /* SMALL PHONE FOOTER */
+
+            .footer {
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+
+                gap: 28px 14px;
+            }
+
+
+            .footer-about > p {
+                max-width: 290px;
+            }
+
+
+            .footer-column p {
+                flex-wrap: wrap;
+
+                justify-content: center;
+            }
+
+
+            .footer-bottom {
+                width: 100%;
             }
 
         }
@@ -1273,13 +1589,21 @@
 
 <header class="navbar">
 
-    <!-- LOGO IMAGE -->
+
+    <!-- LOGO -->
+
     <a href="index.html" class="logo">
-        <img src="images/logo.png" alt="Isora Luxe Logo">
+
+        <img
+            src="images/logo.png"
+            alt="Isora Luxe Logo">
+
     </a>
 
 
-    <nav class="nav-links">
+    <!-- NAVIGATION -->
+
+    <nav class="nav-links" id="mobileMenu">
 
         <a href="index.html">
             Home
@@ -1300,14 +1624,32 @@
     </nav>
 
 
-    <a href="contact.html" class="nav-btn">
+    <!-- DESKTOP BUTTON -->
+
+    <a
+        href="contact.html"
+        class="nav-btn">
+
         Get in Touch
+
     </a>
 
 
-    <button class="menu-btn" type="button" aria-label="Open menu">
-        <i class="fa-solid fa-bars"></i>
+    <!-- MOBILE HAMBURGER -->
+
+    <button
+        class="menu-btn"
+        id="menuButton"
+        type="button"
+        aria-label="Open menu"
+        aria-expanded="false">
+
+        <span></span>
+        <span></span>
+        <span></span>
+
     </button>
+
 
 </header>
 
@@ -1335,21 +1677,31 @@
 
 
         <p class="hero-description">
-            Where exceptional vehicles meet exceptional service.
-            Discover a better way to find your next car.
+            Where exceptional vehicles meet exceptional
+            service. Discover a better way to find your
+            next car.
         </p>
 
 
         <div class="hero-buttons">
 
-            <a href="cars.html" class="primary-btn">
+            <a
+                href="cars.html"
+                class="primary-btn">
+
                 Explore Cars
-                <i class="fa-solid fa-arrow-right"></i>
+
+                <span>→</span>
+
             </a>
 
 
-            <a href="contact.html" class="secondary-btn">
+            <a
+                href="contact.html"
+                class="secondary-btn">
+
                 Contact Us
+
             </a>
 
         </div>
@@ -1365,6 +1717,7 @@
 
 <section class="about-section">
 
+
     <div class="about-image">
 
         <div class="image-frame"></div>
@@ -1372,7 +1725,7 @@
 
         <img
             src="images/car2.jpg"
-            alt="Luxury car at Isora Luxe">
+            alt="Luxury car">
 
 
         <div class="experience-badge">
@@ -1403,22 +1756,23 @@
 
 
         <p class="about-intro">
-            We create experiences that make buying your next
-            car something to look forward to.
+            We create experiences that make buying your
+            next car something to look forward to.
         </p>
 
 
         <p>
             Isora Luxe was built around a simple idea:
-            buying a car should be exciting, transparent and
-            completely personal.
+            buying a car should be exciting, transparent
+            and completely personal.
         </p>
 
 
         <p>
-            From luxury sedans to powerful SUVs and performance
-            cars, every vehicle in our collection is carefully
-            selected for quality, style and reliability.
+            From luxury sedans to powerful SUVs and
+            performance cars, every vehicle in our
+            collection is carefully selected for quality,
+            style and reliability.
         </p>
 
 
@@ -1429,9 +1783,14 @@
         </p>
 
 
-        <a href="cars.html" class="primary-btn">
+        <a
+            href="cars.html"
+            class="primary-btn">
+
             Explore Our Cars
-            <i class="fa-solid fa-arrow-right"></i>
+
+            <span>→</span>
+
         </a>
 
     </div>
@@ -1445,10 +1804,11 @@
 
 <section class="stats-section">
 
+
     <div class="stat">
 
         <div class="stat-icon">
-            <i class="fa-solid fa-calendar"></i>
+            ★
         </div>
 
         <strong>10+</strong>
@@ -1463,7 +1823,7 @@
     <div class="stat">
 
         <div class="stat-icon">
-            <i class="fa-solid fa-car"></i>
+            🚘
         </div>
 
         <strong>2,500+</strong>
@@ -1478,7 +1838,7 @@
     <div class="stat">
 
         <div class="stat-icon">
-            <i class="fa-solid fa-face-smile"></i>
+            ☺
         </div>
 
         <strong>98%</strong>
@@ -1493,7 +1853,7 @@
     <div class="stat">
 
         <div class="stat-icon">
-            <i class="fa-solid fa-headset"></i>
+            ✓
         </div>
 
         <strong>24/7</strong>
@@ -1504,6 +1864,7 @@
 
     </div>
 
+
 </section>
 
 
@@ -1512,6 +1873,7 @@
 ===================================================== -->
 
 <section class="values-section">
+
 
     <div class="section-heading">
 
@@ -1540,22 +1902,20 @@
 
     <div class="values-grid">
 
+
         <div class="value-card">
 
             <div class="value-icon">
-                <i class="fa-solid fa-gem"></i>
+                ◆
             </div>
-
 
             <span class="value-number">
                 01
             </span>
 
-
             <h3>
                 Excellence
             </h3>
-
 
             <p>
                 We believe every detail matters, from the
@@ -1568,19 +1928,16 @@
         <div class="value-card">
 
             <div class="value-icon">
-                <i class="fa-solid fa-handshake"></i>
+                ✓
             </div>
-
 
             <span class="value-number">
                 02
             </span>
 
-
             <h3>
                 Trust
             </h3>
-
 
             <p>
                 Honest communication and transparent pricing
@@ -1593,19 +1950,16 @@
         <div class="value-card">
 
             <div class="value-icon">
-                <i class="fa-solid fa-heart"></i>
+                ♥
             </div>
-
 
             <span class="value-number">
                 03
             </span>
 
-
             <h3>
                 Passion
             </h3>
-
 
             <p>
                 We love cars, and we want every customer to
@@ -1613,6 +1967,7 @@
             </p>
 
         </div>
+
 
     </div>
 
@@ -1624,6 +1979,7 @@
 ===================================================== -->
 
 <section class="about-cta">
+
 
     <div class="cta-content">
 
@@ -1644,9 +2000,14 @@
         </p>
 
 
-        <a href="cars.html" class="primary-btn">
+        <a
+            href="cars.html"
+            class="primary-btn">
+
             Browse Our Collection
-            <i class="fa-solid fa-arrow-right"></i>
+
+            <span>→</span>
+
         </a>
 
     </div>
@@ -1660,13 +2021,22 @@
 
 <footer class="footer">
 
+
     <div class="footer-grid">
+
+
+        <!-- ABOUT -->
 
         <div class="footer-about">
 
-            <!-- FOOTER LOGO IMAGE -->
-            <a href="index.html" class="logo">
-                <img src="images/logo.png" alt="Isora Luxe Logo">
+            <a
+                href="index.html"
+                class="logo">
+
+                <img
+                    src="images/logo.png"
+                    alt="Isora Luxe Logo">
+
             </a>
 
 
@@ -1678,24 +2048,24 @@
 
             <div class="social-links">
 
-                <a href="#" aria-label="Facebook">
-                    <i class="fa-brands fa-facebook-f"></i>
+                <a href="#">
+                    f
                 </a>
 
-
-                <a href="#" aria-label="Instagram">
-                    <i class="fa-brands fa-instagram"></i>
+                <a href="#">
+                    ◎
                 </a>
 
-
-                <a href="#" aria-label="X">
-                    <i class="fa-brands fa-x-twitter"></i>
+                <a href="#">
+                    𝕏
                 </a>
 
             </div>
 
         </div>
 
+
+        <!-- EXPLORE -->
 
         <div class="footer-column">
 
@@ -1726,6 +2096,8 @@
         </div>
 
 
+        <!-- SERVICES -->
+
         <div class="footer-column">
 
             <h4>
@@ -1755,6 +2127,8 @@
         </div>
 
 
+        <!-- CONTACT -->
+
         <div class="footer-column">
 
             <h4>
@@ -1763,26 +2137,29 @@
 
 
             <p>
-                <i class="fa-solid fa-location-dot"></i>
+                <span>●</span>
                 Dhaka, Bangladesh
             </p>
 
 
             <p>
-                <i class="fa-solid fa-phone"></i>
+                <span>☎</span>
                 +880 1XXX-XXXXXX
             </p>
 
 
             <p>
-                <i class="fa-solid fa-envelope"></i>
+                <span>✉</span>
                 N/A
             </p>
 
         </div>
 
+
     </div>
 
+
+    <!-- FOOTER BOTTOM -->
 
     <div class="footer-bottom">
 
@@ -1797,12 +2174,116 @@
 
     </div>
 
+
 </footer>
 
 
-<script src="js/script.js"></script>
+<!-- =====================================================
+     MOBILE MENU JAVASCRIPT
+===================================================== -->
+
+<script>
+
+    const menuButton =
+        document.getElementById("menuButton");
+
+    const mobileMenu =
+        document.getElementById("mobileMenu");
+
+
+    /*
+       OPEN / CLOSE MENU
+    */
+
+    menuButton.addEventListener("click", function () {
+
+        const isOpen =
+            menuButton.classList.toggle("open");
+
+
+        mobileMenu.classList.toggle("open");
+
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            isOpen ? "true" : "false"
+        );
+
+
+        menuButton.setAttribute(
+            "aria-label",
+            isOpen
+                ? "Close menu"
+                : "Open menu"
+        );
+
+    });
+
+
+    /*
+       CLOSE MENU WHEN A LINK IS CLICKED
+    */
+
+    const menuLinks =
+        mobileMenu.querySelectorAll("a");
+
+
+    menuLinks.forEach(function (link) {
+
+        link.addEventListener("click", function () {
+
+            menuButton.classList.remove("open");
+
+            mobileMenu.classList.remove("open");
+
+            menuButton.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+            menuButton.setAttribute(
+                "aria-label",
+                "Open menu"
+            );
+
+        });
+
+    });
+
+
+    /*
+       CLOSE MENU WHEN CLICKING OUTSIDE
+    */
+
+    document.addEventListener("click", function (event) {
+
+        if (
+            !mobileMenu.contains(event.target) &&
+            !menuButton.contains(event.target)
+        ) {
+
+            menuButton.classList.remove("open");
+
+            mobileMenu.classList.remove("open");
+
+            menuButton.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+            menuButton.setAttribute(
+                "aria-label",
+                "Open menu"
+            );
+
+        }
+
+    });
+
+</script>
+
 
 </body>
 
 </html>
-```
+
