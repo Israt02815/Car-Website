@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,6 +15,7 @@
     >
 
     <style>
+
         * {
             margin: 0;
             padding: 0;
@@ -43,8 +43,6 @@
             top: 0;
             z-index: 1000;
         }
-
-        /* SAME LOGO AS OTHER PAGES */
 
         .logo {
             display: flex;
@@ -78,8 +76,6 @@
         nav a:hover {
             color: #A88416;
         }
-
-        /* GOLDEN ACTIVE UNDERLINE */
 
         nav a.active::after {
             content: "";
@@ -490,7 +486,7 @@
         }
 
         /* =========================
-           MOBILE
+           TABLET
         ========================= */
 
         @media (max-width: 800px) {
@@ -528,16 +524,43 @@
                 height: 300px;
             }
 
+            /* TABLET FOOTER */
+
             .footer-content {
                 grid-template-columns: 1fr 1fr;
+                text-align: center;
+                justify-items: center;
             }
 
             .footer-brand {
                 grid-column: 1 / -1;
+                width: 100%;
+            }
+
+            .footer-brand p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .footer-column {
+                width: 100%;
+            }
+
+            .footer-bottom {
+                text-align: center;
+                align-items: center;
             }
         }
 
+        /* =========================
+           MOBILE
+        ========================= */
+
         @media (max-width: 500px) {
+
+            header {
+                padding: 10px 5%;
+            }
 
             nav {
                 display: none;
@@ -548,8 +571,16 @@
                 height: 48px;
             }
 
+            .page {
+                padding: 45px 5%;
+            }
+
             .page-header h1 {
                 font-size: 40px;
+            }
+
+            .page-header p {
+                font-size: 14px;
             }
 
             .car-info {
@@ -568,26 +599,99 @@
                 font-size: 11px;
             }
 
+            /* =========================
+               MOBILE FOOTER FIX
+            ========================= */
+
+            footer {
+                margin-top: 50px;
+                padding: 45px 25px 25px;
+                text-align: center;
+            }
+
             .footer-content {
-                grid-template-columns: 1fr;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 35px;
+                width: 100%;
+                padding-bottom: 35px;
             }
 
             .footer-brand {
-                grid-column: auto;
+                width: 100%;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-brand h2 {
+                font-size: 28px;
+                margin-bottom: 14px;
+                text-align: center;
+            }
+
+            .footer-brand p {
+                width: 100%;
+                max-width: 320px;
+                margin: 0 auto;
+                color: #aaa;
+                line-height: 1.8;
+                text-align: center;
+            }
+
+            .footer-column {
+                width: 100%;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-column h3 {
+                margin-bottom: 16px;
+                text-align: center;
+                width: 100%;
+            }
+
+            .footer-column a {
+                text-align: center;
+                margin-bottom: 12px;
+                width: 100%;
             }
 
             .footer-bottom {
+                width: 100%;
+                display: flex;
                 flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                gap: 10px;
+                padding-top: 22px;
+            }
+
+            .footer-bottom p {
+                text-align: center;
+                line-height: 1.6;
+                width: 100%;
+                margin: 0 auto;
             }
         }
+
     </style>
 </head>
 
 <body>
 
+<!-- =========================
+     HEADER
+========================= -->
+
 <header>
 
-    <!-- SAME LOGO FILE -->
     <a href="index.html" class="logo">
         <img src="images/logo.png" alt="Isora Luxe Logo">
     </a>
@@ -601,6 +705,10 @@
 
 </header>
 
+
+<!-- =========================
+     MAIN PAGE
+========================= -->
 
 <main class="page">
 
@@ -621,6 +729,10 @@
 
     </section>
 
+
+    <!-- =========================
+         CONTROLS
+    ========================= -->
 
     <section class="controls">
 
@@ -694,6 +806,10 @@
     </section>
 
 
+    <!-- =========================
+         RESULTS BAR
+    ========================= -->
+
     <div class="results-bar">
 
         <div
@@ -705,6 +821,10 @@
 
     </div>
 
+
+    <!-- =========================
+         CARS
+    ========================= -->
 
     <section
         class="cars-grid"
@@ -1561,7 +1681,9 @@
     </section>
 
 
-    <!-- NO RESULTS -->
+    <!-- =========================
+         NO RESULTS
+    ========================= -->
 
     <div
         class="no-results"
@@ -1581,7 +1703,9 @@
 </main>
 
 
-<!-- FOOTER -->
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
@@ -1663,6 +1787,10 @@
 
 </footer>
 
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
 
 <script>
 
@@ -1813,7 +1941,9 @@
         ========================= */
 
         cars.forEach(function (car) {
+
             car.style.display = "none";
+
         });
 
 
@@ -1918,4 +2048,3 @@
 
 </body>
 </html>
-
