@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -1300,6 +1299,149 @@
         }
 
 
+        /* =====================================================
+           MOBILE FOOTER ONLY
+           max-width: 500px
+           Desktop + tablet remain unchanged
+        ===================================================== */
+
+        @media (max-width: 500px) {
+
+            .footer {
+                padding-left: 7%;
+                padding-right: 7%;
+
+                text-align: center;
+            }
+
+            .footer-grid {
+                width: 100%;
+
+                grid-template-columns: 1fr;
+
+                justify-items: center;
+
+                align-items: center;
+
+                text-align: center;
+
+                gap: 38px;
+            }
+
+
+            /* ABOUT */
+
+            .footer-about {
+                width: 100%;
+
+                display: flex;
+
+                flex-direction: column;
+
+                align-items: center;
+
+                text-align: center;
+            }
+
+            .footer-about .logo {
+                display: flex;
+
+                align-items: center;
+                justify-content: center;
+
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .footer-about .logo img {
+                height: 55px;
+            }
+
+            .footer-about > p {
+                margin-left: auto;
+                margin-right: auto;
+
+                text-align: center;
+            }
+
+
+            /* SOCIAL ICONS */
+
+            .socials {
+                justify-content: center;
+
+                align-items: center;
+
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+
+            /* FOOTER COLUMNS */
+
+            .footer-column {
+                width: 100%;
+
+                display: flex;
+
+                flex-direction: column;
+
+                align-items: center;
+
+                text-align: center;
+            }
+
+            .footer-column h4 {
+                text-align: center;
+            }
+
+            .footer-column a {
+                text-align: center;
+            }
+
+
+            /* CONTACT */
+
+            .footer-column p {
+                justify-content: center;
+
+                align-items: flex-start;
+
+                width: 100%;
+
+                text-align: center;
+            }
+
+            .footer-column p i {
+                flex-shrink: 0;
+            }
+
+
+            /* FOOTER BOTTOM */
+
+            .footer-bottom {
+                width: 100%;
+
+                flex-direction: column;
+
+                justify-content: center;
+
+                align-items: center;
+
+                text-align: center;
+
+                gap: 8px;
+            }
+
+            .footer-bottom p {
+                width: 100%;
+
+                text-align: center;
+            }
+
+        }
+
+
         @media (max-width: 480px) {
 
             .pw-hero-buttons {
@@ -2171,4 +2313,3 @@ document.addEventListener("DOMContentLoaded", function () {
 </body>
 
 </html>
-
