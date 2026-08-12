@@ -669,6 +669,7 @@
 
         .footer-container {
             width: min(1180px, 92%);
+
             margin: 0 auto;
         }
 
@@ -678,7 +679,12 @@
             padding: 75px 0 60px;
 
             display: grid;
-            grid-template-columns: 1.6fr 0.8fr 0.8fr 1fr;
+
+            grid-template-columns:
+                1.6fr
+                0.8fr
+                0.8fr
+                1fr;
 
             gap: 60px;
         }
@@ -692,6 +698,7 @@
 
         .footer-logo {
             display: inline-flex;
+
             align-items: center;
 
             margin-bottom: 17px;
@@ -702,6 +709,7 @@
             display: block;
 
             width: auto;
+
             height: 46px;
 
             max-width: 210px;
@@ -713,6 +721,7 @@
             color: #898b89;
 
             font-size: 12px;
+
             line-height: 1.8;
         }
 
@@ -722,9 +731,11 @@
             font-family: "Montserrat", sans-serif;
 
             font-size: 12px;
+
             font-weight: 700;
 
             text-transform: uppercase;
+
             letter-spacing: 1px;
 
             color: #ffffff;
@@ -732,6 +743,7 @@
 
         .footer-links {
             display: flex;
+
             flex-direction: column;
 
             gap: 12px;
@@ -753,6 +765,7 @@
             color: #898b89;
 
             font-size: 12px;
+
             line-height: 1.8;
         }
 
@@ -769,6 +782,7 @@
             height: 34px;
 
             display: flex;
+
             align-items: center;
             justify-content: center;
 
@@ -799,7 +813,9 @@
             border-top: 1px solid rgba(255,255,255,0.08);
 
             display: flex;
+
             align-items: center;
+
             justify-content: space-between;
 
             gap: 20px;
@@ -815,7 +831,7 @@
 
 
         /* =====================================================
-           MOBILE
+           TABLET
         ===================================================== */
 
         @media (max-width: 900px) {
@@ -826,6 +842,7 @@
 
             .contact-menu {
                 display: flex;
+
                 align-items: center;
                 justify-content: center;
             }
@@ -836,6 +853,7 @@
                 position: absolute;
 
                 top: 82px;
+
                 left: 0;
                 right: 0;
 
@@ -844,6 +862,7 @@
                 padding: 15px 6%;
 
                 flex-direction: column;
+
                 align-items: stretch;
 
                 gap: 0;
@@ -884,8 +903,13 @@
             .footer-grid {
                 grid-template-columns: 1fr 1fr;
             }
+
         }
 
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
 
         @media (max-width: 600px) {
 
@@ -899,6 +923,7 @@
 
             .contact-logo img {
                 height: 42px;
+
                 max-width: 180px;
             }
 
@@ -928,7 +953,22 @@
 
             .form-row {
                 grid-template-columns: 1fr;
+
                 gap: 0;
+            }
+
+
+            /* =================================================
+               MOBILE FOOTER
+               CENTERED PROPERLY
+            ================================================= */
+
+            .footer-container {
+                width: 90%;
+
+                margin: 0 auto;
+
+                text-align: center;
             }
 
             .footer-grid {
@@ -937,24 +977,102 @@
                 gap: 35px;
 
                 padding: 55px 0 45px;
+
+                justify-items: center;
+
+                text-align: center;
             }
 
             .footer-about {
-                max-width: none;
+                width: 100%;
+
+                max-width: 340px;
+
+                margin: 0 auto;
+
+                display: flex;
+
+                flex-direction: column;
+
+                align-items: center;
+
+                text-align: center;
             }
 
             .footer-logo {
                 margin-left: 0;
+
+                margin-right: 0;
+
+                justify-content: center;
             }
 
             .footer-logo img {
                 height: 40px;
             }
 
+            .footer-about > p {
+                max-width: 320px;
+
+                margin: 0 auto;
+
+                text-align: center;
+            }
+
+            .footer-title {
+                margin-bottom: 16px;
+
+                text-align: center;
+            }
+
+            .footer-links {
+                align-items: center;
+
+                justify-content: center;
+
+                text-align: center;
+            }
+
+            .footer-links a {
+                text-align: center;
+            }
+
+            .footer-description {
+                max-width: 320px;
+
+                margin: 0 auto;
+
+                text-align: center;
+            }
+
+            .social-links {
+                justify-content: center;
+
+                align-items: center;
+
+                margin-top: 20px;
+            }
+
             .footer-bottom {
                 flex-direction: column;
-                align-items: flex-start;
+
+                align-items: center;
+
+                justify-content: center;
+
+                gap: 7px;
+
+                padding: 20px 0;
+
+                text-align: center;
             }
+
+            .footer-bottom p {
+                width: 100%;
+
+                text-align: center;
+            }
+
         }
 
     </style>
@@ -974,9 +1092,17 @@
     <div class="contact-nav-inner">
 
         <!-- LOGO -->
+
         <a href="index.html" class="contact-logo">
-            <img src="images/logo.png" alt="Isora Luxe">
+
+            <img
+                src="images/logo.png"
+                alt="Isora Luxe">
+
         </a>
+
+
+        <!-- NAVIGATION -->
 
         <nav class="contact-nav-links">
 
@@ -998,9 +1124,19 @@
 
         </nav>
 
-        <a href="cars.html" class="contact-nav-button">
+
+        <!-- NAV BUTTON -->
+
+        <a
+            href="cars.html"
+            class="contact-nav-button">
+
             View Cars
+
         </a>
+
+
+        <!-- MOBILE MENU -->
 
         <button
             class="contact-menu"
@@ -1030,7 +1166,10 @@
 
         <h1>
             Let's Talk About
-            <span>Your Next Drive.</span>
+
+            <span>
+                Your Next Drive.
+            </span>
         </h1>
 
         <p class="contact-hero-text">
@@ -1063,7 +1202,10 @@
 
             <h2>
                 We're Here To
-                <span>Help.</span>
+
+                <span>
+                    Help.
+                </span>
             </h2>
 
             <p class="contact-intro">
@@ -1079,7 +1221,9 @@
                 <div class="contact-card">
 
                     <div class="contact-card-icon">
+
                         <i class="fa-solid fa-car"></i>
+
                     </div>
 
                     <div>
@@ -1101,7 +1245,9 @@
                 <div class="contact-card">
 
                     <div class="contact-card-icon">
+
                         <i class="fa-solid fa-calendar-check"></i>
+
                     </div>
 
                     <div>
@@ -1123,7 +1269,9 @@
                 <div class="contact-card">
 
                     <div class="contact-card-icon">
+
                         <i class="fa-solid fa-comments"></i>
+
                     </div>
 
                     <div>
@@ -1159,7 +1307,10 @@
 
                 <h2>
                     How Can We
-                    <span>Help?</span>
+
+                    <span>
+                        Help?
+                    </span>
                 </h2>
 
                 <p>
@@ -1170,7 +1321,9 @@
             </div>
 
 
-            <form class="contact-form" id="contactForm">
+            <form
+                class="contact-form"
+                id="contactForm">
 
 
                 <div class="form-row">
@@ -1215,7 +1368,9 @@
                         Vehicle of Interest
                     </label>
 
-                    <select id="vehicle" name="vehicle">
+                    <select
+                        id="vehicle"
+                        name="vehicle">
 
                         <option value="">
                             Select a vehicle
@@ -1248,7 +1403,9 @@
                         Enquiry Type
                     </label>
 
-                    <select id="subject" name="subject">
+                    <select
+                        id="subject"
+                        name="subject">
 
                         <option value="">
                             Select an enquiry
@@ -1326,12 +1483,20 @@
         <div class="footer-grid">
 
 
+            <!-- FOOTER ABOUT -->
+
             <div class="footer-about">
 
-                <!-- FOOTER LOGO -->
-                <a href="index.html" class="footer-logo">
-                    <img src="images/logo.png" alt="Isora Luxe">
+                <a
+                    href="index.html"
+                    class="footer-logo">
+
+                    <img
+                        src="images/logo.png"
+                        alt="Isora Luxe">
+
                 </a>
+
 
                 <p>
                     Exceptional cars. Exceptional service.
@@ -1339,24 +1504,41 @@
                     around you.
                 </p>
 
+
                 <div class="social-links">
 
-                    <a href="#" aria-label="Facebook">
+                    <a
+                        href="#"
+                        aria-label="Facebook">
+
                         <i class="fa-brands fa-facebook-f"></i>
+
                     </a>
 
-                    <a href="#" aria-label="Instagram">
+
+                    <a
+                        href="#"
+                        aria-label="Instagram">
+
                         <i class="fa-brands fa-instagram"></i>
+
                     </a>
 
-                    <a href="#" aria-label="X">
+
+                    <a
+                        href="#"
+                        aria-label="X">
+
                         <i class="fa-brands fa-x-twitter"></i>
+
                     </a>
 
                 </div>
 
             </div>
 
+
+            <!-- EXPLORE -->
 
             <div>
 
@@ -1387,6 +1569,8 @@
             </div>
 
 
+            <!-- SERVICES -->
+
             <div>
 
                 <h4 class="footer-title">
@@ -1416,6 +1600,8 @@
             </div>
 
 
+            <!-- ISORA LUXE -->
+
             <div>
 
                 <h4 class="footer-title">
@@ -1433,6 +1619,8 @@
 
         </div>
 
+
+        <!-- FOOTER BOTTOM -->
 
         <div class="footer-bottom">
 
@@ -1459,7 +1647,10 @@
 
     document.addEventListener("DOMContentLoaded", function () {
 
-        /* CONTACT FORM */
+
+        /* =================================================
+           CONTACT FORM
+        ================================================= */
 
         const form =
             document.getElementById("contactForm");
@@ -1470,23 +1661,28 @@
 
         if (form) {
 
-            form.addEventListener("submit", function (event) {
+            form.addEventListener(
+                "submit",
+                function (event) {
 
-                event.preventDefault();
+                    event.preventDefault();
 
-                formMessage.textContent =
-                    "Thank you. Your message has been received.";
+                    formMessage.textContent =
+                        "Thank you. Your message has been received.";
 
-                formMessage.classList.add("success");
+                    formMessage.classList.add("success");
 
-                form.reset();
+                    form.reset();
 
-            });
+                }
+            );
 
         }
 
 
-        /* MOBILE MENU */
+        /* =================================================
+           MOBILE MENU
+        ================================================= */
 
         const menuButton =
             document.querySelector(".contact-menu");
@@ -1497,24 +1693,80 @@
 
         if (menuButton && nav) {
 
-            menuButton.addEventListener("click", function () {
+            menuButton.addEventListener(
+                "click",
+                function () {
 
-                nav.classList.toggle("mobile-open");
+                    nav.classList.toggle(
+                        "mobile-open"
+                    );
 
-                const icon =
-                    menuButton.querySelector("i");
 
-                if (nav.classList.contains("mobile-open")) {
+                    const icon =
+                        menuButton.querySelector("i");
 
-                    icon.classList.remove("fa-bars");
-                    icon.classList.add("fa-xmark");
 
-                } else {
+                    if (
+                        nav.classList.contains(
+                            "mobile-open"
+                        )
+                    ) {
 
-                    icon.classList.remove("fa-xmark");
-                    icon.classList.add("fa-bars");
+                        icon.classList.remove(
+                            "fa-bars"
+                        );
+
+                        icon.classList.add(
+                            "fa-xmark"
+                        );
+
+                    } else {
+
+                        icon.classList.remove(
+                            "fa-xmark"
+                        );
+
+                        icon.classList.add(
+                            "fa-bars"
+                        );
+
+                    }
 
                 }
+            );
+
+
+            /* CLOSE MENU AFTER CLICKING A LINK */
+
+            const navLinks =
+                nav.querySelectorAll("a");
+
+
+            navLinks.forEach(function (link) {
+
+                link.addEventListener(
+                    "click",
+                    function () {
+
+                        nav.classList.remove(
+                            "mobile-open"
+                        );
+
+
+                        const icon =
+                            menuButton.querySelector("i");
+
+
+                        icon.classList.remove(
+                            "fa-xmark"
+                        );
+
+                        icon.classList.add(
+                            "fa-bars"
+                        );
+
+                    }
+                );
 
             });
 
@@ -1526,5 +1778,5 @@
 
 
 </body>
-</html>
 
+</html>
