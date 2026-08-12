@@ -1,0 +1,1808 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>About | Isora Luxe</title>
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        :root {
+            --black: #111315;
+            --dark: #181a1d;
+            --charcoal: #24272b;
+
+            --cream: #f7f5f0;
+            --warm: #eeece6;
+            --white: #ffffff;
+
+            --text: #17181a;
+            --muted: #777873;
+
+            --gold: #b89b62;
+            --gold-light: #d1b982;
+
+            --border: #dfddd7;
+        }
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+            font-family: "Inter", sans-serif;
+            background: var(--cream);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+
+        a {
+            text-decoration: none;
+        }
+
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        .navbar {
+            width: 100%;
+            height: 78px;
+
+            padding: 0 5%;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            background: #ffffff;
+
+            border-bottom: 1px solid var(--border);
+
+            position: relative;
+            z-index: 100;
+        }
+
+
+        /* LOGO IMAGE */
+
+        .logo {
+            display: flex;
+            align-items: center;
+
+            flex-shrink: 0;
+        }
+
+
+        .logo img {
+            width: 125px;
+            height: auto;
+
+            display: block;
+
+            object-fit: contain;
+        }
+
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            gap: 38px;
+
+            margin-left: auto;
+            margin-right: 35px;
+        }
+
+
+        /* GOLDEN NAVIGATION LINKS */
+
+        .nav-links a {
+            position: relative;
+
+            color: var(--gold);
+
+            font-size: 13px;
+            font-weight: 600;
+
+            transition: color 0.25s ease;
+        }
+
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--gold-light);
+        }
+
+
+        .nav-links a.active::after {
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            bottom: -9px;
+
+            width: 100%;
+            height: 2px;
+
+            background: var(--gold);
+        }
+
+
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            min-height: 42px;
+
+            padding: 0 20px;
+
+            background: var(--black);
+            color: white;
+
+            font-size: 12px;
+            font-weight: 700;
+
+            border-radius: 3px;
+
+            transition: 0.25s ease;
+        }
+
+
+        .nav-btn:hover {
+            background: var(--gold);
+            color: white;
+        }
+
+
+        .menu-btn {
+            display: none;
+
+            border: none;
+            background: transparent;
+
+            font-size: 22px;
+
+            cursor: pointer;
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .about-hero {
+            min-height: 620px;
+
+            position: relative;
+
+            display: flex;
+            align-items: center;
+
+            background:
+                linear-gradient(
+                    110deg,
+                    #090a0b 0%,
+                    #151719 55%,
+                    #25282b 100%
+                );
+
+            overflow: hidden;
+        }
+
+
+        .about-hero::before {
+            content: "";
+
+            position: absolute;
+
+            width: 650px;
+            height: 650px;
+
+            right: -250px;
+            top: -200px;
+
+            border: 1px solid rgba(184,155,98,0.18);
+
+            border-radius: 50%;
+        }
+
+
+        .about-hero::after {
+            content: "";
+
+            position: absolute;
+
+            width: 350px;
+            height: 350px;
+
+            right: 80px;
+            bottom: -250px;
+
+            border: 1px solid rgba(255,255,255,0.05);
+
+            border-radius: 50%;
+        }
+
+
+        .about-hero-overlay {
+            position: absolute;
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(0,0,0,0.35),
+                    transparent
+                );
+        }
+
+
+        .about-hero-content {
+            width: min(1180px, 90%);
+
+            margin: 0 auto;
+
+            position: relative;
+
+            z-index: 2;
+
+            color: white;
+        }
+
+
+        .section-label {
+            margin-bottom: 15px;
+
+            color: var(--gold-light);
+
+            font-size: 10px;
+            font-weight: 800;
+
+            letter-spacing: 2.5px;
+
+            text-transform: uppercase;
+        }
+
+
+        .about-hero h1 {
+            max-width: 700px;
+
+            margin-bottom: 22px;
+
+            font-family: "Montserrat", sans-serif;
+
+            font-size: clamp(48px, 7vw, 78px);
+
+            line-height: 1;
+
+            letter-spacing: -2px;
+        }
+
+
+        .about-hero h1 span {
+            color: var(--gold-light);
+            font-weight: 500;
+        }
+
+
+        .hero-description {
+            max-width: 570px;
+
+            margin-bottom: 32px;
+
+            color: rgba(255,255,255,0.72);
+
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+
+        .primary-btn,
+        .secondary-btn {
+            min-height: 50px;
+
+            padding: 0 23px;
+
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            gap: 10px;
+
+            border-radius: 3px;
+
+            font-size: 12px;
+            font-weight: 700;
+
+            transition: 0.25s ease;
+        }
+
+
+        .primary-btn {
+            background: var(--gold);
+            color: white;
+        }
+
+
+        .primary-btn:hover {
+            background: var(--gold-light);
+            color: var(--black);
+
+            transform: translateY(-2px);
+        }
+
+
+        .secondary-btn {
+            border: 1px solid rgba(255,255,255,0.35);
+
+            background: rgba(255,255,255,0.04);
+
+            color: white;
+        }
+
+
+        .secondary-btn:hover {
+            background: white;
+            color: var(--black);
+
+            transform: translateY(-2px);
+        }
+
+
+        /* =====================================================
+           STORY
+        ===================================================== */
+
+        .about-section {
+            width: min(1180px, 90%);
+
+            margin: 0 auto;
+
+            padding: 110px 0;
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 90px;
+
+            align-items: center;
+        }
+
+
+        .about-image {
+            position: relative;
+
+            min-height: 500px;
+        }
+
+
+        .about-image img {
+            width: 88%;
+            height: 470px;
+
+            display: block;
+
+            object-fit: cover;
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+
+        .image-frame {
+            position: absolute;
+
+            width: 88%;
+            height: 470px;
+
+            top: 28px;
+            left: 28px;
+
+            border: 1px solid var(--gold);
+
+            z-index: 1;
+        }
+
+
+        .experience-badge {
+            position: absolute;
+
+            right: 0;
+            bottom: 20px;
+
+            width: 145px;
+            height: 145px;
+
+            display: flex;
+            flex-direction: column;
+
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            background: var(--black);
+
+            color: white;
+
+            z-index: 4;
+
+            border: 4px solid var(--cream);
+        }
+
+
+        .experience-badge strong {
+            font-family: "Montserrat", sans-serif;
+
+            font-size: 31px;
+
+            color: var(--gold-light);
+        }
+
+
+        .experience-badge span {
+            margin-top: 5px;
+
+            font-size: 10px;
+
+            line-height: 1.5;
+
+            color: #aaa;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.8px;
+        }
+
+
+        .about-content h2 {
+            margin-bottom: 20px;
+
+            font-family: "Montserrat", sans-serif;
+
+            font-size: clamp(34px, 4vw, 52px);
+
+            line-height: 1.1;
+
+            letter-spacing: -1.5px;
+        }
+
+
+        .about-content h2 span {
+            color: #777;
+
+            font-weight: 400;
+        }
+
+
+        .about-intro {
+            margin-bottom: 22px;
+
+            color: #333;
+
+            font-size: 17px;
+
+            line-height: 1.8;
+
+            font-weight: 500;
+        }
+
+
+        .about-content > p:not(.about-intro) {
+            margin-bottom: 16px;
+
+            color: var(--muted);
+
+            font-size: 13px;
+
+            line-height: 1.9;
+        }
+
+
+        .about-content .primary-btn {
+            margin-top: 12px;
+        }
+
+
+        /* =====================================================
+           STATS
+        ===================================================== */
+
+        .stats-section {
+            width: min(1180px, 90%);
+
+            margin: 0 auto;
+
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            background: white;
+
+            border: 1px solid var(--border);
+
+            box-shadow: 0 18px 50px rgba(0,0,0,0.06);
+        }
+
+
+        .stat {
+            padding: 34px 20px;
+
+            text-align: center;
+
+            border-right: 1px solid var(--border);
+        }
+
+
+        .stat:last-child {
+            border-right: none;
+        }
+
+
+        .stat-icon {
+            width: 48px;
+            height: 48px;
+
+            margin: 0 auto 15px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: var(--black);
+
+            color: var(--gold-light);
+        }
+
+
+        .stat strong {
+            display: block;
+
+            margin-bottom: 6px;
+
+            font-family: "Montserrat", sans-serif;
+
+            font-size: 27px;
+        }
+
+
+        .stat span {
+            color: var(--muted);
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            letter-spacing: 1px;
+
+            text-transform: uppercase;
+        }
+
+
+        /* =====================================================
+           VALUES
+        ===================================================== */
+
+        .values-section {
+            padding: 110px 5%;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    var(--cream),
+                    #eae7df
+                );
+        }
+
+
+        .section-heading {
+            width: min(1180px, 100%);
+
+            margin: 0 auto 55px;
+
+            display: flex;
+
+            align-items: end;
+
+            justify-content: space-between;
+
+            gap: 40px;
+        }
+
+
+        .section-heading h2 {
+            font-family: "Montserrat", sans-serif;
+
+            font-size: clamp(34px, 4vw, 50px);
+
+            line-height: 1.1;
+
+            letter-spacing: -1.5px;
+        }
+
+
+        .section-heading h2 span {
+            color: #777;
+
+            font-weight: 400;
+        }
+
+
+        .heading-description {
+            max-width: 430px;
+
+            color: var(--muted);
+
+            font-size: 13px;
+
+            line-height: 1.8;
+        }
+
+
+        .values-grid {
+            width: min(1180px, 100%);
+
+            margin: 0 auto;
+
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 18px;
+        }
+
+
+        .value-card {
+            min-height: 310px;
+
+            padding: 32px;
+
+            background: white;
+
+            border: 1px solid var(--border);
+
+            position: relative;
+
+            overflow: hidden;
+
+            transition: 0.3s ease;
+        }
+
+
+        .value-card::after {
+            content: "";
+
+            position: absolute;
+
+            width: 150px;
+            height: 150px;
+
+            right: -75px;
+            bottom: -75px;
+
+            border: 1px solid rgba(184,155,98,0.2);
+
+            border-radius: 50%;
+        }
+
+
+        .value-card:hover {
+            transform: translateY(-7px);
+
+            box-shadow: 0 22px 45px rgba(0,0,0,0.09);
+        }
+
+
+        .value-icon {
+            width: 52px;
+            height: 52px;
+
+            margin-bottom: 28px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            background: var(--black);
+
+            color: var(--gold-light);
+
+            border-radius: 50%;
+        }
+
+
+        .value-number {
+            display: block;
+
+            margin-bottom: 10px;
+
+            color: #aaa;
+
+            font-size: 10px;
+
+            font-weight: 800;
+
+            letter-spacing: 1px;
+        }
+
+
+        .value-card h3 {
+            margin-bottom: 12px;
+
+            font-family: "Montserrat", sans-serif;
+
+            font-size: 20px;
+        }
+
+
+        .value-card p {
+            color: var(--muted);
+
+            font-size: 13px;
+
+            line-height: 1.8;
+        }
+
+
+        /* =====================================================
+           CTA
+        ===================================================== */
+
+        .about-cta {
+            padding: 110px 5%;
+
+            background: #ffffff;
+
+            color: var(--black);
+
+            text-align: center;
+
+            position: relative;
+
+            overflow: hidden;
+
+            border-top: 1px solid var(--border);
+        }
+
+
+        .about-cta::before {
+            content: "";
+
+            position: absolute;
+
+            width: 550px;
+            height: 550px;
+
+            top: -400px;
+            right: -100px;
+
+            border: 1px solid rgba(184,155,98,0.15);
+
+            border-radius: 50%;
+        }
+
+
+        .cta-content {
+            width: min(750px, 100%);
+
+            margin: 0 auto;
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+
+        .about-cta h2 {
+            margin-bottom: 18px;
+
+            font-family: "Montserrat", sans-serif;
+
+            font-size: clamp(36px, 5vw, 58px);
+
+            line-height: 1.1;
+
+            letter-spacing: -1.5px;
+
+            color: var(--black);
+        }
+
+
+        .about-cta h2 span {
+            color: var(--gold);
+
+            font-weight: 400;
+        }
+
+
+        .about-cta p:not(.section-label) {
+            max-width: 560px;
+
+            margin: 0 auto 30px;
+
+            color: var(--muted);
+
+            font-size: 14px;
+
+            line-height: 1.8;
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        .footer {
+            width: 100%;
+
+            background: #0c0d0f;
+
+            color: white;
+
+            padding: 70px 5% 0;
+        }
+
+
+        .footer-grid {
+            width: min(1180px, 100%);
+
+            margin: 0 auto;
+
+            display: grid;
+
+            grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+
+            gap: 60px;
+
+            padding-bottom: 55px;
+        }
+
+
+        .footer-about .logo {
+            display: inline-flex;
+
+            margin-bottom: 18px;
+        }
+
+
+        /* FOOTER LOGO */
+
+        .footer-about .logo img {
+            width: 135px;
+
+            height: auto;
+
+            display: block;
+        }
+
+
+        .footer-about > p {
+            max-width: 300px;
+
+            color: #888;
+
+            font-size: 13px;
+
+            line-height: 1.8;
+        }
+
+
+        .social-links {
+            display: flex;
+
+            gap: 10px;
+
+            margin-top: 22px;
+        }
+
+
+        .social-links a {
+            width: 38px;
+            height: 38px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border: 1px solid #333;
+
+            color: #aaa;
+
+            border-radius: 50%;
+
+            transition: 0.25s ease;
+        }
+
+
+        .social-links a:hover {
+            background: var(--gold);
+
+            border-color: var(--gold);
+
+            color: white;
+        }
+
+
+        .footer-column {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 12px;
+        }
+
+
+        .footer-column h4 {
+            margin-bottom: 8px;
+
+            font-family: "Montserrat", sans-serif;
+
+            font-size: 14px;
+        }
+
+
+        .footer-column a {
+            color: #888;
+
+            font-size: 12px;
+
+            transition: color 0.2s ease;
+        }
+
+
+        .footer-column a:hover {
+            color: var(--gold-light);
+        }
+
+
+        .footer-column p {
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 10px;
+
+            color: #888;
+
+            font-size: 12px;
+
+            line-height: 1.6;
+        }
+
+
+        .footer-column p i {
+            color: var(--gold-light);
+
+            margin-top: 3px;
+
+            min-width: 14px;
+        }
+
+
+        .footer-bottom {
+            width: min(1180px, 100%);
+
+            margin: 0 auto;
+
+            padding: 22px 0;
+
+            border-top: 1px solid #25272a;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+        }
+
+
+        .footer-bottom p {
+            color: #666;
+
+            font-size: 11px;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 950px) {
+
+            .nav-links {
+                gap: 22px;
+
+                margin-right: 20px;
+            }
+
+
+            .about-section {
+                grid-template-columns: 1fr;
+
+                gap: 60px;
+            }
+
+
+            .about-image {
+                max-width: 650px;
+
+                width: 100%;
+
+                margin: 0 auto;
+            }
+
+
+            .stats-section {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+
+            .stat:nth-child(2) {
+                border-right: none;
+            }
+
+
+            .stat:nth-child(-n+2) {
+                border-bottom: 1px solid var(--border);
+            }
+
+
+            .values-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+
+        @media (max-width: 700px) {
+
+            .navbar {
+                height: 70px;
+            }
+
+
+            .logo img {
+                width: 110px;
+            }
+
+
+            .nav-links,
+            .nav-btn {
+                display: none;
+            }
+
+
+            .menu-btn {
+                display: block;
+            }
+
+
+            .about-hero {
+                min-height: 560px;
+            }
+
+
+            .about-hero h1 {
+                letter-spacing: -1px;
+            }
+
+
+            .about-section {
+                padding: 75px 0;
+            }
+
+
+            .about-image {
+                min-height: 390px;
+            }
+
+
+            .about-image img {
+                width: 88%;
+
+                height: 370px;
+            }
+
+
+            .image-frame {
+                width: 88%;
+
+                height: 370px;
+            }
+
+
+            .experience-badge {
+                width: 120px;
+                height: 120px;
+
+                bottom: 10px;
+            }
+
+
+            .experience-badge strong {
+                font-size: 25px;
+            }
+
+
+            .section-heading {
+                display: block;
+            }
+
+
+            .heading-description {
+                margin-top: 20px;
+            }
+
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            .values-section {
+                padding: 75px 5%;
+            }
+
+
+            .about-cta {
+                padding: 80px 5%;
+            }
+
+
+            .footer {
+                padding-top: 55px;
+            }
+
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+
+                gap: 35px;
+            }
+
+
+            .footer-bottom {
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+        }
+
+
+        @media (max-width: 480px) {
+
+            .logo img {
+                width: 100px;
+            }
+
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+
+            .primary-btn,
+            .secondary-btn {
+                width: 100%;
+            }
+
+
+            .stats-section {
+                grid-template-columns: 1fr;
+            }
+
+
+            .stat {
+                border-right: none !important;
+
+                border-bottom: 1px solid var(--border);
+            }
+
+
+            .stat:last-child {
+                border-bottom: none;
+            }
+
+
+            .about-image img,
+            .image-frame {
+                width: 92%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<header class="navbar">
+
+    <!-- LOGO IMAGE -->
+    <a href="index.html" class="logo">
+        <img src="images/logo.png" alt="Isora Luxe Logo">
+    </a>
+
+
+    <nav class="nav-links">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="cars.html">
+            Cars
+        </a>
+
+        <a href="about.html" class="active">
+            About
+        </a>
+
+        <a href="contact.html">
+            Contact
+        </a>
+
+    </nav>
+
+
+    <a href="contact.html" class="nav-btn">
+        Get in Touch
+    </a>
+
+
+    <button class="menu-btn" type="button" aria-label="Open menu">
+        <i class="fa-solid fa-bars"></i>
+    </button>
+
+</header>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="about-hero">
+
+    <div class="about-hero-overlay"></div>
+
+
+    <div class="about-hero-content">
+
+        <p class="section-label">
+            About Isora Luxe
+        </p>
+
+
+        <h1>
+            Driven By
+            <span>Passion.</span>
+        </h1>
+
+
+        <p class="hero-description">
+            Where exceptional vehicles meet exceptional service.
+            Discover a better way to find your next car.
+        </p>
+
+
+        <div class="hero-buttons">
+
+            <a href="cars.html" class="primary-btn">
+                Explore Cars
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+
+            <a href="contact.html" class="secondary-btn">
+                Contact Us
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     STORY
+===================================================== -->
+
+<section class="about-section">
+
+    <div class="about-image">
+
+        <div class="image-frame"></div>
+
+
+        <img
+            src="images/car2.jpg"
+            alt="Luxury car at Isora Luxe">
+
+
+        <div class="experience-badge">
+
+            <strong>10+</strong>
+
+            <span>
+                Years of<br>
+                Experience
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div class="about-content">
+
+        <p class="section-label">
+            Our Story
+        </p>
+
+
+        <h2>
+            We Don't Just
+            <span>Sell Cars.</span>
+        </h2>
+
+
+        <p class="about-intro">
+            We create experiences that make buying your next
+            car something to look forward to.
+        </p>
+
+
+        <p>
+            Isora Luxe was built around a simple idea:
+            buying a car should be exciting, transparent and
+            completely personal.
+        </p>
+
+
+        <p>
+            From luxury sedans to powerful SUVs and performance
+            cars, every vehicle in our collection is carefully
+            selected for quality, style and reliability.
+        </p>
+
+
+        <p>
+            Our team is committed to providing a premium
+            experience from the moment you walk into our
+            showroom until the moment you drive away.
+        </p>
+
+
+        <a href="cars.html" class="primary-btn">
+            Explore Our Cars
+            <i class="fa-solid fa-arrow-right"></i>
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     STATS
+===================================================== -->
+
+<section class="stats-section">
+
+    <div class="stat">
+
+        <div class="stat-icon">
+            <i class="fa-solid fa-calendar"></i>
+        </div>
+
+        <strong>10+</strong>
+
+        <span>
+            Years Experience
+        </span>
+
+    </div>
+
+
+    <div class="stat">
+
+        <div class="stat-icon">
+            <i class="fa-solid fa-car"></i>
+        </div>
+
+        <strong>2,500+</strong>
+
+        <span>
+            Cars Sold
+        </span>
+
+    </div>
+
+
+    <div class="stat">
+
+        <div class="stat-icon">
+            <i class="fa-solid fa-face-smile"></i>
+        </div>
+
+        <strong>98%</strong>
+
+        <span>
+            Happy Customers
+        </span>
+
+    </div>
+
+
+    <div class="stat">
+
+        <div class="stat-icon">
+            <i class="fa-solid fa-headset"></i>
+        </div>
+
+        <strong>24/7</strong>
+
+        <span>
+            Customer Support
+        </span>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     VALUES
+===================================================== -->
+
+<section class="values-section">
+
+    <div class="section-heading">
+
+        <div>
+
+            <p class="section-label">
+                Our Values
+            </p>
+
+
+            <h2>
+                What We
+                <span>Believe.</span>
+            </h2>
+
+        </div>
+
+
+        <p class="heading-description">
+            The principles behind every vehicle we sell
+            and every customer relationship we build.
+        </p>
+
+    </div>
+
+
+    <div class="values-grid">
+
+        <div class="value-card">
+
+            <div class="value-icon">
+                <i class="fa-solid fa-gem"></i>
+            </div>
+
+
+            <span class="value-number">
+                01
+            </span>
+
+
+            <h3>
+                Excellence
+            </h3>
+
+
+            <p>
+                We believe every detail matters, from the
+                vehicles we select to the service we provide.
+            </p>
+
+        </div>
+
+
+        <div class="value-card">
+
+            <div class="value-icon">
+                <i class="fa-solid fa-handshake"></i>
+            </div>
+
+
+            <span class="value-number">
+                02
+            </span>
+
+
+            <h3>
+                Trust
+            </h3>
+
+
+            <p>
+                Honest communication and transparent pricing
+                are at the heart of everything we do.
+            </p>
+
+        </div>
+
+
+        <div class="value-card">
+
+            <div class="value-icon">
+                <i class="fa-solid fa-heart"></i>
+            </div>
+
+
+            <span class="value-number">
+                03
+            </span>
+
+
+            <h3>
+                Passion
+            </h3>
+
+
+            <p>
+                We love cars, and we want every customer to
+                experience the same excitement we do.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     CTA
+===================================================== -->
+
+<section class="about-cta">
+
+    <div class="cta-content">
+
+        <p class="section-label">
+            Explore Isora Luxe
+        </p>
+
+
+        <h2>
+            Discover Your
+            <span>Next Car.</span>
+        </h2>
+
+
+        <p>
+            Explore our collection of carefully selected
+            vehicles and find the one that's right for you.
+        </p>
+
+
+        <a href="cars.html" class="primary-btn">
+            Browse Our Collection
+            <i class="fa-solid fa-arrow-right"></i>
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer">
+
+    <div class="footer-grid">
+
+        <div class="footer-about">
+
+            <!-- FOOTER LOGO IMAGE -->
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="Isora Luxe Logo">
+            </a>
+
+
+            <p>
+                Exceptional cars. Exceptional service.
+                Your journey starts with Isora Luxe.
+            </p>
+
+
+            <div class="social-links">
+
+                <a href="#" aria-label="Facebook">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+
+
+                <a href="#" aria-label="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+
+
+                <a href="#" aria-label="X">
+                    <i class="fa-brands fa-x-twitter"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h4>
+                Explore
+            </h4>
+
+
+            <a href="index.html">
+                Home
+            </a>
+
+
+            <a href="cars.html">
+                Cars
+            </a>
+
+
+            <a href="about.html">
+                About
+            </a>
+
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h4>
+                Services
+            </h4>
+
+
+            <a href="contact.html">
+                Test Drive
+            </a>
+
+
+            <a href="contact.html">
+                Financing
+            </a>
+
+
+            <a href="contact.html">
+                Trade-In
+            </a>
+
+
+            <a href="contact.html">
+                Car Service
+            </a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h4>
+                Contact
+            </h4>
+
+
+            <p>
+                <i class="fa-solid fa-location-dot"></i>
+                Dhaka, Bangladesh
+            </p>
+
+
+            <p>
+                <i class="fa-solid fa-phone"></i>
+                +880 1XXX-XXXXXX
+            </p>
+
+
+            <p>
+                <i class="fa-solid fa-envelope"></i>
+                N/A
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 Isora Luxe. All Rights Reserved.
+        </p>
+
+
+        <p>
+            Premium Automotive Collection.
+        </p>
+
+    </div>
+
+</footer>
+
+
+<script src="js/script.js"></script>
+
+</body>
+
+</html>
+```

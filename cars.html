@@ -1,0 +1,1921 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cars | Isora Luxe</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            background: #f5f5f3;
+            color: #111;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            background: #fff;
+            border-bottom: 1px solid #e8e8e8;
+            padding: 15px 6%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        /* SAME LOGO AS OTHER PAGES */
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #111;
+        }
+
+        .logo img {
+            width: 58px;
+            height: 58px;
+            object-fit: contain;
+            display: block;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            color: #C9A227;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            position: relative;
+            padding-bottom: 6px;
+            transition: color 0.2s ease;
+        }
+
+        nav a:hover {
+            color: #A88416;
+        }
+
+        /* GOLDEN ACTIVE UNDERLINE */
+
+        nav a.active::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 2px;
+            background: #C9A227;
+        }
+
+        /* =========================
+           PAGE
+        ========================= */
+
+        .page {
+            max-width: 1400px;
+            margin: auto;
+            padding: 70px 6%;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .eyebrow {
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 11px;
+            font-weight: 600;
+            color: #777;
+            margin-bottom: 12px;
+        }
+
+        .page-header h1 {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(38px, 5vw, 64px);
+            line-height: 1.05;
+            margin-bottom: 15px;
+        }
+
+        .page-header p {
+            max-width: 650px;
+            margin: auto;
+            color: #777;
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+        /* =========================
+           CONTROLS
+        ========================= */
+
+        .controls {
+            background: #fff;
+            padding: 18px;
+            border: 1px solid #e8e8e8;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-box span {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #777;
+            font-size: 18px;
+        }
+
+        .controls input,
+        .controls select {
+            width: 100%;
+            height: 50px;
+            border: 1px solid #ddd;
+            background: #fafafa;
+            padding: 0 16px;
+            font-family: inherit;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .controls input {
+            padding-left: 45px;
+        }
+
+        .controls input:focus,
+        .controls select:focus {
+            border-color: #111;
+            background: #fff;
+        }
+
+        /* =========================
+           RESULTS
+        ========================= */
+
+        .results-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .results-count {
+            font-size: 13px;
+            color: #777;
+        }
+
+        /* =========================
+           CAR GRID
+        ========================= */
+
+        .cars-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 28px;
+        }
+
+        .car-card {
+            background: #fff;
+            border: 1px solid #e7e7e7;
+            overflow: hidden;
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+        .car-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        /* =========================
+           IMAGE
+        ========================= */
+
+        .car-image {
+            height: 330px;
+            position: relative;
+            overflow: hidden;
+            background: #eee;
+        }
+
+        .car-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .car-card:hover .car-image img {
+            transform: scale(1.04);
+        }
+
+        .category-badge {
+            position: absolute;
+            top: 18px;
+            left: 18px;
+            background: rgba(255, 255, 255, 0.94);
+            padding: 8px 12px;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 700;
+        }
+
+        .favorite {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 42px;
+            height: 42px;
+            border: none;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.95);
+            cursor: pointer;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s ease;
+        }
+
+        .favorite:hover {
+            transform: scale(1.08);
+        }
+
+        .favorite.active {
+            color: #b00020;
+        }
+
+        /* =========================
+           CARD INFO
+        ========================= */
+
+        .car-info {
+            padding: 30px;
+        }
+
+        .car-brand {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #888;
+            font-weight: 700;
+            margin-bottom: 9px;
+        }
+
+        .car-name {
+            font-family: "Playfair Display", serif;
+            font-size: 29px;
+            line-height: 1.2;
+            margin-bottom: 12px;
+        }
+
+        .car-description {
+            color: #777;
+            font-size: 13px;
+            line-height: 1.7;
+            min-height: 45px;
+            margin-bottom: 25px;
+        }
+
+        /* =========================
+           SPECS
+        ========================= */
+
+        .specs {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 25px;
+        }
+
+        .spec {
+            padding: 14px 8px;
+            border-right: 1px solid #eee;
+        }
+
+        .spec:nth-child(3n) {
+            border-right: none;
+        }
+
+        .spec:nth-child(-n + 3) {
+            border-bottom: 1px solid #eee;
+        }
+
+        .spec-label {
+            display: block;
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #999;
+            margin-bottom: 5px;
+        }
+
+        .spec-value {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            color: #222;
+        }
+
+        /* =========================
+           PRICE
+        ========================= */
+
+        .price-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #888;
+            margin-bottom: 4px;
+        }
+
+        .price {
+            font-family: "Playfair Display", serif;
+            font-size: 27px;
+            font-weight: 600;
+            margin-bottom: 22px;
+        }
+
+        /* =========================
+           BUTTON
+        ========================= */
+
+        .details-btn {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #111;
+            color: #fff;
+            text-decoration: none;
+            padding: 16px 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background 0.2s ease;
+        }
+
+        .details-btn:hover {
+            background: #333;
+        }
+
+        .details-btn span {
+            font-size: 18px;
+        }
+
+        /* =========================
+           NO RESULTS
+        ========================= */
+
+        .no-results {
+            display: none;
+            text-align: center;
+            background: #fff;
+            border: 1px solid #e7e7e7;
+            padding: 70px 20px;
+        }
+
+        .no-results h2 {
+            font-family: "Playfair Display", serif;
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .no-results p {
+            color: #777;
+            font-size: 14px;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #111;
+            color: #fff;
+            margin-top: 70px;
+            padding: 50px 6% 25px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 50px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid #333;
+        }
+
+        .footer-brand h2 {
+            font-family: "Playfair Display", serif;
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .footer-brand p {
+            color: #aaa;
+            font-size: 13px;
+            line-height: 1.8;
+            max-width: 420px;
+        }
+
+        .footer-column h3 {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 18px;
+        }
+
+        .footer-column a {
+            display: block;
+            color: #aaa;
+            text-decoration: none;
+            font-size: 13px;
+            margin-bottom: 11px;
+        }
+
+        .footer-column a:hover {
+            color: #fff;
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: auto;
+            padding-top: 22px;
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .footer-bottom p {
+            color: #888;
+            font-size: 11px;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            header {
+                padding: 12px 5%;
+            }
+
+            .logo img {
+                width: 52px;
+                height: 52px;
+            }
+
+            nav {
+                gap: 15px;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .page {
+                padding: 50px 5%;
+            }
+
+            .controls {
+                grid-template-columns: 1fr;
+            }
+
+            .cars-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .car-image {
+                height: 300px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-brand {
+                grid-column: 1 / -1;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            nav {
+                display: none;
+            }
+
+            .logo img {
+                width: 48px;
+                height: 48px;
+            }
+
+            .page-header h1 {
+                font-size: 40px;
+            }
+
+            .car-info {
+                padding: 22px;
+            }
+
+            .car-image {
+                height: 240px;
+            }
+
+            .spec {
+                padding: 12px 5px;
+            }
+
+            .spec-value {
+                font-size: 11px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-brand {
+                grid-column: auto;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <!-- SAME LOGO FILE -->
+    <a href="index.html" class="logo">
+        <img src="images/logo.png" alt="Isora Luxe Logo">
+    </a>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="cars.html" class="active">Cars</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+</header>
+
+
+<main class="page">
+
+    <section class="page-header">
+
+        <div class="eyebrow">
+            Our Collection
+        </div>
+
+        <h1>
+            Exceptional Cars
+        </h1>
+
+        <p>
+            Discover a carefully selected collection of luxury,
+            performance and premium vehicles.
+        </p>
+
+    </section>
+
+
+    <section class="controls">
+
+        <div class="search-box">
+
+            <span>⌕</span>
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search by brand or car name..."
+                autocomplete="off"
+            >
+
+        </div>
+
+
+        <select id="categoryFilter">
+
+            <option value="all">
+                All Categories
+            </option>
+
+            <option value="Ultra Luxury">
+                Ultra Luxury
+            </option>
+
+            <option value="Luxury">
+                Luxury
+            </option>
+
+            <option value="Luxury SUV">
+                Luxury SUV
+            </option>
+
+            <option value="Sports">
+                Sports
+            </option>
+
+        </select>
+
+
+        <select id="sortSelect">
+
+            <option value="default">
+                Sort By
+            </option>
+
+            <option value="price-low">
+                Price: Low to High
+            </option>
+
+            <option value="price-high">
+                Price: High to Low
+            </option>
+
+            <option value="year-new">
+                Year: Newest
+            </option>
+
+            <option value="year-old">
+                Year: Oldest
+            </option>
+
+            <option value="mileage-low">
+                Mileage: Lowest
+            </option>
+
+        </select>
+
+    </section>
+
+
+    <div class="results-bar">
+
+        <div
+            class="results-count"
+            id="resultsCount"
+        >
+            8 vehicles
+        </div>
+
+    </div>
+
+
+    <section
+        class="cars-grid"
+        id="carsGrid"
+    >
+
+        <!-- BMW 5 SERIES -->
+
+        <article
+            class="car-card"
+            data-brand="BMW"
+            data-name="5 Series"
+            data-category="Luxury"
+            data-price="12500000"
+            data-year="2025"
+            data-mileage="8500"
+        >
+
+            <div class="car-image">
+
+                <img
+                    src="images/car1.jpg"
+                    alt="BMW 5 Series"
+                >
+
+                <div class="category-badge">
+                    Luxury
+                </div>
+
+                <button
+                    class="favorite"
+                    type="button"
+                    aria-label="Add BMW 5 Series to favorites"
+                >
+                    ♡
+                </button>
+
+            </div>
+
+
+            <div class="car-info">
+
+                <div class="car-brand">
+                    BMW
+                </div>
+
+                <h2 class="car-name">
+                    BMW 5 Series
+                </h2>
+
+                <p class="car-description">
+                    Elegant design, powerful performance and advanced
+                    technology for a refined luxury driving experience.
+                </p>
+
+
+                <div class="specs">
+
+                    <div class="spec">
+                        <span class="spec-label">Year</span>
+                        <span class="spec-value">2025</span>
+                    </div>
+
+                    <div class="spec">
+                        <span class="spec-label">Mileage</span>
+                        <span class="spec-value">8,500 km</span>
+                    </div>
+
+                    <div class="spec">
+                        <span class="spec-label">Engine</span>
+                        <span class="spec-value">2.0L Turbo</span>
+                    </div>
+
+                    <div class="spec">
+                        <span class="spec-label">Fuel</span>
+                        <span class="spec-value">Petrol</span>
+                    </div>
+
+                    <div class="spec">
+                        <span class="spec-label">Gearbox</span>
+                        <span class="spec-value">Automatic</span>
+                    </div>
+
+                    <div class="spec">
+                        <span class="spec-label">Seats</span>
+                        <span class="spec-value">5</span>
+                    </div>
+
+                </div>
+
+
+                <div class="price-label">
+                    Starting From
+                </div>
+
+                <div class="price">
+                    ৳1,25,00,000
+                </div>
+
+                <a
+                    href="car-details.html?id=1"
+                    class="details-btn"
+                >
+                    View Details
+                    <span>→</span>
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- ROLLS-ROYCE PHANTOM -->
+
+        <article
+            class="car-card"
+            data-brand="Rolls-Royce"
+            data-name="Phantom"
+            data-category="Ultra Luxury"
+            data-price="85000000"
+            data-year="2025"
+            data-mileage="4200"
+        >
+
+            <div class="car-image">
+
+                <img
+                    src="images/car2.jpg"
+                    alt="Rolls-Royce Phantom"
+                >
+
+                <div class="category-badge">
+                    Ultra Luxury
+                </div>
+
+                <button
+                    class="favorite"
+                    type="button"
+                    aria-label="Add Rolls-Royce Phantom to favorites"
+                >
+                    ♡
+                </button>
+
+            </div>
+
+
+            <div class="car-info">
+
+                <div class="car-brand">
+                    Rolls-Royce
+                </div>
+
+                <h2 class="car-name">
+                    Rolls-Royce Phantom
+                </h2>
+
+                <p class="car-description">
+                    The highest level of automotive luxury, combining
+                    handcrafted elegance with effortless performance.
+                </p>
+
+
+                <div class="specs">
+
+                    <div class="spec">
+                        <span class="spec-label">Year</span>
+                        <span class="spec-value">2025</span>
+                    </div>
+
+                    <div class="spec">
+                        <span class="spec-label">Mileage</span>
+                        <span class="spec-value">4,200 km</span>
+                    </div>
+
+                    <div class="spec">
+                        <span class="spec-label">Engine</span>
+                        <span class="spec-value">6.75L V12</span>
+                    </div>
+
+                    <div class="spec">
+                        <span class="spec-label">Fuel</span>
+                        <span class="spec-value">Petrol</span>
+                    </div>
+
+                    <div class="spec">
+                        <span class="spec-label">Gearbox</span>
+                        <span class="spec-value">Automatic</span>
+                    </div>
+
+                    <div class="spec">
+                        <span class="spec-label">Seats</span>
+                        <span class="spec-value">5</span>
+                    </div>
+
+                </div>
+
+
+                <div class="price-label">
+                    Starting From
+                </div>
+
+                <div class="price">
+                    ৳8,50,00,000
+                </div>
+
+                <a
+                    href="car-details.html?id=2"
+                    class="details-btn"
+                >
+                    View Details
+                    <span>→</span>
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- TOYOTA LAND CRUISER -->
+
+        <article
+            class="car-card"
+            data-brand="Toyota"
+            data-name="Land Cruiser"
+            data-category="Luxury SUV"
+            data-price="18500000"
+            data-year="2025"
+            data-mileage="11000"
+        >
+
+            <div class="car-image">
+
+                <img
+                    src="images/car3.jpg"
+                    alt="Toyota Land Cruiser"
+                >
+
+                <div class="category-badge">
+                    Luxury SUV
+                </div>
+
+                <button
+                    class="favorite"
+                    type="button"
+                    aria-label="Add Toyota Land Cruiser to favorites"
+                >
+                    ♡
+                </button>
+
+            </div>
+
+
+            <div class="car-info">
+
+                <div class="car-brand">
+                    Toyota
+                </div>
+
+                <h2 class="car-name">
+                    Toyota Land Cruiser
+                </h2>
+
+                <p class="car-description">
+                    Outstanding durability, comfort and off-road capability
+                    while maintaining a premium driving experience.
+                </p>
+
+
+                <div class="specs">
+
+                    <div class="spec">
+                        <span class="spec-label">Year</span>
+                        <span class="spec-value">2025</span>
+                    </div>
+
+                    <div class="spec">
+                        <span class="spec-label">Mileage</span>
+                        <span class="spec-value">11,000 km</span>
+                    </div>
+
+                    <div class="spec">
+                        <span class="spec-label">Engine</span>
+                        <span class="spec-value">3.3L V6</span>
+                    </div>
+
+                    <div class="spec">
+                        <span class="spec-label">Fuel</span>
+                        <span class="spec-value">Diesel</span>
+                    </div>
+
+                    <div class="spec">
+                        <span class="spec-label">Gearbox</span>
+                        <span class="spec-value">Automatic</span>
+                    </div>
+
+                    <div class="spec">
+                        <span class="spec-label">Seats</span>
+                        <span class="spec-value">7</span>
+                    </div>
+
+                </div>
+
+
+                <div class="price-label">
+                    Starting From
+                </div>
+
+                <div class="price">
+                    ৳1,85,00,000
+                </div>
+
+                <a
+                    href="car-details.html?id=3"
+                    class="details-btn"
+                >
+                    View Details
+                    <span>→</span>
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- TOYOTA SUPRA -->
+
+        <article
+            class="car-card"
+            data-brand="Toyota"
+            data-name="Supra"
+            data-category="Sports"
+            data-price="11000000"
+            data-year="2025"
+            data-mileage="6800"
+        >
+
+            <div class="car-image">
+
+                <img
+                    src="images/car4.jpg"
+                    alt="Toyota Supra"
+                >
+
+                <div class="category-badge">
+                    Sports
+                </div>
+
+                <button
+                    class="favorite"
+                    type="button"
+                    aria-label="Add Toyota Supra to favorites"
+                >
+                    ♡
+                </button>
+
+            </div>
+
+
+            <div class="car-info">
+
+                <div class="car-brand">
+                    Toyota
+                </div>
+
+                <h2 class="car-name">
+                    Toyota Supra
+                </h2>
+
+                <p class="car-description">
+                    Thrilling sports-car performance, sharp handling and
+                    iconic styling for an exciting driving experience.
+                </p>
+
+
+                <div class="specs">
+
+                    <div class="spec">
+                        <span class="spec-label">Year</span>
+                        <span class="spec-value">2025</span>
+                    </div>
+
+                    <div class="spec">
+                        <span class="spec-label">Mileage</span>
+                        <span class="spec-value">6,800 km</span>
+                    </div>
+
+                    <div class="spec">
+                        <span class="spec-label">Engine</span>
+                        <span class="spec-value">3.0L Turbo</span>
+                    </div>
+
+                    <div class="spec">
+                        <span class="spec-label">Fuel</span>
+                        <span class="spec-value">Petrol</span>
+                    </div>
+
+                    <div class="spec">
+                        <span class="spec-label">Gearbox</span>
+                        <span class="spec-value">Automatic</span>
+                    </div>
+
+                    <div class="spec">
+                        <span class="spec-label">Seats</span>
+                        <span class="spec-value">2</span>
+                    </div>
+
+                </div>
+
+
+                <div class="price-label">
+                    Starting From
+                </div>
+
+                <div class="price">
+                    ৳1,10,00,000
+                </div>
+
+                <a
+                    href="car-details.html?id=4"
+                    class="details-btn"
+                >
+                    View Details
+                    <span>→</span>
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- MERCEDES-BENZ G-CLASS -->
+
+        <article
+            class="car-card"
+            data-brand="Mercedes-Benz"
+            data-name="G-Class"
+            data-category="Luxury SUV"
+            data-price="28000000"
+            data-year="2025"
+            data-mileage="7200"
+        >
+
+            <div class="car-image">
+
+                <img
+                    src="images/car5.jpg"
+                    alt="Mercedes-Benz G-Class"
+                >
+
+                <div class="category-badge">
+                    Luxury SUV
+                </div>
+
+                <button
+                    class="favorite"
+                    type="button"
+                    aria-label="Add Mercedes-Benz G-Class to favorites"
+                >
+                    ♡
+                </button>
+
+            </div>
+
+
+            <div class="car-info">
+
+                <div class="car-brand">
+                    Mercedes-Benz
+                </div>
+
+                <h2 class="car-name">
+                    Mercedes-Benz G-Class
+                </h2>
+
+                <p class="car-description">
+                    Iconic design, commanding presence and refined luxury
+                    combined with legendary off-road capability.
+                </p>
+
+
+                <div class="specs">
+
+                    <div class="spec">
+                        <span class="spec-label">Year</span>
+                        <span class="spec-value">2025</span>
+                    </div>
+
+                    <div class="spec">
+                        <span class="spec-label">Mileage</span>
+                        <span class="spec-value">7,200 km</span>
+                    </div>
+
+                    <div class="spec">
+                        <span class="spec-label">Engine</span>
+                        <span class="spec-value">4.0L V8</span>
+                    </div>
+
+                    <div class="spec">
+                        <span class="spec-label">Fuel</span>
+                        <span class="spec-value">Petrol</span>
+                    </div>
+
+                    <div class="spec">
+                        <span class="spec-label">Gearbox</span>
+                        <span class="spec-value">Automatic</span>
+                    </div>
+
+                    <div class="spec">
+                        <span class="spec-label">Seats</span>
+                        <span class="spec-value">5</span>
+                    </div>
+
+                </div>
+
+
+                <div class="price-label">
+                    Starting From
+                </div>
+
+                <div class="price">
+                    ৳2,80,00,000
+                </div>
+
+                <a
+                    href="car-details.html?id=5"
+                    class="details-btn"
+                >
+                    View Details
+                    <span>→</span>
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- PORSCHE 911 -->
+
+        <article
+            class="car-card"
+            data-brand="Porsche"
+            data-name="911"
+            data-category="Sports"
+            data-price="17500000"
+            data-year="2025"
+            data-mileage="5400"
+        >
+
+            <div class="car-image">
+
+                <img
+                    src="images/car6.jpg"
+                    alt="Porsche 911"
+                >
+
+                <div class="category-badge">
+                    Sports
+                </div>
+
+                <button
+                    class="favorite"
+                    type="button"
+                    aria-label="Add Porsche 911 to favorites"
+                >
+                    ♡
+                </button>
+
+            </div>
+
+
+            <div class="car-info">
+
+                <div class="car-brand">
+                    Porsche
+                </div>
+
+                <h2 class="car-name">
+                    Porsche 911
+                </h2>
+
+                <p class="car-description">
+                    Timeless sports-car design with precise handling,
+                    exhilarating performance and everyday refinement.
+                </p>
+
+
+                <div class="specs">
+
+                    <div class="spec">
+                        <span class="spec-label">Year</span>
+                        <span class="spec-value">2025</span>
+                    </div>
+
+                    <div class="spec">
+                        <span class="spec-label">Mileage</span>
+                        <span class="spec-value">5,400 km</span>
+                    </div>
+
+                    <div class="spec">
+                        <span class="spec-label">Engine</span>
+                        <span class="spec-value">3.0L Turbo</span>
+                    </div>
+
+                    <div class="spec">
+                        <span class="spec-label">Fuel</span>
+                        <span class="spec-value">Petrol</span>
+                    </div>
+
+                    <div class="spec">
+                        <span class="spec-label">Gearbox</span>
+                        <span class="spec-value">Automatic</span>
+                    </div>
+
+                    <div class="spec">
+                        <span class="spec-label">Seats</span>
+                        <span class="spec-value">4</span>
+                    </div>
+
+                </div>
+
+
+                <div class="price-label">
+                    Starting From
+                </div>
+
+                <div class="price">
+                    ৳1,75,00,000
+                </div>
+
+                <a
+                    href="car-details.html?id=6"
+                    class="details-btn"
+                >
+                    View Details
+                    <span>→</span>
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- LAMBORGHINI HURACÁN -->
+
+        <article
+            class="car-card"
+            data-brand="Lamborghini"
+            data-name="Huracán"
+            data-category="Sports"
+            data-price="32000000"
+            data-year="2025"
+            data-mileage="3200"
+        >
+
+            <div class="car-image">
+
+                <img
+                    src="images/car7.jpg"
+                    alt="Lamborghini Huracán"
+                >
+
+                <div class="category-badge">
+                    Sports
+                </div>
+
+                <button
+                    class="favorite"
+                    type="button"
+                    aria-label="Add Lamborghini Huracán to favorites"
+                >
+                    ♡
+                </button>
+
+            </div>
+
+
+            <div class="car-info">
+
+                <div class="car-brand">
+                    Lamborghini
+                </div>
+
+                <h2 class="car-name">
+                    Lamborghini Huracán
+                </h2>
+
+                <p class="car-description">
+                    Dramatic Italian styling, breathtaking acceleration
+                    and an unmistakable V10 performance experience.
+                </p>
+
+
+                <div class="specs">
+
+                    <div class="spec">
+                        <span class="spec-label">Year</span>
+                        <span class="spec-value">2025</span>
+                    </div>
+
+                    <div class="spec">
+                        <span class="spec-label">Mileage</span>
+                        <span class="spec-value">3,200 km</span>
+                    </div>
+
+                    <div class="spec">
+                        <span class="spec-label">Engine</span>
+                        <span class="spec-value">5.2L V10</span>
+                    </div>
+
+                    <div class="spec">
+                        <span class="spec-label">Fuel</span>
+                        <span class="spec-value">Petrol</span>
+                    </div>
+
+                    <div class="spec">
+                        <span class="spec-label">Gearbox</span>
+                        <span class="spec-value">Automatic</span>
+                    </div>
+
+                    <div class="spec">
+                        <span class="spec-label">Seats</span>
+                        <span class="spec-value">2</span>
+                    </div>
+
+                </div>
+
+
+                <div class="price-label">
+                    Starting From
+                </div>
+
+                <div class="price">
+                    ৳3,20,00,000
+                </div>
+
+                <a
+                    href="car-details.html?id=7"
+                    class="details-btn"
+                >
+                    View Details
+                    <span>→</span>
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- ASTON MARTIN DB12 -->
+
+        <article
+            class="car-card"
+            data-brand="Aston Martin"
+            data-name="DB12"
+            data-category="Ultra Luxury"
+            data-price="30000000"
+            data-year="2025"
+            data-mileage="4100"
+        >
+
+            <div class="car-image">
+
+                <img
+                    src="images/car8.jpg"
+                    alt="Aston Martin DB12"
+                >
+
+                <div class="category-badge">
+                    Ultra Luxury
+                </div>
+
+                <button
+                    class="favorite"
+                    type="button"
+                    aria-label="Add Aston Martin DB12 to favorites"
+                >
+                    ♡
+                </button>
+
+            </div>
+
+
+            <div class="car-info">
+
+                <div class="car-brand">
+                    Aston Martin
+                </div>
+
+                <h2 class="car-name">
+                    Aston Martin DB12
+                </h2>
+
+                <p class="car-description">
+                    Sophisticated grand-touring luxury with elegant British
+                    craftsmanship and exhilarating performance.
+                </p>
+
+
+                <div class="specs">
+
+                    <div class="spec">
+                        <span class="spec-label">Year</span>
+                        <span class="spec-value">2025</span>
+                    </div>
+
+                    <div class="spec">
+                        <span class="spec-label">Mileage</span>
+                        <span class="spec-value">4,100 km</span>
+                    </div>
+
+                    <div class="spec">
+                        <span class="spec-label">Engine</span>
+                        <span class="spec-value">4.0L V8</span>
+                    </div>
+
+                    <div class="spec">
+                        <span class="spec-label">Fuel</span>
+                        <span class="spec-value">Petrol</span>
+                    </div>
+
+                    <div class="spec">
+                        <span class="spec-label">Gearbox</span>
+                        <span class="spec-value">Automatic</span>
+                    </div>
+
+                    <div class="spec">
+                        <span class="spec-label">Seats</span>
+                        <span class="spec-value">2+2</span>
+                    </div>
+
+                </div>
+
+
+                <div class="price-label">
+                    Starting From
+                </div>
+
+                <div class="price">
+                    ৳3,00,00,000
+                </div>
+
+                <a
+                    href="car-details.html?id=8"
+                    class="details-btn"
+                >
+                    View Details
+                    <span>→</span>
+                </a>
+
+            </div>
+
+        </article>
+
+    </section>
+
+
+    <!-- NO RESULTS -->
+
+    <div
+        class="no-results"
+        id="noResults"
+    >
+
+        <h2>
+            No cars found
+        </h2>
+
+        <p>
+            Try a different search or category.
+        </p>
+
+    </div>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="footer-content">
+
+        <div class="footer-brand">
+
+            <h2>
+                Isora Luxe
+            </h2>
+
+            <p>
+                Discover exceptional vehicles selected for luxury,
+                performance and an unforgettable driving experience.
+            </p>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h3>
+                Quick Links
+            </h3>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="cars.html">
+                Cars
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h3>
+                Contact
+            </h3>
+
+            <a href="mailto:info@prestigewheels.com">
+                N/A
+            </a>
+
+            <a href="tel:+8801234567890">
+                +880 ----------
+            </a>
+
+            <a href="contact.html">
+                Dhaka, Bangladesh
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 Isora Luxe. All rights reserved.
+        </p>
+
+        <p>
+            Luxury. Performance. Excellence.
+        </p>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+    /* =========================
+       ELEMENTS
+    ========================= */
+
+    const searchInput =
+        document.getElementById("searchInput");
+
+    const categoryFilter =
+        document.getElementById("categoryFilter");
+
+    const sortSelect =
+        document.getElementById("sortSelect");
+
+    const carsGrid =
+        document.getElementById("carsGrid");
+
+    const resultsCount =
+        document.getElementById("resultsCount");
+
+    const noResults =
+        document.getElementById("noResults");
+
+    const cars =
+        Array.from(
+            document.querySelectorAll(".car-card")
+        );
+
+
+    /* =========================
+       FILTER + SEARCH + SORT
+    ========================= */
+
+    function updateCars() {
+
+        const searchTerm =
+            searchInput.value
+                .toLowerCase()
+                .trim();
+
+        const selectedCategory =
+            categoryFilter.value;
+
+
+        let visibleCars =
+            cars.filter(function (car) {
+
+                const brand =
+                    car.dataset.brand
+                        .toLowerCase();
+
+                const name =
+                    car.dataset.name
+                        .toLowerCase();
+
+                const category =
+                    car.dataset.category;
+
+
+                const searchMatches =
+                    searchTerm === "" ||
+                    brand.includes(searchTerm) ||
+                    name.includes(searchTerm);
+
+
+                const categoryMatches =
+                    selectedCategory === "all" ||
+                    category === selectedCategory;
+
+
+                return (
+                    searchMatches &&
+                    categoryMatches
+                );
+
+            });
+
+
+        /* =========================
+           SORT
+        ========================= */
+
+        const sortType =
+            sortSelect.value;
+
+
+        visibleCars.sort(function (a, b) {
+
+            if (sortType === "price-low") {
+
+                return (
+                    Number(a.dataset.price) -
+                    Number(b.dataset.price)
+                );
+
+            }
+
+
+            if (sortType === "price-high") {
+
+                return (
+                    Number(b.dataset.price) -
+                    Number(a.dataset.price)
+                );
+
+            }
+
+
+            if (sortType === "year-new") {
+
+                return (
+                    Number(b.dataset.year) -
+                    Number(a.dataset.year)
+                );
+
+            }
+
+
+            if (sortType === "year-old") {
+
+                return (
+                    Number(a.dataset.year) -
+                    Number(b.dataset.year)
+                );
+
+            }
+
+
+            if (sortType === "mileage-low") {
+
+                return (
+                    Number(a.dataset.mileage) -
+                    Number(b.dataset.mileage)
+                );
+
+            }
+
+
+            return 0;
+
+        });
+
+
+        /* =========================
+           REBUILD GRID
+        ========================= */
+
+        cars.forEach(function (car) {
+            car.style.display = "none";
+        });
+
+
+        visibleCars.forEach(function (car) {
+
+            car.style.display = "";
+
+            carsGrid.appendChild(car);
+
+        });
+
+
+        /* =========================
+           RESULT COUNT
+        ========================= */
+
+        const count =
+            visibleCars.length;
+
+
+        resultsCount.textContent =
+            count === 1
+                ? "1 vehicle"
+                : `${count} vehicles`;
+
+
+        /* =========================
+           NO RESULTS
+        ========================= */
+
+        noResults.style.display =
+            count === 0
+                ? "block"
+                : "none";
+
+    }
+
+
+    /* =========================
+       EVENT LISTENERS
+    ========================= */
+
+    searchInput.addEventListener(
+        "input",
+        updateCars
+    );
+
+
+    categoryFilter.addEventListener(
+        "change",
+        updateCars
+    );
+
+
+    sortSelect.addEventListener(
+        "change",
+        updateCars
+    );
+
+
+    /* =========================
+       FAVORITE BUTTONS
+    ========================= */
+
+    document
+        .querySelectorAll(".favorite")
+        .forEach(function (button) {
+
+            button.addEventListener(
+                "click",
+                function () {
+
+                    this.classList.toggle("active");
+
+
+                    if (
+                        this.classList.contains("active")
+                    ) {
+
+                        this.textContent = "♥";
+
+                    } else {
+
+                        this.textContent = "♡";
+
+                    }
+
+                }
+            );
+
+        });
+
+
+    /* =========================
+       INITIAL LOAD
+    ========================= */
+
+    updateCars();
+
+</script>
+
+
+</body>
+</html>
+

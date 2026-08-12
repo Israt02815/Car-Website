@@ -1,0 +1,2174 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Isora Luxe | Premium Automotive</title>
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+    <!-- HOMEPAGE CSS -->
+    <style>
+
+        /* =====================================================
+           Isora Luxe — HOMEPAGE
+        ===================================================== */
+
+        :root {
+            --pw-black: #e8eaed;
+            --pw-dark: #eef0f4;
+            --pw-charcoal: #24272b;
+
+            --pw-cream: #f7f5f0;
+            --pw-warm: #eeece6;
+            --pw-white: #ffffff;
+
+            --pw-text: #17181a;
+            --pw-muted: #777873;
+
+            --pw-gold: #b89b62;
+            --pw-gold-light: #d1b982;
+
+            --pw-border: #dfddd7;
+        }
+
+
+        /* =====================================================
+           HOMEPAGE
+        ===================================================== */
+
+        .pw-home {
+            width: 100%;
+            min-height: 100vh;
+            overflow-x: hidden;
+            background: var(--pw-cream);
+            color: var(--pw-text);
+        }
+
+        .pw-container {
+            width: min(1180px, 92%);
+            margin: 0 auto;
+        }
+
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        .navbar {
+            width: 100%;
+            min-height: 90px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 5%;
+
+            background: #f6f7f8;
+
+            position: relative;
+            z-index: 1000;
+
+            box-sizing: border-box;
+        }
+
+
+        /* LOGO */
+
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+
+            text-decoration: none;
+
+            flex-shrink: 0;
+        }
+
+        .navbar .logo img {
+            height: 70px;
+            width: auto;
+
+            display: block;
+
+            object-fit: contain;
+        }
+
+
+        /* NAVIGATION */
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+
+            gap: 36px;
+
+            margin-left: auto;
+            margin-right: 35px;
+        }
+
+        .nav-links a {
+            color: var(--pw-gold);
+
+            text-decoration: none;
+
+            font-family: "Inter", sans-serif;
+
+            font-size: 13px;
+            font-weight: 600;
+
+            transition:
+                color 0.25s ease,
+                transform 0.25s ease;
+
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #8f743e;
+
+            transform: translateY(-1px);
+        }
+
+
+        /* GET IN TOUCH BUTTON */
+
+        .nav-btn {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            min-height: 42px;
+
+            padding: 0 20px;
+
+            background: var(--pw-gold);
+
+            color: #ffffff;
+
+            text-decoration: none;
+
+            font-family: "Inter", sans-serif;
+
+            font-size: 12px;
+            font-weight: 700;
+
+            border-radius: 3px;
+
+            transition: 0.25s ease;
+
+            white-space: nowrap;
+        }
+
+        .nav-btn:hover {
+            background: var(--pw-gold-light);
+
+            color: #111315;
+        }
+
+
+        /* MOBILE MENU */
+
+        .menu-btn {
+            display: none;
+
+            border: 0;
+
+            background: transparent;
+
+            color: var(--pw-gold);
+
+            font-size: 22px;
+
+            cursor: pointer;
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .pw-hero {
+            min-height: 680px;
+
+            position: relative;
+
+            display: flex;
+            align-items: center;
+
+            overflow: hidden;
+
+            background: #080909;
+        }
+
+        .pw-hero-video {
+            position: absolute;
+
+            inset: 0;
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            z-index: 0;
+        }
+
+        .pw-hero::after {
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(7, 8, 9, 0.94) 0%,
+                    rgba(7, 8, 9, 0.78) 38%,
+                    rgba(7, 8, 9, 0.35) 70%,
+                    rgba(7, 8, 9, 0.12) 100%
+                );
+
+            z-index: 1;
+        }
+
+        .pw-hero-content {
+            position: relative;
+
+            z-index: 2;
+
+            width: min(1180px, 92%);
+
+            margin: 0 auto;
+
+            color: #ffffff;
+        }
+
+        .pw-hero-content-inner {
+            max-width: 720px;
+        }
+
+        .pw-eyebrow {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            margin: 0 0 20px;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            letter-spacing: 2.5px;
+
+            text-transform: uppercase;
+
+            color: var(--pw-gold-light);
+        }
+
+        .pw-eyebrow::before {
+            content: "";
+
+            width: 36px;
+            height: 1px;
+
+            background: currentColor;
+        }
+
+        .pw-hero h1 {
+            margin: 0;
+
+            font-family: "Montserrat", sans-serif;
+
+            font-size: clamp(46px, 6vw, 80px);
+
+            line-height: 1;
+
+            font-weight: 800;
+
+            letter-spacing: -2.5px;
+        }
+
+        .pw-hero h1 span {
+            display: block;
+
+            font-weight: 500;
+
+            color: rgba(255,255,255,0.82);
+        }
+
+        .pw-hero-text {
+            max-width: 580px;
+
+            margin: 28px 0 34px;
+
+            font-size: 16px;
+
+            line-height: 1.85;
+
+            color: rgba(255,255,255,0.76);
+        }
+
+        .pw-hero-buttons {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 13px;
+        }
+
+        .pw-btn {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 10px;
+
+            min-height: 52px;
+
+            padding: 0 25px;
+
+            border-radius: 4px;
+
+            text-decoration: none;
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            transition:
+                transform 0.25s ease,
+                background 0.25s ease,
+                color 0.25s ease,
+                border-color 0.25s ease;
+        }
+
+        .pw-btn-primary {
+            background: var(--pw-gold);
+
+            color: #ffffff;
+        }
+
+        .pw-btn-primary:hover {
+            transform: translateY(-3px);
+
+            background: var(--pw-gold-light);
+
+            color: #111111;
+        }
+
+        .pw-btn-outline {
+            border: 1px solid rgba(255,255,255,0.4);
+
+            color: #ffffff;
+
+            background: rgba(255,255,255,0.04);
+
+            backdrop-filter: blur(5px);
+        }
+
+        .pw-btn-outline:hover {
+            transform: translateY(-3px);
+
+            background: #ffffff;
+
+            color: #111111;
+
+            border-color: #ffffff;
+        }
+
+
+        /* =====================================================
+           STATS
+        ===================================================== */
+
+        .pw-stats {
+            padding: 0;
+
+            background: var(--pw-cream);
+        }
+
+        .pw-stats-grid {
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            background: #ffffff;
+
+            border-left: 1px solid var(--pw-border);
+            border-right: 1px solid var(--pw-border);
+
+            box-shadow: 0 15px 45px rgba(0,0,0,0.05);
+
+            transform: translateY(-35px);
+
+            position: relative;
+
+            z-index: 4;
+        }
+
+        .pw-stat {
+            padding: 28px 20px;
+
+            text-align: center;
+
+            border-right: 1px solid var(--pw-border);
+        }
+
+        .pw-stat:last-child {
+            border-right: 0;
+        }
+
+        .pw-stat strong {
+            display: block;
+
+            margin-bottom: 7px;
+
+            font-family: "Montserrat", sans-serif;
+
+            font-size: 26px;
+
+            font-weight: 800;
+
+            color: var(--pw-text);
+        }
+
+        .pw-stat span {
+            font-size: 11px;
+
+            color: var(--pw-muted);
+
+            letter-spacing: 0.7px;
+
+            text-transform: uppercase;
+        }
+
+
+        /* =====================================================
+           GENERAL SECTION
+        ===================================================== */
+
+        .pw-section {
+            padding: 105px 0;
+        }
+
+        .pw-section-heading {
+            max-width: 700px;
+
+            margin: 0 auto 55px;
+
+            text-align: center;
+        }
+
+        .pw-section-label {
+            margin: 0 0 13px;
+
+            font-size: 10px;
+
+            font-weight: 800;
+
+            letter-spacing: 2.5px;
+
+            color: var(--pw-gold);
+
+            text-transform: uppercase;
+        }
+
+        .pw-section-heading h2 {
+            margin: 0 0 16px;
+
+            font-family: "Montserrat", sans-serif;
+
+            font-size: clamp(32px, 4vw, 49px);
+
+            line-height: 1.12;
+
+            letter-spacing: -1.5px;
+
+            color: var(--pw-text);
+        }
+
+        .pw-section-heading h2 span {
+            font-weight: 400;
+
+            color: #666666;
+        }
+
+        .pw-section-heading p {
+            margin: 0;
+
+            color: var(--pw-muted);
+
+            font-size: 14px;
+
+            line-height: 1.9;
+        }
+
+
+        /* =====================================================
+           EXPLORE OUR COLLECTION
+        ===================================================== */
+
+        .pw-types {
+            background:
+                linear-gradient(
+                    180deg,
+                    var(--pw-cream) 0%,
+                    #e9e6df 100%
+                );
+        }
+
+        .pw-type-grid {
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 16px;
+        }
+
+        .pw-type-card {
+            min-height: 290px;
+
+            padding: 30px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #ffffff 0%,
+                    #f8f7f3 100%
+                );
+
+            border: 1px solid rgba(0,0,0,0.07);
+
+            display: flex;
+
+            flex-direction: column;
+
+            position: relative;
+
+            overflow: hidden;
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        .pw-type-card::after {
+            content: "";
+
+            position: absolute;
+
+            width: 130px;
+            height: 130px;
+
+            right: -55px;
+            bottom: -60px;
+
+            border-radius: 50%;
+
+            border: 1px solid rgba(184,155,98,0.22);
+        }
+
+        .pw-type-card:hover {
+            transform: translateY(-8px);
+
+            box-shadow:
+                0 25px 55px rgba(0,0,0,0.10);
+        }
+
+        .pw-type-number {
+            margin-bottom: 28px;
+
+            font-size: 10px;
+
+            font-weight: 800;
+
+            letter-spacing: 1px;
+
+            color: #aaaaaa;
+        }
+
+        .pw-type-icon {
+            width: 52px;
+            height: 52px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            margin-bottom: 22px;
+
+            background: var(--pw-dark);
+
+            color: var(--pw-gold-light);
+
+            border-radius: 50%;
+        }
+
+        .pw-type-card h3 {
+            margin: 0 0 11px;
+
+            font-family: "Montserrat", sans-serif;
+
+            font-size: 20px;
+
+            color: var(--pw-text);
+        }
+
+        .pw-type-card p {
+            margin: 0;
+
+            font-size: 13px;
+
+            line-height: 1.75;
+
+            color: var(--pw-muted);
+        }
+
+
+        /* =====================================================
+           COLLECTION BUTTON
+        ===================================================== */
+
+        .pw-collection-button {
+            display: flex;
+
+            justify-content: center;
+
+            margin-top: 45px;
+        }
+
+
+        /* =====================================================
+           WHY ISORA LUXE
+        ===================================================== */
+
+        .pw-why {
+            background: #202224;
+
+            color: #ffffff;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        .pw-why::before {
+            content: "";
+
+            position: absolute;
+
+            width: 500px;
+            height: 500px;
+
+            right: -220px;
+            top: -250px;
+
+            border: 1px solid rgba(184,155,98,0.15);
+
+            border-radius: 50%;
+        }
+
+        .pw-why-grid {
+            display: grid;
+
+            grid-template-columns: 0.9fr 1.1fr;
+
+            gap: 85px;
+
+            align-items: center;
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+        .pw-why .pw-section-label {
+            color: var(--pw-gold-light);
+        }
+
+        .pw-why h2 {
+            margin: 0 0 22px;
+
+            font-family: "Montserrat", sans-serif;
+
+            font-size: clamp(34px, 4vw, 52px);
+
+            line-height: 1.1;
+
+            letter-spacing: -1.5px;
+        }
+
+        .pw-why h2 span {
+            font-weight: 400;
+
+            color: #aaaaaa;
+        }
+
+        .pw-why-main-text {
+            max-width: 520px;
+
+            margin-bottom: 30px;
+
+            color: #aaaaaa;
+
+            font-size: 14px;
+
+            line-height: 1.9;
+        }
+
+        .pw-why-list {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 14px;
+        }
+
+        .pw-why-item {
+            padding: 27px;
+
+            border: 1px solid rgba(255,255,255,0.09);
+
+            background: rgba(255,255,255,0.035);
+
+            transition:
+                background 0.25s ease,
+                border-color 0.25s ease;
+        }
+
+        .pw-why-item:hover {
+            background: rgba(184,155,98,0.07);
+
+            border-color: rgba(184,155,98,0.28);
+        }
+
+        .pw-why-item i {
+            display: block;
+
+            margin-bottom: 17px;
+
+            font-size: 18px;
+
+            color: var(--pw-gold-light);
+        }
+
+        .pw-why-item h3 {
+            margin: 0 0 8px;
+
+            font-family: "Montserrat", sans-serif;
+
+            font-size: 15px;
+        }
+
+        .pw-why-item p {
+            margin: 0;
+
+            color: #969696;
+
+            font-size: 12px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =====================================================
+           SERVICES
+        ===================================================== */
+
+        .pw-services-section {
+            background: #f4f2ed;
+        }
+
+        .pw-services-grid {
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 17px;
+        }
+
+        .pw-service {
+            position: relative;
+
+            padding: 32px;
+
+            min-height: 220px;
+
+            background: #ffffff;
+
+            border: 1px solid #e2e0da;
+
+            overflow: hidden;
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        .pw-service::before {
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 3px;
+
+            background: var(--pw-gold);
+        }
+
+        .pw-service:hover {
+            transform: translateY(-6px);
+
+            box-shadow:
+                0 20px 45px rgba(0,0,0,0.08);
+        }
+
+        .pw-service i {
+            display: inline-flex;
+
+            width: 48px;
+            height: 48px;
+
+            align-items: center;
+            justify-content: center;
+
+            margin-bottom: 23px;
+
+            background: #202224;
+
+            color: var(--pw-gold-light);
+
+            border-radius: 50%;
+        }
+
+        .pw-service h3 {
+            margin: 0 0 10px;
+
+            font-family: "Montserrat", sans-serif;
+
+            font-size: 17px;
+
+            color: var(--pw-text);
+        }
+
+        .pw-service p {
+            margin: 0;
+
+            color: var(--pw-muted);
+
+            font-size: 12px;
+
+            line-height: 1.8;
+        }
+
+
+        /* =====================================================
+           CTA
+        ===================================================== */
+
+        .pw-cta {
+            padding: 115px 0;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #151719 0%,
+                    #252729 50%,
+                    #111315 100%
+                );
+
+            color: #ffffff;
+
+            text-align: center;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        .pw-cta::before {
+            content: "";
+
+            position: absolute;
+
+            width: 600px;
+            height: 600px;
+
+            border: 1px solid rgba(184,155,98,0.15);
+
+            border-radius: 50%;
+
+            top: -420px;
+            right: -120px;
+        }
+
+        .pw-cta::after {
+            content: "";
+
+            position: absolute;
+
+            width: 380px;
+            height: 380px;
+
+            border: 1px solid rgba(255,255,255,0.06);
+
+            border-radius: 50%;
+
+            bottom: -280px;
+            left: -130px;
+        }
+
+        .pw-cta .pw-container {
+            position: relative;
+
+            z-index: 2;
+        }
+
+        .pw-cta-inner {
+            max-width: 750px;
+
+            margin: 0 auto;
+        }
+
+        .pw-cta h2 {
+            margin: 0 0 18px;
+
+            font-family: "Montserrat", sans-serif;
+
+            font-size: clamp(34px, 5vw, 58px);
+
+            line-height: 1.1;
+
+            letter-spacing: -1.5px;
+        }
+
+        .pw-cta h2 span {
+            font-weight: 400;
+
+            color: #aaaaaa;
+        }
+
+        .pw-cta p {
+            margin: 0 auto 30px;
+
+            max-width: 560px;
+
+            color: rgba(255,255,255,0.68);
+
+            line-height: 1.8;
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        .footer {
+            width: 100%;
+
+            background: #111315;
+
+            color: #ffffff;
+
+            padding: 70px 6% 0;
+
+            box-sizing: border-box;
+        }
+
+        .footer-grid {
+            width: 100%;
+            max-width: 1180px;
+
+            margin: 0 auto;
+
+            display: grid;
+
+            grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+
+            gap: 60px;
+
+            padding-bottom: 55px;
+        }
+
+
+        /* FOOTER LOGO ONLY */
+
+        .footer-about .logo {
+            display: inline-flex;
+
+            align-items: center;
+
+            margin-bottom: 20px;
+
+            text-decoration: none;
+        }
+
+        .footer-about .logo img {
+            height: 70px;
+
+            width: auto;
+
+            display: block;
+
+            object-fit: contain;
+        }
+
+
+        .footer-about > p {
+            max-width: 310px;
+
+            margin: 0;
+
+            color: #999999;
+
+            font-size: 13px;
+
+            line-height: 1.8;
+        }
+
+        .socials {
+            display: flex;
+
+            gap: 10px;
+
+            margin-top: 25px;
+        }
+
+        .socials a {
+            width: 38px;
+            height: 38px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border: 1px solid rgba(255,255,255,0.15);
+
+            border-radius: 50%;
+
+            color: #ffffff;
+
+            text-decoration: none;
+
+            transition: 0.25s ease;
+        }
+
+        .socials a:hover {
+            background: var(--pw-gold);
+
+            border-color: var(--pw-gold);
+
+            color: #111315;
+        }
+
+        .footer-column {
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: flex-start;
+        }
+
+        .footer-column h4 {
+            margin: 0 0 22px;
+
+            color: #ffffff;
+
+            font-family: "Montserrat", sans-serif;
+
+            font-size: 14px;
+
+            font-weight: 700;
+        }
+
+        .footer-column a {
+            display: block;
+
+            margin-bottom: 12px;
+
+            color: #999999;
+
+            text-decoration: none;
+
+            font-size: 12px;
+
+            transition: color 0.25s ease;
+        }
+
+        .footer-column a:hover {
+            color: var(--pw-gold-light);
+        }
+
+        .footer-column p {
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 10px;
+
+            margin: 0 0 14px;
+
+            color: #999999;
+
+            font-size: 12px;
+
+            line-height: 1.6;
+        }
+
+        .footer-column p i {
+            width: 15px;
+
+            color: var(--pw-gold-light);
+
+            margin-top: 3px;
+        }
+
+        .footer-bottom {
+            width: 100%;
+            max-width: 1180px;
+
+            margin: 0 auto;
+
+            padding: 22px 0;
+
+            border-top: 1px solid rgba(255,255,255,0.1);
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 20px;
+        }
+
+        .footer-bottom p {
+            margin: 0;
+
+            color: #777777;
+
+            font-size: 11px;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 1000px) {
+
+            .nav-links {
+                gap: 22px;
+
+                margin-right: 20px;
+            }
+
+            .nav-btn {
+                display: none;
+            }
+
+            .pw-type-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .pw-why-grid {
+                grid-template-columns: 1fr;
+
+                gap: 50px;
+            }
+
+            .pw-services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+
+                gap: 45px;
+            }
+        }
+
+
+        @media (max-width: 700px) {
+
+            .navbar {
+                min-height: 78px;
+
+                padding: 0 5%;
+            }
+
+            .navbar .logo img {
+                height: 55px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .pw-hero {
+                min-height: 620px;
+            }
+
+            .pw-hero h1 {
+                letter-spacing: -1.5px;
+            }
+
+            .pw-stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .pw-stat:nth-child(2) {
+                border-right: 0;
+            }
+
+            .pw-stat:nth-child(-n+2) {
+                border-bottom: 1px solid var(--pw-border);
+            }
+
+            .pw-type-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pw-why-list {
+                grid-template-columns: 1fr;
+            }
+
+            .pw-services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pw-section {
+                padding: 75px 0;
+            }
+
+            .footer {
+                padding: 55px 7% 0;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+
+                gap: 38px;
+            }
+
+            .footer-about .logo img {
+                height: 55px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                gap: 8px;
+            }
+        }
+
+
+        @media (max-width: 480px) {
+
+            .pw-hero-buttons {
+                flex-direction: column;
+            }
+
+            .pw-btn {
+                width: 100%;
+            }
+
+            .pw-stats-grid {
+                transform: translateY(-20px);
+            }
+
+            .pw-stat {
+                padding: 23px 12px;
+            }
+
+            .pw-stat strong {
+                font-size: 22px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body class="pw-home">
+
+
+<!-- =====================================================
+     NAVBAR
+====================================================== -->
+
+<header class="navbar">
+
+    <!-- LOGO ONLY -->
+    <a href="index.html" class="logo">
+        <img src="images/logo.png" alt="Isora Luxe Logo">
+    </a>
+
+
+    <!-- NAVIGATION -->
+    <nav class="nav-links">
+
+        <a href="index.html" class="active">
+            Home
+        </a>
+
+        <a href="cars.html">
+            Cars
+        </a>
+
+        <a href="about.html">
+            About
+        </a>
+
+        <a href="contact.html">
+            Contact
+        </a>
+
+    </nav>
+
+
+    <!-- GET IN TOUCH -->
+    <a href="contact.html" class="nav-btn">
+        Get in Touch
+    </a>
+
+
+    <!-- MOBILE MENU -->
+    <button class="menu-btn"
+            type="button"
+            aria-label="Open menu">
+
+        <i class="fa-solid fa-bars"></i>
+
+    </button>
+
+</header>
+
+
+<!-- =====================================================
+     HERO
+====================================================== -->
+
+<section class="pw-hero">
+
+    <video
+        class="pw-hero-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto">
+
+        <source
+            src="videos/prime-wheels.mp4"
+            type="video/mp4">
+
+        Your browser does not support the video tag.
+
+    </video>
+
+
+    <div class="pw-hero-content">
+
+        <div class="pw-hero-content-inner">
+
+            <p class="pw-eyebrow">
+                Premium Automotive Collection
+            </p>
+
+            <h1>
+                Find the car
+                <span>
+                    that moves you.
+                </span>
+            </h1>
+
+            <p class="pw-hero-text">
+                Discover a carefully selected collection
+                of premium vehicles, backed by transparent
+                pricing and a buying experience built around you.
+            </p>
+
+            <div class="pw-hero-buttons">
+
+                <a href="cars.html"
+                   class="pw-btn pw-btn-primary">
+
+                    Explore Our Cars
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+                <a href="contact.html"
+                   class="pw-btn pw-btn-outline">
+
+                    Book a Test Drive
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     STATS
+====================================================== -->
+
+<section class="pw-stats">
+
+    <div class="pw-container">
+
+        <div class="pw-stats-grid">
+
+            <div class="pw-stat">
+
+                <strong>
+                    4+
+                </strong>
+
+                <span>
+                    Premium Vehicles
+                </span>
+
+            </div>
+
+
+            <div class="pw-stat">
+
+                <strong>
+                    100%
+                </strong>
+
+                <span>
+                    Vehicle Inspection
+                </span>
+
+            </div>
+
+
+            <div class="pw-stat">
+
+                <strong>
+                    1 Year
+                </strong>
+
+                <span>
+                    Free Basic Service
+                </span>
+
+            </div>
+
+
+            <div class="pw-stat">
+
+                <strong>
+                    24/7
+                </strong>
+
+                <span>
+                    Customer Support
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     EXPLORE OUR COLLECTION
+====================================================== -->
+
+<section class="pw-section pw-types">
+
+    <div class="pw-container">
+
+        <div class="pw-section-heading">
+
+            <p class="pw-section-label">
+                Explore Our Collection
+            </p>
+
+            <h2>
+                Cars chosen for
+                <span>
+                    every kind of journey.
+                </span>
+            </h2>
+
+            <p>
+                From refined daily drives to powerful performance
+                machines, explore vehicles selected for comfort,
+                style, performance and confidence.
+            </p>
+
+        </div>
+
+
+        <div class="pw-type-grid">
+
+
+            <!-- EVERYDAY COMFORT -->
+
+            <article class="pw-type-card">
+
+                <div class="pw-type-number">
+                    01
+                </div>
+
+                <div class="pw-type-icon">
+                    <i class="fa-solid fa-car-side"></i>
+                </div>
+
+                <h3>
+                    Everyday Comfort
+                </h3>
+
+                <p>
+                    Comfortable and practical vehicles designed
+                    to make every daily journey smooth and enjoyable.
+                </p>
+
+            </article>
+
+
+            <!-- ADVENTURE READY -->
+
+            <article class="pw-type-card">
+
+                <div class="pw-type-number">
+                    02
+                </div>
+
+                <div class="pw-type-icon">
+                    <i class="fa-solid fa-mountain"></i>
+                </div>
+
+                <h3>
+                    Adventure Ready
+                </h3>
+
+                <p>
+                    Spacious and capable vehicles built for family
+                    trips, long drives and unforgettable adventures.
+                </p>
+
+            </article>
+
+
+            <!-- REFINED LUXURY -->
+
+            <article class="pw-type-card">
+
+                <div class="pw-type-number">
+                    03
+                </div>
+
+                <div class="pw-type-icon">
+                    <i class="fa-solid fa-gem"></i>
+                </div>
+
+                <h3>
+                    Refined Luxury
+                </h3>
+
+                <p>
+                    Premium interiors, advanced technology and
+                    sophisticated design for those who expect
+                    something exceptional.
+                </p>
+
+            </article>
+
+
+            <!-- PURE PERFORMANCE -->
+
+            <article class="pw-type-card">
+
+                <div class="pw-type-number">
+                    04
+                </div>
+
+                <div class="pw-type-icon">
+                    <i class="fa-solid fa-gauge-high"></i>
+                </div>
+
+                <h3>
+                    Pure Performance
+                </h3>
+
+                <p>
+                    Dynamic performance, sharp handling and
+                    unmistakable road presence for those who
+                    love driving.
+                </p>
+
+            </article>
+
+
+        </div>
+
+
+        <!-- COLLECTION BUTTON -->
+
+        <div class="pw-collection-button">
+
+            <a href="cars.html"
+               class="pw-btn pw-btn-primary">
+
+                Explore All Cars
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     WHY ISORA LUXE
+====================================================== -->
+
+<section class="pw-section pw-why">
+
+    <div class="pw-container">
+
+        <div class="pw-why-grid">
+
+
+            <div>
+
+                <p class="pw-section-label">
+                    Choose With Confidence
+                </p>
+
+                <h2>
+                    Why choose
+                    <span>
+                        Isora Luxe?
+                    </span>
+                </h2>
+
+                <p class="pw-why-main-text">
+                    Finding the right vehicle is about more
+                    than choosing a brand. We make it easier
+                    to compare important details, understand
+                    what you are buying and make a decision
+                    with confidence.
+                </p>
+
+                <a href="cars.html"
+                   class="pw-btn pw-btn-outline">
+
+                    View Our Collection
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+            </div>
+
+
+            <div class="pw-why-list">
+
+
+                <div class="pw-why-item">
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    <h3>
+                        Verified Condition
+                    </h3>
+
+                    <p>
+                        Every vehicle is carefully reviewed
+                        before being presented to customers.
+                    </p>
+
+                </div>
+
+
+                <div class="pw-why-item">
+
+                    <i class="fa-solid fa-list-check"></i>
+
+                    <h3>
+                        Complete Details
+                    </h3>
+
+                    <p>
+                        Get essential information about
+                        mileage, engine, fuel and specifications.
+                    </p>
+
+                </div>
+
+
+                <div class="pw-why-item">
+
+                    <i class="fa-solid fa-scale-balanced"></i>
+
+                    <h3>
+                        Fair Information
+                    </h3>
+
+                    <p>
+                        Clear pricing and vehicle details
+                        help you make a more informed choice.
+                    </p>
+
+                </div>
+
+
+                <div class="pw-why-item">
+
+                    <i class="fa-solid fa-user-check"></i>
+
+                    <h3>
+                        Personal Guidance
+                    </h3>
+
+                    <p>
+                        Our team can help you find a vehicle
+                        that fits your needs and preferences.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SERVICES
+====================================================== -->
+
+<section class="pw-section pw-services-section">
+
+    <div class="pw-container">
+
+        <div class="pw-section-heading">
+
+            <p class="pw-section-label">
+                Our Services
+            </p>
+
+            <h2>
+                Everything you need
+                <span>
+                    after choosing your car.
+                </span>
+            </h2>
+
+            <p>
+                From inspection and test drives to
+                financing and after-sales support,
+                we are here throughout your journey.
+            </p>
+
+        </div>
+
+
+        <div class="pw-services-grid">
+
+
+            <article class="pw-service">
+
+                <i class="fa-solid fa-car"></i>
+
+                <h3>
+                    Vehicle Inspection
+                </h3>
+
+                <p>
+                    Our vehicles are carefully checked
+                    before being offered to customers.
+                </p>
+
+            </article>
+
+
+            <article class="pw-service">
+
+                <i class="fa-solid fa-calendar-check"></i>
+
+                <h3>
+                    Test Drive
+                </h3>
+
+                <p>
+                    Book a convenient test drive and
+                    experience the vehicle yourself.
+                </p>
+
+            </article>
+
+
+            <article class="pw-service">
+
+                <i class="fa-solid fa-credit-card"></i>
+
+                <h3>
+                    Flexible Financing
+                </h3>
+
+                <p>
+                    Explore installment options designed
+                    to make vehicle ownership easier.
+                </p>
+
+            </article>
+
+
+            <article class="pw-service">
+
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+
+                <h3>
+                    After-Sales Service
+                </h3>
+
+                <p>
+                    Continue receiving support even
+                    after you take your vehicle home.
+                </p>
+
+            </article>
+
+
+            <article class="pw-service">
+
+                <i class="fa-solid fa-handshake"></i>
+
+                <h3>
+                    Trade-In Assistance
+                </h3>
+
+                <p>
+                    Talk to our team about trading in
+                    your existing vehicle.
+                </p>
+
+            </article>
+
+
+            <article class="pw-service">
+
+                <i class="fa-solid fa-headset"></i>
+
+                <h3>
+                    Customer Support
+                </h3>
+
+                <p>
+                    Get straightforward assistance whenever
+                    you need help choosing your next vehicle.
+                </p>
+
+            </article>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     CTA
+====================================================== -->
+
+<section class="pw-cta">
+
+    <div class="pw-container">
+
+        <div class="pw-cta-inner">
+
+            <p class="pw-eyebrow">
+                Ready to Drive?
+            </p>
+
+            <h2>
+                Your next journey
+                <span>
+                    starts here.
+                </span>
+            </h2>
+
+            <p>
+                Explore our collection or speak with
+                our team about finding the right vehicle
+                for you.
+            </p>
+
+            <div class="pw-hero-buttons"
+                 style="justify-content: center;">
+
+                <a href="cars.html"
+                   class="pw-btn pw-btn-primary">
+
+                    Browse Collection
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+                <a href="contact.html"
+                   class="pw-btn pw-btn-outline">
+
+                    Contact Us
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+====================================================== -->
+
+<footer class="footer">
+
+    <div class="footer-grid">
+
+
+        <!-- ABOUT -->
+
+        <div class="footer-about">
+
+            <!-- LOGO ONLY -->
+            <a href="index.html" class="logo">
+
+                <img src="images/logo.png"
+                     alt="Isora Luxe Logo">
+
+            </a>
+
+            <p>
+                Exceptional cars.
+                Exceptional service.
+                Your journey starts with Isora Luxe.
+            </p>
+
+            <div class="socials">
+
+                <a href="#"
+                   aria-label="Instagram">
+
+                    <i class="fa-brands fa-instagram"></i>
+
+                </a>
+
+                <a href="#"
+                   aria-label="Facebook">
+
+                    <i class="fa-brands fa-facebook"></i>
+
+                </a>
+
+                <a href="#"
+                   aria-label="X">
+
+                    <i class="fa-brands fa-x-twitter"></i>
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- EXPLORE -->
+
+        <div class="footer-column">
+
+            <h4>
+                Explore
+            </h4>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="cars.html">
+                Cars
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+        </div>
+
+
+        <!-- SERVICES -->
+
+        <div class="footer-column">
+
+            <h4>
+                Services
+            </h4>
+
+            <a href="contact.html">
+                Test Drive
+            </a>
+
+            <a href="contact.html">
+                Financing
+            </a>
+
+            <a href="contact.html">
+                Trade-In
+            </a>
+
+            <a href="contact.html">
+                Car Service
+            </a>
+
+        </div>
+
+
+        <!-- CONTACT -->
+
+        <div class="footer-column">
+
+            <h4>
+                Contact
+            </h4>
+
+            <p>
+                <i class="fa-solid fa-location-dot"></i>
+                <span>Dhaka, Bangladesh</span>
+            </p>
+
+            <p>
+                <i class="fa-solid fa-phone"></i>
+                <span>+880 1XXX-XXXXXX</span>
+            </p>
+
+            <p>
+                <i class="fa-solid fa-envelope"></i>
+                <span>N/A</span>
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- FOOTER BOTTOM -->
+
+    <div class="footer-bottom">
+
+        <p>
+            ©
+            <span class="current-year"></span>
+            Isora Luxe
+            All rights reserved.
+        </p>
+
+        <p>
+            Premium Automotive Collection.
+        </p>
+
+    </div>
+
+</footer>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+====================================================== -->
+
+<script src="js/script.js"></script>
+
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const year = document.querySelector(".current-year");
+
+    if (year) {
+        year.textContent = new Date().getFullYear();
+    }
+
+});
+
+</script>
+
+
+</body>
+
+</html>
+
