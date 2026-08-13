@@ -92,6 +92,10 @@
             font-family: inherit;
         }
 
+        button {
+            -webkit-tap-highlight-color: transparent;
+        }
+
 
         /* =========================================================
            ACCESSIBILITY
@@ -401,10 +405,15 @@
                 0 25px 60px rgba(0,0,0,.35);
 
             backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
         }
 
         .mobile-nav.is-open {
             display: block;
+        }
+
+        .mobile-nav[hidden] {
+            display: none !important;
         }
 
         .mobile-nav a {
@@ -485,17 +494,9 @@
 
             z-index: 0;
 
-            /*
-             * Fallback image.
-             *
-             * Make sure this file exists:
-             *
-             * images/hero-poster.jpg
-             */
-
             background:
                 #070809
-                url("../images/hero-poster.jpg")
+                url("images/hero-poster.jpg")
                 center center / cover
                 no-repeat;
 
@@ -508,22 +509,98 @@
 
             opacity: 1;
 
-            transition:
-                opacity .45s ease,
-                transform 1.2s ease;
-        }
-
-        .pw-hero-video.is-playing {
-            opacity: 1;
+            pointer-events: none;
         }
 
         /*
-         * If the actual video cannot load,
-         * keep the poster/background visible.
+         * Video fallback state.
+         * We keep the poster visible through the hero background.
          */
 
-        .pw-hero-video.video-error {
+        .pw-hero-video.video-unavailable {
             opacity: 0;
+        }
+
+
+        /* =========================================================
+           MOBILE PLAY FALLBACK
+        ========================================================= */
+
+        .hero-video-play {
+            position: absolute;
+
+            left: 50%;
+            bottom: 34px;
+
+            z-index: 4;
+
+            display: none;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 10px;
+
+            min-height: 48px;
+
+            padding: 0 20px;
+
+            border: 1px solid rgba(255,255,255,.25);
+            border-radius: 999px;
+
+            background: rgba(10,11,12,.78);
+
+            color: white;
+
+            font-size: 11px;
+            font-weight: 700;
+
+            letter-spacing: .5px;
+
+            cursor: pointer;
+
+            transform: translateX(-50%);
+
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+
+            box-shadow:
+                0 14px 35px rgba(0,0,0,.22);
+
+            transition:
+                background .25s ease,
+                border-color .25s ease,
+                transform .25s ease;
+        }
+
+        .hero-video-play i {
+            color: var(--gold-light);
+
+            font-size: 13px;
+        }
+
+        .hero-video-play:hover {
+            background: var(--gold);
+
+            border-color: var(--gold);
+
+            color: #111;
+
+            transform:
+                translateX(-50%)
+                translateY(-2px);
+        }
+
+        .hero-video-play:hover i {
+            color: #111;
+        }
+
+        .hero-video-play.is-visible {
+            display: inline-flex;
+        }
+
+        .hero-video-play.is-hidden {
+            display: none;
         }
 
 
@@ -750,6 +827,7 @@
             color: white;
 
             backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
         }
 
         .pw-btn-outline:hover {
@@ -1923,10 +2001,6 @@
                 min-height: 700px;
             }
 
-            /*
-             * Mobile video positioning.
-             */
-
             .pw-hero-video {
                 object-position: center center;
 
@@ -2018,11 +2092,6 @@
                 min-height: 680px;
             }
 
-            /*
-             * On smaller phones, slightly reposition the
-             * video so the important part remains visible.
-             */
-
             .pw-hero-video {
                 object-position: 58% center;
 
@@ -2073,6 +2142,10 @@
 
             .hero-scroll {
                 display: none;
+            }
+
+            .hero-video-play {
+                bottom: 24px;
             }
 
             .pw-stats-grid {
@@ -2380,6 +2453,22 @@
                     type="video/mp4">
 
             </video>
+
+
+            <!-- MOBILE FALLBACK PLAY BUTTON -->
+
+            <button
+                id="hero-video-play"
+                class="hero-video-play"
+                type="button"
+                aria-label="Play hero video">
+
+                <i class="fa-solid fa-play"
+                   aria-hidden="true"></i>
+
+                <span>Play Video</span>
+
+            </button>
 
 
             <!-- HERO CONTENT -->
@@ -3647,22 +3736,26 @@
 
 
             /* =====================================================
-               HERO VIDEO — MOBILE AUTOPLAY FIX
+               HERO VIDEO — MOBILE-SAFE
             ===================================================== */
 
             const heroVideo =
                 document.querySelector(".pw-hero-video");
 
+            const heroVideoPlayButton =
+                document.getElementById("hero-video-play");
+
+
             if (heroVideo) {
 
-
-                /* -------------------------------------------------
-                   FORCE MOBILE-SAFE VIDEO SETTINGS
-                ------------------------------------------------- */
+                /*
+                 * Force the properties required for
+                 * muted inline autoplay.
+                 */
 
                 heroVideo.muted = true;
-
                 heroVideo.defaultMuted = true;
+                heroVideo.playsInline = true;
 
                 heroVideo.setAttribute(
                     "muted",
@@ -3686,14 +3779,59 @@
 
 
                 /* -------------------------------------------------
-                   PLAY FUNCTION
+                   SHOW MOBILE PLAY FALLBACK
+                ------------------------------------------------- */
+
+                function showPlayButton() {
+
+                    if (!heroVideoPlayButton) {
+                        return;
+                    }
+
+                    heroVideoPlayButton.classList.add(
+                        "is-visible"
+                    );
+
+                    heroVideoPlayButton.classList.remove(
+                        "is-hidden"
+                    );
+
+                }
+
+
+                /* -------------------------------------------------
+                   HIDE MOBILE PLAY FALLBACK
+                ------------------------------------------------- */
+
+                function hidePlayButton() {
+
+                    if (!heroVideoPlayButton) {
+                        return;
+                    }
+
+                    heroVideoPlayButton.classList.remove(
+                        "is-visible"
+                    );
+
+                    heroVideoPlayButton.classList.add(
+                        "is-hidden"
+                    );
+
+                }
+
+
+                /* -------------------------------------------------
+                   PLAY VIDEO
                 ------------------------------------------------- */
 
                 function playHeroVideo() {
 
-                    if (!heroVideo) return;
-
-                    if (document.hidden) return;
+                    if (
+                        document.hidden ||
+                        heroVideo.readyState < 2
+                    ) {
+                        return;
+                    }
 
                     heroVideo.muted = true;
 
@@ -3701,41 +3839,35 @@
                         heroVideo.play();
 
                     if (
-                        playPromise !== undefined
+                        playPromise &&
+                        typeof playPromise.then === "function"
                     ) {
 
                         playPromise
                             .then(function () {
 
-                                /*
-                                 * Video successfully started.
-                                 */
-
-                                heroVideo.classList.add(
-                                    "is-playing"
-                                );
+                                hidePlayButton();
 
                                 heroVideo.classList.remove(
-                                    "video-error"
+                                    "video-unavailable"
                                 );
 
                             })
                             .catch(function (error) {
 
                                 /*
-                                 * Browser blocked autoplay.
-                                 *
-                                 * This is normal on some
-                                 * mobile browsers.
-                                 *
-                                 * The poster image remains
-                                 * visible as the fallback.
+                                 * Autoplay was rejected.
+                                 * We do NOT keep trying repeatedly.
+                                 * Instead, provide a user-initiated
+                                 * play button.
                                  */
 
                                 console.log(
-                                    "Hero video autoplay was blocked:",
-                                    error
+                                    "Hero video autoplay blocked:",
+                                    error.name
                                 );
+
+                                showPlayButton();
 
                             });
 
@@ -3745,11 +3877,11 @@
 
 
                 /* -------------------------------------------------
-                   VIDEO LOADED
+                   VIDEO READY
                 ------------------------------------------------- */
 
                 heroVideo.addEventListener(
-                    "loadeddata",
+                    "loadedmetadata",
                     function () {
 
                         playHeroVideo();
@@ -3757,10 +3889,6 @@
                     }
                 );
 
-
-                /* -------------------------------------------------
-                   VIDEO CAN PLAY
-                ------------------------------------------------- */
 
                 heroVideo.addEventListener(
                     "canplay",
@@ -3773,73 +3901,20 @@
 
 
                 /* -------------------------------------------------
-                   VIDEO STARTED PLAYING
+                   VIDEO SUCCESSFULLY PLAYING
                 ------------------------------------------------- */
 
                 heroVideo.addEventListener(
                     "playing",
                     function () {
 
-                        heroVideo.classList.add(
-                            "is-playing"
+                        hidePlayButton();
+
+                        heroVideo.classList.remove(
+                            "video-unavailable"
                         );
 
                     }
-                );
-
-
-                /* -------------------------------------------------
-                   PAGE LOAD
-                ------------------------------------------------- */
-
-                window.addEventListener(
-                    "load",
-                    function () {
-
-                        playHeroVideo();
-
-                    }
-                );
-
-
-                /* -------------------------------------------------
-                   PAGE BECOMES VISIBLE AGAIN
-                ------------------------------------------------- */
-
-                document.addEventListener(
-                    "visibilitychange",
-                    function () {
-
-                        if (!document.hidden) {
-
-                            playHeroVideo();
-
-                        }
-
-                    }
-                );
-
-
-                /* -------------------------------------------------
-                   RETRY AFTER SHORT DELAYS
-                ------------------------------------------------- */
-
-                setTimeout(
-                    function () {
-
-                        playHeroVideo();
-
-                    },
-                    500
-                );
-
-                setTimeout(
-                    function () {
-
-                        playHeroVideo();
-
-                    },
-                    1500
                 );
 
 
@@ -3856,14 +3931,83 @@
                         );
 
                         /*
-                         * Do not remove the video.
-                         *
-                         * The poster/background image
-                         * remains available.
+                         * The poster image remains visible
+                         * behind the video.
                          */
 
                         heroVideo.classList.add(
-                            "video-error"
+                            "video-unavailable"
+                        );
+
+                        showPlayButton();
+
+                    }
+                );
+
+
+                /* -------------------------------------------------
+                   USER PLAY BUTTON
+                ------------------------------------------------- */
+
+                if (heroVideoPlayButton) {
+
+                    heroVideoPlayButton.addEventListener(
+                        "click",
+                        function () {
+
+                            heroVideo.muted = true;
+
+                            const manualPlay =
+                                heroVideo.play();
+
+                            if (
+                                manualPlay &&
+                                typeof manualPlay.then === "function"
+                            ) {
+
+                                manualPlay
+                                    .then(function () {
+
+                                        hidePlayButton();
+
+                                    })
+                                    .catch(function (error) {
+
+                                        console.log(
+                                            "Manual video playback failed:",
+                                            error
+                                        );
+
+                                    });
+
+                            }
+
+                        }
+                    );
+
+                }
+
+
+                /* -------------------------------------------------
+                   PAGE LOAD
+                ------------------------------------------------- */
+
+                window.addEventListener(
+                    "load",
+                    function () {
+
+                        /*
+                         * Give the browser a moment to initialize
+                         * the video before attempting playback.
+                         */
+
+                        setTimeout(
+                            function () {
+
+                                playHeroVideo();
+
+                            },
+                            150
                         );
 
                     }
@@ -3871,26 +4015,29 @@
 
 
                 /* -------------------------------------------------
-                   RECOVER FROM UNEXPECTED PAUSE
+                   PAGE VISIBILITY
                 ------------------------------------------------- */
 
-                heroVideo.addEventListener(
-                    "pause",
+                document.addEventListener(
+                    "visibilitychange",
                     function () {
 
-                        if (
-                            !document.hidden &&
-                            !heroVideo.ended
-                        ) {
+                        if (!document.hidden) {
 
-                            setTimeout(
-                                function () {
+                            /*
+                             * Only resume automatically if the
+                             * video was already playing before.
+                             */
 
-                                    playHeroVideo();
+                            if (
+                                heroVideo.paused &&
+                                heroVideo.currentTime > 0
+                            ) {
 
-                                },
-                                300
-                            );
+                                heroVideo.play()
+                                    .catch(function () {});
+
+                            }
 
                         }
 
