@@ -490,11 +490,7 @@
 
             z-index: 0;
 
-            background:
-                #070809
-                url("images/hero-poster.jpg")
-                center center / cover
-                no-repeat;
+            background: #070809;
 
             filter:
                 brightness(.72)
@@ -505,7 +501,11 @@
 
             opacity: 1;
 
-            pointer-events: none;
+            /*
+             * Do not use pointer-events:none here.
+             * Some mobile browsers handle video playback
+             * more reliably when the element behaves normally.
+             */
         }
 
 
@@ -2346,7 +2346,6 @@
                 playsinline
                 webkit-playsinline
                 preload="auto"
-                poster="images/hero-poster.jpg"
                 aria-hidden="true">
 
                 <source
@@ -2422,9 +2421,7 @@
                  aria-hidden="true">
 
                 <span>
-
                     Scroll
-
                 </span>
 
                 <span class="hero-scroll-line"></span>
@@ -3237,7 +3234,6 @@
 
         document.addEventListener("DOMContentLoaded", function () {
 
-
             /* =====================================================
                CURRENT YEAR
             ===================================================== */
@@ -3246,10 +3242,8 @@
                 document.querySelector(".current-year");
 
             if (year) {
-
                 year.textContent =
                     new Date().getFullYear();
-
             }
 
 
@@ -3262,7 +3256,9 @@
 
             function updateNavbar() {
 
-                if (!navbar) return;
+                if (!navbar) {
+                    return;
+                }
 
                 if (window.scrollY > 40) {
 
@@ -3348,8 +3344,6 @@
                 );
 
 
-                /* Close menu when a link is clicked */
-
                 mobileNav
                     .querySelectorAll("a")
                     .forEach(function (link) {
@@ -3394,8 +3388,6 @@
 
                     });
 
-
-                /* Escape closes menu */
 
                 document.addEventListener(
                     "keydown",
@@ -3504,7 +3496,7 @@
 
                         },
                         {
-                            threshold: .12,
+                            threshold: 0.12,
                             rootMargin: "0px 0px -40px 0px"
                         }
                     );
@@ -3523,7 +3515,11 @@
 
 
             /* =====================================================
-               HERO VIDEO — AUTOMATIC PLAY ONLY
+               HERO VIDEO
+               
+               Automatic playback only.
+               No play button.
+               No manual interaction.
             ===================================================== */
 
             const heroVideo =
@@ -3532,11 +3528,13 @@
             if (heroVideo) {
 
                 /*
-                 * Mobile-safe autoplay properties.
+                 * Explicitly configure muted inline playback.
                  */
 
+                heroVideo.autoplay = true;
                 heroVideo.muted = true;
                 heroVideo.defaultMuted = true;
+                heroVideo.loop = true;
                 heroVideo.playsInline = true;
 
                 heroVideo.setAttribute(
@@ -3546,6 +3544,11 @@
 
                 heroVideo.setAttribute(
                     "muted",
+                    ""
+                );
+
+                heroVideo.setAttribute(
+                    "loop",
                     ""
                 );
 
@@ -3560,9 +3563,10 @@
                 );
 
 
-                /* -------------------------------------------------
-                   START VIDEO
-                ------------------------------------------------- */
+                /*
+                 * Ask the browser to start automatically
+                 * once enough data is available.
+                 */
 
                 function startHeroVideo() {
 
@@ -3575,28 +3579,18 @@
                     const playPromise =
                         heroVideo.play();
 
-                    if (
-                        playPromise &&
-                        typeof playPromise.catch === "function"
-                    ) {
+                    if (playPromise) {
 
-                        playPromise
-                            .then(function () {
-
-                                console.log(
-                                    "Isora Luxe hero video started automatically."
-                                );
-
-                            })
-                            .catch(function (error) {
+                        playPromise.catch(
+                            function (error) {
 
                                 /*
-                                 * We intentionally do NOT show
-                                 * a Play Video button.
+                                 * Do not show a button.
+                                 * Do not hide the video.
                                  *
-                                 * If the mobile browser blocks
-                                 * autoplay, the browser itself
-                                 * controls that behavior.
+                                 * If the browser blocks
+                                 * autoplay, it remains
+                                 * under browser control.
                                  */
 
                                 console.log(
@@ -3604,64 +3598,39 @@
                                     error.name
                                 );
 
-                            });
+                            }
+                        );
 
                     }
 
                 }
 
 
-                /* -------------------------------------------------
-                   VIDEO READY
-                ------------------------------------------------- */
-
                 heroVideo.addEventListener(
                     "loadedmetadata",
-                    function () {
-
-                        startHeroVideo();
-
-                    }
+                    startHeroVideo
                 );
-
-
-                heroVideo.addEventListener(
-                    "canplay",
-                    function () {
-
-                        startHeroVideo();
-
-                    }
-                );
-
 
                 heroVideo.addEventListener(
                     "loadeddata",
-                    function () {
-
-                        startHeroVideo();
-
-                    }
+                    startHeroVideo
                 );
 
-
-                /* -------------------------------------------------
-                   PAGE LOAD
-                ------------------------------------------------- */
+                heroVideo.addEventListener(
+                    "canplay",
+                    startHeroVideo
+                );
 
                 window.addEventListener(
                     "load",
-                    function () {
-
-                        startHeroVideo();
-
-                    }
+                    startHeroVideo
                 );
 
 
-                /* -------------------------------------------------
-                   PAGE BECOMES VISIBLE AGAIN
-                ------------------------------------------------- */
+                /*
+                 * If the visitor returns to the page,
+                 * resume the video automatically.
+                 */
 
                 document.addEventListener(
                     "visibilitychange",
@@ -3669,14 +3638,12 @@
 
                         if (!document.hidden) {
 
-                            if (heroVideo.paused) {
+                            heroVideo.muted = true;
 
-                                heroVideo.muted = true;
-
-                                heroVideo.play()
-                                    .catch(function () {});
-
-                            }
+                            heroVideo.play()
+                                .catch(
+                                    function () {}
+                                );
 
                         }
 
