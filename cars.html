@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
     <meta charset="UTF-8">
@@ -7,14 +8,19 @@
 
     <title>Cars | Isora Luxe</title>
 
+    <meta name="description"
+          content="Explore Isora Luxe's carefully selected collection of luxury, performance and premium vehicles.">
+
     <!-- GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
 
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
-        rel="stylesheet"
-    >
+        rel="stylesheet">
+
 
     <style>
 
@@ -45,6 +51,10 @@
             font-family: inherit;
         }
 
+        button {
+            -webkit-tap-highlight-color: transparent;
+        }
+
 
         /* =====================================================
            HEADER
@@ -52,58 +62,84 @@
 
         header {
             height: 82px;
-            background: rgba(255, 255, 255, 0.97);
-            border-bottom: 1px solid #e8e8e8;
 
-            padding: 0 6%;
+            background:
+                rgba(255, 255, 255, 0.97);
+
+            border-bottom:
+                1px solid #e8e8e8;
+
+            padding:
+                0 6%;
 
             display: flex;
+
             align-items: center;
             justify-content: space-between;
 
             position: sticky;
+
             top: 0;
+
             z-index: 1000;
 
-            backdrop-filter: blur(12px);
+            backdrop-filter:
+                blur(12px);
+
+            -webkit-backdrop-filter:
+                blur(12px);
         }
 
 
-        /* LOGO */
+        /* =====================================================
+           LOGO
+        ===================================================== */
 
         .logo {
             display: flex;
+
             align-items: center;
+
             text-decoration: none;
         }
 
         .logo img {
             width: 58px;
             height: 58px;
+
             object-fit: contain;
+
             display: block;
         }
 
 
-        /* DESKTOP NAVIGATION */
+        /* =====================================================
+           DESKTOP NAVIGATION
+        ===================================================== */
 
         nav {
             display: flex;
+
             align-items: center;
+
             gap: 30px;
         }
 
         nav a {
             color: #c9a227;
+
             text-decoration: none;
 
             font-size: 14px;
+
             font-weight: 500;
 
             position: relative;
+
             padding-bottom: 6px;
 
-            transition: color 0.2s ease;
+            transition:
+                color 0.2s ease;
         }
 
         nav a:hover {
@@ -114,6 +150,7 @@
             content: "";
 
             position: absolute;
+
             left: 0;
             bottom: 0;
 
@@ -135,11 +172,13 @@
             height: 44px;
 
             border: none;
+
             background: transparent;
 
             cursor: pointer;
 
             flex-direction: column;
+
             align-items: center;
             justify-content: center;
 
@@ -154,7 +193,8 @@
 
             background: #111;
 
-            transition: 0.3s ease;
+            transition:
+                0.3s ease;
         }
 
 
@@ -168,18 +208,24 @@
             position: fixed;
 
             top: 82px;
+
             left: 0;
             right: 0;
 
-            background: rgba(255, 255, 255, 0.98);
+            background:
+                rgba(255, 255, 255, 0.98);
 
-            border-bottom: 1px solid #e5e5e5;
+            border-bottom:
+                1px solid #e5e5e5;
 
-            padding: 20px 6% 25px;
+            padding:
+                20px 6% 25px;
 
             z-index: 999;
 
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+            box-shadow:
+                0 15px 30px
+                rgba(0, 0, 0, 0.08);
         }
 
         .mobile-nav.show {
@@ -194,11 +240,13 @@
             text-decoration: none;
 
             font-size: 14px;
+
             font-weight: 500;
 
             padding: 15px 0;
 
-            border-bottom: 1px solid #eeeeee;
+            border-bottom:
+                1px solid #eeeeee;
         }
 
         .mobile-nav a:last-child {
@@ -216,11 +264,13 @@
 
         .page {
             width: 100%;
+
             max-width: 1400px;
 
             margin: auto;
 
-            padding: 75px 6%;
+            padding:
+                75px 6%;
         }
 
 
@@ -240,6 +290,7 @@
             letter-spacing: 3px;
 
             font-size: 11px;
+
             font-weight: 600;
 
             color: #777;
@@ -248,9 +299,12 @@
         }
 
         .page-header h1 {
-            font-family: "Playfair Display", serif;
+            font-family:
+                "Playfair Display",
+                serif;
 
-            font-size: clamp(40px, 5vw, 68px);
+            font-size:
+                clamp(40px, 5vw, 68px);
 
             line-height: 1.05;
 
@@ -279,11 +333,13 @@
 
             padding: 18px;
 
-            border: 1px solid #e8e8e8;
+            border:
+                1px solid #e8e8e8;
 
             display: grid;
 
-            grid-template-columns: 1.5fr 1fr 1fr;
+            grid-template-columns:
+                1.5fr 1fr 1fr;
 
             gap: 12px;
 
@@ -298,9 +354,11 @@
             position: absolute;
 
             left: 16px;
+
             top: 50%;
 
-            transform: translateY(-50%);
+            transform:
+                translateY(-50%);
 
             color: #777;
 
@@ -313,17 +371,20 @@
 
             height: 50px;
 
-            border: 1px solid #ddd;
+            border:
+                1px solid #ddd;
 
             background: #fafafa;
 
-            padding: 0 16px;
+            padding:
+                0 16px;
 
             font-size: 14px;
 
             outline: none;
 
-            transition: 0.2s ease;
+            transition:
+                0.2s ease;
         }
 
         .controls input {
@@ -366,7 +427,8 @@
         .cars-grid {
             display: grid;
 
-            grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
 
             gap: 30px;
         }
@@ -379,7 +441,8 @@
         .car-card {
             background: #fff;
 
-            border: 1px solid #e7e7e7;
+            border:
+                1px solid #e7e7e7;
 
             overflow: hidden;
 
@@ -389,10 +452,12 @@
         }
 
         .car-card:hover {
-            transform: translateY(-6px);
+            transform:
+                translateY(-6px);
 
             box-shadow:
-                0 20px 50px rgba(0, 0, 0, 0.09);
+                0 20px 50px
+                rgba(0, 0, 0, 0.09);
         }
 
 
@@ -415,16 +480,25 @@
                     #dededb 100%
                 );
 
-            perspective: 1200px;
+            perspective:
+                1200px;
 
             display: flex;
 
             align-items: center;
             justify-content: center;
+
+            transform-style:
+                preserve-3d;
+
+            touch-action:
+                pan-y;
         }
 
 
-        /* IMAGE */
+        /* =====================================================
+           IMAGE
+        ===================================================== */
 
         .car-image img {
             width: 100%;
@@ -444,14 +518,27 @@
                 transform 0.18s ease-out,
                 filter 0.3s ease;
 
-            will-change: transform;
+            will-change:
+                transform;
+
+            transform-style:
+                preserve-3d;
+
+            backface-visibility:
+                hidden;
+
+            -webkit-backface-visibility:
+                hidden;
         }
 
 
-        /* IMAGE HOVER */
+        /* =====================================================
+           DESKTOP IMAGE HOVER
+        ===================================================== */
 
         .car-card:hover .car-image img {
-            filter: brightness(1.03);
+            filter:
+                brightness(1.03);
         }
 
 
@@ -478,14 +565,17 @@
                     transparent
                 );
 
-            transform: skewX(-20deg);
+            transform:
+                skewX(-20deg);
 
             pointer-events: none;
 
-            transition: left 0.8s ease;
+            transition:
+                left 0.8s ease;
         }
 
-        .car-card:hover .car-image::after {
+        .car-card:hover
+        .car-image::after {
             left: 140%;
         }
 
@@ -507,23 +597,27 @@
 
             border-radius: 50%;
 
-            background: rgba(255,255,255,0.95);
+            background:
+                rgba(255,255,255,0.95);
 
             cursor: pointer;
 
             font-size: 20px;
 
             display: flex;
+
             align-items: center;
             justify-content: center;
 
             z-index: 5;
 
-            transition: 0.25s ease;
+            transition:
+                0.25s ease;
         }
 
         .favorite:hover {
-            transform: scale(1.08);
+            transform:
+                scale(1.08);
         }
 
         .favorite.active {
@@ -554,7 +648,9 @@
         }
 
         .car-name {
-            font-family: "Playfair Display", serif;
+            font-family:
+                "Playfair Display",
+                serif;
 
             font-size: 30px;
 
@@ -586,6 +682,7 @@
             display: flex;
 
             justify-content: space-between;
+
             align-items: center;
 
             background: #111;
@@ -594,7 +691,8 @@
 
             text-decoration: none;
 
-            padding: 17px 20px;
+            padding:
+                17px 20px;
 
             font-size: 12px;
 
@@ -618,11 +716,13 @@
         .details-btn span {
             font-size: 18px;
 
-            transition: transform 0.25s ease;
+            transition:
+                transform 0.25s ease;
         }
 
         .details-btn:hover span {
-            transform: translateX(5px);
+            transform:
+                translateX(5px);
         }
 
 
@@ -637,13 +737,17 @@
 
             background: #fff;
 
-            border: 1px solid #e7e7e7;
+            border:
+                1px solid #e7e7e7;
 
-            padding: 70px 20px;
+            padding:
+                70px 20px;
         }
 
         .no-results h2 {
-            font-family: "Playfair Display", serif;
+            font-family:
+                "Playfair Display",
+                serif;
 
             font-size: 30px;
 
@@ -668,7 +772,8 @@
 
             margin-top: 70px;
 
-            padding: 55px 6% 25px;
+            padding:
+                55px 6% 25px;
         }
 
         .footer-content {
@@ -678,17 +783,21 @@
 
             display: grid;
 
-            grid-template-columns: 2fr 1fr 1fr;
+            grid-template-columns:
+                2fr 1fr 1fr;
 
             gap: 50px;
 
             padding-bottom: 40px;
 
-            border-bottom: 1px solid #333;
+            border-bottom:
+                1px solid #333;
         }
 
         .footer-brand h2 {
-            font-family: "Playfair Display", serif;
+            font-family:
+                "Playfair Display",
+                serif;
 
             font-size: 29px;
 
@@ -726,7 +835,8 @@
 
             margin-bottom: 11px;
 
-            transition: color 0.2s ease;
+            transition:
+                color 0.2s ease;
         }
 
         .footer-column a:hover {
@@ -761,7 +871,8 @@
         @media (max-width: 900px) {
 
             header {
-                padding: 0 5%;
+                padding:
+                    0 5%;
             }
 
             nav {
@@ -773,7 +884,8 @@
             }
 
             .page {
-                padding: 55px 5%;
+                padding:
+                    55px 5%;
             }
 
             .controls {
@@ -789,7 +901,8 @@
             }
 
             .footer-content {
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns:
+                    1fr 1fr;
 
                 text-align: center;
 
@@ -797,7 +910,8 @@
             }
 
             .footer-brand {
-                grid-column: 1 / -1;
+                grid-column:
+                    1 / -1;
 
                 width: 100%;
             }
@@ -821,7 +935,8 @@
             header {
                 height: 72px;
 
-                padding: 0 5%;
+                padding:
+                    0 5%;
             }
 
             .logo img {
@@ -829,188 +944,362 @@
                 height: 49px;
             }
 
-            /* SHOW 3 LINES */
+
+            /* HIDE DESKTOP NAV */
 
             nav {
                 display: none;
             }
 
+
+            /* SHOW MOBILE BUTTON */
+
             .menu-toggle {
                 display: flex;
             }
+
 
             .mobile-nav {
                 top: 72px;
             }
 
+
             .page {
-                padding: 45px 5%;
+                padding:
+                    45px 5%;
             }
+
 
             .page-header {
                 margin-bottom: 35px;
             }
 
             .page-header h1 {
-                font-size: 40px;
+                font-size:
+                    40px;
             }
 
             .page-header p {
-                font-size: 14px;
+                font-size:
+                    14px;
 
-                line-height: 1.7;
+                line-height:
+                    1.7;
             }
+
 
             .controls {
-                padding: 14px;
+                padding:
+                    14px;
 
-                gap: 10px;
+                gap:
+                    10px;
 
-                margin-bottom: 30px;
+                margin-bottom:
+                    30px;
             }
+
 
             .cars-grid {
-                gap: 22px;
+                gap:
+                    22px;
             }
+
+
+            /* =================================================
+               MOBILE 3D IMAGE
+            ================================================= */
 
             .car-image {
-                height: 245px;
+                height:
+                    245px;
+
+                perspective:
+                    900px;
+
+                transform-style:
+                    preserve-3d;
+
+                /*
+                 * Allow vertical page scrolling while still
+                 * allowing touch movement to affect the image.
+                 */
+                touch-action:
+                    pan-y;
             }
 
+            .car-image img {
+                transform:
+                    perspective(900px)
+                    rotateY(0deg)
+                    rotateX(0deg)
+                    scale(1.02);
+
+                transition:
+                    transform 0.22s ease-out;
+
+                transform-style:
+                    preserve-3d;
+            }
+
+
+            /*
+             * Subtle mobile 3D breathing effect.
+             * This means the image still has motion even
+             * without a mouse.
+             */
+
+            .car-image.mobile-3d-active img {
+                animation:
+                    mobileCarFloat
+                    5s
+                    ease-in-out
+                    infinite;
+            }
+
+            @keyframes mobileCarFloat {
+
+                0% {
+                    transform:
+                        perspective(900px)
+                        rotateY(-2deg)
+                        rotateX(1deg)
+                        scale(1.025);
+                }
+
+                25% {
+                    transform:
+                        perspective(900px)
+                        rotateY(2deg)
+                        rotateX(-1deg)
+                        scale(1.04);
+                }
+
+                50% {
+                    transform:
+                        perspective(900px)
+                        rotateY(1deg)
+                        rotateX(1.5deg)
+                        scale(1.025);
+                }
+
+                75% {
+                    transform:
+                        perspective(900px)
+                        rotateY(-2deg)
+                        rotateX(-1deg)
+                        scale(1.04);
+                }
+
+                100% {
+                    transform:
+                        perspective(900px)
+                        rotateY(-2deg)
+                        rotateX(1deg)
+                        scale(1.025);
+                }
+            }
+
+
+            /*
+             * Stop the automatic animation while the
+             * user is touching the image.
+             */
+
+            .car-image.touching img {
+                animation:
+                    none !important;
+            }
+
+
             .car-info {
-                padding: 22px;
+                padding:
+                    22px;
             }
 
             .car-brand {
-                font-size: 9px;
+                font-size:
+                    9px;
             }
 
             .car-name {
-                font-size: 26px;
+                font-size:
+                    26px;
             }
 
             .car-description {
-                font-size: 13px;
+                font-size:
+                    13px;
 
-                line-height: 1.7;
+                line-height:
+                    1.7;
 
-                margin-bottom: 22px;
+                margin-bottom:
+                    22px;
             }
 
             .favorite {
-                width: 40px;
-                height: 40px;
+                width:
+                    40px;
 
-                top: 14px;
-                right: 14px;
+                height:
+                    40px;
+
+                top:
+                    14px;
+
+                right:
+                    14px;
             }
 
             .details-btn {
-                padding: 16px 17px;
+                padding:
+                    16px 17px;
             }
 
 
-            /* FOOTER CENTERED */
+            /* =================================================
+               CENTER FOOTER
+            ================================================= */
 
             footer {
-                margin-top: 50px;
+                margin-top:
+                    50px;
 
                 padding:
                     45px 25px 25px;
 
-                text-align: center;
+                text-align:
+                    center;
             }
 
             .footer-content {
-                display: flex;
+                display:
+                    flex;
 
-                flex-direction: column;
+                flex-direction:
+                    column;
 
-                align-items: center;
+                align-items:
+                    center;
 
-                justify-content: center;
+                justify-content:
+                    center;
 
-                gap: 35px;
+                gap:
+                    35px;
 
-                width: 100%;
+                width:
+                    100%;
 
-                padding-bottom: 35px;
+                padding-bottom:
+                    35px;
             }
 
             .footer-brand {
-                width: 100%;
+                width:
+                    100%;
 
-                text-align: center;
+                text-align:
+                    center;
 
-                display: flex;
+                display:
+                    flex;
 
-                flex-direction: column;
+                flex-direction:
+                    column;
 
-                align-items: center;
+                align-items:
+                    center;
             }
 
             .footer-brand h2 {
-                font-size: 28px;
+                font-size:
+                    28px;
 
-                text-align: center;
+                text-align:
+                    center;
             }
 
             .footer-brand p {
-                width: 100%;
+                width:
+                    100%;
 
-                max-width: 320px;
+                max-width:
+                    320px;
 
-                margin: auto;
+                margin:
+                    auto;
 
-                text-align: center;
+                text-align:
+                    center;
             }
 
             .footer-column {
-                width: 100%;
+                width:
+                    100%;
 
-                text-align: center;
+                text-align:
+                    center;
 
-                display: flex;
+                display:
+                    flex;
 
-                flex-direction: column;
+                flex-direction:
+                    column;
 
-                align-items: center;
+                align-items:
+                    center;
             }
 
             .footer-column h3 {
-                text-align: center;
+                text-align:
+                    center;
 
-                width: 100%;
+                width:
+                    100%;
             }
 
             .footer-column a {
-                text-align: center;
+                text-align:
+                    center;
 
-                width: 100%;
+                width:
+                    100%;
             }
 
             .footer-bottom {
-                width: 100%;
+                width:
+                    100%;
 
-                display: flex;
+                display:
+                    flex;
 
-                flex-direction: column;
+                flex-direction:
+                    column;
 
-                align-items: center;
+                align-items:
+                    center;
 
-                justify-content: center;
+                justify-content:
+                    center;
 
-                text-align: center;
+                text-align:
+                    center;
 
-                gap: 10px;
+                gap:
+                    10px;
             }
 
             .footer-bottom p {
-                width: 100%;
+                width:
+                    100%;
 
-                text-align: center;
+                text-align:
+                    center;
 
-                line-height: 1.6;
+                line-height:
+                    1.6;
             }
         }
 
@@ -1022,19 +1311,49 @@
         @media (max-width: 380px) {
 
             .page-header h1 {
-                font-size: 35px;
+                font-size:
+                    35px;
             }
 
             .car-image {
-                height: 220px;
+                height:
+                    220px;
             }
 
             .car-name {
-                font-size: 24px;
+                font-size:
+                    24px;
             }
 
             .car-info {
-                padding: 20px;
+                padding:
+                    20px;
+            }
+        }
+
+
+        /* =====================================================
+           REDUCED MOTION
+        ===================================================== */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            html {
+                scroll-behavior:
+                    auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration:
+                    .01ms !important;
+
+                animation-iteration-count:
+                    1 !important;
+
+                transition-duration:
+                    .01ms !important;
             }
         }
 
@@ -1149,7 +1468,9 @@
 <main class="page">
 
 
-    <!-- PAGE HEADER -->
+    <!-- =================================================
+         PAGE HEADER
+    ================================================= -->
 
     <section class="page-header">
 
@@ -1174,7 +1495,6 @@
     ================================================= -->
 
     <section class="controls">
-
 
         <div class="search-box">
 
@@ -1242,7 +1562,9 @@
     </section>
 
 
-    <!-- RESULTS -->
+    <!-- =================================================
+         RESULTS
+    ================================================= -->
 
     <div class="results-bar">
 
@@ -1889,7 +2211,6 @@
 
 <script>
 
-
     /* =====================================================
        MOBILE MENU
     ===================================================== */
@@ -1910,14 +2231,14 @@
 
             menuToggle.setAttribute(
                 "aria-expanded",
-                isOpen
+                String(isOpen)
             );
 
         }
     );
 
 
-    /* CLOSE MOBILE MENU WHEN LINK IS CLICKED */
+    /* CLOSE MOBILE MENU */
 
     document
         .querySelectorAll(".mobile-nav a")
@@ -1927,7 +2248,9 @@
                 "click",
                 function () {
 
-                    mobileNav.classList.remove("show");
+                    mobileNav.classList.remove(
+                        "show"
+                    );
 
                     menuToggle.setAttribute(
                         "aria-expanded",
@@ -2070,7 +2393,8 @@
 
         cars.forEach(function (car) {
 
-            car.style.display = "none";
+            car.style.display =
+                "none";
 
         });
 
@@ -2079,9 +2403,12 @@
 
         visibleCars.forEach(function (car) {
 
-            car.style.display = "";
+            car.style.display =
+                "";
 
-            carsGrid.appendChild(car);
+            carsGrid.appendChild(
+                car
+            );
 
         });
 
@@ -2113,12 +2440,10 @@
         updateCars
     );
 
-
     categoryFilter.addEventListener(
         "change",
         updateCars
     );
-
 
     sortSelect.addEventListener(
         "change",
@@ -2138,18 +2463,24 @@
                 "click",
                 function () {
 
-                    this.classList.toggle("active");
+                    this.classList.toggle(
+                        "active"
+                    );
 
 
                     if (
-                        this.classList.contains("active")
+                        this.classList.contains(
+                            "active"
+                        )
                     ) {
 
-                        this.textContent = "♥";
+                        this.textContent =
+                            "♥";
 
                     } else {
 
-                        this.textContent = "♡";
+                        this.textContent =
+                            "♡";
 
                     }
 
@@ -2160,79 +2491,296 @@
 
 
     /* =====================================================
-       3D CAR TILT EFFECT
+       3D CAR EFFECT
     ===================================================== */
 
     const carImages =
-        document.querySelectorAll(".car-image");
+        document.querySelectorAll(
+            ".car-image"
+        );
 
 
-    carImages.forEach(function (container) {
+    const isTouchDevice =
+        window.matchMedia(
+            "(hover: none), (pointer: coarse)"
+        ).matches;
 
-        const image =
-            container.querySelector(".car-photo");
+
+    /* =====================================================
+       DESKTOP 3D
+    ===================================================== */
+
+    if (!isTouchDevice) {
+
+        carImages.forEach(
+            function (container) {
+
+                const image =
+                    container.querySelector(
+                        ".car-photo"
+                    );
 
 
-        container.addEventListener(
-            "mousemove",
-            function (event) {
+                container.addEventListener(
+                    "mousemove",
+                    function (event) {
 
-                /* Disable heavy effect on touch devices */
+                        const rect =
+                            container.getBoundingClientRect();
 
-                if (window.innerWidth <= 600) {
-                    return;
+
+                        const x =
+                            event.clientX -
+                            rect.left;
+
+
+                        const y =
+                            event.clientY -
+                            rect.top;
+
+
+                        const centerX =
+                            rect.width / 2;
+
+
+                        const centerY =
+                            rect.height / 2;
+
+
+                        const rotateY =
+                            ((x - centerX) /
+                            centerX) * 10;
+
+
+                        const rotateX =
+                            -((y - centerY) /
+                            centerY) * 5;
+
+
+                        image.style.transform =
+                            `
+                            perspective(1000px)
+                            rotateY(${rotateY}deg)
+                            rotateX(${rotateX}deg)
+                            scale(1.04)
+                            `;
+
+                    }
+                );
+
+
+                container.addEventListener(
+                    "mouseleave",
+                    function () {
+
+                        image.style.transform =
+                            `
+                            perspective(1000px)
+                            rotateY(0deg)
+                            rotateX(0deg)
+                            scale(1)
+                            `;
+
+                    }
+                );
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       MOBILE 3D
+       
+       Instead of disabling 3D on phones, each image
+       gets a subtle automatic movement.
+    ===================================================== */
+
+    if (isTouchDevice) {
+
+        carImages.forEach(
+            function (container, index) {
+
+                const image =
+                    container.querySelector(
+                        ".car-photo"
+                    );
+
+
+                /* Activate automatic mobile 3D */
+
+                container.classList.add(
+                    "mobile-3d-active"
+                );
+
+
+                /* ---------------------------------------------
+                   TOUCH START
+                --------------------------------------------- */
+
+                container.addEventListener(
+                    "touchstart",
+                    function (event) {
+
+                        container.classList.add(
+                            "touching"
+                        );
+
+
+                        const touch =
+                            event.touches[0];
+
+
+                        const rect =
+                            container.getBoundingClientRect();
+
+
+                        const x =
+                            touch.clientX -
+                            rect.left;
+
+
+                        const y =
+                            touch.clientY -
+                            rect.top;
+
+
+                        const centerX =
+                            rect.width / 2;
+
+
+                        const centerY =
+                            rect.height / 2;
+
+
+                        const rotateY =
+                            ((x - centerX) /
+                            centerX) * 8;
+
+
+                        const rotateX =
+                            -((y - centerY) /
+                            centerY) * 4;
+
+
+                        image.style.transform =
+                            `
+                            perspective(900px)
+                            rotateY(${rotateY}deg)
+                            rotateX(${rotateX}deg)
+                            scale(1.04)
+                            `;
+
+                    },
+                    {
+                        passive: true
+                    }
+                );
+
+
+                /* ---------------------------------------------
+                   TOUCH MOVE
+                --------------------------------------------- */
+
+                container.addEventListener(
+                    "touchmove",
+                    function (event) {
+
+                        const touch =
+                            event.touches[0];
+
+
+                        const rect =
+                            container.getBoundingClientRect();
+
+
+                        const x =
+                            touch.clientX -
+                            rect.left;
+
+
+                        const y =
+                            touch.clientY -
+                            rect.top;
+
+
+                        const centerX =
+                            rect.width / 2;
+
+
+                        const centerY =
+                            rect.height / 2;
+
+
+                        const rotateY =
+                            ((x - centerX) /
+                            centerX) * 9;
+
+
+                        const rotateX =
+                            -((y - centerY) /
+                            centerY) * 4;
+
+
+                        image.style.transform =
+                            `
+                            perspective(900px)
+                            rotateY(${rotateY}deg)
+                            rotateX(${rotateX}deg)
+                            scale(1.04)
+                            `;
+
+                    },
+                    {
+                        passive: true
+                    }
+                );
+
+
+                /* ---------------------------------------------
+                   TOUCH END
+                --------------------------------------------- */
+
+                function resetTouch() {
+
+                    container.classList.remove(
+                        "touching"
+                    );
+
+
+                    image.style.transform =
+                        `
+                        perspective(900px)
+                        rotateY(0deg)
+                        rotateX(0deg)
+                        scale(1.02)
+                        `;
+
                 }
 
 
-                const rect =
-                    container.getBoundingClientRect();
+                container.addEventListener(
+                    "touchend",
+                    resetTouch,
+                    {
+                        passive: true
+                    }
+                );
 
 
-                const x =
-                    event.clientX - rect.left;
-
-
-                const y =
-                    event.clientY - rect.top;
-
-
-                const centerX =
-                    rect.width / 2;
-
-
-                const centerY =
-                    rect.height / 2;
-
-
-                const rotateY =
-                    ((x - centerX) / centerX) * 10;
-
-
-                const rotateX =
-                    -((y - centerY) / centerY) * 5;
-
-
-                image.style.transform =
-                    `perspective(1000px)
-                     rotateY(${rotateY}deg)
-                     rotateX(${rotateX}deg)
-                     scale(1.04)`;
+                container.addEventListener(
+                    "touchcancel",
+                    resetTouch,
+                    {
+                        passive: true
+                    }
+                );
 
             }
         );
 
-
-        container.addEventListener(
-            "mouseleave",
-            function () {
-
-                image.style.transform =
-                    "perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1)";
-
-            }
-        );
-
-    });
+    }
 
 
     /* =====================================================
