@@ -509,6 +509,12 @@
             backface-visibility: hidden;
 
             opacity: 1;
+
+            /*
+             * No display:none.
+             * No visibility:hidden.
+             * No play button.
+             */
         }
 
 
@@ -997,8 +1003,11 @@
             color:
                 var(--gold);
 
-            font-size: 9px;
-            font-weight: 800;
+            font-size:
+                9px;
+
+            font-weight:
+                800;
 
             letter-spacing:
                 3px;
@@ -1070,7 +1079,8 @@
         }
 
         .pw-type-grid {
-            display: grid;
+            display:
+                grid;
 
             grid-template-columns:
                 repeat(4, 1fr);
@@ -1080,7 +1090,8 @@
         }
 
         .pw-type-card {
-            position: relative;
+            position:
+                relative;
 
             min-height:
                 315px;
@@ -1118,15 +1129,23 @@
         }
 
         .pw-type-card::before {
-            content: "";
+            content:
+                "";
 
-            position: absolute;
+            position:
+                absolute;
 
-            top: 0;
-            left: 0;
+            top:
+                0;
 
-            width: 0;
-            height: 3px;
+            left:
+                0;
+
+            width:
+                0;
+
+            height:
+                3px;
 
             background:
                 linear-gradient(
@@ -1140,7 +1159,8 @@
         }
 
         .pw-type-card::after {
-            content: "";
+            content:
+                "";
 
             position:
                 absolute;
@@ -1158,7 +1178,8 @@
                 -100px;
 
             border:
-                1px solid rgba(184,155,98,.16);
+                1px solid
+                rgba(184,155,98,.16);
 
             border-radius:
                 50%;
@@ -2823,11 +2844,10 @@
                  aria-labelledby="hero-title">
 
 
-            <!--
-                ONE VIDEO FILE FOR BOTH DESKTOP AND MOBILE.
-                NO PLAY BUTTON.
-                AUTOPLAY STARTS AUTOMATICALLY.
-            -->
+            <!-- =====================================================
+                 AUTOMATIC HERO VIDEO
+                 ONE FILE ONLY
+            ====================================================== -->
 
             <video
                 id="hero-video"
@@ -3043,9 +3063,7 @@
                     <article class="pw-type-card reveal">
 
                         <div class="pw-type-number">
-
                             01
-
                         </div>
 
                         <div class="pw-type-icon"
@@ -3056,9 +3074,7 @@
                         </div>
 
                         <h3>
-
                             Everyday Comfort
-
                         </h3>
 
                         <p>
@@ -3074,9 +3090,7 @@
                     <article class="pw-type-card reveal delay-1">
 
                         <div class="pw-type-number">
-
                             02
-
                         </div>
 
                         <div class="pw-type-icon"
@@ -3087,9 +3101,7 @@
                         </div>
 
                         <h3>
-
                             Adventure Ready
-
                         </h3>
 
                         <p>
@@ -3105,9 +3117,7 @@
                     <article class="pw-type-card reveal delay-2">
 
                         <div class="pw-type-number">
-
                             03
-
                         </div>
 
                         <div class="pw-type-icon"
@@ -3118,9 +3128,7 @@
                         </div>
 
                         <h3>
-
                             Refined Luxury
-
                         </h3>
 
                         <p>
@@ -3137,9 +3145,7 @@
                     <article class="pw-type-card reveal delay-3">
 
                         <div class="pw-type-number">
-
                             04
-
                         </div>
 
                         <div class="pw-type-icon"
@@ -3150,9 +3156,7 @@
                         </div>
 
                         <h3>
-
                             Pure Performance
-
                         </h3>
 
                         <p>
@@ -3388,9 +3392,7 @@
                            aria-hidden="true"></i>
 
                         <h3>
-
                             Vehicle Inspection
-
                         </h3>
 
                         <p>
@@ -3409,9 +3411,7 @@
                            aria-hidden="true"></i>
 
                         <h3>
-
                             Test Drive
-
                         </h3>
 
                         <p>
@@ -3430,9 +3430,7 @@
                            aria-hidden="true"></i>
 
                         <h3>
-
                             Flexible Financing
-
                         </h3>
 
                         <p>
@@ -3451,9 +3449,7 @@
                            aria-hidden="true"></i>
 
                         <h3>
-
                             After-Sales Service
-
                         </h3>
 
                         <p>
@@ -3472,9 +3468,7 @@
                            aria-hidden="true"></i>
 
                         <h3>
-
                             Trade-In Assistance
-
                         </h3>
 
                         <p>
@@ -3493,9 +3487,7 @@
                            aria-hidden="true"></i>
 
                         <h3>
-
                             Customer Support
-
                         </h3>
 
                         <p>
@@ -3592,8 +3584,6 @@
         <div class="footer-grid">
 
 
-            <!-- ABOUT -->
-
             <div class="footer-about">
 
                 <a href="index.html"
@@ -3644,88 +3634,60 @@
             </div>
 
 
-            <!-- EXPLORE -->
-
             <div class="footer-column">
 
                 <h4>
-
                     Explore
-
                 </h4>
 
                 <a href="index.html">
-
                     Home
-
                 </a>
 
                 <a href="cars.html">
-
                     Cars
-
                 </a>
 
                 <a href="about.html">
-
                     About
-
                 </a>
 
                 <a href="contact.html">
-
                     Contact
-
                 </a>
 
             </div>
 
 
-            <!-- SERVICES -->
-
             <div class="footer-column">
 
                 <h4>
-
                     Services
-
                 </h4>
 
                 <a href="contact.html">
-
                     Test Drive
-
                 </a>
 
                 <a href="contact.html">
-
                     Financing
-
                 </a>
 
                 <a href="contact.html">
-
                     Trade-In
-
                 </a>
 
                 <a href="contact.html">
-
                     Car Service
-
                 </a>
 
             </div>
 
 
-            <!-- CONTACT -->
-
             <div class="footer-column">
 
                 <h4>
-
                     Contact
-
                 </h4>
 
                 <p>
@@ -3734,9 +3696,7 @@
                        aria-hidden="true"></i>
 
                     <span>
-
                         Dhaka, Bangladesh
-
                     </span>
 
                 </p>
@@ -3747,9 +3707,7 @@
                        aria-hidden="true"></i>
 
                     <span>
-
                         +880 1XXX-XXXXXX
-
                     </span>
 
                 </p>
@@ -3760,9 +3718,7 @@
                        aria-hidden="true"></i>
 
                     <span>
-
                         N/A
-
                     </span>
 
                 </p>
@@ -3773,18 +3729,13 @@
         </div>
 
 
-        <!-- FOOTER BOTTOM -->
-
         <div class="footer-bottom">
 
             <p>
 
                 ©
-
                 <span class="current-year"></span>
-
                 Isora Luxe
-
                 All rights reserved.
 
             </p>
@@ -3812,7 +3763,6 @@
         document.addEventListener(
             "DOMContentLoaded",
             function () {
-
 
                 /* =================================================
                    CURRENT YEAR
@@ -3890,9 +3840,10 @@
 
                 function closeMobileMenu() {
 
-                    if (!menuButton ||
-                        !mobileNav) {
-
+                    if (
+                        !menuButton ||
+                        !mobileNav
+                    ) {
                         return;
                     }
 
@@ -3906,7 +3857,8 @@
                         "Open navigation menu"
                     );
 
-                    mobileNav.hidden = true;
+                    mobileNav.hidden =
+                        true;
 
                     mobileNav.classList.remove(
                         "is-open"
@@ -4096,7 +4048,6 @@
                             },
                             {
                                 threshold: 0.12,
-
                                 rootMargin:
                                     "0px 0px -40px 0px"
                             }
@@ -4117,11 +4068,11 @@
 
 
                 /* =================================================
-                   HERO VIDEO — AUTOMATIC PLAY ONLY
+                   HERO VIDEO
                    
+                   ONE FILE ONLY.
+                   AUTOMATIC PLAY.
                    NO PLAY BUTTON.
-                   NO USER INTERACTION.
-                   ONE VIDEO FILE.
                 ================================================= */
 
                 const heroVideo =
@@ -4132,18 +4083,18 @@
 
                 if (heroVideo) {
 
-
                     /*
-                     * Explicit autoplay properties.
+                     * Force the video into the
+                     * muted inline-autoplay state.
                      */
-
-                    heroVideo.autoplay =
-                        true;
 
                     heroVideo.muted =
                         true;
 
                     heroVideo.defaultMuted =
+                        true;
+
+                    heroVideo.autoplay =
                         true;
 
                     heroVideo.loop =
@@ -4154,7 +4105,7 @@
 
 
                     /*
-                     * Explicit autoplay attributes.
+                     * Keep the attributes explicit.
                      */
 
                     heroVideo.setAttribute(
@@ -4184,7 +4135,7 @@
 
 
                     /*
-                     * Automatic playback function.
+                     * Automatic start.
                      */
 
                     function startHeroVideo() {
@@ -4192,25 +4143,21 @@
                         heroVideo.muted =
                             true;
 
-
                         const playPromise =
                             heroVideo.play();
 
-
                         if (
-                            playPromise !==
-                            undefined
+                            playPromise &&
+                            typeof playPromise.catch ===
+                            "function"
                         ) {
 
                             playPromise.catch(
                                 function () {
-
                                     /*
-                                     * No button is shown.
-                                     * The browser decides whether
-                                     * autoplay is permitted.
+                                     * No Play button.
+                                     * Nothing is displayed.
                                      */
-
                                 }
                             );
 
@@ -4220,14 +4167,15 @@
 
 
                     /*
-                     * Try immediately.
+                     * Start immediately.
                      */
 
                     startHeroVideo();
 
 
                     /*
-                     * Try when metadata is ready.
+                     * Start as soon as video
+                     * metadata is available.
                      */
 
                     heroVideo.addEventListener(
@@ -4237,7 +4185,8 @@
 
 
                     /*
-                     * Try when the first data is ready.
+                     * Start when video data
+                     * becomes available.
                      */
 
                     heroVideo.addEventListener(
@@ -4247,8 +4196,8 @@
 
 
                     /*
-                     * Try when the browser says
-                     * playback can begin.
+                     * Start when browser
+                     * says video can play.
                      */
 
                     heroVideo.addEventListener(
@@ -4258,7 +4207,8 @@
 
 
                     /*
-                     * Try after the complete page loads.
+                     * Start after complete
+                     * page loading.
                      */
 
                     window.addEventListener(
