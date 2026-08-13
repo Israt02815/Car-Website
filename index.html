@@ -92,10 +92,6 @@
             font-family: inherit;
         }
 
-        button {
-            -webkit-tap-highlight-color: transparent;
-        }
-
 
         /* =========================================================
            ACCESSIBILITY
@@ -494,11 +490,6 @@
 
             z-index: 0;
 
-            /*
-             * This is ONLY a fallback background.
-             * The video itself stays visible.
-             */
-
             background:
                 #070809
                 url("images/hero-poster.jpg")
@@ -515,85 +506,6 @@
             opacity: 1;
 
             pointer-events: none;
-        }
-
-
-        /* =========================================================
-           HERO PLAY BUTTON
-           Used only if mobile blocks autoplay.
-        ========================================================= */
-
-        .hero-video-play {
-            position: absolute;
-
-            left: 50%;
-            bottom: 32px;
-
-            z-index: 4;
-
-            display: none;
-
-            align-items: center;
-            justify-content: center;
-
-            gap: 10px;
-
-            min-height: 48px;
-
-            padding: 0 20px;
-
-            border: 1px solid rgba(255,255,255,.25);
-
-            border-radius: 999px;
-
-            background: rgba(10,11,12,.78);
-
-            color: white;
-
-            font-size: 11px;
-            font-weight: 700;
-
-            letter-spacing: .4px;
-
-            cursor: pointer;
-
-            transform: translateX(-50%);
-
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-
-            box-shadow:
-                0 14px 35px rgba(0,0,0,.22);
-
-            transition:
-                background .25s ease,
-                border-color .25s ease,
-                color .25s ease,
-                transform .25s ease;
-        }
-
-        .hero-video-play.is-visible {
-            display: inline-flex;
-        }
-
-        .hero-video-play:hover {
-            background: var(--gold);
-
-            border-color: var(--gold);
-
-            color: #111;
-
-            transform:
-                translateX(-50%)
-                translateY(-2px);
-        }
-
-        .hero-video-play i {
-            color: var(--gold-light);
-        }
-
-        .hero-video-play:hover i {
-            color: #111;
         }
 
 
@@ -2137,10 +2049,6 @@
                 display: none;
             }
 
-            .hero-video-play {
-                bottom: 24px;
-            }
-
             .pw-stats-grid {
                 transform: translateY(-20px);
             }
@@ -2446,23 +2354,6 @@
                     type="video/mp4">
 
             </video>
-
-
-            <!-- PLAY BUTTON
-                 Only appears when autoplay is blocked -->
-
-            <button
-                id="hero-video-play"
-                class="hero-video-play"
-                type="button"
-                aria-label="Play hero video">
-
-                <i class="fa-solid fa-play"
-                   aria-hidden="true"></i>
-
-                <span>Play Video</span>
-
-            </button>
 
 
             <!-- HERO CONTENT -->
@@ -3457,7 +3348,7 @@
                 );
 
 
-                /* Close menu when link is clicked */
+                /* Close menu when a link is clicked */
 
                 mobileNav
                     .querySelectorAll("a")
@@ -3632,21 +3523,16 @@
 
 
             /* =====================================================
-               HERO VIDEO
+               HERO VIDEO — AUTOMATIC PLAY ONLY
             ===================================================== */
 
             const heroVideo =
                 document.querySelector(".pw-hero-video");
 
-            const playButton =
-                document.getElementById("hero-video-play");
-
-
             if (heroVideo) {
 
                 /*
-                 * Force the attributes needed for muted,
-                 * inline playback on mobile browsers.
+                 * Mobile-safe autoplay properties.
                  */
 
                 heroVideo.muted = true;
@@ -3674,83 +3560,49 @@
                 );
 
 
-                /* -----------------------------------------------
-                   SHOW PLAY BUTTON
-                ----------------------------------------------- */
+                /* -------------------------------------------------
+                   START VIDEO
+                ------------------------------------------------- */
 
-                function showPlayButton() {
+                function startHeroVideo() {
 
-                    if (!playButton) return;
-
-                    playButton.classList.add(
-                        "is-visible"
-                    );
-
-                }
-
-
-                /* -----------------------------------------------
-                   HIDE PLAY BUTTON
-                ----------------------------------------------- */
-
-                function hidePlayButton() {
-
-                    if (!playButton) return;
-
-                    playButton.classList.remove(
-                        "is-visible"
-                    );
-
-                }
-
-
-                /* -----------------------------------------------
-                   TRY AUTOPLAY
-                ----------------------------------------------- */
-
-                function tryPlayVideo() {
-
-                    if (document.hidden) return;
-
-                    if (heroVideo.readyState < 2) {
+                    if (document.hidden) {
                         return;
                     }
 
                     heroVideo.muted = true;
 
-                    const promise =
+                    const playPromise =
                         heroVideo.play();
 
                     if (
-                        promise &&
-                        typeof promise.catch === "function"
+                        playPromise &&
+                        typeof playPromise.catch === "function"
                     ) {
 
-                        promise
+                        playPromise
                             .then(function () {
 
-                                hidePlayButton();
-
                                 console.log(
-                                    "Isora Luxe hero video is playing."
+                                    "Isora Luxe hero video started automatically."
                                 );
 
                             })
                             .catch(function (error) {
 
                                 /*
-                                 * Autoplay was rejected.
+                                 * We intentionally do NOT show
+                                 * a Play Video button.
                                  *
-                                 * We keep the video visible.
-                                 * The user can manually start it.
+                                 * If the mobile browser blocks
+                                 * autoplay, the browser itself
+                                 * controls that behavior.
                                  */
 
                                 console.log(
-                                    "Hero video autoplay blocked:",
+                                    "Hero video autoplay was blocked:",
                                     error.name
                                 );
-
-                                showPlayButton();
 
                             });
 
@@ -3759,130 +3611,57 @@
                 }
 
 
-                /* -----------------------------------------------
-                   VIDEO READY EVENTS
-                ----------------------------------------------- */
+                /* -------------------------------------------------
+                   VIDEO READY
+                ------------------------------------------------- */
 
                 heroVideo.addEventListener(
                     "loadedmetadata",
                     function () {
 
-                        tryPlayVideo();
+                        startHeroVideo();
 
                     }
                 );
+
 
                 heroVideo.addEventListener(
                     "canplay",
                     function () {
 
-                        tryPlayVideo();
+                        startHeroVideo();
 
                     }
                 );
 
-
-                /* -----------------------------------------------
-                   VIDEO SUCCESSFULLY STARTED
-                ----------------------------------------------- */
 
                 heroVideo.addEventListener(
-                    "playing",
+                    "loadeddata",
                     function () {
 
-                        hidePlayButton();
+                        startHeroVideo();
 
                     }
                 );
 
 
-                /* -----------------------------------------------
-                   VIDEO ERROR
-                ----------------------------------------------- */
-
-                heroVideo.addEventListener(
-                    "error",
-                    function () {
-
-                        /*
-                         * IMPORTANT:
-                         * Do NOT hide the video.
-                         */
-
-                        console.log(
-                            "Video loading error. Check:",
-                            "videos/prime-wheels.mp4"
-                        );
-
-                        showPlayButton();
-
-                    }
-                );
-
-
-                /* -----------------------------------------------
-                   MANUAL PLAY BUTTON
-                ----------------------------------------------- */
-
-                if (playButton) {
-
-                    playButton.addEventListener(
-                        "click",
-                        function () {
-
-                            heroVideo.muted = true;
-
-                            heroVideo.play()
-                                .then(function () {
-
-                                    hidePlayButton();
-
-                                })
-                                .catch(function (error) {
-
-                                    console.log(
-                                        "Manual video playback failed:",
-                                        error
-                                    );
-
-                                });
-
-                        }
-                    );
-
-                }
-
-
-                /* -----------------------------------------------
-                   INITIAL ATTEMPT
-                ----------------------------------------------- */
-
-                if (
-                    heroVideo.readyState >= 2
-                ) {
-
-                    tryPlayVideo();
-
-                }
-
-
-                /* -----------------------------------------------
-                   PAGE FULLY LOADED
-                ----------------------------------------------- */
+                /* -------------------------------------------------
+                   PAGE LOAD
+                ------------------------------------------------- */
 
                 window.addEventListener(
                     "load",
                     function () {
 
-                        tryPlayVideo();
+                        startHeroVideo();
 
                     }
                 );
 
 
-                /* -----------------------------------------------
-                   RETURNING TO PAGE
-                ----------------------------------------------- */
+                /* -------------------------------------------------
+                   PAGE BECOMES VISIBLE AGAIN
+                ------------------------------------------------- */
 
                 document.addEventListener(
                     "visibilitychange",
@@ -3890,10 +3669,7 @@
 
                         if (!document.hidden) {
 
-                            if (
-                                heroVideo.paused &&
-                                heroVideo.currentTime > 0
-                            ) {
+                            if (heroVideo.paused) {
 
                                 heroVideo.muted = true;
 
@@ -3908,7 +3684,6 @@
                 );
 
             }
-
 
         });
 
