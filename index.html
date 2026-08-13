@@ -494,6 +494,11 @@
 
             z-index: 0;
 
+            /*
+             * This is ONLY a fallback background.
+             * The video itself stays visible.
+             */
+
             background:
                 #070809
                 url("images/hero-poster.jpg")
@@ -512,25 +517,17 @@
             pointer-events: none;
         }
 
-        /*
-         * Video fallback state.
-         * We keep the poster visible through the hero background.
-         */
-
-        .pw-hero-video.video-unavailable {
-            opacity: 0;
-        }
-
 
         /* =========================================================
-           MOBILE PLAY FALLBACK
+           HERO PLAY BUTTON
+           Used only if mobile blocks autoplay.
         ========================================================= */
 
         .hero-video-play {
             position: absolute;
 
             left: 50%;
-            bottom: 34px;
+            bottom: 32px;
 
             z-index: 4;
 
@@ -546,6 +543,7 @@
             padding: 0 20px;
 
             border: 1px solid rgba(255,255,255,.25);
+
             border-radius: 999px;
 
             background: rgba(10,11,12,.78);
@@ -555,7 +553,7 @@
             font-size: 11px;
             font-weight: 700;
 
-            letter-spacing: .5px;
+            letter-spacing: .4px;
 
             cursor: pointer;
 
@@ -570,13 +568,12 @@
             transition:
                 background .25s ease,
                 border-color .25s ease,
+                color .25s ease,
                 transform .25s ease;
         }
 
-        .hero-video-play i {
-            color: var(--gold-light);
-
-            font-size: 13px;
+        .hero-video-play.is-visible {
+            display: inline-flex;
         }
 
         .hero-video-play:hover {
@@ -591,16 +588,12 @@
                 translateY(-2px);
         }
 
+        .hero-video-play i {
+            color: var(--gold-light);
+        }
+
         .hero-video-play:hover i {
             color: #111;
-        }
-
-        .hero-video-play.is-visible {
-            display: inline-flex;
-        }
-
-        .hero-video-play.is-hidden {
-            display: none;
         }
 
 
@@ -2455,7 +2448,8 @@
             </video>
 
 
-            <!-- MOBILE FALLBACK PLAY BUTTON -->
+            <!-- PLAY BUTTON
+                 Only appears when autoplay is blocked -->
 
             <button
                 id="hero-video-play"
@@ -2565,15 +2559,11 @@
                          role="listitem">
 
                         <strong>
-
                             4+
-
                         </strong>
 
                         <span>
-
                             Premium Vehicles
-
                         </span>
 
                     </div>
@@ -2582,15 +2572,11 @@
                          role="listitem">
 
                         <strong>
-
                             100%
-
                         </strong>
 
                         <span>
-
                             Vehicle Inspection
-
                         </span>
 
                     </div>
@@ -2599,15 +2585,11 @@
                          role="listitem">
 
                         <strong>
-
                             1 Year
-
                         </strong>
 
                         <span>
-
                             Free Basic Service
-
                         </span>
 
                     </div>
@@ -2616,15 +2598,11 @@
                          role="listitem">
 
                         <strong>
-
                             24/7
-
                         </strong>
 
                         <span>
-
                             Customer Support
-
                         </span>
 
                     </div>
@@ -2648,9 +2626,7 @@
                 <div class="pw-section-heading reveal">
 
                     <p class="pw-section-label">
-
                         Explore Our Collection
-
                     </p>
 
                     <h2 id="collection-title">
@@ -2658,9 +2634,7 @@
                         Cars chosen for
 
                         <span>
-
                             every kind of journey.
-
                         </span>
 
                     </h2>
@@ -2682,9 +2656,7 @@
                     <article class="pw-type-card reveal">
 
                         <div class="pw-type-number">
-
                             01
-
                         </div>
 
                         <div class="pw-type-icon"
@@ -2695,9 +2667,7 @@
                         </div>
 
                         <h3>
-
                             Everyday Comfort
-
                         </h3>
 
                         <p>
@@ -2713,9 +2683,7 @@
                     <article class="pw-type-card reveal delay-1">
 
                         <div class="pw-type-number">
-
                             02
-
                         </div>
 
                         <div class="pw-type-icon"
@@ -2726,9 +2694,7 @@
                         </div>
 
                         <h3>
-
                             Adventure Ready
-
                         </h3>
 
                         <p>
@@ -2744,9 +2710,7 @@
                     <article class="pw-type-card reveal delay-2">
 
                         <div class="pw-type-number">
-
                             03
-
                         </div>
 
                         <div class="pw-type-icon"
@@ -2757,9 +2721,7 @@
                         </div>
 
                         <h3>
-
                             Refined Luxury
-
                         </h3>
 
                         <p>
@@ -2776,9 +2738,7 @@
                     <article class="pw-type-card reveal delay-3">
 
                         <div class="pw-type-number">
-
                             04
-
                         </div>
 
                         <div class="pw-type-icon"
@@ -2789,9 +2749,7 @@
                         </div>
 
                         <h3>
-
                             Pure Performance
-
                         </h3>
 
                         <p>
@@ -2842,9 +2800,7 @@
                     <div class="reveal">
 
                         <p class="pw-section-label">
-
                             Choose With Confidence
-
                         </p>
 
                         <h2 id="why-title">
@@ -2852,9 +2808,7 @@
                             Why choose
 
                             <span>
-
                                 Isora Luxe?
-
                             </span>
 
                         </h2>
@@ -2891,9 +2845,7 @@
                                aria-hidden="true"></i>
 
                             <h3>
-
                                 Verified Condition
-
                             </h3>
 
                             <p>
@@ -2912,9 +2864,7 @@
                                aria-hidden="true"></i>
 
                             <h3>
-
                                 Complete Details
-
                             </h3>
 
                             <p>
@@ -2933,9 +2883,7 @@
                                aria-hidden="true"></i>
 
                             <h3>
-
                                 Fair Information
-
                             </h3>
 
                             <p>
@@ -2954,9 +2902,7 @@
                                aria-hidden="true"></i>
 
                             <h3>
-
                                 Personal Guidance
-
                             </h3>
 
                             <p>
@@ -2990,9 +2936,7 @@
                 <div class="pw-section-heading reveal">
 
                     <p class="pw-section-label">
-
                         Our Services
-
                     </p>
 
                     <h2 id="services-title">
@@ -3000,9 +2944,7 @@
                         Everything you need
 
                         <span>
-
                             after choosing your car.
-
                         </span>
 
                     </h2>
@@ -3027,9 +2969,7 @@
                            aria-hidden="true"></i>
 
                         <h3>
-
                             Vehicle Inspection
-
                         </h3>
 
                         <p>
@@ -3048,9 +2988,7 @@
                            aria-hidden="true"></i>
 
                         <h3>
-
                             Test Drive
-
                         </h3>
 
                         <p>
@@ -3069,9 +3007,7 @@
                            aria-hidden="true"></i>
 
                         <h3>
-
                             Flexible Financing
-
                         </h3>
 
                         <p>
@@ -3090,9 +3026,7 @@
                            aria-hidden="true"></i>
 
                         <h3>
-
                             After-Sales Service
-
                         </h3>
 
                         <p>
@@ -3111,9 +3045,7 @@
                            aria-hidden="true"></i>
 
                         <h3>
-
                             Trade-In Assistance
-
                         </h3>
 
                         <p>
@@ -3132,9 +3064,7 @@
                            aria-hidden="true"></i>
 
                         <h3>
-
                             Customer Support
-
                         </h3>
 
                         <p>
@@ -3166,9 +3096,7 @@
                 <div class="pw-cta-inner reveal">
 
                     <p class="pw-eyebrow">
-
                         Ready to Drive?
-
                     </p>
 
                     <h2 id="cta-title">
@@ -3176,9 +3104,7 @@
                         Your next journey
 
                         <span>
-
                             starts here.
-
                         </span>
 
                     </h2>
@@ -3288,33 +3214,23 @@
             <div class="footer-column">
 
                 <h4>
-
                     Explore
-
                 </h4>
 
                 <a href="index.html">
-
                     Home
-
                 </a>
 
                 <a href="cars.html">
-
                     Cars
-
                 </a>
 
                 <a href="about.html">
-
                     About
-
                 </a>
 
                 <a href="contact.html">
-
                     Contact
-
                 </a>
 
             </div>
@@ -3325,33 +3241,23 @@
             <div class="footer-column">
 
                 <h4>
-
                     Services
-
                 </h4>
 
                 <a href="contact.html">
-
                     Test Drive
-
                 </a>
 
                 <a href="contact.html">
-
                     Financing
-
                 </a>
 
                 <a href="contact.html">
-
                     Trade-In
-
                 </a>
 
                 <a href="contact.html">
-
                     Car Service
-
                 </a>
 
             </div>
@@ -3362,9 +3268,7 @@
             <div class="footer-column">
 
                 <h4>
-
                     Contact
-
                 </h4>
 
                 <p>
@@ -3373,9 +3277,7 @@
                        aria-hidden="true"></i>
 
                     <span>
-
                         Dhaka, Bangladesh
-
                     </span>
 
                 </p>
@@ -3386,9 +3288,7 @@
                        aria-hidden="true"></i>
 
                     <span>
-
                         +880 1XXX-XXXXXX
-
                     </span>
 
                 </p>
@@ -3399,9 +3299,7 @@
                        aria-hidden="true"></i>
 
                     <span>
-
                         N/A
-
                     </span>
 
                 </p>
@@ -3429,9 +3327,7 @@
             </p>
 
             <p>
-
                 Premium Automotive Collection.
-
             </p>
 
         </div>
@@ -3561,7 +3457,7 @@
                 );
 
 
-                /* Close menu when a link is clicked */
+                /* Close menu when link is clicked */
 
                 mobileNav
                     .querySelectorAll("a")
@@ -3736,26 +3632,31 @@
 
 
             /* =====================================================
-               HERO VIDEO — MOBILE-SAFE
+               HERO VIDEO
             ===================================================== */
 
             const heroVideo =
                 document.querySelector(".pw-hero-video");
 
-            const heroVideoPlayButton =
+            const playButton =
                 document.getElementById("hero-video-play");
 
 
             if (heroVideo) {
 
                 /*
-                 * Force the properties required for
-                 * muted inline autoplay.
+                 * Force the attributes needed for muted,
+                 * inline playback on mobile browsers.
                  */
 
                 heroVideo.muted = true;
                 heroVideo.defaultMuted = true;
                 heroVideo.playsInline = true;
+
+                heroVideo.setAttribute(
+                    "autoplay",
+                    ""
+                );
 
                 heroVideo.setAttribute(
                     "muted",
@@ -3772,84 +3673,66 @@
                     ""
                 );
 
-                heroVideo.setAttribute(
-                    "autoplay",
-                    ""
-                );
 
-
-                /* -------------------------------------------------
-                   SHOW MOBILE PLAY FALLBACK
-                ------------------------------------------------- */
+                /* -----------------------------------------------
+                   SHOW PLAY BUTTON
+                ----------------------------------------------- */
 
                 function showPlayButton() {
 
-                    if (!heroVideoPlayButton) {
-                        return;
-                    }
+                    if (!playButton) return;
 
-                    heroVideoPlayButton.classList.add(
+                    playButton.classList.add(
                         "is-visible"
-                    );
-
-                    heroVideoPlayButton.classList.remove(
-                        "is-hidden"
                     );
 
                 }
 
 
-                /* -------------------------------------------------
-                   HIDE MOBILE PLAY FALLBACK
-                ------------------------------------------------- */
+                /* -----------------------------------------------
+                   HIDE PLAY BUTTON
+                ----------------------------------------------- */
 
                 function hidePlayButton() {
 
-                    if (!heroVideoPlayButton) {
-                        return;
-                    }
+                    if (!playButton) return;
 
-                    heroVideoPlayButton.classList.remove(
+                    playButton.classList.remove(
                         "is-visible"
-                    );
-
-                    heroVideoPlayButton.classList.add(
-                        "is-hidden"
                     );
 
                 }
 
 
-                /* -------------------------------------------------
-                   PLAY VIDEO
-                ------------------------------------------------- */
+                /* -----------------------------------------------
+                   TRY AUTOPLAY
+                ----------------------------------------------- */
 
-                function playHeroVideo() {
+                function tryPlayVideo() {
 
-                    if (
-                        document.hidden ||
-                        heroVideo.readyState < 2
-                    ) {
+                    if (document.hidden) return;
+
+                    if (heroVideo.readyState < 2) {
                         return;
                     }
 
                     heroVideo.muted = true;
 
-                    const playPromise =
+                    const promise =
                         heroVideo.play();
 
                     if (
-                        playPromise &&
-                        typeof playPromise.then === "function"
+                        promise &&
+                        typeof promise.catch === "function"
                     ) {
 
-                        playPromise
+                        promise
                             .then(function () {
 
                                 hidePlayButton();
 
-                                heroVideo.classList.remove(
-                                    "video-unavailable"
+                                console.log(
+                                    "Isora Luxe hero video is playing."
                                 );
 
                             })
@@ -3857,9 +3740,9 @@
 
                                 /*
                                  * Autoplay was rejected.
-                                 * We do NOT keep trying repeatedly.
-                                 * Instead, provide a user-initiated
-                                 * play button.
+                                 *
+                                 * We keep the video visible.
+                                 * The user can manually start it.
                                  */
 
                                 console.log(
@@ -3876,33 +3759,32 @@
                 }
 
 
-                /* -------------------------------------------------
-                   VIDEO READY
-                ------------------------------------------------- */
+                /* -----------------------------------------------
+                   VIDEO READY EVENTS
+                ----------------------------------------------- */
 
                 heroVideo.addEventListener(
                     "loadedmetadata",
                     function () {
 
-                        playHeroVideo();
+                        tryPlayVideo();
 
                     }
                 );
-
 
                 heroVideo.addEventListener(
                     "canplay",
                     function () {
 
-                        playHeroVideo();
+                        tryPlayVideo();
 
                     }
                 );
 
 
-                /* -------------------------------------------------
-                   VIDEO SUCCESSFULLY PLAYING
-                ------------------------------------------------- */
+                /* -----------------------------------------------
+                   VIDEO SUCCESSFULLY STARTED
+                ----------------------------------------------- */
 
                 heroVideo.addEventListener(
                     "playing",
@@ -3910,33 +3792,26 @@
 
                         hidePlayButton();
 
-                        heroVideo.classList.remove(
-                            "video-unavailable"
-                        );
-
                     }
                 );
 
 
-                /* -------------------------------------------------
+                /* -----------------------------------------------
                    VIDEO ERROR
-                ------------------------------------------------- */
+                ----------------------------------------------- */
 
                 heroVideo.addEventListener(
                     "error",
                     function () {
 
-                        console.log(
-                            "Hero video could not be loaded."
-                        );
-
                         /*
-                         * The poster image remains visible
-                         * behind the video.
+                         * IMPORTANT:
+                         * Do NOT hide the video.
                          */
 
-                        heroVideo.classList.add(
-                            "video-unavailable"
+                        console.log(
+                            "Video loading error. Check:",
+                            "videos/prime-wheels.mp4"
                         );
 
                         showPlayButton();
@@ -3945,42 +3820,32 @@
                 );
 
 
-                /* -------------------------------------------------
-                   USER PLAY BUTTON
-                ------------------------------------------------- */
+                /* -----------------------------------------------
+                   MANUAL PLAY BUTTON
+                ----------------------------------------------- */
 
-                if (heroVideoPlayButton) {
+                if (playButton) {
 
-                    heroVideoPlayButton.addEventListener(
+                    playButton.addEventListener(
                         "click",
                         function () {
 
                             heroVideo.muted = true;
 
-                            const manualPlay =
-                                heroVideo.play();
+                            heroVideo.play()
+                                .then(function () {
 
-                            if (
-                                manualPlay &&
-                                typeof manualPlay.then === "function"
-                            ) {
+                                    hidePlayButton();
 
-                                manualPlay
-                                    .then(function () {
+                                })
+                                .catch(function (error) {
 
-                                        hidePlayButton();
+                                    console.log(
+                                        "Manual video playback failed:",
+                                        error
+                                    );
 
-                                    })
-                                    .catch(function (error) {
-
-                                        console.log(
-                                            "Manual video playback failed:",
-                                            error
-                                        );
-
-                                    });
-
-                            }
+                                });
 
                         }
                     );
@@ -3988,35 +3853,36 @@
                 }
 
 
-                /* -------------------------------------------------
-                   PAGE LOAD
-                ------------------------------------------------- */
+                /* -----------------------------------------------
+                   INITIAL ATTEMPT
+                ----------------------------------------------- */
+
+                if (
+                    heroVideo.readyState >= 2
+                ) {
+
+                    tryPlayVideo();
+
+                }
+
+
+                /* -----------------------------------------------
+                   PAGE FULLY LOADED
+                ----------------------------------------------- */
 
                 window.addEventListener(
                     "load",
                     function () {
 
-                        /*
-                         * Give the browser a moment to initialize
-                         * the video before attempting playback.
-                         */
-
-                        setTimeout(
-                            function () {
-
-                                playHeroVideo();
-
-                            },
-                            150
-                        );
+                        tryPlayVideo();
 
                     }
                 );
 
 
-                /* -------------------------------------------------
-                   PAGE VISIBILITY
-                ------------------------------------------------- */
+                /* -----------------------------------------------
+                   RETURNING TO PAGE
+                ----------------------------------------------- */
 
                 document.addEventListener(
                     "visibilitychange",
@@ -4024,15 +3890,12 @@
 
                         if (!document.hidden) {
 
-                            /*
-                             * Only resume automatically if the
-                             * video was already playing before.
-                             */
-
                             if (
                                 heroVideo.paused &&
                                 heroVideo.currentTime > 0
                             ) {
+
+                                heroVideo.muted = true;
 
                                 heroVideo.play()
                                     .catch(function () {});
