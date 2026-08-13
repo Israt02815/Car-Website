@@ -4,833 +4,691 @@
 <head>
 
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <title>About | Isora Luxe</title>
-
+    <title>Car Details | Isora Luxe</title>
 
     <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap"
-        rel="stylesheet">
-
-
-    <!-- FONT AWESOME -->
-
-    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
         rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
+    >
 
     <style>
-
-        /* =====================================================
-           VARIABLES
-        ===================================================== */
-
-        :root {
-
-            --black: #111315;
-            --dark: #181a1d;
-            --charcoal: #24272b;
-            --cream: #f7f5f0;
-            --warm: #eeece6;
-            --white: #ffffff;
-            --text: #17181a;
-            --muted: #777873;
-            --gold: #b89b62;
-            --gold-light: #d1b982;
-            --border: #dfddd7;
-
-        }
-
 
         /* =====================================================
            RESET
         ===================================================== */
 
         * {
-
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-
         }
-
 
         html {
-
             scroll-behavior: smooth;
-
         }
-
 
         body {
-
-            margin: 0;
             font-family: "Inter", sans-serif;
-            background: var(--cream);
-            color: var(--text);
+            background: #f5f5f3;
+            color: #111;
             overflow-x: hidden;
-
         }
-
 
         a {
-
             text-decoration: none;
-
-        }
-
-
-        button {
-
-            font-family: inherit;
-
         }
 
 
         /* =====================================================
-           NAVBAR
+           HEADER
         ===================================================== */
 
-        .navbar {
-
+        header {
             width: 100%;
-            height: 78px;
-            padding: 0 5%;
+            height: 82px;
+            background: rgba(255, 255, 255, 0.96);
+            border-bottom: 1px solid #e8e8e8;
+
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: #ffffff;
-            border-bottom: 1px solid var(--border);
-            position: relative;
-            z-index: 1000;
 
+            padding: 0 6%;
+
+            position: sticky;
+            top: 0;
+            z-index: 2000;
+
+            backdrop-filter: blur(12px);
         }
 
 
-        .logo {
+        /* LOGO */
 
+        .logo {
             display: flex;
             align-items: center;
             flex-shrink: 0;
-
         }
 
-
         .logo img {
-
-            width: 125px;
-            height: auto;
-            display: block;
+            width: 58px;
+            height: 58px;
             object-fit: contain;
-
+            display: block;
         }
 
 
         /* DESKTOP NAV */
 
-        .nav-links {
-
+        nav {
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 38px;
-            margin-left: auto;
-            margin-right: 35px;
-
+            gap: 32px;
         }
 
-
-        .nav-links a {
+        nav a {
+            color: #222;
+            font-size: 13px;
+            font-weight: 500;
 
             position: relative;
-            color: var(--gold);
-            font-size: 13px;
-            font-weight: 600;
-            transition: color 0.25s ease;
 
+            padding: 8px 0;
+
+            transition: 0.25s ease;
         }
 
-
-        .nav-links a:hover,
-        .nav-links a.active {
-
-            color: var(--gold-light);
-
-        }
-
-
-        .nav-links a.active::after {
-
+        nav a::after {
             content: "";
+
             position: absolute;
             left: 0;
-            bottom: -9px;
-            width: 100%;
+            bottom: 0;
+
+            width: 0;
             height: 2px;
-            background: var(--gold);
 
-        }
+            background: #c9a227;
 
-
-        /* GET IN TOUCH */
-
-        .nav-btn {
-
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 42px;
-            padding: 0 20px;
-            background: var(--black);
-            color: white;
-            font-size: 12px;
-            font-weight: 700;
-            border-radius: 3px;
             transition: 0.25s ease;
-
         }
 
+        nav a:hover {
+            color: #c9a227;
+        }
 
-        .nav-btn:hover {
+        nav a:hover::after,
+        nav a.active::after {
+            width: 100%;
+        }
 
-            background: var(--gold);
-
+        nav a.active {
+            color: #c9a227;
         }
 
 
         /* =====================================================
-           MOBILE MENU BUTTON
+           HAMBURGER
         ===================================================== */
 
-        .menu-btn {
-
-            display: none;
+        .menu-toggle {
             width: 44px;
             height: 44px;
-            border: none;
-            background: transparent;
-            cursor: pointer;
+
+            display: none;
+
             align-items: center;
             justify-content: center;
+
             flex-direction: column;
             gap: 5px;
 
+            border: none;
+            background: transparent;
+
+            cursor: pointer;
+
+            padding: 0;
         }
 
+        .menu-toggle span {
+            width: 24px;
+            height: 2px;
 
-        .menu-btn span {
+            background: #111;
 
-            width: 25px;
-            height: 3px;
-            background: var(--gold);
-            border-radius: 3px;
             display: block;
+
             transition: 0.3s ease;
-
         }
 
-
-        /* X WHEN OPEN */
-
-        .menu-btn.open span:nth-child(1) {
-
-            transform: translateY(8px) rotate(45deg);
-
+        .menu-toggle.active span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
         }
 
-
-        .menu-btn.open span:nth-child(2) {
-
+        .menu-toggle.active span:nth-child(2) {
             opacity: 0;
+        }
 
+        .menu-toggle.active span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
         }
 
 
-        .menu-btn.open span:nth-child(3) {
+        /* MOBILE MENU */
 
-            transform: translateY(-8px) rotate(-45deg);
+        .mobile-menu {
+            display: none;
 
+            position: fixed;
+
+            top: 82px;
+            left: 0;
+
+            width: 100%;
+
+            background: rgba(255, 255, 255, 0.98);
+
+            border-bottom: 1px solid #ddd;
+
+            padding: 15px 6% 25px;
+
+            z-index: 1900;
+
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .mobile-menu.open {
+            display: block;
+        }
+
+        .mobile-menu a {
+            display: block;
+
+            color: #111;
+
+            font-size: 14px;
+            font-weight: 500;
+
+            padding: 16px 0;
+
+            border-bottom: 1px solid #eeeeee;
+
+            transition: 0.2s ease;
+        }
+
+        .mobile-menu a:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-menu a:hover,
+        .mobile-menu a.active {
+            color: #c9a227;
+            padding-left: 5px;
         }
 
 
         /* =====================================================
-           HERO
+           PAGE
         ===================================================== */
 
-        .about-hero {
+        .page {
+            max-width: 1450px;
 
-            min-height: 620px;
-            position: relative;
-            display: flex;
+            margin: auto;
+
+            padding: 55px 6% 90px;
+        }
+
+
+        /* =====================================================
+           BACK LINK
+        ===================================================== */
+
+        .back-link {
+            display: inline-flex;
             align-items: center;
+            gap: 9px;
 
-            background:
-                linear-gradient(
-                    110deg,
-                    #090a0b 0%,
-                    #151719 55%,
-                    #25282b 100%
-                );
+            color: #666;
+
+            font-size: 13px;
+            font-weight: 500;
+
+            margin-bottom: 35px;
+
+            transition: 0.25s ease;
+        }
+
+        .back-link span {
+            font-size: 20px;
+
+            transition: 0.25s ease;
+        }
+
+        .back-link:hover {
+            color: #c9a227;
+        }
+
+        .back-link:hover span {
+            transform: translateX(-4px);
+        }
+
+
+        /* =====================================================
+           DETAILS LAYOUT
+        ===================================================== */
+
+        .details-container {
+            display: grid;
+
+            grid-template-columns: 1.15fr 0.85fr;
+
+            gap: 65px;
+
+            align-items: start;
+        }
+
+
+        /* =====================================================
+           IMAGE SECTION
+        ===================================================== */
+
+        .image-wrapper {
+            position: relative;
 
             overflow: hidden;
 
+            background: #e9e9e7;
+
+            box-shadow:
+                0 25px 70px rgba(0, 0, 0, 0.08);
+        }
+
+        .main-image {
+            width: 100%;
+            height: 620px;
+
+            overflow: hidden;
+
+            background: #e9e9e7;
+        }
+
+        .main-image img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+
+            transition:
+                transform 0.8s cubic-bezier(.2,.7,.2,1);
+        }
+
+        .image-wrapper:hover .main-image img {
+            transform: scale(1.045);
         }
 
 
-        .about-hero::before {
+        /* IMAGE OVERLAY */
 
-            content: "";
+        .image-overlay {
             position: absolute;
-            width: 650px;
-            height: 650px;
-            right: -250px;
-            top: -200px;
-            border: 1px solid rgba(184,155,98,0.18);
-            border-radius: 50%;
 
-        }
-
-
-        .about-hero::after {
-
-            content: "";
-            position: absolute;
-            width: 350px;
-            height: 350px;
-            right: 80px;
-            bottom: -250px;
-            border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 50%;
-
-        }
-
-
-        .about-hero-overlay {
-
-            position: absolute;
             inset: 0;
+
+            pointer-events: none;
 
             background:
                 linear-gradient(
-                    90deg,
-                    rgba(0,0,0,0.35),
-                    transparent
+                    to bottom,
+                    rgba(0,0,0,0.05),
+                    transparent 30%,
+                    transparent 70%,
+                    rgba(0,0,0,0.18)
                 );
-
         }
 
 
-        .about-hero-content {
+        /* FAVORITE */
 
-            width: min(1180px, 90%);
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-            color: white;
+        .favorite-btn {
+            position: absolute;
 
-        }
+            top: 20px;
+            right: 20px;
 
+            width: 50px;
+            height: 50px;
 
-        .section-label {
+            border: 1px solid rgba(255,255,255,0.7);
 
-            margin-bottom: 15px;
-            color: var(--gold-light);
-            font-size: 10px;
-            font-weight: 800;
-            letter-spacing: 2.5px;
-            text-transform: uppercase;
+            border-radius: 50%;
 
-        }
+            background: rgba(255,255,255,0.94);
 
+            cursor: pointer;
 
-        .about-hero h1 {
-
-            max-width: 700px;
-            margin-bottom: 22px;
-            font-family: "Montserrat", sans-serif;
-            font-size: clamp(48px, 7vw, 78px);
-            line-height: 1;
-            letter-spacing: -2px;
-
-        }
-
-
-        .about-hero h1 span {
-
-            color: var(--gold-light);
-            font-weight: 500;
-
-        }
-
-
-        .hero-description {
-
-            max-width: 570px;
-            margin-bottom: 32px;
-            color: rgba(255,255,255,0.72);
-            font-size: 16px;
-            line-height: 1.8;
-
-        }
-
-
-        .hero-buttons {
+            font-size: 22px;
 
             display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
+            align-items: center;
+            justify-content: center;
 
+            z-index: 5;
+
+            transition: 0.25s ease;
         }
 
+        .favorite-btn:hover {
+            transform: scale(1.08);
+
+            background: #fff;
+        }
+
+        .favorite-btn.active {
+            color: #b00020;
+        }
+
+
+        /* =====================================================
+           IMAGE BOTTOM LABEL
+        ===================================================== */
+
+        .image-label {
+            position: absolute;
+
+            left: 25px;
+            bottom: 23px;
+
+            color: #fff;
+
+            font-size: 10px;
+            font-weight: 700;
+
+            letter-spacing: 2px;
+            text-transform: uppercase;
+
+            z-index: 5;
+        }
+
+
+        /* =====================================================
+           CAR INFORMATION
+        ===================================================== */
+
+        .car-details {
+            padding-top: 10px;
+        }
+
+        .eyebrow {
+            text-transform: uppercase;
+
+            letter-spacing: 3px;
+
+            font-size: 10px;
+            font-weight: 700;
+
+            color: #c9a227;
+
+            margin-bottom: 14px;
+        }
+
+        .car-title {
+            font-family: "Playfair Display", serif;
+
+            font-size: clamp(42px, 4vw, 62px);
+
+            line-height: 1.05;
+
+            font-weight: 600;
+
+            margin-bottom: 20px;
+        }
+
+        .description {
+            color: #777;
+
+            font-size: 14px;
+
+            line-height: 1.9;
+
+            max-width: 600px;
+
+            margin-bottom: 30px;
+        }
+
+
+        /* =====================================================
+           PRICE
+        ===================================================== */
+
+        .price-box {
+            padding: 22px 0;
+
+            margin-bottom: 32px;
+
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .price-label {
+            display: block;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1.5px;
+
+            color: #999;
+
+            font-size: 9px;
+
+            margin-bottom: 6px;
+        }
+
+        .price {
+            font-family: "Playfair Display", serif;
+
+            font-size: 35px;
+
+            font-weight: 600;
+        }
+
+
+        /* =====================================================
+           SPECS
+        ===================================================== */
+
+        .specs-title {
+            font-family: "Playfair Display", serif;
+
+            font-size: 25px;
+
+            margin-bottom: 18px;
+        }
+
+        .specs {
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 1px;
+
+            background: #ddd;
+
+            border: 1px solid #ddd;
+
+            margin-bottom: 35px;
+        }
+
+        .spec {
+            padding: 18px;
+
+            background: #fff;
+
+            transition: 0.25s ease;
+        }
+
+        .spec:hover {
+            background: #faf9f5;
+        }
+
+        .spec-label {
+            display: block;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1.2px;
+
+            font-size: 9px;
+
+            color: #999;
+
+            margin-bottom: 7px;
+        }
+
+        .spec-value {
+            display: block;
+
+            font-size: 14px;
+
+            font-weight: 600;
+        }
+
+
+        /* =====================================================
+           BUTTONS
+        ===================================================== */
+
+        .actions {
+            display: flex;
+
+            gap: 12px;
+        }
 
         .primary-btn,
         .secondary-btn {
 
-            min-height: 50px;
-            padding: 0 23px;
+            min-height: 54px;
+
+            padding: 0 25px;
+
             display: inline-flex;
+
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            border-radius: 3px;
-            font-size: 12px;
+
+            font-size: 10px;
+
             font-weight: 700;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1.3px;
+
             transition: 0.25s ease;
 
+            cursor: pointer;
         }
-
 
         .primary-btn {
+            flex: 1;
 
-            background: var(--gold);
-            color: white;
+            background: #111;
 
+            color: #fff;
+
+            border: 1px solid #111;
         }
-
 
         .primary-btn:hover {
+            background: #c9a227;
 
-            background: var(--gold-light);
-            color: var(--black);
-            transform: translateY(-2px);
-
+            border-color: #c9a227;
         }
-
 
         .secondary-btn {
+            background: #fff;
 
-            border: 1px solid rgba(255,255,255,0.35);
-            background: rgba(255,255,255,0.04);
-            color: white;
+            color: #111;
 
+            border: 1px solid #ddd;
         }
-
 
         .secondary-btn:hover {
-
-            background: white;
-            color: var(--black);
-            transform: translateY(-2px);
-
+            border-color: #111;
         }
 
 
         /* =====================================================
-           STORY
+           DESCRIPTION SECTION
         ===================================================== */
 
-        .about-section {
+        .description-section {
 
-            width: min(1180px, 90%);
-            margin: 0 auto;
-            padding: 110px 0;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 90px;
-            align-items: center;
+            margin-top: 90px;
 
+            padding-top: 55px;
+
+            border-top: 1px solid #ddd;
         }
 
+        .description-section h2 {
 
-        .about-image {
+            font-family: "Playfair Display", serif;
 
-            position: relative;
-            min-height: 500px;
-
-        }
-
-
-        .about-image img {
-
-            width: 88%;
-            height: 470px;
-            display: block;
-            object-fit: cover;
-            position: relative;
-            z-index: 2;
-
-        }
-
-
-        .image-frame {
-
-            position: absolute;
-            width: 88%;
-            height: 470px;
-            top: 28px;
-            left: 28px;
-            border: 1px solid var(--gold);
-            z-index: 1;
-
-        }
-
-
-        .experience-badge {
-
-            position: absolute;
-            right: 0;
-            bottom: 20px;
-            width: 145px;
-            height: 145px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: var(--black);
-            color: white;
-            z-index: 4;
-            border: 4px solid var(--cream);
-
-        }
-
-
-        .experience-badge strong {
-
-            font-family: "Montserrat", sans-serif;
-            font-size: 31px;
-            color: var(--gold-light);
-
-        }
-
-
-        .experience-badge span {
-
-            margin-top: 5px;
-            font-size: 10px;
-            line-height: 1.5;
-            color: #aaa;
-            text-transform: uppercase;
-
-        }
-
-
-        .about-content h2 {
+            font-size: 37px;
 
             margin-bottom: 20px;
-            font-family: "Montserrat", sans-serif;
-            font-size: clamp(34px, 4vw, 52px);
-            line-height: 1.1;
-            letter-spacing: -1.5px;
-
         }
 
+        .description-section p {
 
-        .about-content h2 span {
+            max-width: 900px;
 
             color: #777;
-            font-weight: 400;
 
-        }
-
-
-        .about-intro {
-
-            margin-bottom: 22px;
-            color: #333;
-            font-size: 17px;
-            line-height: 1.8;
-            font-weight: 500;
-
-        }
-
-
-        .about-content > p:not(.about-intro) {
-
-            margin-bottom: 16px;
-            color: var(--muted);
-            font-size: 13px;
-            line-height: 1.9;
-
-        }
-
-
-        .about-content .primary-btn {
-
-            margin-top: 12px;
-
-        }
-
-
-        /* =====================================================
-           STATS
-        ===================================================== */
-
-        .stats-section {
-
-            width: min(1180px, 90%);
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            background: white;
-            border: 1px solid var(--border);
-            box-shadow: 0 18px 50px rgba(0,0,0,0.06);
-
-        }
-
-
-        .stat {
-
-            padding: 34px 20px;
-            text-align: center;
-            border-right: 1px solid var(--border);
-
-        }
-
-
-        .stat:last-child {
-
-            border-right: none;
-
-        }
-
-
-        .stat-icon {
-
-            width: 48px;
-            height: 48px;
-            margin: 0 auto 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            background: var(--black);
-            color: var(--gold-light);
-
-        }
-
-
-        .stat strong {
-
-            display: block;
-            margin-bottom: 6px;
-            font-family: "Montserrat", sans-serif;
-            font-size: 27px;
-
-        }
-
-
-        .stat span {
-
-            color: var(--muted);
-            font-size: 10px;
-            font-weight: 700;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-
-        }
-
-
-        /* =====================================================
-           VALUES
-        ===================================================== */
-
-        .values-section {
-
-            padding: 110px 5%;
-
-            background:
-                linear-gradient(
-                    180deg,
-                    var(--cream),
-                    #eae7df
-                );
-
-        }
-
-
-        .section-heading {
-
-            width: min(1180px, 100%);
-            margin: 0 auto 55px;
-            display: flex;
-            align-items: end;
-            justify-content: space-between;
-            gap: 40px;
-
-        }
-
-
-        .section-heading h2 {
-
-            font-family: "Montserrat", sans-serif;
-            font-size: clamp(34px, 4vw, 50px);
-            line-height: 1.1;
-
-        }
-
-
-        .section-heading h2 span {
-
-            color: #777;
-            font-weight: 400;
-
-        }
-
-
-        .heading-description {
-
-            max-width: 430px;
-            color: var(--muted);
-            font-size: 13px;
-            line-height: 1.8;
-
-        }
-
-
-        .values-grid {
-
-            width: min(1180px, 100%);
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 18px;
-
-        }
-
-
-        .value-card {
-
-            min-height: 310px;
-            padding: 32px;
-            background: white;
-            border: 1px solid var(--border);
-            position: relative;
-            overflow: hidden;
-            transition: 0.3s ease;
-
-        }
-
-
-        .value-card:hover {
-
-            transform: translateY(-7px);
-            box-shadow: 0 22px 45px rgba(0,0,0,0.09);
-
-        }
-
-
-        .value-icon {
-
-            width: 52px;
-            height: 52px;
-            margin-bottom: 28px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--black);
-            color: var(--gold-light);
-            border-radius: 50%;
-
-        }
-
-
-        .value-number {
-
-            display: block;
-            margin-bottom: 10px;
-            color: #aaa;
-            font-size: 10px;
-            font-weight: 800;
-
-        }
-
-
-        .value-card h3 {
-
-            margin-bottom: 12px;
-            font-family: "Montserrat", sans-serif;
-            font-size: 20px;
-
-        }
-
-
-        .value-card p {
-
-            color: var(--muted);
-            font-size: 13px;
-            line-height: 1.8;
-
-        }
-
-
-        /* =====================================================
-           CTA
-        ===================================================== */
-
-        .about-cta {
-
-            padding: 110px 5%;
-            background: #ffffff;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-
-        }
-
-
-        .cta-content {
-
-            width: min(750px, 100%);
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-
-        }
-
-
-        .about-cta h2 {
-
-            margin-bottom: 18px;
-            font-family: "Montserrat", sans-serif;
-            font-size: clamp(36px, 5vw, 58px);
-            line-height: 1.1;
-
-        }
-
-
-        .about-cta h2 span {
-
-            color: var(--gold);
-            font-weight: 400;
-
-        }
-
-
-        .about-cta p:not(.section-label) {
-
-            max-width: 560px;
-            margin: 0 auto 30px;
-            color: var(--muted);
             font-size: 14px;
-            line-height: 1.8;
 
+            line-height: 1.95;
+        }
+
+
+        /* =====================================================
+           NOT FOUND
+        ===================================================== */
+
+        .not-found {
+
+            display: none;
+
+            text-align: center;
+
+            padding: 100px 20px;
+        }
+
+        .not-found h1 {
+
+            font-family: "Playfair Display", serif;
+
+            font-size: 45px;
+
+            margin-bottom: 15px;
+        }
+
+        .not-found p {
+
+            color: #777;
+
+            margin-bottom: 25px;
         }
 
 
@@ -838,177 +696,105 @@
            FOOTER
         ===================================================== */
 
-        .footer {
+        footer {
 
-            width: 100%;
-            background: #0c0d0f;
-            color: white;
-            padding: 60px 5% 0;
+            background: #111;
 
+            color: #fff;
+
+            padding: 60px 6% 25px;
         }
 
+        .footer-content {
 
-        .footer-grid {
+            max-width: 1450px;
 
-            width: min(1180px, 100%);
-            margin: 0 auto;
+            margin: auto;
+
             display: grid;
 
-            grid-template-columns:
-                1.5fr
-                1fr
-                1fr
-                1.2fr;
+            grid-template-columns: 2fr 1fr 1fr;
 
-            gap: 50px;
-            padding-bottom: 40px;
+            gap: 60px;
 
+            padding-bottom: 45px;
+
+            border-bottom: 1px solid #333;
         }
 
+        .footer-brand h2 {
 
-        /* FOOTER ABOUT */
+            font-family: "Playfair Display", serif;
 
-        .footer-about .logo {
+            font-size: 30px;
 
-            display: inline-flex;
             margin-bottom: 15px;
-
         }
 
+        .footer-brand p {
 
-        .footer-about .logo img {
-
-            width: 125px;
-            height: auto;
-            display: block;
-
-        }
-
-
-        .footer-about > p {
-
-            max-width: 300px;
-            color: #888;
-            font-size: 12px;
-            line-height: 1.7;
-
-        }
-
-
-        /* SOCIAL */
-
-        .social-links {
-
-            display: flex;
-            gap: 10px;
-            margin-top: 18px;
-
-        }
-
-
-        .social-links a {
-
-            width: 36px;
-            height: 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid #333;
             color: #aaa;
-            border-radius: 50%;
-            transition: 0.25s ease;
 
+            font-size: 13px;
+
+            line-height: 1.9;
+
+            max-width: 430px;
         }
 
+        .footer-column h3 {
 
-        .social-links a:hover {
+            font-size: 11px;
 
-            background: var(--gold);
-            border-color: var(--gold);
-            color: white;
+            text-transform: uppercase;
 
+            letter-spacing: 2px;
+
+            margin-bottom: 20px;
         }
-
-
-        /* FOOTER COLUMNS */
-
-        .footer-column {
-
-            display: flex;
-            flex-direction: column;
-            gap: 9px;
-
-        }
-
-
-        .footer-column h4 {
-
-            margin-bottom: 5px;
-            font-family: "Montserrat", sans-serif;
-            font-size: 14px;
-
-        }
-
 
         .footer-column a {
 
-            color: #888;
-            font-size: 12px;
-            transition: color 0.2s ease;
+            display: block;
 
+            color: #aaa;
+
+            font-size: 13px;
+
+            margin-bottom: 12px;
+
+            transition: 0.2s ease;
         }
-
 
         .footer-column a:hover {
 
-            color: var(--gold-light);
-
+            color: #c9a227;
         }
-
-
-        .footer-column p {
-
-            display: flex;
-            align-items: flex-start;
-            gap: 9px;
-            color: #888;
-            font-size: 12px;
-            line-height: 1.5;
-            margin: 0;
-
-        }
-
-
-        .footer-column p i {
-
-            color: var(--gold-light);
-            margin-top: 3px;
-            min-width: 14px;
-
-        }
-
-
-        /* FOOTER BOTTOM */
 
         .footer-bottom {
 
-            width: min(1180px, 100%);
-            margin: 0 auto;
-            padding: 18px 0;
-            border-top: 1px solid #25272a;
+            max-width: 1450px;
+
+            margin: auto;
+
+            padding-top: 23px;
+
             display: flex;
-            align-items: center;
+
             justify-content: space-between;
-            gap: 15px;
 
+            align-items: center;
+
+            gap: 20px;
         }
-
 
         .footer-bottom p {
 
-            color: #666;
+            color: #777;
+
             font-size: 10px;
 
+            letter-spacing: 0.4px;
         }
 
 
@@ -1018,73 +804,49 @@
 
         @media (max-width: 950px) {
 
-            .nav-links {
-
-                gap: 22px;
-                margin-right: 20px;
-
-            }
-
-
-            .about-section {
+            .details-container {
 
                 grid-template-columns: 1fr;
-                gap: 60px;
 
+                gap: 45px;
             }
 
+            .main-image {
 
-            .about-image {
-
-                max-width: 650px;
-                width: 100%;
-                margin: 0 auto;
-
+                height: 520px;
             }
 
+            .car-details {
 
-            .stats-section {
-
-                grid-template-columns: repeat(2, 1fr);
-
+                padding-top: 0;
             }
 
-
-            .stat:nth-child(2) {
-
-                border-right: none;
-
-            }
-
-
-            .stat:nth-child(-n+2) {
-
-                border-bottom: 1px solid var(--border);
-
-            }
-
-
-            .values-grid {
+            .footer-content {
 
                 grid-template-columns: 1fr 1fr;
 
+                text-align: center;
+
+                justify-items: center;
             }
 
-
-            .footer-grid {
-
-                grid-template-columns: 1fr 1fr;
-                gap: 35px;
-
-            }
-
-
-            .footer-about {
+            .footer-brand {
 
                 grid-column: 1 / -1;
 
+                width: 100%;
+
+                display: flex;
+
+                flex-direction: column;
+
+                align-items: center;
             }
 
+            .footer-brand p {
+
+                margin: auto;
+            }
         }
 
 
@@ -1092,560 +854,306 @@
            MOBILE
         ===================================================== */
 
-        @media (max-width: 700px) {
+        @media (max-width: 650px) {
 
-            /* NAVBAR */
+            /* HEADER */
 
-            .navbar {
+            header {
 
-                height: 70px;
-                padding: 0 20px;
+                height: 72px;
 
+                padding: 0 5%;
             }
-
 
             .logo img {
 
-                width: 105px;
+                width: 48px;
 
+                height: 48px;
             }
 
-
-            /* HIDE DESKTOP NAV */
-
-            .nav-btn {
+            nav {
 
                 display: none;
-
             }
 
-
-            /* SHOW HAMBURGER */
-
-            .menu-btn {
+            .menu-toggle {
 
                 display: flex;
+            }
 
+            .mobile-menu {
+
+                top: 72px;
             }
 
 
-            /* MOBILE MENU */
+            /* PAGE */
 
-            .nav-links {
+            .page {
 
-                display: flex;
-                position: absolute;
-                top: 70px;
-                left: 0;
-                width: 100%;
-                margin: 0;
-                padding: 5px 20px 12px;
-                flex-direction: column;
-                align-items: stretch;
-                gap: 0;
-                background: #ffffff;
-                border-bottom: 1px solid var(--border);
-                box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-                opacity: 0;
-                visibility: hidden;
-                transform: translateY(-10px);
-                pointer-events: none;
-                transition:
-                    opacity 0.25s ease,
-                    transform 0.25s ease,
-                    visibility 0.25s ease;
-                z-index: 999;
+                padding: 32px 5% 65px;
+            }
 
+            .back-link {
+
+                margin-bottom: 25px;
             }
 
 
-            .nav-links.open {
+            /* IMAGE */
 
-                opacity: 1;
-                visibility: visible;
-                transform: translateY(0);
-                pointer-events: auto;
+            .main-image {
 
+                height: 280px;
+            }
+
+            .favorite-btn {
+
+                width: 44px;
+
+                height: 44px;
+
+                top: 12px;
+
+                right: 12px;
+            }
+
+            .image-label {
+
+                left: 16px;
+
+                bottom: 15px;
             }
 
 
-            .nav-links a {
+            /* DETAILS */
 
-                width: 100%;
-                padding: 14px 5px;
-                font-size: 14px;
-                border-bottom: 1px solid #eeeeee;
+            .details-container {
 
+                gap: 32px;
+            }
+
+            .car-title {
+
+                font-size: 39px;
+
+                line-height: 1.08;
+            }
+
+            .description {
+
+                font-size: 13px;
+
+                line-height: 1.8;
             }
 
 
-            .nav-links a:last-child {
+            /* PRICE */
 
-                border-bottom: none;
+            .price {
 
+                font-size: 30px;
             }
 
 
-            .nav-links a.active::after {
+            /* SPECS */
 
-                display: none;
+            .specs {
 
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .spec {
+
+                padding: 15px 12px;
+            }
+
+            .spec-value {
+
+                font-size: 12px;
             }
 
 
-            /* HERO */
+            /* BUTTONS */
 
-            .about-hero {
-
-                min-height: 560px;
-
-            }
-
-
-            .about-hero-content {
-
-                width: 88%;
-
-            }
-
-
-            .about-hero h1 {
-
-                font-size: clamp(44px, 13vw, 62px);
-                letter-spacing: -1px;
-
-            }
-
-
-            .hero-description {
-
-                font-size: 15px;
-
-            }
-
-
-            .hero-buttons {
+            .actions {
 
                 flex-direction: column;
-
             }
-
 
             .primary-btn,
             .secondary-btn {
 
                 width: 100%;
-
             }
 
 
-            /* ABOUT */
+            /* DESCRIPTION */
 
-            .about-section {
+            .description-section {
 
-                width: 88%;
-                padding: 75px 0;
-                gap: 55px;
+                margin-top: 55px;
 
+                padding-top: 38px;
             }
 
+            .description-section h2 {
 
-            .about-image {
+                font-size: 30px;
 
-                min-height: 390px;
-
-            }
-
-
-            .about-image img {
-
-                width: 88%;
-                height: 370px;
-
-            }
-
-
-            .image-frame {
-
-                width: 88%;
-                height: 370px;
-
-            }
-
-
-            .experience-badge {
-
-                width: 120px;
-                height: 120px;
-                bottom: 10px;
-
-            }
-
-
-            .experience-badge strong {
-
-                font-size: 25px;
-
-            }
-
-
-            /* STATS */
-
-            .stats-section {
-
-                width: 88%;
-                grid-template-columns: repeat(2, 1fr);
-
-            }
-
-
-            .stat {
-
-                padding: 25px 12px;
-
-            }
-
-
-            .stat-icon {
-
-                width: 42px;
-                height: 42px;
-                margin-bottom: 10px;
-
-            }
-
-
-            .stat strong {
-
-                font-size: 22px;
-
-            }
-
-
-            .stat span {
-
-                font-size: 9px;
-
-            }
-
-
-            /* VALUES */
-
-            .values-section {
-
-                padding: 75px 6%;
-
-            }
-
-
-            .section-heading {
-
-                display: block;
-                margin-bottom: 35px;
-
-            }
-
-
-            .heading-description {
-
-                margin-top: 20px;
-
-            }
-
-
-            .values-grid {
-
-                grid-template-columns: 1fr;
-
-            }
-
-
-            /* CTA */
-
-            .about-cta {
-
-                padding: 80px 6%;
-
+                line-height: 1.2;
             }
 
 
             /* =================================================
-               FOOTER - CENTERED MOBILE VERSION
+               FOOTER CENTERED ON MOBILE
             ================================================= */
 
-            .footer {
+            footer {
 
-                padding: 45px 20px 0;
+                padding: 50px 25px 25px;
+
                 text-align: center;
-
             }
 
-
-            .footer-grid {
+            .footer-content {
 
                 width: 100%;
-                grid-template-columns: 1fr 1fr;
-                gap: 32px 20px;
-                padding-bottom: 30px;
-                justify-items: center;
 
-            }
-
-
-            /* LOGO / DESCRIPTION */
-
-            .footer-about {
-
-                grid-column: 1 / -1;
-                width: 100%;
                 display: flex;
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
 
+                flex-direction: column;
+
+                align-items: center;
+
+                justify-content: center;
+
+                gap: 38px;
+
+                text-align: center;
             }
 
+            .footer-brand {
 
-            .footer-about .logo {
+                width: 100%;
+
+                display: flex;
+
+                flex-direction: column;
+
+                align-items: center;
+
+                justify-content: center;
+
+                text-align: center;
+            }
+
+            .footer-brand h2 {
+
+                text-align: center;
 
                 margin-bottom: 13px;
-                justify-content: center;
-
             }
 
+            .footer-brand p {
 
-            .footer-about .logo img {
+                width: 100%;
 
-                width: 110px;
+                max-width: 330px;
 
-            }
+                margin: auto;
 
-
-            .footer-about > p {
-
-                max-width: 300px;
-                margin: 0 auto;
-                font-size: 11px;
-                line-height: 1.7;
                 text-align: center;
-
             }
-
-
-            /* SOCIAL ICONS */
-
-            .social-links {
-
-                margin-top: 16px;
-                justify-content: center;
-                align-items: center;
-
-            }
-
-
-            .social-links a {
-
-                width: 35px;
-                height: 35px;
-                font-size: 12px;
-
-            }
-
-
-            /* EXPLORE + SERVICES */
 
             .footer-column {
 
                 width: 100%;
+
+                display: flex;
+
+                flex-direction: column;
+
                 align-items: center;
+
+                justify-content: center;
+
                 text-align: center;
-                gap: 8px;
-
             }
 
+            .footer-column h3 {
 
-            .footer-column h4 {
+                text-align: center;
 
-                margin-bottom: 5px;
-                font-size: 12px;
-
+                margin-bottom: 16px;
             }
-
 
             .footer-column a {
 
-                font-size: 11px;
-
-            }
-
-
-            /* CONTACT */
-
-            .footer-column:last-child {
-
-                grid-column: 1 / -1;
                 width: 100%;
-                align-items: center;
+
                 text-align: center;
 
+                margin-bottom: 11px;
             }
-
-
-            .footer-column:last-child p {
-
-                width: auto;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 8px;
-                font-size: 11px;
-                text-align: center;
-
-            }
-
-
-            .footer-column:last-child p i {
-
-                min-width: 14px;
-                margin-top: 0;
-
-            }
-
-
-            /* BOTTOM FOOTER */
 
             .footer-bottom {
 
                 width: 100%;
-                padding: 17px 0;
+
+                display: flex;
+
                 flex-direction: column;
+
                 align-items: center;
+
                 justify-content: center;
+
                 text-align: center;
-                gap: 5px;
 
+                gap: 9px;
             }
-
 
             .footer-bottom p {
 
-                font-size: 9px;
+                width: 100%;
+
                 text-align: center;
-
             }
-
         }
 
 
         /* =====================================================
-           SMALL PHONES
+           VERY SMALL MOBILE
         ===================================================== */
 
-        @media (max-width: 480px) {
+        @media (max-width: 380px) {
 
-            .navbar {
+            .car-title {
 
-                padding: 0 16px;
-
+                font-size: 34px;
             }
 
+            .main-image {
 
-            .logo img {
-
-                width: 100px;
-
+                height: 240px;
             }
 
+            .spec {
 
-            .stats-section {
-
-                grid-template-columns: 1fr;
-
+                padding: 13px 10px;
             }
 
+            .spec-value {
 
-            .stat {
-
-                border-right: none !important;
-                border-bottom: 1px solid var(--border);
-
+                font-size: 11px;
             }
 
+            .description-section h2 {
 
-            .stat:last-child {
-
-                border-bottom: none;
-
+                font-size: 27px;
             }
-
-
-            .about-image img,
-            .image-frame {
-
-                width: 92%;
-
-            }
-
-
-            /* KEEP FOOTER CENTERED */
-
-            .footer {
-
-                padding-left: 16px;
-                padding-right: 16px;
-
-            }
-
-
-            .footer-grid {
-
-                width: 100%;
-                grid-template-columns: 1fr 1fr;
-                gap: 28px 12px;
-                justify-items: center;
-
-            }
-
-
-            .footer-about,
-            .footer-column:last-child {
-
-                grid-column: 1 / -1;
-
-            }
-
-
-            .footer-about > p {
-
-                max-width: 280px;
-
-            }
-
-
-            .footer-column {
-
-                width: 100%;
-                align-items: center;
-                text-align: center;
-
-            }
-
-
-            .footer-column:last-child p {
-
-                justify-content: center;
-                text-align: center;
-
-            }
-
-
-            .footer-bottom {
-
-                align-items: center;
-                text-align: center;
-
-            }
-
         }
 
     </style>
@@ -1656,44 +1164,43 @@
 <body>
 
 
-<!-- =====================================================
-     NAVBAR
-===================================================== -->
+<!-- =========================================================
+     HEADER
+========================================================= -->
 
-<header class="navbar">
+<header>
 
-
-    <!-- LOGO -->
-
-    <a href="index.html" class="logo">
+    <a
+        href="index.html"
+        class="logo"
+        aria-label="Isora Luxe Home"
+    >
 
         <img
             src="images/logo.png"
-            alt="Isora Luxe Logo">
+            alt="Isora Luxe Logo"
+        >
 
     </a>
 
 
-    <!-- NAVIGATION -->
+    <!-- DESKTOP NAV -->
 
-    <nav
-        class="nav-links"
-        id="mobileMenu">
+    <nav>
 
         <a href="index.html">
             Home
         </a>
 
-        <a href="cars.html">
+        <a
+            href="cars.html"
+            class="active"
+        >
             Cars
         </a>
 
-        <a
-            href="about.html"
-            class="active">
-
+        <a href="about.html">
             About
-
         </a>
 
         <a href="contact.html">
@@ -1703,25 +1210,15 @@
     </nav>
 
 
-    <!-- DESKTOP BUTTON -->
-
-    <a
-        href="contact.html"
-        class="nav-btn">
-
-        Get in Touch
-
-    </a>
-
-
-    <!-- MOBILE MENU BUTTON -->
+    <!-- MOBILE HAMBURGER -->
 
     <button
-        class="menu-btn"
-        id="menuButton"
+        class="menu-toggle"
+        id="menuToggle"
         type="button"
-        aria-label="Open menu"
-        aria-expanded="false">
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+    >
 
         <span></span>
         <span></span>
@@ -1729,601 +1226,366 @@
 
     </button>
 
-
 </header>
 
 
-<!-- =====================================================
-     HERO
-===================================================== -->
+<!-- =========================================================
+     MOBILE MENU
+========================================================= -->
 
-<section class="about-hero">
+<div
+    class="mobile-menu"
+    id="mobileMenu"
+>
 
+    <a href="index.html">
+        Home
+    </a>
 
-    <div class="about-hero-overlay"></div>
+    <a
+        href="cars.html"
+        class="active"
+    >
+        Cars
+    </a>
 
+    <a href="about.html">
+        About
+    </a>
 
-    <div class="about-hero-content">
+    <a href="contact.html">
+        Contact
+    </a>
 
+</div>
 
-        <p class="section-label">
-            About Isora Luxe
-        </p>
 
+<!-- =========================================================
+     MAIN
+========================================================= -->
 
-        <h1>
+<main class="page">
 
-            Driven By
 
-            <span>
-                Passion.
-            </span>
+    <!-- BACK -->
 
-        </h1>
+    <a
+        href="cars.html"
+        class="back-link"
+    >
 
+        <span>←</span>
 
-        <p class="hero-description">
+        Back to Cars
 
-            Where exceptional vehicles meet exceptional
-            service. Discover a better way to find your
-            next car.
+    </a>
 
-        </p>
 
+    <!-- =====================================================
+         CAR DETAILS
+    ====================================================== -->
 
-        <div class="hero-buttons">
+    <div
+        class="details-container"
+        id="detailsContainer"
+    >
 
 
-            <a
-                href="cars.html"
-                class="primary-btn">
+        <!-- =================================================
+             IMAGE
+        ================================================== -->
 
-                Explore Cars
+        <div class="image-wrapper">
 
-                <i class="fa-solid fa-arrow-right"></i>
-
-            </a>
-
-
-            <a
-                href="contact.html"
-                class="secondary-btn">
-
-                Contact Us
-
-            </a>
-
-
-        </div>
-
-
-    </div>
-
-
-</section>
-
-
-<!-- =====================================================
-     STORY
-===================================================== -->
-
-<section class="about-section">
-
-
-    <div class="about-image">
-
-
-        <div class="image-frame"></div>
-
-
-        <img
-            src="images/car2.jpg"
-            alt="Luxury car at Isora Luxe">
-
-
-        <div class="experience-badge">
-
-            <strong>
-                10+
-            </strong>
-
-            <span>
-
-                Years of<br>
-                Experience
-
-            </span>
-
-        </div>
-
-
-    </div>
-
-
-    <div class="about-content">
-
-
-        <p class="section-label">
-            Our Story
-        </p>
-
-
-        <h2>
-
-            We Don't Just
-
-            <span>
-                Sell Cars.
-            </span>
-
-        </h2>
-
-
-        <p class="about-intro">
-
-            We create experiences that make buying your
-            next car something to look forward to.
-
-        </p>
-
-
-        <p>
-
-            Isora Luxe was built around a simple idea:
-            buying a car should be exciting, transparent
-            and completely personal.
-
-        </p>
-
-
-        <p>
-
-            From luxury sedans to powerful SUVs and
-            performance cars, every vehicle in our
-            collection is carefully selected for quality,
-            style and reliability.
-
-        </p>
-
-
-        <p>
-
-            Our team is committed to providing a premium
-            experience from the moment you walk into our
-            showroom until the moment you drive away.
-
-        </p>
-
-
-        <a
-            href="cars.html"
-            class="primary-btn">
-
-            Explore Our Cars
-
-            <i class="fa-solid fa-arrow-right"></i>
-
-        </a>
-
-
-    </div>
-
-
-</section>
-
-
-<!-- =====================================================
-     STATS
-===================================================== -->
-
-<section class="stats-section">
-
-
-    <div class="stat">
-
-        <div class="stat-icon">
-
-            <i class="fa-solid fa-calendar"></i>
-
-        </div>
-
-        <strong>
-            10+
-        </strong>
-
-        <span>
-            Years Experience
-        </span>
-
-    </div>
-
-
-    <div class="stat">
-
-        <div class="stat-icon">
-
-            <i class="fa-solid fa-car"></i>
-
-        </div>
-
-        <strong>
-            2,500+
-        </strong>
-
-        <span>
-            Cars Sold
-        </span>
-
-    </div>
-
-
-    <div class="stat">
-
-        <div class="stat-icon">
-
-            <i class="fa-solid fa-face-smile"></i>
-
-        </div>
-
-        <strong>
-            98%
-        </strong>
-
-        <span>
-            Happy Customers
-        </span>
-
-    </div>
-
-
-    <div class="stat">
-
-        <div class="stat-icon">
-
-            <i class="fa-solid fa-headset"></i>
-
-        </div>
-
-        <strong>
-            24/7
-        </strong>
-
-        <span>
-            Customer Support
-        </span>
-
-    </div>
-
-
-</section>
-
-
-<!-- =====================================================
-     VALUES
-===================================================== -->
-
-<section class="values-section">
-
-
-    <div class="section-heading">
-
-
-        <div>
-
-            <p class="section-label">
-                Our Values
-            </p>
-
-
-            <h2>
-
-                What We
-
-                <span>
-                    Believe.
-                </span>
-
-            </h2>
-
-        </div>
-
-
-        <p class="heading-description">
-
-            The principles behind every vehicle we sell
-            and every customer relationship we build.
-
-        </p>
-
-
-    </div>
-
-
-    <div class="values-grid">
-
-
-        <div class="value-card">
-
-
-            <div class="value-icon">
-
-                <i class="fa-solid fa-gem"></i>
-
-            </div>
-
-
-            <span class="value-number">
-                01
-            </span>
-
-
-            <h3>
-                Excellence
-            </h3>
-
-
-            <p>
-
-                We believe every detail matters, from the
-                vehicles we select to the service we provide.
-
-            </p>
-
-
-        </div>
-
-
-        <div class="value-card">
-
-
-            <div class="value-icon">
-
-                <i class="fa-solid fa-handshake"></i>
-
-            </div>
-
-
-            <span class="value-number">
-                02
-            </span>
-
-
-            <h3>
-                Trust
-            </h3>
-
-
-            <p>
-
-                Honest communication and transparent pricing
-                are at the heart of everything we do.
-
-            </p>
-
-
-        </div>
-
-
-        <div class="value-card">
-
-
-            <div class="value-icon">
-
-                <i class="fa-solid fa-heart"></i>
-
-            </div>
-
-
-            <span class="value-number">
-                03
-            </span>
-
-
-            <h3>
-                Passion
-            </h3>
-
-
-            <p>
-
-                We love cars, and we want every customer to
-                experience the same excitement we do.
-
-            </p>
-
-
-        </div>
-
-
-    </div>
-
-
-</section>
-
-
-<!-- =====================================================
-     CTA
-===================================================== -->
-
-<section class="about-cta">
-
-
-    <div class="cta-content">
-
-
-        <p class="section-label">
-            Explore Isora Luxe
-        </p>
-
-
-        <h2>
-
-            Discover Your
-
-            <span>
-                Next Car.
-            </span>
-
-        </h2>
-
-
-        <p>
-
-            Explore our collection of carefully selected
-            vehicles and find the one that's right for you.
-
-        </p>
-
-
-        <a
-            href="cars.html"
-            class="primary-btn">
-
-            Browse Our Collection
-
-            <i class="fa-solid fa-arrow-right"></i>
-
-        </a>
-
-
-    </div>
-
-
-</section>
-
-
-<!-- =====================================================
-     FOOTER
-===================================================== -->
-
-<footer class="footer">
-
-
-    <div class="footer-grid">
-
-
-        <!-- FOOTER ABOUT -->
-
-        <div class="footer-about">
-
-
-            <a
-                href="index.html"
-                class="logo">
+            <div class="main-image">
 
                 <img
-                    src="images/logo.png"
-                    alt="Isora Luxe Logo">
-
-            </a>
-
-
-            <p>
-
-                Exceptional cars. Exceptional service.
-                Your journey starts with Isora Luxe.
-
-            </p>
-
-
-            <div class="social-links">
-
-
-                <a
-                    href="#"
-                    aria-label="Facebook">
-
-                    <i class="fa-brands fa-facebook-f"></i>
-
-                </a>
-
-
-                <a
-                    href="#"
-                    aria-label="Instagram">
-
-                    <i class="fa-brands fa-instagram"></i>
-
-                </a>
-
-
-                <a
-                    href="#"
-                    aria-label="X">
-
-                    <i class="fa-brands fa-x-twitter"></i>
-
-                </a>
-
+                    id="carImage"
+                    src=""
+                    alt=""
+                >
 
             </div>
 
+            <div class="image-overlay"></div>
+
+
+            <div
+                class="image-label"
+                id="carCategory"
+            ></div>
+
+
+            <button
+                class="favorite-btn"
+                id="favoriteBtn"
+                type="button"
+                aria-label="Add car to favorites"
+            >
+
+                ♡
+
+            </button>
 
         </div>
 
 
-        <!-- EXPLORE -->
+        <!-- =================================================
+             INFORMATION
+        ================================================== -->
+
+        <div class="car-details">
+
+
+            <div
+                class="eyebrow"
+                id="carBrand"
+            ></div>
+
+
+            <h1
+                class="car-title"
+                id="carName"
+            ></h1>
+
+
+            <p
+                class="description"
+                id="carDescription"
+            ></p>
+
+
+            <!-- PRICE -->
+
+            <div class="price-box">
+
+                <span class="price-label">
+                    Starting From
+                </span>
+
+                <div
+                    class="price"
+                    id="carPrice"
+                ></div>
+
+            </div>
+
+
+            <!-- SPECS -->
+
+            <h2 class="specs-title">
+                Vehicle Specifications
+            </h2>
+
+
+            <div class="specs">
+
+
+                <div class="spec">
+
+                    <span class="spec-label">
+                        Year
+                    </span>
+
+                    <span
+                        class="spec-value"
+                        id="carYear"
+                    ></span>
+
+                </div>
+
+
+                <div class="spec">
+
+                    <span class="spec-label">
+                        Mileage
+                    </span>
+
+                    <span
+                        class="spec-value"
+                        id="carMileage"
+                    ></span>
+
+                </div>
+
+
+                <div class="spec">
+
+                    <span class="spec-label">
+                        Engine
+                    </span>
+
+                    <span
+                        class="spec-value"
+                        id="carEngine"
+                    ></span>
+
+                </div>
+
+
+                <div class="spec">
+
+                    <span class="spec-label">
+                        Fuel
+                    </span>
+
+                    <span
+                        class="spec-value"
+                        id="carFuel"
+                    ></span>
+
+                </div>
+
+
+                <div class="spec">
+
+                    <span class="spec-label">
+                        Gearbox
+                    </span>
+
+                    <span
+                        class="spec-value"
+                        id="carGearbox"
+                    ></span>
+
+                </div>
+
+
+                <div class="spec">
+
+                    <span class="spec-label">
+                        Seats
+                    </span>
+
+                    <span
+                        class="spec-value"
+                        id="carSeats"
+                    ></span>
+
+                </div>
+
+            </div>
+
+
+            <!-- ACTION BUTTONS -->
+
+            <div class="actions">
+
+                <a
+                    href="contact.html"
+                    class="primary-btn"
+                >
+                    Enquire About This Car
+                </a>
+
+                <a
+                    href="cars.html"
+                    class="secondary-btn"
+                >
+                    Browse Cars
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         DESCRIPTION
+    ====================================================== -->
+
+    <section class="description-section">
+
+        <h2>
+            Designed for Those Who Expect More
+        </h2>
+
+        <p id="longDescription"></p>
+
+    </section>
+
+
+    <!-- =====================================================
+         NOT FOUND
+    ====================================================== -->
+
+    <section
+        class="not-found"
+        id="notFound"
+    >
+
+        <h1>
+            Car Not Found
+        </h1>
+
+        <p>
+            The vehicle you are looking for does not exist
+            in our current collection.
+        </p>
+
+        <a
+            href="cars.html"
+            class="primary-btn"
+        >
+            Return to Cars
+        </a>
+
+    </section>
+
+</main>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+
+    <div class="footer-content">
+
+
+        <!-- BRAND -->
+
+        <div class="footer-brand">
+
+            <h2>
+                Isora Luxe
+            </h2>
+
+            <p>
+                Discover exceptional vehicles selected for
+                luxury, performance and an unforgettable
+                driving experience.
+            </p>
+
+        </div>
+
+
+        <!-- QUICK LINKS -->
 
         <div class="footer-column">
 
-
-            <h4>
-                Explore
-            </h4>
-
+            <h3>
+                Quick Links
+            </h3>
 
             <a href="index.html">
                 Home
             </a>
 
-
             <a href="cars.html">
                 Cars
             </a>
-
 
             <a href="about.html">
                 About
             </a>
 
-
             <a href="contact.html">
                 Contact
             </a>
-
-
-        </div>
-
-
-        <!-- SERVICES -->
-
-        <div class="footer-column">
-
-
-            <h4>
-                Services
-            </h4>
-
-
-            <a href="contact.html">
-                Test Drive
-            </a>
-
-
-            <a href="contact.html">
-                Financing
-            </a>
-
-
-            <a href="contact.html">
-                Trade-In
-            </a>
-
-
-            <a href="contact.html">
-                Car Service
-            </a>
-
 
         </div>
 
@@ -2332,177 +1594,600 @@
 
         <div class="footer-column">
 
-
-            <h4>
+            <h3>
                 Contact
-            </h4>
+            </h3>
 
+            <a href="mailto:info@isoraluxe.com">
+                info@isoraluxe.com
+            </a>
 
-            <p>
+            <a href="tel:+8801234567890">
+                +880 1XXX-XXXXXX
+            </a>
 
-                <i class="fa-solid fa-location-dot"></i>
-
-                <span>
-                    Dhaka, Bangladesh
-                </span>
-
-            </p>
-
-
-            <p>
-
-                <i class="fa-solid fa-phone"></i>
-
-                <span>
-                    +880 1XXX-XXXXXX
-                </span>
-
-            </p>
-
-
-            <p>
-
-                <i class="fa-solid fa-envelope"></i>
-
-                <span>
-                    N/A
-                </span>
-
-            </p>
-
+            <a href="contact.html">
+                Dhaka, Bangladesh
+            </a>
 
         </div>
 
-
     </div>
 
-
-    <!-- FOOTER BOTTOM -->
 
     <div class="footer-bottom">
 
-
         <p>
-            © 2026 Isora Luxe. All Rights Reserved.
+            © 2026 Isora Luxe. All rights reserved.
         </p>
 
-
         <p>
-            Premium Automotive Collection.
+            Luxury. Performance. Excellence.
         </p>
-
 
     </div>
-
 
 </footer>
 
 
-<!-- =====================================================
-     MOBILE MENU JAVASCRIPT
-===================================================== -->
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
 
 <script>
 
-    const menuButton =
-        document.getElementById("menuButton");
+
+/* =========================================================
+   CAR DATABASE
+========================================================= */
+
+const cars = {
+
+    1: {
+
+        brand: "BMW",
+
+        name: "BMW 5 Series",
+
+        category: "Luxury",
+
+        image: "images/car1.jpg",
+
+        year: "2025",
+
+        mileage: "8,500 km",
+
+        engine: "2.0L Turbo",
+
+        fuel: "Petrol",
+
+        gearbox: "Automatic",
+
+        seats: "5",
+
+        price: "৳1,25,00,000",
+
+        description:
+            "Elegant design, powerful performance and advanced technology for a refined luxury driving experience.",
+
+        longDescription:
+            "The BMW 5 Series combines sophisticated design, premium comfort and engaging performance. Its elegant interior, advanced technology and responsive driving dynamics make it an excellent choice for those who appreciate luxury without compromising on performance."
+
+    },
 
 
-    const mobileMenu =
-        document.getElementById("mobileMenu");
+    2: {
+
+        brand: "Rolls-Royce",
+
+        name: "Rolls-Royce Phantom",
+
+        category: "Ultra Luxury",
+
+        image: "images/car2.jpg",
+
+        year: "2025",
+
+        mileage: "4,200 km",
+
+        engine: "6.75L V12",
+
+        fuel: "Petrol",
+
+        gearbox: "Automatic",
+
+        seats: "5",
+
+        price: "৳8,50,00,000",
+
+        description:
+            "The highest level of automotive luxury, combining handcrafted elegance with effortless performance.",
+
+        longDescription:
+            "The Rolls-Royce Phantom represents the pinnacle of luxury motoring. Every element is designed around comfort, craftsmanship and exclusivity, creating an extraordinary experience for both driver and passengers."
+
+    },
 
 
-    /* OPEN / CLOSE MOBILE MENU */
+    3: {
 
-    menuButton.addEventListener("click", function () {
+        brand: "Toyota",
+
+        name: "Toyota Land Cruiser",
+
+        category: "Luxury SUV",
+
+        image: "images/car3.jpg",
+
+        year: "2025",
+
+        mileage: "11,000 km",
+
+        engine: "3.3L V6",
+
+        fuel: "Diesel",
+
+        gearbox: "Automatic",
+
+        seats: "7",
+
+        price: "৳1,85,00,000",
+
+        description:
+            "Outstanding durability, comfort and off-road capability while maintaining a premium driving experience.",
+
+        longDescription:
+            "The Toyota Land Cruiser is built for drivers who demand confidence in every environment. It combines impressive durability and off-road capability with a spacious, comfortable cabin and premium features."
+
+    },
+
+
+    4: {
+
+        brand: "Toyota",
+
+        name: "Toyota Supra",
+
+        category: "Sports",
+
+        image: "images/car4.jpg",
+
+        year: "2025",
+
+        mileage: "6,800 km",
+
+        engine: "3.0L Turbo",
+
+        fuel: "Petrol",
+
+        gearbox: "Automatic",
+
+        seats: "2",
+
+        price: "৳1,10,00,000",
+
+        description:
+            "Thrilling sports-car performance, sharp handling and iconic styling for an exciting driving experience.",
+
+        longDescription:
+            "The Toyota Supra delivers a focused sports-car experience with bold styling, responsive handling and strong turbocharged performance. It is designed for drivers who enjoy every moment behind the wheel."
+
+    },
+
+
+    5: {
+
+        brand: "Mercedes-Benz",
+
+        name: "Mercedes-Benz G-Class",
+
+        category: "Luxury SUV",
+
+        image: "images/car5.jpg",
+
+        year: "2025",
+
+        mileage: "7,200 km",
+
+        engine: "4.0L V8",
+
+        fuel: "Petrol",
+
+        gearbox: "Automatic",
+
+        seats: "5",
+
+        price: "৳2,80,00,000",
+
+        description:
+            "Iconic design, commanding presence and refined luxury combined with legendary off-road capability.",
+
+        longDescription:
+            "The Mercedes-Benz G-Class is an unmistakable symbol of luxury and strength. Its iconic exterior design, premium cabin and powerful performance make it equally impressive in the city and beyond."
+
+    },
+
+
+    6: {
+
+        brand: "Porsche",
+
+        name: "Porsche 911",
+
+        category: "Sports",
+
+        image: "images/car6.jpg",
+
+        year: "2025",
+
+        mileage: "5,400 km",
+
+        engine: "3.0L Turbo",
+
+        fuel: "Petrol",
+
+        gearbox: "Automatic",
+
+        seats: "4",
+
+        price: "৳1,75,00,000",
+
+        description:
+            "Timeless sports-car design with precise handling, exhilarating performance and everyday refinement.",
+
+        longDescription:
+            "The Porsche 911 blends iconic design with exceptional engineering. Its precise steering, powerful performance and refined interior create a sports car that is exciting on the road while remaining comfortable for everyday driving."
+
+    },
+
+
+    7: {
+
+        brand: "Lamborghini",
+
+        name: "Lamborghini Huracán",
+
+        category: "Sports",
+
+        image: "images/car7.jpg",
+
+        year: "2025",
+
+        mileage: "3,200 km",
+
+        engine: "5.2L V10",
+
+        fuel: "Petrol",
+
+        gearbox: "Automatic",
+
+        seats: "2",
+
+        price: "৳3,20,00,000",
+
+        description:
+            "Dramatic Italian styling, breathtaking acceleration and an unmistakable V10 performance experience.",
+
+        longDescription:
+            "The Lamborghini Huracán delivers an unforgettable supercar experience. Its dramatic Italian styling, naturally aspirated V10 engine and aggressive performance make it one of the most exciting cars in the Isora Luxe collection."
+
+    },
+
+
+    8: {
+
+        brand: "Aston Martin",
+
+        name: "Aston Martin DB12",
+
+        category: "Ultra Luxury",
+
+        image: "images/car8.jpg",
+
+        year: "2025",
+
+        mileage: "4,100 km",
+
+        engine: "4.0L V8",
+
+        fuel: "Petrol",
+
+        gearbox: "Automatic",
+
+        seats: "2+2",
+
+        price: "৳3,00,00,000",
+
+        description:
+            "Sophisticated grand-touring luxury with elegant British craftsmanship and exhilarating performance.",
+
+        longDescription:
+            "The Aston Martin DB12 combines sophisticated British craftsmanship with exhilarating performance. Its elegant design, luxurious interior and powerful V8 engine create a refined grand-touring experience."
+
+    }
+
+};
+
+
+/* =========================================================
+   GET CAR ID
+========================================================= */
+
+const urlParams =
+    new URLSearchParams(window.location.search);
+
+const carId =
+    urlParams.get("id");
+
+const car =
+    cars[carId];
+
+
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const detailsContainer =
+    document.getElementById("detailsContainer");
+
+const notFound =
+    document.getElementById("notFound");
+
+const carImage =
+    document.getElementById("carImage");
+
+const carCategory =
+    document.getElementById("carCategory");
+
+const carBrand =
+    document.getElementById("carBrand");
+
+const carName =
+    document.getElementById("carName");
+
+const carDescription =
+    document.getElementById("carDescription");
+
+const carPrice =
+    document.getElementById("carPrice");
+
+const carYear =
+    document.getElementById("carYear");
+
+const carMileage =
+    document.getElementById("carMileage");
+
+const carEngine =
+    document.getElementById("carEngine");
+
+const carFuel =
+    document.getElementById("carFuel");
+
+const carGearbox =
+    document.getElementById("carGearbox");
+
+const carSeats =
+    document.getElementById("carSeats");
+
+const longDescription =
+    document.getElementById("longDescription");
+
+const favoriteBtn =
+    document.getElementById("favoriteBtn");
+
+
+/* =========================================================
+   DISPLAY CAR
+========================================================= */
+
+if (car) {
+
+    carImage.src = car.image;
+
+    carImage.alt = car.name;
+
+    carCategory.textContent =
+        car.category;
+
+    carBrand.textContent =
+        car.brand;
+
+    carName.textContent =
+        car.name;
+
+    carDescription.textContent =
+        car.description;
+
+    carPrice.textContent =
+        car.price;
+
+    carYear.textContent =
+        car.year;
+
+    carMileage.textContent =
+        car.mileage;
+
+    carEngine.textContent =
+        car.engine;
+
+    carFuel.textContent =
+        car.fuel;
+
+    carGearbox.textContent =
+        car.gearbox;
+
+    carSeats.textContent =
+        car.seats;
+
+    longDescription.textContent =
+        car.longDescription;
+
+    document.title =
+        `${car.name} | Isora Luxe`;
+
+}
+
+
+/* =========================================================
+   CAR NOT FOUND
+========================================================= */
+
+else {
+
+    detailsContainer.style.display =
+        "none";
+
+    document.querySelector(
+        ".description-section"
+    ).style.display =
+        "none";
+
+    notFound.style.display =
+        "block";
+
+    document.title =
+        "Car Not Found | Isora Luxe";
+
+}
+
+
+/* =========================================================
+   FAVORITE BUTTON
+========================================================= */
+
+favoriteBtn.addEventListener(
+    "click",
+    function () {
+
+        this.classList.toggle("active");
+
+        if (
+            this.classList.contains("active")
+        ) {
+
+            this.textContent = "♥";
+
+            this.setAttribute(
+                "aria-label",
+                "Remove car from favorites"
+            );
+
+        }
+
+        else {
+
+            this.textContent = "♡";
+
+            this.setAttribute(
+                "aria-label",
+                "Add car to favorites"
+            );
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+const menuToggle =
+    document.getElementById("menuToggle");
+
+const mobileMenu =
+    document.getElementById("mobileMenu");
+
+
+/* OPEN / CLOSE MENU */
+
+menuToggle.addEventListener(
+    "click",
+    function () {
 
         const isOpen =
-            menuButton.classList.toggle("open");
+            mobileMenu.classList.toggle("open");
 
-
-        mobileMenu.classList.toggle("open");
-
-
-        menuButton.setAttribute(
-            "aria-expanded",
-            isOpen ? "true" : "false"
-        );
-
-
-        menuButton.setAttribute(
-            "aria-label",
+        this.classList.toggle(
+            "active",
             isOpen
-                ? "Close menu"
-                : "Open menu"
         );
 
-    });
+        this.setAttribute(
+            "aria-expanded",
+            isOpen
+        );
+
+    }
+);
 
 
-    /* CLOSE MENU AFTER CLICKING A LINK */
+/* CLOSE MENU WHEN LINK IS CLICKED */
 
-    const menuLinks =
-        mobileMenu.querySelectorAll("a");
+const mobileLinks =
+    mobileMenu.querySelectorAll("a");
 
+mobileLinks.forEach(
+    function (link) {
 
-    menuLinks.forEach(function (link) {
+        link.addEventListener(
+            "click",
+            function () {
 
-        link.addEventListener("click", function () {
+                mobileMenu.classList.remove(
+                    "open"
+                );
 
-            menuButton.classList.remove("open");
+                menuToggle.classList.remove(
+                    "active"
+                );
 
-            mobileMenu.classList.remove("open");
-
-            menuButton.setAttribute(
-                "aria-expanded",
-                "false"
-            );
-
-
-            menuButton.setAttribute(
-                "aria-label",
-                "Open menu"
-            );
-
-        });
-
-    });
-
-
-    /* CLOSE MENU WHEN CLICKING OUTSIDE */
-
-    document.addEventListener(
-        "click",
-        function (event) {
-
-            if (
-                !mobileMenu.contains(event.target) &&
-                !menuButton.contains(event.target)
-            ) {
-
-                menuButton.classList.remove("open");
-
-                mobileMenu.classList.remove("open");
-
-                menuButton.setAttribute(
+                menuToggle.setAttribute(
                     "aria-expanded",
                     "false"
                 );
 
-
-                menuButton.setAttribute(
-                    "aria-label",
-                    "Open menu"
-                );
-
             }
+        );
+
+    }
+);
+
+
+/* =========================================================
+   CLOSE MENU WHEN CLICKING OUTSIDE
+========================================================= */
+
+document.addEventListener(
+    "click",
+    function (event) {
+
+        if (
+            !mobileMenu.contains(event.target) &&
+            !menuToggle.contains(event.target)
+        ) {
+
+            mobileMenu.classList.remove(
+                "open"
+            );
+
+            menuToggle.classList.remove(
+                "active"
+            );
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                "false"
+            );
 
         }
-    );
+
+    }
+);
 
 </script>
 
 
 </body>
-
 </html>

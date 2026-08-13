@@ -18,41 +18,63 @@
 
     <style>
 
+        /* =====================================================
+           RESET
+        ===================================================== */
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: "Inter", sans-serif;
             background: #f5f5f3;
             color: #111;
+            overflow-x: hidden;
         }
 
-        /* =========================
+        button,
+        input,
+        select {
+            font-family: inherit;
+        }
+
+
+        /* =====================================================
            HEADER
-        ========================= */
+        ===================================================== */
 
         header {
-            background: #fff;
+            height: 82px;
+            background: rgba(255, 255, 255, 0.97);
             border-bottom: 1px solid #e8e8e8;
-            padding: 15px 6%;
+
+            padding: 0 6%;
+
             display: flex;
             align-items: center;
             justify-content: space-between;
+
             position: sticky;
             top: 0;
             z-index: 1000;
+
+            backdrop-filter: blur(12px);
         }
 
-        /* LOGO ONLY — NO TEXT BESIDE IT */
+
+        /* LOGO */
 
         .logo {
             display: flex;
             align-items: center;
             text-decoration: none;
-            color: #111;
         }
 
         .logo img {
@@ -62,86 +84,210 @@
             display: block;
         }
 
+
+        /* DESKTOP NAVIGATION */
+
         nav {
             display: flex;
+            align-items: center;
             gap: 30px;
         }
 
         nav a {
-            color: #C9A227;
+            color: #c9a227;
             text-decoration: none;
+
             font-size: 14px;
             font-weight: 500;
+
             position: relative;
             padding-bottom: 6px;
+
             transition: color 0.2s ease;
         }
 
         nav a:hover {
-            color: #A88416;
+            color: #a88416;
         }
 
         nav a.active::after {
             content: "";
+
             position: absolute;
             left: 0;
             bottom: 0;
+
             width: 100%;
             height: 2px;
-            background: #C9A227;
+
+            background: #c9a227;
         }
 
-        /* =========================
+
+        /* =====================================================
+           MOBILE MENU BUTTON
+        ===================================================== */
+
+        .menu-toggle {
+            display: none;
+
+            width: 44px;
+            height: 44px;
+
+            border: none;
+            background: transparent;
+
+            cursor: pointer;
+
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            gap: 5px;
+        }
+
+        .menu-toggle span {
+            display: block;
+
+            width: 23px;
+            height: 2px;
+
+            background: #111;
+
+            transition: 0.3s ease;
+        }
+
+
+        /* =====================================================
+           MOBILE NAVIGATION
+        ===================================================== */
+
+        .mobile-nav {
+            display: none;
+
+            position: fixed;
+
+            top: 82px;
+            left: 0;
+            right: 0;
+
+            background: rgba(255, 255, 255, 0.98);
+
+            border-bottom: 1px solid #e5e5e5;
+
+            padding: 20px 6% 25px;
+
+            z-index: 999;
+
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .mobile-nav.show {
+            display: block;
+        }
+
+        .mobile-nav a {
+            display: block;
+
+            color: #111;
+
+            text-decoration: none;
+
+            font-size: 14px;
+            font-weight: 500;
+
+            padding: 15px 0;
+
+            border-bottom: 1px solid #eeeeee;
+        }
+
+        .mobile-nav a:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-nav a.active {
+            color: #c9a227;
+        }
+
+
+        /* =====================================================
            PAGE
-        ========================= */
+        ===================================================== */
 
         .page {
+            width: 100%;
             max-width: 1400px;
+
             margin: auto;
-            padding: 70px 6%;
+
+            padding: 75px 6%;
         }
+
+
+        /* =====================================================
+           PAGE HEADER
+        ===================================================== */
 
         .page-header {
             text-align: center;
-            margin-bottom: 45px;
+
+            margin-bottom: 50px;
         }
 
         .eyebrow {
             text-transform: uppercase;
+
             letter-spacing: 3px;
+
             font-size: 11px;
             font-weight: 600;
+
             color: #777;
-            margin-bottom: 12px;
+
+            margin-bottom: 13px;
         }
 
         .page-header h1 {
             font-family: "Playfair Display", serif;
-            font-size: clamp(38px, 5vw, 64px);
+
+            font-size: clamp(40px, 5vw, 68px);
+
             line-height: 1.05;
-            margin-bottom: 15px;
+
+            margin-bottom: 16px;
         }
 
         .page-header p {
             max-width: 650px;
+
             margin: auto;
+
             color: #777;
+
             line-height: 1.7;
+
             font-size: 15px;
         }
 
-        /* =========================
+
+        /* =====================================================
            CONTROLS
-        ========================= */
+        ===================================================== */
 
         .controls {
             background: #fff;
+
             padding: 18px;
+
             border: 1px solid #e8e8e8;
+
             display: grid;
+
             grid-template-columns: 1.5fr 1fr 1fr;
+
             gap: 12px;
-            margin-bottom: 40px;
+
+            margin-bottom: 35px;
         }
 
         .search-box {
@@ -150,23 +296,34 @@
 
         .search-box span {
             position: absolute;
+
             left: 16px;
             top: 50%;
+
             transform: translateY(-50%);
+
             color: #777;
-            font-size: 18px;
+
+            font-size: 19px;
         }
 
         .controls input,
         .controls select {
             width: 100%;
+
             height: 50px;
+
             border: 1px solid #ddd;
+
             background: #fafafa;
+
             padding: 0 16px;
-            font-family: inherit;
+
             font-size: 14px;
+
             outline: none;
+
+            transition: 0.2s ease;
         }
 
         .controls input {
@@ -176,99 +333,193 @@
         .controls input:focus,
         .controls select:focus {
             border-color: #111;
+
             background: #fff;
         }
 
-        /* =========================
-           RESULTS
-        ========================= */
+
+        /* =====================================================
+           RESULTS BAR
+        ===================================================== */
 
         .results-bar {
             display: flex;
+
             justify-content: space-between;
+
             align-items: center;
+
             margin-bottom: 20px;
         }
 
         .results-count {
             font-size: 13px;
+
             color: #777;
         }
 
-        /* =========================
+
+        /* =====================================================
            CAR GRID
-        ========================= */
+        ===================================================== */
 
         .cars-grid {
             display: grid;
+
             grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 28px;
+
+            gap: 30px;
         }
+
+
+        /* =====================================================
+           CAR CARD
+        ===================================================== */
 
         .car-card {
             background: #fff;
+
             border: 1px solid #e7e7e7;
+
             overflow: hidden;
+
             transition:
-                transform 0.25s ease,
-                box-shadow 0.25s ease;
+                transform 0.35s ease,
+                box-shadow 0.35s ease;
         }
 
         .car-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            transform: translateY(-6px);
+
+            box-shadow:
+                0 20px 50px rgba(0, 0, 0, 0.09);
         }
 
-        /* =========================
-           IMAGE
-        ========================= */
+
+        /* =====================================================
+           CAR IMAGE / 3D AREA
+        ===================================================== */
 
         .car-image {
-            height: 330px;
+            height: 380px;
+
             position: relative;
+
             overflow: hidden;
-            background: #eee;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    #ffffff 0%,
+                    #eeeeec 55%,
+                    #dededb 100%
+                );
+
+            perspective: 1200px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
         }
+
+
+        /* IMAGE */
 
         .car-image img {
             width: 100%;
             height: 100%;
+
             object-fit: cover;
+
             display: block;
-            transition: transform 0.5s ease;
+
+            transform:
+                perspective(1000px)
+                rotateY(0deg)
+                rotateX(0deg)
+                scale(1);
+
+            transition:
+                transform 0.18s ease-out,
+                filter 0.3s ease;
+
+            will-change: transform;
         }
+
+
+        /* IMAGE HOVER */
 
         .car-card:hover .car-image img {
-            transform: scale(1.04);
+            filter: brightness(1.03);
         }
 
-        .category-badge {
+
+        /* =====================================================
+           IMAGE SHINE
+        ===================================================== */
+
+        .car-image::after {
+            content: "";
+
             position: absolute;
-            top: 18px;
-            left: 18px;
-            background: rgba(255, 255, 255, 0.94);
-            padding: 8px 12px;
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-weight: 700;
+
+            top: 0;
+            left: -120%;
+
+            width: 60%;
+            height: 100%;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(255,255,255,0.25),
+                    transparent
+                );
+
+            transform: skewX(-20deg);
+
+            pointer-events: none;
+
+            transition: left 0.8s ease;
         }
+
+        .car-card:hover .car-image::after {
+            left: 140%;
+        }
+
+
+        /* =====================================================
+           FAVORITE BUTTON
+        ===================================================== */
 
         .favorite {
             position: absolute;
-            top: 16px;
-            right: 16px;
-            width: 42px;
-            height: 42px;
+
+            top: 18px;
+            right: 18px;
+
+            width: 43px;
+            height: 43px;
+
             border: none;
+
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.95);
+
+            background: rgba(255,255,255,0.95);
+
             cursor: pointer;
+
             font-size: 20px;
+
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: 0.2s ease;
+
+            z-index: 5;
+
+            transition: 0.25s ease;
         }
 
         .favorite:hover {
@@ -279,9 +530,10 @@
             color: #b00020;
         }
 
-        /* =========================
+
+        /* =====================================================
            CARD INFO
-        ========================= */
+        ===================================================== */
 
         .car-info {
             padding: 30px;
@@ -289,186 +541,192 @@
 
         .car-brand {
             font-size: 10px;
+
             text-transform: uppercase;
+
             letter-spacing: 2px;
+
             color: #888;
+
             font-weight: 700;
+
             margin-bottom: 9px;
         }
 
         .car-name {
             font-family: "Playfair Display", serif;
-            font-size: 29px;
+
+            font-size: 30px;
+
             line-height: 1.2;
-            margin-bottom: 12px;
+
+            margin-bottom: 13px;
         }
 
         .car-description {
             color: #777;
+
             font-size: 13px;
-            line-height: 1.7;
-            min-height: 45px;
+
+            line-height: 1.75;
+
             margin-bottom: 25px;
+
+            max-width: 600px;
         }
 
-        /* =========================
-           SPECS
-        ========================= */
 
-        .specs {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            border-top: 1px solid #eee;
-            border-bottom: 1px solid #eee;
-            margin-bottom: 25px;
-        }
-
-        .spec {
-            padding: 14px 8px;
-            border-right: 1px solid #eee;
-        }
-
-        .spec:nth-child(3n) {
-            border-right: none;
-        }
-
-        .spec:nth-child(-n + 3) {
-            border-bottom: 1px solid #eee;
-        }
-
-        .spec-label {
-            display: block;
-            font-size: 9px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #999;
-            margin-bottom: 5px;
-        }
-
-        .spec-value {
-            display: block;
-            font-size: 12px;
-            font-weight: 600;
-            color: #222;
-        }
-
-        /* =========================
-           PRICE
-        ========================= */
-
-        .price-label {
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: #888;
-            margin-bottom: 4px;
-        }
-
-        .price {
-            font-family: "Playfair Display", serif;
-            font-size: 27px;
-            font-weight: 600;
-            margin-bottom: 22px;
-        }
-
-        /* =========================
-           BUTTON
-        ========================= */
+        /* =====================================================
+           DETAILS BUTTON
+        ===================================================== */
 
         .details-btn {
             width: 100%;
+
             display: flex;
+
             justify-content: space-between;
             align-items: center;
+
             background: #111;
+
             color: #fff;
+
             text-decoration: none;
-            padding: 16px 20px;
+
+            padding: 17px 20px;
+
             font-size: 12px;
+
             font-weight: 600;
+
             text-transform: uppercase;
+
             letter-spacing: 1px;
-            transition: background 0.2s ease;
+
+            transition:
+                background 0.25s ease,
+                padding 0.25s ease;
         }
 
         .details-btn:hover {
-            background: #333;
+            background: #c9a227;
+
+            color: #111;
         }
 
         .details-btn span {
             font-size: 18px;
+
+            transition: transform 0.25s ease;
         }
 
-        /* =========================
+        .details-btn:hover span {
+            transform: translateX(5px);
+        }
+
+
+        /* =====================================================
            NO RESULTS
-        ========================= */
+        ===================================================== */
 
         .no-results {
             display: none;
+
             text-align: center;
+
             background: #fff;
+
             border: 1px solid #e7e7e7;
+
             padding: 70px 20px;
         }
 
         .no-results h2 {
             font-family: "Playfair Display", serif;
+
             font-size: 30px;
+
             margin-bottom: 10px;
         }
 
         .no-results p {
             color: #777;
+
             font-size: 14px;
         }
 
-        /* =========================
+
+        /* =====================================================
            FOOTER
-        ========================= */
+        ===================================================== */
 
         footer {
             background: #111;
+
             color: #fff;
+
             margin-top: 70px;
-            padding: 50px 6% 25px;
+
+            padding: 55px 6% 25px;
         }
 
         .footer-content {
             max-width: 1400px;
+
             margin: auto;
+
             display: grid;
+
             grid-template-columns: 2fr 1fr 1fr;
+
             gap: 50px;
+
             padding-bottom: 40px;
+
             border-bottom: 1px solid #333;
         }
 
         .footer-brand h2 {
             font-family: "Playfair Display", serif;
-            font-size: 28px;
+
+            font-size: 29px;
+
             margin-bottom: 15px;
         }
 
         .footer-brand p {
             color: #aaa;
+
             font-size: 13px;
+
             line-height: 1.8;
+
             max-width: 420px;
         }
 
         .footer-column h3 {
             font-size: 12px;
+
             text-transform: uppercase;
+
             letter-spacing: 2px;
+
             margin-bottom: 18px;
         }
 
         .footer-column a {
             display: block;
+
             color: #aaa;
+
             text-decoration: none;
+
             font-size: 13px;
+
             margin-bottom: 11px;
+
+            transition: color 0.2s ease;
         }
 
         .footer-column a:hover {
@@ -477,35 +735,37 @@
 
         .footer-bottom {
             max-width: 1400px;
+
             margin: auto;
+
             padding-top: 22px;
+
             display: flex;
+
             justify-content: space-between;
+
             gap: 20px;
         }
 
         .footer-bottom p {
             color: #888;
+
             font-size: 11px;
         }
 
-        /* =========================
-           TABLET
-        ========================= */
 
-        @media (max-width: 800px) {
+        /* =====================================================
+           TABLET
+        ===================================================== */
+
+        @media (max-width: 900px) {
 
             header {
-                padding: 12px 5%;
-            }
-
-            .logo img {
-                width: 52px;
-                height: 52px;
+                padding: 0 5%;
             }
 
             nav {
-                gap: 15px;
+                gap: 18px;
             }
 
             nav a {
@@ -513,7 +773,7 @@
             }
 
             .page {
-                padding: 50px 5%;
+                padding: 55px 5%;
             }
 
             .controls {
@@ -525,56 +785,70 @@
             }
 
             .car-image {
-                height: 300px;
+                height: 350px;
             }
 
             .footer-content {
                 grid-template-columns: 1fr 1fr;
+
                 text-align: center;
+
                 justify-items: center;
             }
 
             .footer-brand {
                 grid-column: 1 / -1;
+
                 width: 100%;
             }
 
             .footer-brand p {
-                margin-left: auto;
-                margin-right: auto;
+                margin: auto;
             }
 
             .footer-column {
                 width: 100%;
             }
-
-            .footer-bottom {
-                text-align: center;
-                align-items: center;
-            }
         }
 
-        /* =========================
-           MOBILE
-        ========================= */
 
-        @media (max-width: 500px) {
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 600px) {
 
             header {
-                padding: 10px 5%;
+                height: 72px;
+
+                padding: 0 5%;
             }
+
+            .logo img {
+                width: 49px;
+                height: 49px;
+            }
+
+            /* SHOW 3 LINES */
 
             nav {
                 display: none;
             }
 
-            .logo img {
-                width: 48px;
-                height: 48px;
+            .menu-toggle {
+                display: flex;
+            }
+
+            .mobile-nav {
+                top: 72px;
             }
 
             .page {
                 padding: 45px 5%;
+            }
+
+            .page-header {
+                margin-bottom: 35px;
             }
 
             .page-header h1 {
@@ -583,136 +857,299 @@
 
             .page-header p {
                 font-size: 14px;
+
+                line-height: 1.7;
+            }
+
+            .controls {
+                padding: 14px;
+
+                gap: 10px;
+
+                margin-bottom: 30px;
+            }
+
+            .cars-grid {
+                gap: 22px;
+            }
+
+            .car-image {
+                height: 245px;
             }
 
             .car-info {
                 padding: 22px;
             }
 
-            .car-image {
-                height: 240px;
+            .car-brand {
+                font-size: 9px;
             }
 
-            .spec {
-                padding: 12px 5px;
+            .car-name {
+                font-size: 26px;
             }
 
-            .spec-value {
-                font-size: 11px;
+            .car-description {
+                font-size: 13px;
+
+                line-height: 1.7;
+
+                margin-bottom: 22px;
             }
+
+            .favorite {
+                width: 40px;
+                height: 40px;
+
+                top: 14px;
+                right: 14px;
+            }
+
+            .details-btn {
+                padding: 16px 17px;
+            }
+
+
+            /* FOOTER CENTERED */
 
             footer {
                 margin-top: 50px;
-                padding: 45px 25px 25px;
+
+                padding:
+                    45px 25px 25px;
+
                 text-align: center;
             }
 
             .footer-content {
                 display: flex;
+
                 flex-direction: column;
+
                 align-items: center;
+
                 justify-content: center;
+
                 gap: 35px;
+
                 width: 100%;
+
                 padding-bottom: 35px;
             }
 
             .footer-brand {
                 width: 100%;
+
                 text-align: center;
+
                 display: flex;
+
                 flex-direction: column;
+
                 align-items: center;
             }
 
             .footer-brand h2 {
                 font-size: 28px;
-                margin-bottom: 14px;
+
                 text-align: center;
             }
 
             .footer-brand p {
                 width: 100%;
+
                 max-width: 320px;
-                margin: 0 auto;
-                color: #aaa;
-                line-height: 1.8;
+
+                margin: auto;
+
                 text-align: center;
             }
 
             .footer-column {
                 width: 100%;
+
                 text-align: center;
+
                 display: flex;
+
                 flex-direction: column;
+
                 align-items: center;
             }
 
             .footer-column h3 {
-                margin-bottom: 16px;
                 text-align: center;
+
                 width: 100%;
             }
 
             .footer-column a {
                 text-align: center;
-                margin-bottom: 12px;
+
                 width: 100%;
             }
 
             .footer-bottom {
                 width: 100%;
+
                 display: flex;
+
                 flex-direction: column;
+
                 align-items: center;
+
                 justify-content: center;
+
                 text-align: center;
+
                 gap: 10px;
-                padding-top: 22px;
             }
 
             .footer-bottom p {
-                text-align: center;
-                line-height: 1.6;
                 width: 100%;
-                margin: 0 auto;
+
+                text-align: center;
+
+                line-height: 1.6;
+            }
+        }
+
+
+        /* =====================================================
+           VERY SMALL PHONES
+        ===================================================== */
+
+        @media (max-width: 380px) {
+
+            .page-header h1 {
+                font-size: 35px;
+            }
+
+            .car-image {
+                height: 220px;
+            }
+
+            .car-name {
+                font-size: 24px;
+            }
+
+            .car-info {
+                padding: 20px;
             }
         }
 
     </style>
+
 </head>
+
 
 <body>
 
-<!-- =========================
+
+<!-- =====================================================
      HEADER
-========================= -->
+===================================================== -->
 
 <header>
 
-    <!-- ONLY THE LOGO -->
-    <a href="index.html" class="logo" aria-label="Isora Luxe Home">
+    <a
+        href="index.html"
+        class="logo"
+        aria-label="Isora Luxe Home"
+    >
+
         <img
             src="images/logo.png"
             alt="Isora Luxe Logo"
         >
+
     </a>
 
+
+    <!-- DESKTOP NAV -->
+
     <nav>
-        <a href="index.html">Home</a>
-        <a href="cars.html" class="active">Cars</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a
+            href="cars.html"
+            class="active"
+        >
+            Cars
+        </a>
+
+        <a href="about.html">
+            About
+        </a>
+
+        <a href="contact.html">
+            Contact
+        </a>
+
     </nav>
+
+
+    <!-- MOBILE HAMBURGER -->
+
+    <button
+        class="menu-toggle"
+        id="menuToggle"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+    >
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </button>
 
 </header>
 
 
-<!-- =========================
-     MAIN PAGE
-========================= -->
+<!-- =====================================================
+     MOBILE NAV
+===================================================== -->
+
+<div
+    class="mobile-nav"
+    id="mobileNav"
+>
+
+    <a href="index.html">
+        Home
+    </a>
+
+    <a
+        href="cars.html"
+        class="active"
+    >
+        Cars
+    </a>
+
+    <a href="about.html">
+        About
+    </a>
+
+    <a href="contact.html">
+        Contact
+    </a>
+
+</div>
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
 
 <main class="page">
+
+
+    <!-- PAGE HEADER -->
 
     <section class="page-header">
 
@@ -725,16 +1162,19 @@
         </h1>
 
         <p>
-            Discover a carefully selected collection of luxury,
-            performance and premium vehicles.
+            Explore a carefully selected collection of
+            luxury, performance and premium vehicles.
         </p>
 
     </section>
 
 
-    <!-- CONTROLS -->
+    <!-- =================================================
+         FILTERS
+    ================================================= -->
 
     <section class="controls">
+
 
         <div class="search-box">
 
@@ -749,24 +1189,53 @@
 
         </div>
 
+
         <select id="categoryFilter">
 
-            <option value="all">All Categories</option>
-            <option value="Ultra Luxury">Ultra Luxury</option>
-            <option value="Luxury">Luxury</option>
-            <option value="Luxury SUV">Luxury SUV</option>
-            <option value="Sports">Sports</option>
+            <option value="all">
+                All Categories
+            </option>
+
+            <option value="Ultra Luxury">
+                Ultra Luxury
+            </option>
+
+            <option value="Luxury">
+                Luxury
+            </option>
+
+            <option value="Luxury SUV">
+                Luxury SUV
+            </option>
+
+            <option value="Sports">
+                Sports
+            </option>
 
         </select>
 
+
         <select id="sortSelect">
 
-            <option value="default">Sort By</option>
-            <option value="price-low">Price: Low to High</option>
-            <option value="price-high">Price: High to Low</option>
-            <option value="year-new">Year: Newest</option>
-            <option value="year-old">Year: Oldest</option>
-            <option value="mileage-low">Mileage: Lowest</option>
+            <option value="default">
+                Sort By
+            </option>
+
+            <option value="price-low">
+                Price: Low to High
+            </option>
+
+            <option value="price-high">
+                Price: High to Low
+            </option>
+
+            <option value="year-new">
+                Newest
+            </option>
+
+            <option value="mileage-low">
+                Lowest Mileage
+            </option>
 
         </select>
 
@@ -787,16 +1256,17 @@
     </div>
 
 
-    <!-- =========================
+    <!-- =================================================
          CAR GRID
-    ========================= -->
+    ================================================= -->
 
     <section
         class="cars-grid"
         id="carsGrid"
     >
 
-        <!-- BMW 5 SERIES -->
+
+        <!-- BMW -->
 
         <article
             class="car-card"
@@ -813,11 +1283,8 @@
                 <img
                     src="images/car1.jpg"
                     alt="BMW 5 Series"
+                    class="car-photo"
                 >
-
-                <div class="category-badge">
-                    Luxury
-                </div>
 
                 <button
                     class="favorite"
@@ -828,6 +1295,7 @@
                 </button>
 
             </div>
+
 
             <div class="car-info">
 
@@ -840,58 +1308,20 @@
                 </h2>
 
                 <p class="car-description">
-                    Elegant design, powerful performance and advanced
-                    technology for a refined luxury driving experience.
+                    Elegant design, powerful performance and
+                    advanced technology for a refined driving
+                    experience.
                 </p>
-
-                <div class="specs">
-
-                    <div class="spec">
-                        <span class="spec-label">Year</span>
-                        <span class="spec-value">2025</span>
-                    </div>
-
-                    <div class="spec">
-                        <span class="spec-label">Mileage</span>
-                        <span class="spec-value">8,500 km</span>
-                    </div>
-
-                    <div class="spec">
-                        <span class="spec-label">Engine</span>
-                        <span class="spec-value">2.0L Turbo</span>
-                    </div>
-
-                    <div class="spec">
-                        <span class="spec-label">Fuel</span>
-                        <span class="spec-value">Petrol</span>
-                    </div>
-
-                    <div class="spec">
-                        <span class="spec-label">Gearbox</span>
-                        <span class="spec-value">Automatic</span>
-                    </div>
-
-                    <div class="spec">
-                        <span class="spec-label">Seats</span>
-                        <span class="spec-value">5</span>
-                    </div>
-
-                </div>
-
-                <div class="price-label">
-                    Starting From
-                </div>
-
-                <div class="price">
-                    ৳1,25,00,000
-                </div>
 
                 <a
                     href="car-details.html?id=1"
                     class="details-btn"
                 >
+
                     View Details
+
                     <span>→</span>
+
                 </a>
 
             </div>
@@ -899,7 +1329,7 @@
         </article>
 
 
-        <!-- ROLLS-ROYCE PHANTOM -->
+        <!-- ROLLS ROYCE -->
 
         <article
             class="car-card"
@@ -916,11 +1346,8 @@
                 <img
                     src="images/car2.jpg"
                     alt="Rolls-Royce Phantom"
+                    class="car-photo"
                 >
-
-                <div class="category-badge">
-                    Ultra Luxury
-                </div>
 
                 <button
                     class="favorite"
@@ -931,6 +1358,7 @@
                 </button>
 
             </div>
+
 
             <div class="car-info">
 
@@ -943,58 +1371,20 @@
                 </h2>
 
                 <p class="car-description">
-                    The highest level of automotive luxury, combining
-                    handcrafted elegance with effortless performance.
+                    The highest level of automotive luxury,
+                    combining handcrafted elegance with
+                    effortless performance.
                 </p>
-
-                <div class="specs">
-
-                    <div class="spec">
-                        <span class="spec-label">Year</span>
-                        <span class="spec-value">2025</span>
-                    </div>
-
-                    <div class="spec">
-                        <span class="spec-label">Mileage</span>
-                        <span class="spec-value">4,200 km</span>
-                    </div>
-
-                    <div class="spec">
-                        <span class="spec-label">Engine</span>
-                        <span class="spec-value">6.75L V12</span>
-                    </div>
-
-                    <div class="spec">
-                        <span class="spec-label">Fuel</span>
-                        <span class="spec-value">Petrol</span>
-                    </div>
-
-                    <div class="spec">
-                        <span class="spec-label">Gearbox</span>
-                        <span class="spec-value">Automatic</span>
-                    </div>
-
-                    <div class="spec">
-                        <span class="spec-label">Seats</span>
-                        <span class="spec-value">5</span>
-                    </div>
-
-                </div>
-
-                <div class="price-label">
-                    Starting From
-                </div>
-
-                <div class="price">
-                    ৳8,50,00,000
-                </div>
 
                 <a
                     href="car-details.html?id=2"
                     class="details-btn"
                 >
+
                     View Details
+
                     <span>→</span>
+
                 </a>
 
             </div>
@@ -1019,11 +1409,8 @@
                 <img
                     src="images/car3.jpg"
                     alt="Toyota Land Cruiser"
+                    class="car-photo"
                 >
-
-                <div class="category-badge">
-                    Luxury SUV
-                </div>
 
                 <button
                     class="favorite"
@@ -1034,6 +1421,7 @@
                 </button>
 
             </div>
+
 
             <div class="car-info">
 
@@ -1046,58 +1434,20 @@
                 </h2>
 
                 <p class="car-description">
-                    Outstanding durability, comfort and off-road capability
-                    while maintaining a premium driving experience.
+                    Outstanding durability, comfort and
+                    off-road capability with a premium
+                    driving experience.
                 </p>
-
-                <div class="specs">
-
-                    <div class="spec">
-                        <span class="spec-label">Year</span>
-                        <span class="spec-value">2025</span>
-                    </div>
-
-                    <div class="spec">
-                        <span class="spec-label">Mileage</span>
-                        <span class="spec-value">11,000 km</span>
-                    </div>
-
-                    <div class="spec">
-                        <span class="spec-label">Engine</span>
-                        <span class="spec-value">3.3L V6</span>
-                    </div>
-
-                    <div class="spec">
-                        <span class="spec-label">Fuel</span>
-                        <span class="spec-value">Diesel</span>
-                    </div>
-
-                    <div class="spec">
-                        <span class="spec-label">Gearbox</span>
-                        <span class="spec-value">Automatic</span>
-                    </div>
-
-                    <div class="spec">
-                        <span class="spec-label">Seats</span>
-                        <span class="spec-value">7</span>
-                    </div>
-
-                </div>
-
-                <div class="price-label">
-                    Starting From
-                </div>
-
-                <div class="price">
-                    ৳1,85,00,000
-                </div>
 
                 <a
                     href="car-details.html?id=3"
                     class="details-btn"
                 >
+
                     View Details
+
                     <span>→</span>
+
                 </a>
 
             </div>
@@ -1122,11 +1472,8 @@
                 <img
                     src="images/car4.jpg"
                     alt="Toyota Supra"
+                    class="car-photo"
                 >
-
-                <div class="category-badge">
-                    Sports
-                </div>
 
                 <button
                     class="favorite"
@@ -1137,6 +1484,7 @@
                 </button>
 
             </div>
+
 
             <div class="car-info">
 
@@ -1149,58 +1497,19 @@
                 </h2>
 
                 <p class="car-description">
-                    Thrilling sports-car performance, sharp handling and
-                    iconic styling for an exciting driving experience.
+                    Thrilling sports-car performance,
+                    sharp handling and iconic styling.
                 </p>
-
-                <div class="specs">
-
-                    <div class="spec">
-                        <span class="spec-label">Year</span>
-                        <span class="spec-value">2025</span>
-                    </div>
-
-                    <div class="spec">
-                        <span class="spec-label">Mileage</span>
-                        <span class="spec-value">6,800 km</span>
-                    </div>
-
-                    <div class="spec">
-                        <span class="spec-label">Engine</span>
-                        <span class="spec-value">3.0L Turbo</span>
-                    </div>
-
-                    <div class="spec">
-                        <span class="spec-label">Fuel</span>
-                        <span class="spec-value">Petrol</span>
-                    </div>
-
-                    <div class="spec">
-                        <span class="spec-label">Gearbox</span>
-                        <span class="spec-value">Automatic</span>
-                    </div>
-
-                    <div class="spec">
-                        <span class="spec-label">Seats</span>
-                        <span class="spec-value">2</span>
-                    </div>
-
-                </div>
-
-                <div class="price-label">
-                    Starting From
-                </div>
-
-                <div class="price">
-                    ৳1,10,00,000
-                </div>
 
                 <a
                     href="car-details.html?id=4"
                     class="details-btn"
                 >
+
                     View Details
+
                     <span>→</span>
+
                 </a>
 
             </div>
@@ -1208,7 +1517,7 @@
         </article>
 
 
-        <!-- MERCEDES-BENZ G-CLASS -->
+        <!-- MERCEDES G CLASS -->
 
         <article
             class="car-card"
@@ -1225,11 +1534,8 @@
                 <img
                     src="images/car5.jpg"
                     alt="Mercedes-Benz G-Class"
+                    class="car-photo"
                 >
-
-                <div class="category-badge">
-                    Luxury SUV
-                </div>
 
                 <button
                     class="favorite"
@@ -1240,6 +1546,7 @@
                 </button>
 
             </div>
+
 
             <div class="car-info">
 
@@ -1252,58 +1559,20 @@
                 </h2>
 
                 <p class="car-description">
-                    Iconic design, commanding presence and refined luxury
-                    combined with legendary off-road capability.
+                    Iconic design, commanding presence and
+                    refined luxury combined with legendary
+                    capability.
                 </p>
-
-                <div class="specs">
-
-                    <div class="spec">
-                        <span class="spec-label">Year</span>
-                        <span class="spec-value">2025</span>
-                    </div>
-
-                    <div class="spec">
-                        <span class="spec-label">Mileage</span>
-                        <span class="spec-value">7,200 km</span>
-                    </div>
-
-                    <div class="spec">
-                        <span class="spec-label">Engine</span>
-                        <span class="spec-value">4.0L V8</span>
-                    </div>
-
-                    <div class="spec">
-                        <span class="spec-label">Fuel</span>
-                        <span class="spec-value">Petrol</span>
-                    </div>
-
-                    <div class="spec">
-                        <span class="spec-label">Gearbox</span>
-                        <span class="spec-value">Automatic</span>
-                    </div>
-
-                    <div class="spec">
-                        <span class="spec-label">Seats</span>
-                        <span class="spec-value">5</span>
-                    </div>
-
-                </div>
-
-                <div class="price-label">
-                    Starting From
-                </div>
-
-                <div class="price">
-                    ৳2,80,00,000
-                </div>
 
                 <a
                     href="car-details.html?id=5"
                     class="details-btn"
                 >
+
                     View Details
+
                     <span>→</span>
+
                 </a>
 
             </div>
@@ -1328,11 +1597,8 @@
                 <img
                     src="images/car6.jpg"
                     alt="Porsche 911"
+                    class="car-photo"
                 >
-
-                <div class="category-badge">
-                    Sports
-                </div>
 
                 <button
                     class="favorite"
@@ -1343,6 +1609,7 @@
                 </button>
 
             </div>
+
 
             <div class="car-info">
 
@@ -1355,58 +1622,20 @@
                 </h2>
 
                 <p class="car-description">
-                    Timeless sports-car design with precise handling,
-                    exhilarating performance and everyday refinement.
+                    Timeless sports-car design with precise
+                    handling, exhilarating performance and
+                    everyday refinement.
                 </p>
-
-                <div class="specs">
-
-                    <div class="spec">
-                        <span class="spec-label">Year</span>
-                        <span class="spec-value">2025</span>
-                    </div>
-
-                    <div class="spec">
-                        <span class="spec-label">Mileage</span>
-                        <span class="spec-value">5,400 km</span>
-                    </div>
-
-                    <div class="spec">
-                        <span class="spec-label">Engine</span>
-                        <span class="spec-value">3.0L Turbo</span>
-                    </div>
-
-                    <div class="spec">
-                        <span class="spec-label">Fuel</span>
-                        <span class="spec-value">Petrol</span>
-                    </div>
-
-                    <div class="spec">
-                        <span class="spec-label">Gearbox</span>
-                        <span class="spec-value">Automatic</span>
-                    </div>
-
-                    <div class="spec">
-                        <span class="spec-label">Seats</span>
-                        <span class="spec-value">4</span>
-                    </div>
-
-                </div>
-
-                <div class="price-label">
-                    Starting From
-                </div>
-
-                <div class="price">
-                    ৳1,75,00,000
-                </div>
 
                 <a
                     href="car-details.html?id=6"
                     class="details-btn"
                 >
+
                     View Details
+
                     <span>→</span>
+
                 </a>
 
             </div>
@@ -1414,7 +1643,7 @@
         </article>
 
 
-        <!-- LAMBORGHINI HURACÁN -->
+        <!-- LAMBORGHINI -->
 
         <article
             class="car-card"
@@ -1431,11 +1660,8 @@
                 <img
                     src="images/car7.jpg"
                     alt="Lamborghini Huracán"
+                    class="car-photo"
                 >
-
-                <div class="category-badge">
-                    Sports
-                </div>
 
                 <button
                     class="favorite"
@@ -1446,6 +1672,7 @@
                 </button>
 
             </div>
+
 
             <div class="car-info">
 
@@ -1458,58 +1685,20 @@
                 </h2>
 
                 <p class="car-description">
-                    Dramatic Italian styling, breathtaking acceleration
-                    and an unmistakable V10 performance experience.
+                    Dramatic Italian styling, breathtaking
+                    acceleration and an unmistakable V10
+                    performance experience.
                 </p>
-
-                <div class="specs">
-
-                    <div class="spec">
-                        <span class="spec-label">Year</span>
-                        <span class="spec-value">2025</span>
-                    </div>
-
-                    <div class="spec">
-                        <span class="spec-label">Mileage</span>
-                        <span class="spec-value">3,200 km</span>
-                    </div>
-
-                    <div class="spec">
-                        <span class="spec-label">Engine</span>
-                        <span class="spec-value">5.2L V10</span>
-                    </div>
-
-                    <div class="spec">
-                        <span class="spec-label">Fuel</span>
-                        <span class="spec-value">Petrol</span>
-                    </div>
-
-                    <div class="spec">
-                        <span class="spec-label">Gearbox</span>
-                        <span class="spec-value">Automatic</span>
-                    </div>
-
-                    <div class="spec">
-                        <span class="spec-label">Seats</span>
-                        <span class="spec-value">2</span>
-                    </div>
-
-                </div>
-
-                <div class="price-label">
-                    Starting From
-                </div>
-
-                <div class="price">
-                    ৳3,20,00,000
-                </div>
 
                 <a
                     href="car-details.html?id=7"
                     class="details-btn"
                 >
+
                     View Details
+
                     <span>→</span>
+
                 </a>
 
             </div>
@@ -1517,7 +1706,7 @@
         </article>
 
 
-        <!-- ASTON MARTIN DB12 -->
+        <!-- ASTON MARTIN -->
 
         <article
             class="car-card"
@@ -1534,11 +1723,8 @@
                 <img
                     src="images/car8.jpg"
                     alt="Aston Martin DB12"
+                    class="car-photo"
                 >
-
-                <div class="category-badge">
-                    Ultra Luxury
-                </div>
 
                 <button
                     class="favorite"
@@ -1549,6 +1735,7 @@
                 </button>
 
             </div>
+
 
             <div class="car-info">
 
@@ -1561,68 +1748,33 @@
                 </h2>
 
                 <p class="car-description">
-                    Sophisticated grand-touring luxury with elegant British
-                    craftsmanship and exhilarating performance.
+                    Sophisticated grand-touring luxury with
+                    elegant British craftsmanship and
+                    exhilarating performance.
                 </p>
-
-                <div class="specs">
-
-                    <div class="spec">
-                        <span class="spec-label">Year</span>
-                        <span class="spec-value">2025</span>
-                    </div>
-
-                    <div class="spec">
-                        <span class="spec-label">Mileage</span>
-                        <span class="spec-value">4,100 km</span>
-                    </div>
-
-                    <div class="spec">
-                        <span class="spec-label">Engine</span>
-                        <span class="spec-value">4.0L V8</span>
-                    </div>
-
-                    <div class="spec">
-                        <span class="spec-label">Fuel</span>
-                        <span class="spec-value">Petrol</span>
-                    </div>
-
-                    <div class="spec">
-                        <span class="spec-label">Gearbox</span>
-                        <span class="spec-value">Automatic</span>
-                    </div>
-
-                    <div class="spec">
-                        <span class="spec-label">Seats</span>
-                        <span class="spec-value">2+2</span>
-                    </div>
-
-                </div>
-
-                <div class="price-label">
-                    Starting From
-                </div>
-
-                <div class="price">
-                    ৳3,00,00,000
-                </div>
 
                 <a
                     href="car-details.html?id=8"
                     class="details-btn"
                 >
+
                     View Details
+
                     <span>→</span>
+
                 </a>
 
             </div>
 
         </article>
 
+
     </section>
 
 
-    <!-- NO RESULTS -->
+    <!-- =================================================
+         NO RESULTS
+    ================================================= -->
 
     <div
         class="no-results"
@@ -1639,16 +1791,18 @@
 
     </div>
 
+
 </main>
 
 
-<!-- =========================
+<!-- =====================================================
      FOOTER
-========================= -->
+===================================================== -->
 
 <footer>
 
     <div class="footer-content">
+
 
         <div class="footer-brand">
 
@@ -1657,11 +1811,13 @@
             </h2>
 
             <p>
-                Discover exceptional vehicles selected for luxury,
-                performance and an unforgettable driving experience.
+                Discover exceptional vehicles selected for
+                luxury, performance and an unforgettable
+                driving experience.
             </p>
 
         </div>
+
 
         <div class="footer-column">
 
@@ -1669,12 +1825,24 @@
                 Quick Links
             </h3>
 
-            <a href="index.html">Home</a>
-            <a href="cars.html">Cars</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="cars.html">
+                Cars
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
 
         </div>
+
 
         <div class="footer-column">
 
@@ -1696,7 +1864,9 @@
 
         </div>
 
+
     </div>
+
 
     <div class="footer-bottom">
 
@@ -1713,11 +1883,66 @@
 </footer>
 
 
-<!-- =========================
+<!-- =====================================================
      JAVASCRIPT
-========================= -->
+===================================================== -->
 
 <script>
+
+
+    /* =====================================================
+       MOBILE MENU
+    ===================================================== */
+
+    const menuToggle =
+        document.getElementById("menuToggle");
+
+    const mobileNav =
+        document.getElementById("mobileNav");
+
+
+    menuToggle.addEventListener(
+        "click",
+        function () {
+
+            const isOpen =
+                mobileNav.classList.toggle("show");
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                isOpen
+            );
+
+        }
+    );
+
+
+    /* CLOSE MOBILE MENU WHEN LINK IS CLICKED */
+
+    document
+        .querySelectorAll(".mobile-nav a")
+        .forEach(function (link) {
+
+            link.addEventListener(
+                "click",
+                function () {
+
+                    mobileNav.classList.remove("show");
+
+                    menuToggle.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+                }
+            );
+
+        });
+
+
+    /* =====================================================
+       SEARCH + FILTER + SORT
+    ===================================================== */
 
     const searchInput =
         document.getElementById("searchInput");
@@ -1737,6 +1962,7 @@
     const noResults =
         document.getElementById("noResults");
 
+
     const cars =
         Array.from(
             document.querySelectorAll(".car-card")
@@ -1749,6 +1975,7 @@
             searchInput.value
                 .toLowerCase()
                 .trim();
+
 
         const selectedCategory =
             categoryFilter.value;
@@ -1778,10 +2005,15 @@
                     category === selectedCategory;
 
 
-                return searchMatches && categoryMatches;
+                return (
+                    searchMatches &&
+                    categoryMatches
+                );
 
             });
 
+
+        /* SORT */
 
         const sortType =
             sortSelect.value;
@@ -1790,39 +2022,60 @@
         visibleCars.sort(function (a, b) {
 
             if (sortType === "price-low") {
-                return Number(a.dataset.price) -
-                       Number(b.dataset.price);
+
+                return (
+                    Number(a.dataset.price) -
+                    Number(b.dataset.price)
+                );
+
             }
+
 
             if (sortType === "price-high") {
-                return Number(b.dataset.price) -
-                       Number(a.dataset.price);
+
+                return (
+                    Number(b.dataset.price) -
+                    Number(a.dataset.price)
+                );
+
             }
+
 
             if (sortType === "year-new") {
-                return Number(b.dataset.year) -
-                       Number(a.dataset.year);
+
+                return (
+                    Number(b.dataset.year) -
+                    Number(a.dataset.year)
+                );
+
             }
 
-            if (sortType === "year-old") {
-                return Number(a.dataset.year) -
-                       Number(b.dataset.year);
-            }
 
             if (sortType === "mileage-low") {
-                return Number(a.dataset.mileage) -
-                       Number(b.dataset.mileage);
+
+                return (
+                    Number(a.dataset.mileage) -
+                    Number(b.dataset.mileage)
+                );
+
             }
+
 
             return 0;
 
         });
 
 
+        /* HIDE ALL */
+
         cars.forEach(function (car) {
+
             car.style.display = "none";
+
         });
 
+
+        /* SHOW MATCHING */
 
         visibleCars.forEach(function (car) {
 
@@ -1833,6 +2086,8 @@
         });
 
 
+        /* COUNT */
+
         const count =
             visibleCars.length;
 
@@ -1842,6 +2097,8 @@
                 ? "1 vehicle"
                 : `${count} vehicles`;
 
+
+        /* NO RESULTS */
 
         noResults.style.display =
             count === 0
@@ -1869,6 +2126,10 @@
     );
 
 
+    /* =====================================================
+       FAVORITES
+    ===================================================== */
+
     document
         .querySelectorAll(".favorite")
         .forEach(function (button) {
@@ -1878,6 +2139,7 @@
                 function () {
 
                     this.classList.toggle("active");
+
 
                     if (
                         this.classList.contains("active")
@@ -1897,9 +2159,90 @@
         });
 
 
+    /* =====================================================
+       3D CAR TILT EFFECT
+    ===================================================== */
+
+    const carImages =
+        document.querySelectorAll(".car-image");
+
+
+    carImages.forEach(function (container) {
+
+        const image =
+            container.querySelector(".car-photo");
+
+
+        container.addEventListener(
+            "mousemove",
+            function (event) {
+
+                /* Disable heavy effect on touch devices */
+
+                if (window.innerWidth <= 600) {
+                    return;
+                }
+
+
+                const rect =
+                    container.getBoundingClientRect();
+
+
+                const x =
+                    event.clientX - rect.left;
+
+
+                const y =
+                    event.clientY - rect.top;
+
+
+                const centerX =
+                    rect.width / 2;
+
+
+                const centerY =
+                    rect.height / 2;
+
+
+                const rotateY =
+                    ((x - centerX) / centerX) * 10;
+
+
+                const rotateX =
+                    -((y - centerY) / centerY) * 5;
+
+
+                image.style.transform =
+                    `perspective(1000px)
+                     rotateY(${rotateY}deg)
+                     rotateX(${rotateX}deg)
+                     scale(1.04)`;
+
+            }
+        );
+
+
+        container.addEventListener(
+            "mouseleave",
+            function () {
+
+                image.style.transform =
+                    "perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1)";
+
+            }
+        );
+
+    });
+
+
+    /* =====================================================
+       INITIAL LOAD
+    ===================================================== */
+
     updateCars();
 
 </script>
+
 
 </body>
 </html>
